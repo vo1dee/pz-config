@@ -17,19 +17,23 @@ No build step, no dependencies.
 
 ## Sync to a live server (optional)
 
-To push/pull config directly to a running PZ server over SSH:
+A small Node backend can push/pull config directly to **one** PZ server over
+SSH — built for a group of friends sharing a single server, not multi-tenant
+use. The server's SSH/RCON details live in `server/.env`, not in the browser.
 
 ```bash
 cd server
 npm install
-cp .env.example .env   # fill in SSH/RCON details
+cp .env.example .env   # fill in SSH/RCON details, and Cloudflare Access creds
 npm start               # serves editor + API on http://localhost:8934
 ```
 
-This adds **Sync from server** / **Sync to server** buttons. Syncing to a
-server backs it up, restarts it, and applies the new config. See
-[`server/`](server/) and [docs/adr/0002](docs/adr/0002-server-sync-over-ssh.md)
-for details.
+Sync is gated behind login: put a Cloudflare Access application in front of
+`/api` (allow-listing the emails of people you trust) and set
+`CF_ACCESS_TEAM_DOMAIN`/`CF_ACCESS_AUD` in `.env`. Only signed-in users see
+the **Sync from server** / **Sync to server** buttons; syncing to the server
+backs it up, restarts it, and applies the new config. See [`server/`](server/)
+and [docs/adr/0002](docs/adr/0002-server-sync-over-ssh.md) for details.
 
 ## Files
 

@@ -415,79 +415,10 @@ button {
     gap: 10px;
 }
 
-.modal-wide {
-    max-width: 560px;
-    max-height: 85vh;
-    display: flex;
-    flex-direction: column;
-}
-
 .auth-status {
     font-size: 12.5px;
     color: var(--text-dim);
     white-space: nowrap;
-}
-
-.settings-form {
-    overflow-y: auto;
-    padding-right: 4px;
-    margin-bottom: 14px;
-}
-
-.settings-section-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-faint);
-    margin: 16px 0 8px;
-}
-.settings-section-label:first-child { margin-top: 0; }
-
-.settings-field {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 10px;
-}
-.settings-field span { font-size: 12.5px; color: var(--text-dim); }
-
-.settings-field-row {
-    display: flex;
-    gap: 10px;
-}
-.settings-field-row .settings-field { flex: 1; min-width: 0; }
-
-.settings-field input[type="text"],
-.settings-field input[type="number"],
-.settings-field input[type="password"],
-.settings-field textarea {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text);
-    border-radius: 6px;
-    padding: 7px 9px;
-    width: 100%;
-    outline: none;
-    font-family: inherit;
-    font-size: 13px;
-}
-.settings-field textarea {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 12px;
-    resize: vertical;
-}
-.settings-field input:focus,
-.settings-field textarea:focus {
-    border-color: var(--accent);
-}
-
-.settings-field-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    font-size: 12.5px;
-    color: var(--text-dim);
 }
 
 .sync-log {

@@ -1,72 +1,45 @@
 'use strict';
 
-// Helpers for talking to a remote Project Zomboid host: SFTP for the
+// Helpers for talking to the remote Project Zomboid host: SFTP for the
 // SandboxVars file, SSH exec for backups + start/stop, and RCON for player
 // warnings, saves, and up/down health checks.
 //
-// Unlike the original version, none of this reads server-wide config from
-// process.env: every call takes an explicit `cfg` object built by
-// buildConfig() from the connection profile the caller (browser) supplies.
-// That's what lets each logged-in user sync against their *own* server
-// without the backend ever storing anyone's SSH key or RCON password.
+// Single-server tool: connection details come from process.env (see
+// .env.example), not from anything a client sends.
 
+const fs = require('fs');
 const path = require('path');
 const { Client } = require('ssh2');
 const { Rcon } = require('rcon-client');
 
-// Build a per-request cfg from a plain object (the "server" profile posted by
-// the frontend, sourced from that user's browser localStorage). Throws with a
-// user-facing message if required fields are missing or malformed — never
-// touches process.env or the filesystem.
-function buildConfig(input) {
-  const s = input && typeof input === 'object' ? input : {};
-
-  const host = (s.sshHost || '').trim();
-  const username = (s.sshUser || '').trim();
-  const sandboxVarsPath = (s.sandboxVarsPath || '').trim();
-  if (!host) throw new Error('Server settings: SSH host is required.');
-  if (!username) throw new Error('Server settings: SSH user is required.');
-  if (!sandboxVarsPath) throw new Error('Server settings: SandboxVars path is required.');
-
-  const privateKey = typeof s.sshPrivateKey === 'string' ? s.sshPrivateKey.trim() : '';
-  const password = typeof s.sshPassword === 'string' ? s.sshPassword : '';
-  if (!privateKey && !password) {
-    throw new Error('Server settings: provide either an SSH private key or an SSH password.');
-  }
-
-  const ssh = {
-    host,
-    port: toInt(s.sshPort, 22),
-    username,
-  };
-  if (privateKey) {
-    ssh.privateKey = privateKey;
-    if (s.sshKeyPassphrase) ssh.passphrase = s.sshKeyPassphrase;
-  } else {
-    ssh.password = password;
-  }
-
+function config() {
   const cfg = {
-    ssh,
-    sandboxVarsPath,
-    stopCmd: (s.stopCmd || '').trim(),
-    startCmd: (s.startCmd || '').trim(),
-    rcon: {
-      host: (s.rconHost || '').trim(),
-      port: toInt(s.rconPort, 27015),
-      password: s.rconPassword || '',
+    ssh: {
+      host: process.env.SSH_HOST,
+      port: parseInt(process.env.SSH_PORT || '22', 10),
+      username: process.env.SSH_USER,
     },
-    countdown: toInt(s.countdown, 60),
-    backupDir: (s.backupDir || '').trim(),
-    backupKeep: toInt(s.backupKeep, 10),
-    dryRun: Boolean(s.dryRun),
+    sandboxVarsPath: process.env.PZ_SANDBOXVARS_PATH,
+    stopCmd: (process.env.PZ_STOP_CMD || '').trim(),
+    startCmd: (process.env.PZ_START_CMD || '').trim(),
+    rcon: {
+      host: process.env.RCON_HOST,
+      port: parseInt(process.env.RCON_PORT || '27015', 10),
+      password: process.env.RCON_PASSWORD,
+    },
+    countdown: parseInt(process.env.RESTART_COUNTDOWN_SECONDS || '60', 10),
+    backupDir: (process.env.BACKUP_DIR || '').trim(),
+    backupKeep: parseInt(process.env.BACKUP_KEEP || '10', 10),
+    dryRun: process.env.DRY_RUN === '1',
   };
-  return cfg;
-}
 
-function toInt(v, fallback) {
-  const n = parseInt(v, 10);
-  return Number.isFinite(n) ? n : fallback;
+  if (process.env.SSH_KEY_PATH) {
+    cfg.ssh.privateKey = fs.readFileSync(process.env.SSH_KEY_PATH);
+    if (process.env.SSH_KEY_PASSPHRASE) cfg.ssh.passphrase = process.env.SSH_KEY_PASSPHRASE;
+  } else if (process.env.SSH_PASSWORD) {
+    cfg.ssh.password = process.env.SSH_PASSWORD;
+  }
+  return cfg;
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -88,7 +61,8 @@ function shellPath(p) {
 }
 
 // Open an SSH connection and hand it to `fn`, always closing it afterwards.
-function withSSH(fn, cfg) {
+function withSSH(fn) {
+  const cfg = config();
   return new Promise((resolve, reject) => {
     const conn = new Client();
     let settled = false;
@@ -127,8 +101,8 @@ function exec(conn, command) {
   });
 }
 
-async function readSandboxVars(cfg) {
-  return withSSH(async (conn) => {
+async function readSandboxVars() {
+  return withSSH(async (conn, cfg) => {
     const sftp = await sftpOf(conn);
     const remote = sftpPath(cfg.sandboxVarsPath);
     return new Promise((resolve, reject) => {
@@ -138,11 +112,11 @@ async function readSandboxVars(cfg) {
       rs.on('error', reject);
       rs.on('end', () => resolve(data));
     });
-  }, cfg);
+  });
 }
 
-async function writeSandboxVars(content, cfg) {
-  return withSSH(async (conn) => {
+async function writeSandboxVars(content) {
+  return withSSH(async (conn, cfg) => {
     const sftp = await sftpOf(conn);
     const remote = sftpPath(cfg.sandboxVarsPath);
     await new Promise((resolve, reject) => {
@@ -151,13 +125,13 @@ async function writeSandboxVars(content, cfg) {
       ws.on('close', resolve);
       ws.end(Buffer.from(content, 'utf8'));
     });
-  }, cfg);
+  });
 }
 
 // Copy the current file to a timestamped backup and prune old ones. Uses the
 // remote shell so a leading ~/ in paths is expanded there.
-async function backupRemote(cfg) {
-  return withSSH(async (conn) => {
+async function backupRemote() {
+  return withSSH(async (conn, cfg) => {
     const file = shellPath(cfg.sandboxVarsPath);
     const base = path.posix.basename(cfg.sandboxVarsPath);
     const dir = shellPath(cfg.backupDir || `${path.posix.dirname(cfg.sandboxVarsPath)}/sandboxvars-backups`);
@@ -173,21 +147,24 @@ async function backupRemote(cfg) {
       );
     }
     return dest;
-  }, cfg);
+  });
 }
 
-async function runStart(cfg) {
-  if (!cfg.startCmd) throw new Error('Server settings: start command is not configured');
-  return withSSH((conn) => exec(conn, cfg.startCmd), cfg);
+async function runStart() {
+  const cfg = config();
+  if (!cfg.startCmd) throw new Error('PZ_START_CMD is not configured');
+  return withSSH((conn) => exec(conn, cfg.startCmd));
 }
 
-async function runStop(cfg) {
-  if (cfg.stopCmd) return withSSH((conn) => exec(conn, cfg.stopCmd), cfg);
+async function runStop() {
+  const cfg = config();
+  if (cfg.stopCmd) return withSSH((conn) => exec(conn, cfg.stopCmd));
   // Fall back to a graceful RCON quit (saves, then shuts the server down).
-  return rconExec('quit', cfg);
+  return rconExec('quit');
 }
 
-async function rconExec(command, cfg) {
+async function rconExec(command) {
+  const cfg = config();
   const rcon = await Rcon.connect({
     host: cfg.rcon.host,
     port: cfg.rcon.port,
@@ -201,26 +178,26 @@ async function rconExec(command, cfg) {
   }
 }
 
-async function rconIsUp(cfg) {
+async function rconIsUp() {
   try {
-    await rconExec('players', cfg);
+    await rconExec('players');
     return true;
   } catch (e) {
     return false;
   }
 }
 
-async function waitForRcon(up, timeoutMs, cfg) {
+async function waitForRcon(up, timeoutMs) {
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
-    if ((await rconIsUp(cfg)) === up) return true;
+    if ((await rconIsUp()) === up) return true;
     await sleep(3000);
   }
   return false;
 }
 
 module.exports = {
-  buildConfig,
+  config,
   sleep,
   readSandboxVars,
   writeSandboxVars,

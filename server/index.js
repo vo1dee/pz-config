@@ -2,16 +2,9 @@
 
 // Sync backend for the PZ SandboxVars editor. Serves the static editor
 // (public) and exposes /api routes, gated by Cloudflare Access, that read/
-// write a remote server's SandboxVars file over SSH and orchestrate a
-// warned, backed-up restart.
-//
-// Unlike earlier versions, there is no single hardcoded target server: every
-// /api/sync/* call carries a "server" connection profile in its request body
-// (SSH host/creds, SandboxVars path, RCON, stop/start commands, etc.), built
-// client-side from that user's own browser-stored settings and never
-// persisted here. That's what lets multiple logged-in friends use this
-// backend to sync against their *own* servers without ever exposing (or
-// this backend ever storing) each other's credentials.
+// write this one hardcoded server's SandboxVars file over SSH (config in
+// .env) and orchestrate a warned, backed-up restart. Built for a small group
+// of friends sharing a single PZ server, not multi-tenant use.
 
 require('dotenv').config();
 
@@ -48,42 +41,37 @@ app.get('/api/whoami', (req, res) => {
   res.json({ email: req.accessEmail || null });
 });
 
-// Pull the remote SandboxVars file so the editor can load it. The connection
-// profile for the caller's own server comes from the request body.
-app.post('/api/sync/pull', async (req, res) => {
-  let cfg;
+// Quick reachability check the frontend uses to show the countdown/dry-run
+// note before a push, and to detect if RCON is currently reachable.
+app.get('/api/status', async (req, res) => {
+  const cfg = pz.config();
+  const configured = Boolean(cfg.ssh.host && cfg.sandboxVarsPath);
+  let rconUp = false;
+  try { rconUp = await pz.rconIsUp(); } catch (e) { rconUp = false; }
+  res.json({ configured, rconUp, dryRun: cfg.dryRun, countdown: cfg.countdown });
+});
+
+// Pull the remote SandboxVars file so the editor can load it.
+app.get('/api/sync/pull', async (req, res) => {
   try {
-    cfg = pz.buildConfig(req.body && req.body.server);
-  } catch (err) {
-    return res.status(400).json({ error: err.message });
-  }
-  try {
-    const lua = await pz.readSandboxVars(cfg);
+    const lua = await pz.readSandboxVars();
     const parsed = LuaParser.parseSandboxVars(lua);
     if (!parsed || parsed.totalParams === 0) {
       return res.status(502).json({ error: 'Remote file has no parameters (unexpected format).' });
     }
-    res.json({ lua, filename: path.posix.basename(cfg.sandboxVarsPath), totalParams: parsed.totalParams });
+    res.json({ lua, filename: path.posix.basename(pz.config().sandboxVarsPath), totalParams: parsed.totalParams });
   } catch (err) {
     res.status(502).json({ error: `Pull failed: ${err.message}` });
   }
 });
 
-// Push the editor's config to the caller's own server: validate -> backup ->
-// warn/countdown -> save -> stop -> write (while down) -> start. Streams
-// NDJSON progress so the UI can show a live step log even across the
-// countdown + restart.
+// Push the editor's config to the server: validate -> backup -> warn/countdown
+// -> save -> stop -> write (while down) -> start. Streams NDJSON progress so
+// the UI can show a live step log even across the countdown + restart.
 app.post('/api/sync/push', async (req, res) => {
   const lua = req.body && req.body.lua;
   if (typeof lua !== 'string' || !lua.trim()) {
     return res.status(400).json({ error: 'Missing "lua" body.' });
-  }
-
-  let cfg;
-  try {
-    cfg = pz.buildConfig(req.body && req.body.server);
-  } catch (err) {
-    return res.status(400).json({ error: err.message });
   }
 
   // Validate before we touch anything on the server.
@@ -97,6 +85,7 @@ app.post('/api/sync/push', async (req, res) => {
     return res.status(400).json({ error: 'Invalid SandboxVars: no parameters parsed.' });
   }
 
+  const cfg = pz.config();
   res.set('Content-Type', 'application/x-ndjson');
   res.set('Cache-Control', 'no-cache');
   const send = (step, status, message) => {
@@ -111,7 +100,7 @@ app.post('/api/sync/push', async (req, res) => {
     if (cfg.dryRun) {
       send('backup', 'ok', `${tag}would back up current SandboxVars.`);
     } else {
-      const dest = await pz.backupRemote(cfg);
+      const dest = await pz.backupRemote();
       send('backup', 'ok', `Backed up current config to ${dest}`);
     }
 
@@ -120,7 +109,7 @@ app.post('/api/sync/push', async (req, res) => {
     if (cfg.dryRun) {
       send('save', 'ok', `${tag}would RCON save.`);
     } else {
-      await pz.rconExec('save', cfg);
+      await pz.rconExec('save');
       send('save', 'ok', 'World saved.');
     }
 
@@ -128,9 +117,9 @@ app.post('/api/sync/push', async (req, res) => {
     if (cfg.dryRun) {
       send('stop', 'ok', `${tag}would stop the server.`);
     } else {
-      await pz.runStop(cfg);
+      await pz.runStop();
       send('stop', 'running', 'Stop issued, waiting for server to go down…');
-      const down = await pz.waitForRcon(false, 120000, cfg);
+      const down = await pz.waitForRcon(false, 120000);
       send('stop', down ? 'ok' : 'warn', down ? 'Server is down.' : 'Timed out waiting for shutdown; continuing.');
     }
 
@@ -138,7 +127,7 @@ app.post('/api/sync/push', async (req, res) => {
     if (cfg.dryRun) {
       send('write', 'ok', `${tag}would write ${lua.length} bytes of SandboxVars.`);
     } else {
-      await pz.writeSandboxVars(lua, cfg);
+      await pz.writeSandboxVars(lua);
       send('write', 'ok', 'New SandboxVars written.');
     }
 
@@ -146,9 +135,9 @@ app.post('/api/sync/push', async (req, res) => {
     if (cfg.dryRun) {
       send('start', 'ok', `${tag}would start the server.`);
     } else {
-      await pz.runStart(cfg);
+      await pz.runStart();
       send('start', 'running', 'Start issued, waiting for server to come back…');
-      const up = await pz.waitForRcon(true, 180000, cfg);
+      const up = await pz.waitForRcon(true, 180000);
       send('start', up ? 'ok' : 'warn', up ? 'Server is back online.' : 'Not responding yet; check the server console.');
     }
 
@@ -169,7 +158,7 @@ async function runCountdown(cfg, send) {
   for (const m of marks) {
     if (prev > m) await pz.sleep((prev - m) * 1000);
     if (!cfg.dryRun) {
-      await pz.rconExec(`servermsg "Server restarting in ${m} second${m === 1 ? '' : 's'} to apply config changes."`, cfg).catch(() => {});
+      await pz.rconExec(`servermsg "Server restarting in ${m} second${m === 1 ? '' : 's'} to apply config changes."`).catch(() => {});
     }
     prev = m;
   }

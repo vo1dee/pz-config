@@ -21,8 +21,7 @@
         <button id="load-file-btn" class="btn" type="button">Load file</button>
         <input id="file-input" type="file" accept=".lua" hidden>
         <span id="auth-status" class="auth-status" hidden></span>
-        <a id="login-link" class="btn" href="#" hidden data-i18n="login_to_sync">Log in to sync</a>
-        <button id="server-settings-btn" class="btn" type="button" hidden data-i18n="server_settings">Server settings</button>
+        <a id="login-link" class="btn" href="#" hidden>Log in to sync</a>
         <button id="sync-pull-btn" class="btn" type="button" hidden>Sync from server</button>
         <button id="sync-push-btn" class="btn" type="button" hidden>Sync to server</button>
         <button id="export-btn" class="btn btn-primary" type="button">Export .lua</button>
@@ -55,100 +54,6 @@
         <div class="modal-actions">
             <button id="export-cancel-btn" class="btn" type="button">Cancel</button>
             <button id="export-confirm-btn" class="btn btn-primary" type="button">Export</button>
-        </div>
-    </div>
-</div>
-
-<div id="server-settings-modal" class="modal-overlay" hidden>
-    <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="server-settings-modal-title">
-        <h2 id="server-settings-modal-title" data-i18n="server_settings">Server settings</h2>
-        <p id="server-settings-modal-note" data-i18n="server_settings_note">These settings are stored only in this browser and sent to the backend only while syncing. Nobody else can use them to reach your server.</p>
-        <form id="server-settings-form" class="settings-form">
-            <div class="settings-section-label" data-i18n="settings_section_ssh">SSH</div>
-            <label class="settings-field">
-                <span data-i18n="settings_ssh_host">SSH host</span>
-                <input id="ss-ssh-host" type="text" placeholder="your.server.example.com" autocomplete="off">
-            </label>
-            <div class="settings-field-row">
-                <label class="settings-field">
-                    <span data-i18n="settings_ssh_port">SSH port</span>
-                    <input id="ss-ssh-port" type="number" placeholder="22">
-                </label>
-                <label class="settings-field">
-                    <span data-i18n="settings_ssh_user">SSH user</span>
-                    <input id="ss-ssh-user" type="text" placeholder="zomboid" autocomplete="off">
-                </label>
-            </div>
-            <label class="settings-field">
-                <span data-i18n="settings_ssh_key">SSH private key (optional)</span>
-                <textarea id="ss-ssh-key" rows="4" placeholder="-----BEGIN OPENSSH PRIVATE KEY-----" autocomplete="off" spellcheck="false"></textarea>
-            </label>
-            <div class="settings-field-row">
-                <label class="settings-field">
-                    <span data-i18n="settings_ssh_passphrase">Key passphrase (optional)</span>
-                    <input id="ss-ssh-passphrase" type="password" autocomplete="off">
-                </label>
-                <label class="settings-field">
-                    <span data-i18n="settings_ssh_password">SSH password (if no key)</span>
-                    <input id="ss-ssh-password" type="password" autocomplete="off">
-                </label>
-            </div>
-
-            <div class="settings-section-label" data-i18n="settings_section_pz">Project Zomboid</div>
-            <label class="settings-field">
-                <span data-i18n="settings_sandboxvars_path">SandboxVars path</span>
-                <input id="ss-sandboxvars-path" type="text" placeholder="~/Zomboid/Server/servertest_SandboxVars.lua" autocomplete="off">
-            </label>
-            <div class="settings-field-row">
-                <label class="settings-field">
-                    <span data-i18n="settings_stop_cmd">Stop command (optional)</span>
-                    <input id="ss-stop-cmd" type="text" placeholder="systemctl --user stop zomboid" autocomplete="off">
-                </label>
-                <label class="settings-field">
-                    <span data-i18n="settings_start_cmd">Start command</span>
-                    <input id="ss-start-cmd" type="text" placeholder="systemctl --user start zomboid" autocomplete="off">
-                </label>
-            </div>
-
-            <div class="settings-section-label" data-i18n="settings_section_rcon">RCON</div>
-            <div class="settings-field-row">
-                <label class="settings-field">
-                    <span data-i18n="settings_rcon_host">RCON host</span>
-                    <input id="ss-rcon-host" type="text" placeholder="127.0.0.1" autocomplete="off">
-                </label>
-                <label class="settings-field">
-                    <span data-i18n="settings_rcon_port">RCON port</span>
-                    <input id="ss-rcon-port" type="number" placeholder="27015">
-                </label>
-            </div>
-            <label class="settings-field">
-                <span data-i18n="settings_rcon_password">RCON password</span>
-                <input id="ss-rcon-password" type="password" autocomplete="off">
-            </label>
-
-            <div class="settings-section-label" data-i18n="settings_section_restart">Restart behaviour</div>
-            <div class="settings-field-row">
-                <label class="settings-field">
-                    <span data-i18n="settings_countdown">Countdown (seconds)</span>
-                    <input id="ss-countdown" type="number" placeholder="60">
-                </label>
-                <label class="settings-field">
-                    <span data-i18n="settings_backup_keep">Backups to keep</span>
-                    <input id="ss-backup-keep" type="number" placeholder="10">
-                </label>
-            </div>
-            <label class="settings-field">
-                <span data-i18n="settings_backup_dir">Backup directory (optional)</span>
-                <input id="ss-backup-dir" type="text" autocomplete="off">
-            </label>
-            <label class="settings-field-checkbox">
-                <input id="ss-dry-run" type="checkbox">
-                <span data-i18n="settings_dry_run">Dry run — log every step without writing or restarting</span>
-            </label>
-        </form>
-        <div class="modal-actions">
-            <button id="server-settings-cancel-btn" class="btn" type="button" data-i18n="cancel">Cancel</button>
-            <button id="server-settings-save-btn" class="btn btn-primary" type="button" data-i18n="save">Save</button>
         </div>
     </div>
 </div>
