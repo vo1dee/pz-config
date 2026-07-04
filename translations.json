@@ -171,6 +171,106 @@
     "sync_failed": {
       "en": "Sync failed — see the log.",
       "uk": "Помилка синхронізації — див. журнал."
+    },
+    "login_to_sync": {
+      "en": "Log in to sync",
+      "uk": "Увійти для синхр."
+    },
+    "signed_in_as": {
+      "en": "Signed in as {email}",
+      "uk": "Увійшли як {email}"
+    },
+    "server_settings": {
+      "en": "Server settings",
+      "uk": "Налаштування сервера"
+    },
+    "server_settings_note": {
+      "en": "These settings are stored only in this browser and sent to the backend only while syncing. Nobody else can use them to reach your server.",
+      "uk": "Ці налаштування зберігаються лише у цьому браузері й надсилаються на бекенд тільки під час синхронізації. Ніхто інший не може скористатися ними, щоб дістатися до вашого сервера."
+    },
+    "save": {
+      "en": "Save",
+      "uk": "Зберегти"
+    },
+    "settings_section_ssh": {
+      "en": "SSH",
+      "uk": "SSH"
+    },
+    "settings_section_pz": {
+      "en": "Project Zomboid",
+      "uk": "Project Zomboid"
+    },
+    "settings_section_rcon": {
+      "en": "RCON",
+      "uk": "RCON"
+    },
+    "settings_section_restart": {
+      "en": "Restart behaviour",
+      "uk": "Поведінка перезапуску"
+    },
+    "settings_ssh_host": {
+      "en": "SSH host",
+      "uk": "SSH хост"
+    },
+    "settings_ssh_port": {
+      "en": "SSH port",
+      "uk": "SSH порт"
+    },
+    "settings_ssh_user": {
+      "en": "SSH user",
+      "uk": "SSH користувач"
+    },
+    "settings_ssh_key": {
+      "en": "SSH private key (optional)",
+      "uk": "Приватний SSH-ключ (необов'язково)"
+    },
+    "settings_ssh_passphrase": {
+      "en": "Key passphrase (optional)",
+      "uk": "Пароль ключа (необов'язково)"
+    },
+    "settings_ssh_password": {
+      "en": "SSH password (if no key)",
+      "uk": "Пароль SSH (якщо без ключа)"
+    },
+    "settings_sandboxvars_path": {
+      "en": "SandboxVars path",
+      "uk": "Шлях до SandboxVars"
+    },
+    "settings_stop_cmd": {
+      "en": "Stop command (optional)",
+      "uk": "Команда зупинки (необов'язково)"
+    },
+    "settings_start_cmd": {
+      "en": "Start command",
+      "uk": "Команда запуску"
+    },
+    "settings_rcon_host": {
+      "en": "RCON host",
+      "uk": "RCON хост"
+    },
+    "settings_rcon_port": {
+      "en": "RCON port",
+      "uk": "RCON порт"
+    },
+    "settings_rcon_password": {
+      "en": "RCON password",
+      "uk": "Пароль RCON"
+    },
+    "settings_countdown": {
+      "en": "Countdown (seconds)",
+      "uk": "Зворотний відлік (секунди)"
+    },
+    "settings_backup_keep": {
+      "en": "Backups to keep",
+      "uk": "Кількість резервних копій"
+    },
+    "settings_backup_dir": {
+      "en": "Backup directory (optional)",
+      "uk": "Каталог резервних копій (необов'язково)"
+    },
+    "settings_dry_run": {
+      "en": "Dry run — log every step without writing or restarting",
+      "uk": "Тестовий режим — журналювати кожен крок без запису чи перезапуску"
     }
   },
   "sections": {

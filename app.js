@@ -6,11 +6,14 @@
         values: 'pzConfigEditor.values',
         customSchema: 'pzConfigEditor.customSchema',
         exportNoticeSeen: 'pzConfigEditor.exportNoticeSeen',
+        serverProfile: 'pzConfigEditor.serverProfile',
     };
 
-    // Sync backend lives at the same origin under /api (see server/). When the
-    // app is served as static files without the backend, /api/status fails and
-    // the sync buttons stay hidden.
+    // Sync backend lives at the same origin under /api (see server/), gated by
+    // Cloudflare Access. /api/whoami tells us whether this browser is logged
+    // in; if it isn't (no backend, or Access denies), sync stays hidden. The
+    // server connection profile (SSH/RCON/paths) is never sent anywhere except
+    // as part of a sync call — it lives only in this browser's localStorage.
     const API_BASE = '';
 
     const state = {
@@ -19,7 +22,8 @@
         values: {},             // path -> current value
         lang: 'en',
         search: '',
-        server: null,           // /api/status result, or null if no backend
+        authEmail: null,        // email from /api/whoami, or null if logged out
+        serverProfile: null,    // this browser's own SSH/RCON connection settings
     };
 
     const els = {};
@@ -33,6 +37,9 @@
         els.langToggle = qs('lang-toggle');
         els.loadFileBtn = qs('load-file-btn');
         els.fileInput = qs('file-input');
+        els.authStatus = qs('auth-status');
+        els.loginLink = qs('login-link');
+        els.serverSettingsBtn = qs('server-settings-btn');
         els.syncPullBtn = qs('sync-pull-btn');
         els.syncPushBtn = qs('sync-push-btn');
         els.exportBtn = qs('export-btn');
@@ -48,6 +55,28 @@
         els.syncLog = qs('sync-log');
         els.syncConfirmBtn = qs('sync-confirm-btn');
         els.syncCancelBtn = qs('sync-cancel-btn');
+        els.serverSettingsModal = qs('server-settings-modal');
+        els.serverSettingsForm = qs('server-settings-form');
+        els.serverSettingsCancelBtn = qs('server-settings-cancel-btn');
+        els.serverSettingsSaveBtn = qs('server-settings-save-btn');
+        els.ssFields = {
+            sshHost: qs('ss-ssh-host'),
+            sshPort: qs('ss-ssh-port'),
+            sshUser: qs('ss-ssh-user'),
+            sshPrivateKey: qs('ss-ssh-key'),
+            sshKeyPassphrase: qs('ss-ssh-passphrase'),
+            sshPassword: qs('ss-ssh-password'),
+            sandboxVarsPath: qs('ss-sandboxvars-path'),
+            stopCmd: qs('ss-stop-cmd'),
+            startCmd: qs('ss-start-cmd'),
+            rconHost: qs('ss-rcon-host'),
+            rconPort: qs('ss-rcon-port'),
+            rconPassword: qs('ss-rcon-password'),
+            countdown: qs('ss-countdown'),
+            backupDir: qs('ss-backup-dir'),
+            backupKeep: qs('ss-backup-keep'),
+            dryRun: qs('ss-dry-run'),
+        };
         els.toast = qs('toast');
         els.layout = qs('layout');
         els.onboardingScreen = qs('onboarding-screen');
@@ -156,7 +185,15 @@
             if (values) state.values = JSON.parse(values);
             const customSchema = localStorage.getItem(LS_KEYS.customSchema);
             if (customSchema) state.schema = JSON.parse(customSchema);
+            const serverProfile = localStorage.getItem(LS_KEYS.serverProfile);
+            if (serverProfile) state.serverProfile = JSON.parse(serverProfile);
         } catch (e) { /* ignore corrupt storage */ }
+    }
+
+    function persistServerProfile() {
+        try {
+            localStorage.setItem(LS_KEYS.serverProfile, JSON.stringify(state.serverProfile));
+        } catch (e) { /* ignore */ }
     }
 
     // ---------- rendering ----------
@@ -182,6 +219,26 @@
         els.onboardingBody.textContent = t('onboarding_body');
         els.onboardingScratchBtn.textContent = t('onboarding_scratch');
         els.onboardingImportBtn.textContent = t('onboarding_import');
+        applyI18nAttrs();
+        renderAuthStatus();
+    }
+
+    // Static chrome text that's just a label lookup (no interpolation) is
+    // marked with data-i18n="<key>" in the HTML instead of being assigned by
+    // hand here one element at a time — this covers the settings modal's
+    // ~20 field labels/section headings without a line of JS per label.
+    function applyI18nAttrs() {
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+            el.textContent = t(el.getAttribute('data-i18n'));
+        });
+    }
+
+    // "Signed in as {email}" needs the live email, so it's re-applied on every
+    // render (not just once in checkAuth) — otherwise it'd stay in whichever
+    // language was active at login and never update on a language toggle.
+    function renderAuthStatus() {
+        if (!state.authEmail) return;
+        els.authStatus.textContent = t('signed_in_as').replace('{email}', state.authEmail);
     }
 
     function showOnboarding() {
@@ -620,6 +677,13 @@
             if (e.target === els.syncModal && !els.syncConfirmBtn.disabled) closeSyncModal();
         });
 
+        els.serverSettingsBtn.addEventListener('click', openServerSettingsModal);
+        els.serverSettingsSaveBtn.addEventListener('click', onServerSettingsSave);
+        els.serverSettingsCancelBtn.addEventListener('click', closeServerSettingsModal);
+        els.serverSettingsModal.addEventListener('click', (e) => {
+            if (e.target === els.serverSettingsModal) closeServerSettingsModal();
+        });
+
         bindDragAndDrop();
     }
 
@@ -719,28 +783,114 @@
         showToast._t = setTimeout(() => { els.toast.hidden = true; }, 2600);
     }
 
+    // ---------- server settings (this browser's own connection profile) ----------
+
+    // Populate the settings form from the saved profile (or blank defaults)
+    // and show the modal.
+    function openServerSettingsModal() {
+        const p = state.serverProfile || {};
+        const f = els.ssFields;
+        f.sshHost.value = p.sshHost || '';
+        f.sshPort.value = p.sshPort != null ? p.sshPort : 22;
+        f.sshUser.value = p.sshUser || '';
+        f.sshPrivateKey.value = p.sshPrivateKey || '';
+        f.sshKeyPassphrase.value = p.sshKeyPassphrase || '';
+        f.sshPassword.value = p.sshPassword || '';
+        f.sandboxVarsPath.value = p.sandboxVarsPath || '';
+        f.stopCmd.value = p.stopCmd || '';
+        f.startCmd.value = p.startCmd || '';
+        f.rconHost.value = p.rconHost || '127.0.0.1';
+        f.rconPort.value = p.rconPort != null ? p.rconPort : 27015;
+        f.rconPassword.value = p.rconPassword || '';
+        f.countdown.value = p.countdown != null ? p.countdown : 60;
+        f.backupDir.value = p.backupDir || '';
+        f.backupKeep.value = p.backupKeep != null ? p.backupKeep : 10;
+        f.dryRun.checked = Boolean(p.dryRun);
+        els.serverSettingsModal.hidden = false;
+    }
+
+    function closeServerSettingsModal() {
+        els.serverSettingsModal.hidden = true;
+    }
+
+    function readServerSettingsForm() {
+        const f = els.ssFields;
+        return {
+            sshHost: f.sshHost.value.trim(),
+            sshPort: parseInt(f.sshPort.value, 10) || 22,
+            sshUser: f.sshUser.value.trim(),
+            sshPrivateKey: f.sshPrivateKey.value.trim(),
+            sshKeyPassphrase: f.sshKeyPassphrase.value,
+            sshPassword: f.sshPassword.value,
+            sandboxVarsPath: f.sandboxVarsPath.value.trim(),
+            stopCmd: f.stopCmd.value.trim(),
+            startCmd: f.startCmd.value.trim(),
+            rconHost: f.rconHost.value.trim(),
+            rconPort: parseInt(f.rconPort.value, 10) || 27015,
+            rconPassword: f.rconPassword.value,
+            countdown: parseInt(f.countdown.value, 10) || 0,
+            backupDir: f.backupDir.value.trim(),
+            backupKeep: parseInt(f.backupKeep.value, 10) || 0,
+            dryRun: f.dryRun.checked,
+        };
+    }
+
+    function onServerSettingsSave() {
+        state.serverProfile = readServerSettingsForm();
+        persistServerProfile();
+        closeServerSettingsModal();
+        showToast(state.lang === 'uk' ? 'Налаштування сервера збережено.' : 'Server settings saved.');
+    }
+
     // ---------- server sync ----------
 
-    // Probe the backend once at startup. If reachable and configured, reveal the
-    // sync buttons; otherwise leave them hidden (static-only deployment).
-    async function checkServerStatus() {
+    // Check login status once at startup (and after returning from an Access
+    // login). If logged in, reveal Server settings + sync buttons and show
+    // who's logged in; otherwise show a "log in" link and keep sync hidden.
+    // With no backend at all (static-only deployment), this just fails quietly.
+    async function checkAuth() {
         try {
-            const resp = await fetch(`${API_BASE}/api/status`, { cache: 'no-store' });
-            if (!resp.ok) return;
-            const status = await resp.json();
-            if (!status.configured) return;
-            state.server = status;
+            const resp = await fetch(`${API_BASE}/api/whoami`, { cache: 'no-store' });
+            if (!resp.ok) throw new Error('not authenticated');
+            const data = await resp.json();
+            if (!data.email) throw new Error('not authenticated');
+            state.authEmail = data.email;
+            els.authStatus.hidden = false;
+            renderAuthStatus();
+            els.loginLink.hidden = true;
+            els.serverSettingsBtn.hidden = false;
             els.syncPullBtn.hidden = false;
             els.syncPushBtn.hidden = false;
         } catch (e) {
-            /* no backend — sync stays disabled */
+            state.authEmail = null;
+            els.authStatus.hidden = true;
+            els.serverSettingsBtn.hidden = true;
+            els.syncPullBtn.hidden = true;
+            els.syncPushBtn.hidden = true;
+            // Just link straight at the protected endpoint. Cloudflare Access
+            // transparently intercepts any request to a path it protects and
+            // shows its login challenge before the request ever reaches this
+            // app — no need for the special /cdn-cgi/access/login/<domain>
+            // redirect endpoint, which doesn't reliably resolve applications
+            // scoped to a sub-path (only /api* here, not the whole domain).
+            // Once authenticated, our own /api/whoami?return=<here> handling
+            // bounces the browser straight back to this page (see index.js).
+            const here = location.pathname + location.search;
+            els.loginLink.href = `/api/whoami?return=${encodeURIComponent(here)}`;
+            els.loginLink.hidden = false;
         }
     }
 
     async function onSyncPullClick() {
+        if (!state.serverProfile) { openServerSettingsModal(); return; }
         els.syncPullBtn.disabled = true;
         try {
-            const resp = await fetch(`${API_BASE}/api/sync/pull`, { cache: 'no-store' });
+            const resp = await fetch(`${API_BASE}/api/sync/pull`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ server: state.serverProfile }),
+                cache: 'no-store',
+            });
             const data = await resp.json();
             if (!resp.ok) throw new Error(data.error || 'Pull failed');
             const result = LuaParser.parseSandboxVars(data.lua);
@@ -763,10 +913,11 @@
     }
 
     function onSyncPushClick() {
+        if (!state.serverProfile) { openServerSettingsModal(); return; }
         qs('sync-modal-title').textContent = t('sync_to_server');
-        const countdown = (state.server && state.server.countdown != null) ? state.server.countdown : 60;
+        const countdown = state.serverProfile.countdown != null ? state.serverProfile.countdown : 60;
         let body = t('sync_confirm_body').replace('{seconds}', countdown);
-        if (state.server && state.server.dryRun) body += ' ' + t('sync_dryrun_note');
+        if (state.serverProfile.dryRun) body += ' ' + t('sync_dryrun_note');
         els.syncModalBody.textContent = body;
         els.syncConfirmBtn.textContent = t('sync_confirm_btn');
         els.syncCancelBtn.textContent = t('cancel');
@@ -804,7 +955,7 @@
             const resp = await fetch(`${API_BASE}/api/sync/push`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ lua }),
+                body: JSON.stringify({ server: state.serverProfile, lua }),
             });
             if (!resp.ok) {
                 const data = await resp.json().catch(() => ({}));
@@ -865,7 +1016,7 @@
         bindEvents();
         render();
         if (needsOnboarding) showOnboarding();
-        checkServerStatus();
+        checkAuth();
     }
 
     init();
