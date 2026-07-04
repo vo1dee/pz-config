@@ -415,6 +415,27 @@ button {
     gap: 10px;
 }
 
+.sync-log {
+    margin: 0 0 18px;
+    max-height: 220px;
+    overflow-y: auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    line-height: 1.6;
+}
+.sync-log[hidden] { display: none; }
+.sync-log-line { white-space: pre-wrap; word-break: break-word; }
+.sync-log-line::before { content: "• "; color: var(--text-faint); }
+.sync-log-line.ok::before { content: "✓ "; color: #46b06a; }
+.sync-log-line.running::before { content: "… "; color: var(--accent); }
+.sync-log-line.warn::before { content: "! "; color: #d9a441; }
+.sync-log-line.error { color: #e5675f; }
+.sync-log-line.error::before { content: "✕ "; color: #e5675f; }
+
 .toast {
     position: fixed;
     bottom: 20px;

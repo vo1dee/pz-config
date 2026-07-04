@@ -23,7 +23,45 @@ or, if you have Node:
 npx serve .
 ```
 
-No build step, no dependencies, no network calls at runtime.
+No build step, no dependencies, no network calls at runtime. The static editor is
+fully standalone — the optional sync backend below is only needed to push/pull
+config to a live server.
+
+## Syncing to/from a live server
+
+The editor edits **SandboxVars**, which a browser can't send to a game server on
+its own (RCON is raw TCP, and SandboxVars aren't exposed over RCON anyway — they
+live in a `_SandboxVars.lua` file and only apply on server restart). So sync is
+handled by a small optional Node backend in [`server/`](server/) that serves the
+editor **and** reaches your PZ host over SSH. See
+[docs/adr/0002](docs/adr/0002-server-sync-over-ssh.md) for why.
+
+Requirements: a self-hosted Linux PZ server you can reach over SSH, with RCON
+enabled.
+
+```bash
+cd server
+npm install
+cp .env.example .env      # then edit: SSH creds, remote SandboxVars path,
+                          # start/stop commands, RCON, countdown, backups
+npm start                 # serves the editor + API on http://localhost:8934
+```
+
+Open the served URL (not `python3 -m http.server`) and two buttons appear next to
+**Export .lua**:
+
+- **Sync from server** — SFTP-reads the remote `_SandboxVars.lua` and loads it into
+  the editor (same parser as *Load file*).
+- **Sync to server** — after a confirm dialog, the backend: validates the config →
+  **backs up** the current remote file (timestamped, keeps the newest `BACKUP_KEEP`)
+  → warns players with an in-game countdown (`RESTART_COUNTDOWN_SECONDS`) → saves →
+  stops the server → writes the new `_SandboxVars.lua` while it's down → starts it
+  back up. Progress streams into a live step log in the dialog.
+
+Set `DRY_RUN=1` in `.env` to walk the whole push flow (with the real config
+validated) without writing anything or restarting — useful for a first test. SSH
+and RCON credentials stay server-side in `.env` (gitignored) and are never sent to
+the browser.
 
 ## Files
 
@@ -35,6 +73,7 @@ No build step, no dependencies, no network calls at runtime.
 | `build_translations.py` | The script used to generate `translations.json`. Not needed to run the app — kept for reference/maintenance if you want to add more languages or fix a translation. |
 | `translations.json` | EN/UK translations keyed by parameter `path`: `label`, `description`, and `options` (for enums), plus a `ui` block for all interface chrome and a `sections` block for section names. |
 | `index.html`, `style.css`, `app.js` | The editor UI itself. Plain HTML/CSS/JS, no framework, no build step. |
+| `server/` | Optional Node backend for live-server sync: `index.js` (Express static + `/api/status`, `/api/sync/pull`, `/api/sync/push`), `lib/pzHost.js` (SSH/SFTP/RCON helpers), `.env.example` (config). Reuses `lua-parser.js` to validate any pushed config server-side. |
 
 ## Using the app
 
@@ -47,6 +86,7 @@ No build step, no dependencies, no network calls at runtime.
 - **Reset-to-default (↺)** — appears only when the source comment actually documented a default value; resets just that field.
 - **Load file** — parses a different `SandboxVars.lua` client-side (same parser as the Node CLI) and replaces the current schema. Unknown/custom keys that aren't in `translations.json` fall back to an auto-generated label (camelCase → words) and the English comment text parsed straight from that file.
 - **Export .lua** — regenerates a complete `SandboxVars.lua`: same key order, same nesting, `VERSION` line preserved, current values written in, comments regenerated in English. The first time you export, a one-time dialog explains the "always English comments" behavior (see Assumptions below); after that it exports immediately.
+- **Sync from server / Sync to server** — only shown when the [`server/`](server/) backend is running and configured; push backs up + restarts the live server. See [Syncing to/from a live server](#syncing-tofrom-a-live-server) above.
 - Your edits and language choice are saved to `localStorage` automatically, so a page reload doesn't lose your work. If you loaded a custom file, that parsed schema is also cached so a reload restores it without re-uploading.
 
 ## Assumptions and judgment calls made while building this

@@ -20,6 +20,8 @@
         </button>
         <button id="load-file-btn" class="btn" type="button">Load file</button>
         <input id="file-input" type="file" accept=".lua" hidden>
+        <button id="sync-pull-btn" class="btn" type="button" hidden>Sync from server</button>
+        <button id="sync-push-btn" class="btn" type="button" hidden>Sync to server</button>
         <button id="export-btn" class="btn btn-primary" type="button">Export .lua</button>
     </div>
 </header>
@@ -50,6 +52,18 @@
         <div class="modal-actions">
             <button id="export-cancel-btn" class="btn" type="button">Cancel</button>
             <button id="export-confirm-btn" class="btn btn-primary" type="button">Export</button>
+        </div>
+    </div>
+</div>
+
+<div id="sync-modal" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sync-modal-title">
+        <h2 id="sync-modal-title">Sync to server</h2>
+        <p id="sync-modal-body"></p>
+        <div id="sync-log" class="sync-log" hidden></div>
+        <div class="modal-actions">
+            <button id="sync-cancel-btn" class="btn" type="button">Cancel</button>
+            <button id="sync-confirm-btn" class="btn btn-primary" type="button">Sync &amp; restart</button>
         </div>
     </div>
 </div>

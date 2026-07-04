@@ -8,12 +8,18 @@
         exportNoticeSeen: 'pzConfigEditor.exportNoticeSeen',
     };
 
+    // Sync backend lives at the same origin under /api (see server/). When the
+    // app is served as static files without the backend, /api/status fails and
+    // the sync buttons stay hidden.
+    const API_BASE = '';
+
     const state = {
         schema: null,          // { version, sections: [...] }
         translations: null,    // { ui, sections, params }
         values: {},             // path -> current value
         lang: 'en',
         search: '',
+        server: null,           // /api/status result, or null if no backend
     };
 
     const els = {};
@@ -27,6 +33,8 @@
         els.langToggle = qs('lang-toggle');
         els.loadFileBtn = qs('load-file-btn');
         els.fileInput = qs('file-input');
+        els.syncPullBtn = qs('sync-pull-btn');
+        els.syncPushBtn = qs('sync-push-btn');
         els.exportBtn = qs('export-btn');
         els.appTitle = qs('app-title');
         els.versionBadge = qs('version-badge');
@@ -35,6 +43,11 @@
         els.exportModalBody = qs('export-modal-body');
         els.exportConfirmBtn = qs('export-confirm-btn');
         els.exportCancelBtn = qs('export-cancel-btn');
+        els.syncModal = qs('sync-modal');
+        els.syncModalBody = qs('sync-modal-body');
+        els.syncLog = qs('sync-log');
+        els.syncConfirmBtn = qs('sync-confirm-btn');
+        els.syncCancelBtn = qs('sync-cancel-btn');
         els.toast = qs('toast');
         els.layout = qs('layout');
         els.onboardingScreen = qs('onboarding-screen');
@@ -160,6 +173,8 @@
         document.title = t('app_title');
         els.searchInput.placeholder = t('search_placeholder');
         els.loadFileBtn.textContent = t('load_file');
+        els.syncPullBtn.textContent = t('sync_from_server');
+        els.syncPushBtn.textContent = t('sync_to_server');
         els.exportBtn.textContent = t('export_lua');
         els.langToggle.setAttribute('aria-pressed', state.lang === 'uk' ? 'true' : 'false');
         els.versionBadge.textContent = `${t('version_label')}: ${state.schema.version != null ? state.schema.version : '?'}`;
@@ -175,6 +190,7 @@
         els.searchInput.disabled = true;
         els.exportBtn.disabled = true;
         els.loadFileBtn.disabled = true;
+        els.syncPushBtn.disabled = true;
     }
 
     function hideOnboarding() {
@@ -183,6 +199,7 @@
         els.searchInput.disabled = false;
         els.exportBtn.disabled = false;
         els.loadFileBtn.disabled = false;
+        els.syncPushBtn.disabled = false;
     }
 
     function startFromScratch() {
@@ -595,6 +612,14 @@
             if (e.target === els.exportModal) els.exportModal.hidden = true;
         });
 
+        els.syncPullBtn.addEventListener('click', onSyncPullClick);
+        els.syncPushBtn.addEventListener('click', onSyncPushClick);
+        els.syncConfirmBtn.addEventListener('click', doSyncPush);
+        els.syncCancelBtn.addEventListener('click', closeSyncModal);
+        els.syncModal.addEventListener('click', (e) => {
+            if (e.target === els.syncModal && !els.syncConfirmBtn.disabled) closeSyncModal();
+        });
+
         bindDragAndDrop();
     }
 
@@ -694,6 +719,127 @@
         showToast._t = setTimeout(() => { els.toast.hidden = true; }, 2600);
     }
 
+    // ---------- server sync ----------
+
+    // Probe the backend once at startup. If reachable and configured, reveal the
+    // sync buttons; otherwise leave them hidden (static-only deployment).
+    async function checkServerStatus() {
+        try {
+            const resp = await fetch(`${API_BASE}/api/status`, { cache: 'no-store' });
+            if (!resp.ok) return;
+            const status = await resp.json();
+            if (!status.configured) return;
+            state.server = status;
+            els.syncPullBtn.hidden = false;
+            els.syncPushBtn.hidden = false;
+        } catch (e) {
+            /* no backend — sync stays disabled */
+        }
+    }
+
+    async function onSyncPullClick() {
+        els.syncPullBtn.disabled = true;
+        try {
+            const resp = await fetch(`${API_BASE}/api/sync/pull`, { cache: 'no-store' });
+            const data = await resp.json();
+            if (!resp.ok) throw new Error(data.error || 'Pull failed');
+            const result = LuaParser.parseSandboxVars(data.lua);
+            if (result.totalParams === 0) throw new Error('No parameters found');
+            state.schema = { version: result.version, sections: result.sections };
+            state.values = {};
+            persistCustomSchema();
+            persist();
+            hideOnboarding();
+            render();
+            showToast(state.lang === 'uk'
+                ? `Завантажено з сервера: ${result.totalParams} параметрів.`
+                : `Loaded ${result.totalParams} parameters from server.`);
+        } catch (err) {
+            alert((state.lang === 'uk' ? 'Помилка синхронізації: ' : 'Sync error: ') + err.message);
+            console.error(err);
+        } finally {
+            els.syncPullBtn.disabled = false;
+        }
+    }
+
+    function onSyncPushClick() {
+        qs('sync-modal-title').textContent = t('sync_to_server');
+        const countdown = (state.server && state.server.countdown != null) ? state.server.countdown : 60;
+        let body = t('sync_confirm_body').replace('{seconds}', countdown);
+        if (state.server && state.server.dryRun) body += ' ' + t('sync_dryrun_note');
+        els.syncModalBody.textContent = body;
+        els.syncConfirmBtn.textContent = t('sync_confirm_btn');
+        els.syncCancelBtn.textContent = t('cancel');
+        els.syncConfirmBtn.disabled = false;
+        els.syncCancelBtn.disabled = false;
+        els.syncLog.hidden = true;
+        els.syncLog.innerHTML = '';
+        els.syncModal.hidden = false;
+    }
+
+    function closeSyncModal() {
+        if (els.syncConfirmBtn.disabled) return; // a push is in flight
+        els.syncModal.hidden = true;
+    }
+
+    function appendSyncLog(status, message) {
+        const line = document.createElement('div');
+        line.className = 'sync-log-line ' + (status || '');
+        line.textContent = message;
+        els.syncLog.appendChild(line);
+        els.syncLog.scrollTop = els.syncLog.scrollHeight;
+    }
+
+    // Stream the push and render the NDJSON step log live.
+    async function doSyncPush() {
+        els.syncConfirmBtn.disabled = true;
+        els.syncCancelBtn.disabled = true;
+        els.syncLog.hidden = false;
+        els.syncLog.innerHTML = '';
+        appendSyncLog('running', t('sync_starting'));
+
+        const lua = LuaParser.generateLua(state.schema.sections, state.values, state.schema.version);
+        let ok = true;
+        try {
+            const resp = await fetch(`${API_BASE}/api/sync/push`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ lua }),
+            });
+            if (!resp.ok) {
+                const data = await resp.json().catch(() => ({}));
+                throw new Error(data.error || `Server returned ${resp.status}`);
+            }
+            els.syncLog.innerHTML = '';
+            const reader = resp.body.getReader();
+            const decoder = new TextDecoder();
+            let buf = '';
+            for (;;) {
+                const { value, done } = await reader.read();
+                if (done) break;
+                buf += decoder.decode(value, { stream: true });
+                let nl;
+                while ((nl = buf.indexOf('\n')) >= 0) {
+                    const line = buf.slice(0, nl).trim();
+                    buf = buf.slice(nl + 1);
+                    if (!line) continue;
+                    try {
+                        const evt = JSON.parse(line);
+                        if (evt.status === 'error') ok = false;
+                        appendSyncLog(evt.status, evt.message);
+                    } catch (e) { /* ignore malformed line */ }
+                }
+            }
+        } catch (err) {
+            ok = false;
+            appendSyncLog('error', err.message);
+        } finally {
+            els.syncCancelBtn.disabled = false;
+            els.syncCancelBtn.textContent = t('close');
+        }
+        showToast(ok ? t('sync_done') : t('sync_failed'));
+    }
+
     // ---------- init ----------
 
     async function init() {
@@ -719,6 +865,7 @@
         bindEvents();
         render();
         if (needsOnboarding) showOnboarding();
+        checkServerStatus();
     }
 
     init();

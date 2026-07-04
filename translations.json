@@ -139,6 +139,38 @@
     "onboarding_import": {
       "en": "Import file",
       "uk": "Імпортувати файл"
+    },
+    "sync_from_server": {
+      "en": "Sync from server",
+      "uk": "Синхр. з сервера"
+    },
+    "sync_to_server": {
+      "en": "Sync to server",
+      "uk": "Синхр. на сервер"
+    },
+    "sync_confirm_body": {
+      "en": "This will back up the current server config, warn players with a {seconds}s countdown, then save and restart the server to apply your changes. Players will be disconnected during the restart.",
+      "uk": "Буде створено резервну копію поточної конфігурації сервера, гравців попередять зворотним відліком ({seconds} с), після чого сервер збережеться та перезапуститься для застосування змін. Під час перезапуску гравців буде відключено."
+    },
+    "sync_confirm_btn": {
+      "en": "Sync & restart",
+      "uk": "Синхр. і перезапуск"
+    },
+    "sync_dryrun_note": {
+      "en": "(Dry-run mode: no changes will be made.)",
+      "uk": "(Режим тесту: зміни не застосовуються.)"
+    },
+    "sync_starting": {
+      "en": "Starting sync…",
+      "uk": "Запуск синхронізації…"
+    },
+    "sync_done": {
+      "en": "Sync complete.",
+      "uk": "Синхронізацію завершено."
+    },
+    "sync_failed": {
+      "en": "Sync failed — see the log.",
+      "uk": "Помилка синхронізації — див. журнал."
     }
   },
   "sections": {

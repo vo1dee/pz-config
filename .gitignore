@@ -1,0 +1,11 @@
+# Sync backend
+server/node_modules/
+server/.env
+
+# Backups / editor cruft
+*.bak
+*.bak-*
+
+# OS / editor
+.DS_Store
+*.log
