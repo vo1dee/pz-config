@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Zomboid B42 Sandbox Config Editor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar-left">
+        <h1 id="app-title" class="app-title">Project Zomboid B42 Sandbox Config Editor</h1>
+        <span id="version-badge" class="version-badge"></span>
+    </div>
+    <div class="topbar-right">
+        <input id="search-input" class="search-input" type="search" placeholder="Search parameters...">
+        <button id="lang-toggle" class="btn btn-lang" type="button" aria-pressed="false">
+            <span class="lang-flag">🇬🇧</span><span class="lang-sep">/</span><span class="lang-flag">🇺🇦</span>
+        </button>
+        <button id="load-file-btn" class="btn" type="button">Load file</button>
+        <input id="file-input" type="file" accept=".lua" hidden>
+        <button id="export-btn" class="btn btn-primary" type="button">Export .lua</button>
+    </div>
+</header>
+
+<div id="layout" class="layout">
+    <nav id="sidebar" class="sidebar" aria-label="Sections"></nav>
+
+    <main id="main-panel" class="main-panel"></main>
+</div>
+
+<div id="onboarding-screen" class="onboarding-screen" hidden>
+    <div class="onboarding-card">
+        <h2 id="onboarding-title"></h2>
+        <p id="onboarding-body"></p>
+        <div class="onboarding-actions">
+            <button id="onboarding-scratch-btn" class="btn btn-primary" type="button"></button>
+            <button id="onboarding-import-btn" class="btn" type="button"></button>
+        </div>
+    </div>
+</div>
+
+<div id="tooltip-layer" class="tooltip-layer" role="tooltip" hidden></div>
+
+<div id="export-modal" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="export-modal-title">
+        <h2 id="export-modal-title">Confirm export</h2>
+        <p id="export-modal-body"></p>
+        <div class="modal-actions">
+            <button id="export-cancel-btn" class="btn" type="button">Cancel</button>
+            <button id="export-confirm-btn" class="btn btn-primary" type="button">Export</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="lua-parser.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

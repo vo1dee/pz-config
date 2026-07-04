@@ -1,0 +1,4912 @@
+{
+  "ui": {
+    "app_title": {
+      "en": "Project Zomboid B42 Sandbox Config Editor",
+      "uk": "Редактор конфігурації пісочниці Project Zomboid B42"
+    },
+    "search_placeholder": {
+      "en": "Search parameters...",
+      "uk": "Пошук параметрів..."
+    },
+    "load_file": {
+      "en": "Import .lua",
+      "uk": "Імпортувати .lua"
+    },
+    "export_lua": {
+      "en": "Export .lua",
+      "uk": "Експортувати .lua"
+    },
+    "reset_all": {
+      "en": "Reset all to default",
+      "uk": "Скинути все до типових значень"
+    },
+    "sections": {
+      "en": "Sections",
+      "uk": "Розділи"
+    },
+    "modified": {
+      "en": "Modified",
+      "uk": "Змінено"
+    },
+    "reset_to_default": {
+      "en": "Reset to default",
+      "uk": "Скинути до типового значення"
+    },
+    "default_label": {
+      "en": "Default",
+      "uk": "Типове"
+    },
+    "min_label": {
+      "en": "Min",
+      "uk": "Мін"
+    },
+    "max_label": {
+      "en": "Max",
+      "uk": "Макс"
+    },
+    "no_results": {
+      "en": "No parameters match your search.",
+      "uk": "Немає параметрів, що відповідають пошуку."
+    },
+    "param_count": {
+      "en": "parameters",
+      "uk": "параметрів"
+    },
+    "close": {
+      "en": "Close",
+      "uk": "Закрити"
+    },
+    "language": {
+      "en": "Language",
+      "uk": "Мова"
+    },
+    "export_confirm_title": {
+      "en": "Confirm export",
+      "uk": "Підтвердження експорту"
+    },
+    "export_confirm_body": {
+      "en": "The exported SandboxVars.lua will always contain English comments, regardless of the UI language, since the file is read by the game server, not by a person browsing it in Ukrainian.",
+      "uk": "Експортований SandboxVars.lua завжди міститиме англійські коментарі, незалежно від мови інтерфейсу, оскільки цей файл читає сервер гри, а не людина, яка переглядає його українською."
+    },
+    "confirm": {
+      "en": "Export",
+      "uk": "Експортувати"
+    },
+    "cancel": {
+      "en": "Cancel",
+      "uk": "Скасувати"
+    },
+    "unsaved_notice": {
+      "en": "Your edits are saved automatically in this browser.",
+      "uk": "Ваші зміни автоматично зберігаються в цьому браузері."
+    },
+    "version_label": {
+      "en": "Config version",
+      "uk": "Версія конфігурації"
+    },
+    "load_file_hint": {
+      "en": "Load a different SandboxVars.lua",
+      "uk": "Завантажити інший SandboxVars.lua"
+    },
+    "drop_here": {
+      "en": "Drop your SandboxVars.lua file here",
+      "uk": "Перетягніть сюди файл SandboxVars.lua"
+    },
+    "parse_error": {
+      "en": "Could not parse this file. Make sure it's a valid SandboxVars.lua.",
+      "uk": "Не вдалося розібрати цей файл. Переконайтесь, що це коректний SandboxVars.lua."
+    },
+    "type_boolean": {
+      "en": "Yes/No toggle",
+      "uk": "Перемикач Так/Ні"
+    },
+    "type_enum": {
+      "en": "Choice list",
+      "uk": "Список вибору"
+    },
+    "type_integer": {
+      "en": "Whole number",
+      "uk": "Ціле число"
+    },
+    "type_float": {
+      "en": "Decimal number",
+      "uk": "Дробове число"
+    },
+    "type_string": {
+      "en": "Text",
+      "uk": "Текст"
+    },
+    "toggle_on": {
+      "en": "On",
+      "uk": "Увімкнено"
+    },
+    "toggle_off": {
+      "en": "Off",
+      "uk": "Вимкнено"
+    },
+    "onboarding_title": {
+      "en": "Get started",
+      "uk": "Розпочати"
+    },
+    "onboarding_body": {
+      "en": "Start from the documented default for every parameter, or import an existing SandboxVars.lua to edit its actual values.",
+      "uk": "Почніть з документованого значення за замовчуванням для кожного параметра, або імпортуйте наявний SandboxVars.lua, щоб редагувати його фактичні значення."
+    },
+    "onboarding_scratch": {
+      "en": "Start from scratch",
+      "uk": "Почати з нуля"
+    },
+    "onboarding_import": {
+      "en": "Import file",
+      "uk": "Імпортувати файл"
+    }
+  },
+  "sections": {
+    "General": {
+      "en": "General",
+      "uk": "Загальні"
+    },
+    "Basement": {
+      "en": "Basement",
+      "uk": "Підвали"
+    },
+    "Map": {
+      "en": "Map",
+      "uk": "Карта"
+    },
+    "ZombieLore": {
+      "en": "Zombie Lore",
+      "uk": "Особливості зомбі"
+    },
+    "ZombieConfig": {
+      "en": "Zombie Population Config",
+      "uk": "Налаштування популяції зомбі"
+    },
+    "MultiplierConfig": {
+      "en": "Skill XP Multipliers",
+      "uk": "Множники досвіду навичок"
+    }
+  },
+  "params": {
+    "Zombies": {
+      "label": {
+        "en": "Zombie Count",
+        "uk": "Кількість зомбі"
+      },
+      "description": {
+        "en": "Overall zombie population level. Also sets the Population Multiplier in Advanced Zombie Options.",
+        "uk": "Загальний рівень популяції зомбі. Також встановлює Множник популяції в розширених налаштуваннях зомбі."
+      },
+      "options": {
+        "1": {
+          "en": "Insane",
+          "uk": "Божевільна"
+        },
+        "2": {
+          "en": "Very High",
+          "uk": "Дуже висока"
+        },
+        "3": {
+          "en": "High",
+          "uk": "Висока"
+        },
+        "4": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "5": {
+          "en": "Low",
+          "uk": "Низька"
+        },
+        "6": {
+          "en": "None",
+          "uk": "Відсутня"
+        }
+      }
+    },
+    "Distribution": {
+      "label": {
+        "en": "Distribution",
+        "uk": "Розподіл"
+      },
+      "description": {
+        "en": "How zombies are distributed across the map.",
+        "uk": "Як зомбі розподілені по карті."
+      },
+      "options": {
+        "1": {
+          "en": "Urban Focused",
+          "uk": "Зосереджено в місті"
+        },
+        "2": {
+          "en": "Uniform",
+          "uk": "Рівномірно"
+        }
+      }
+    },
+    "ZombieVoronoiNoise": {
+      "label": {
+        "en": "Voronoi Noise",
+        "uk": "Шум Вороного"
+      },
+      "description": {
+        "en": "Controls whether some randomization is applied to zombie distribution.",
+        "uk": "Керує тим, чи застосовується випадковість до розподілу зомбі по карті."
+      }
+    },
+    "ZombieRespawn": {
+      "label": {
+        "en": "Zombie Respawn",
+        "uk": "Відродження зомбі"
+      },
+      "description": {
+        "en": "How frequently new zombies are added to the world.",
+        "uk": "Як часто нові зомбі з'являються у світі."
+      },
+      "options": {
+        "1": {
+          "en": "High",
+          "uk": "Висока"
+        },
+        "2": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "3": {
+          "en": "Low",
+          "uk": "Низька"
+        },
+        "4": {
+          "en": "None",
+          "uk": "Відсутнє"
+        }
+      }
+    },
+    "ZombieMigrate": {
+      "label": {
+        "en": "Zombie Migration",
+        "uk": "Міграція зомбі"
+      },
+      "description": {
+        "en": "Zombies are allowed to migrate to empty cells.",
+        "uk": "Зомбі можуть мігрувати до порожніх осередків карти."
+      }
+    },
+    "DayLength": {
+      "label": {
+        "en": "Day Length",
+        "uk": "Тривалість дня"
+      },
+      "description": {
+        "en": "The length of one in-game day.",
+        "uk": "Тривалість одного ігрового дня."
+      },
+      "options": {
+        "1": {
+          "en": "15 Minutes",
+          "uk": "15 хвилин"
+        },
+        "2": {
+          "en": "30 Minutes",
+          "uk": "30 хвилин"
+        },
+        "3": {
+          "en": "1 Hour",
+          "uk": "1 година"
+        },
+        "4": {
+          "en": "1 Hour, 30 Minutes",
+          "uk": "1 година 30 хвилин"
+        },
+        "5": {
+          "en": "2 Hours",
+          "uk": "2 години"
+        },
+        "6": {
+          "en": "3 Hours",
+          "uk": "3 години"
+        },
+        "7": {
+          "en": "4 Hours",
+          "uk": "4 години"
+        },
+        "8": {
+          "en": "5 Hours",
+          "uk": "5 годин"
+        },
+        "9": {
+          "en": "6 Hours",
+          "uk": "6 годин"
+        },
+        "10": {
+          "en": "7 Hours",
+          "uk": "7 годин"
+        },
+        "11": {
+          "en": "8 Hours",
+          "uk": "8 годин"
+        },
+        "12": {
+          "en": "9 Hours",
+          "uk": "9 годин"
+        },
+        "13": {
+          "en": "10 Hours",
+          "uk": "10 годин"
+        },
+        "14": {
+          "en": "11 Hours",
+          "uk": "11 годин"
+        },
+        "15": {
+          "en": "12 Hours",
+          "uk": "12 годин"
+        },
+        "16": {
+          "en": "13 Hours",
+          "uk": "13 годин"
+        },
+        "17": {
+          "en": "14 Hours",
+          "uk": "14 годин"
+        },
+        "18": {
+          "en": "15 Hours",
+          "uk": "15 годин"
+        },
+        "19": {
+          "en": "16 Hours",
+          "uk": "16 годин"
+        },
+        "20": {
+          "en": "17 Hours",
+          "uk": "17 годин"
+        },
+        "21": {
+          "en": "18 Hours",
+          "uk": "18 годин"
+        },
+        "22": {
+          "en": "19 Hours",
+          "uk": "19 годин"
+        },
+        "23": {
+          "en": "20 Hours",
+          "uk": "20 годин"
+        },
+        "24": {
+          "en": "21 Hours",
+          "uk": "21 година"
+        },
+        "25": {
+          "en": "22 Hours",
+          "uk": "22 години"
+        },
+        "26": {
+          "en": "23 Hours",
+          "uk": "23 години"
+        },
+        "27": {
+          "en": "Real-time",
+          "uk": "Реальний час"
+        }
+      }
+    },
+    "StartYear": {
+      "label": {
+        "en": "Start Year",
+        "uk": "Рік початку"
+      },
+      "description": {
+        "en": "The in-game year the game starts in.",
+        "uk": "Ігровий рік, у якому починається гра."
+      }
+    },
+    "StartMonth": {
+      "label": {
+        "en": "Start Month",
+        "uk": "Місяць початку"
+      },
+      "description": {
+        "en": "Month in which the game starts.",
+        "uk": "Місяць, у якому починається гра."
+      },
+      "options": {
+        "1": {
+          "en": "January",
+          "uk": "Січень"
+        },
+        "2": {
+          "en": "February",
+          "uk": "Лютий"
+        },
+        "3": {
+          "en": "March",
+          "uk": "Березень"
+        },
+        "4": {
+          "en": "April",
+          "uk": "Квітень"
+        },
+        "5": {
+          "en": "May",
+          "uk": "Травень"
+        },
+        "6": {
+          "en": "June",
+          "uk": "Червень"
+        },
+        "7": {
+          "en": "July",
+          "uk": "Липень"
+        },
+        "8": {
+          "en": "August",
+          "uk": "Серпень"
+        },
+        "9": {
+          "en": "September",
+          "uk": "Вересень"
+        },
+        "10": {
+          "en": "October",
+          "uk": "Жовтень"
+        },
+        "11": {
+          "en": "November",
+          "uk": "Листопад"
+        },
+        "12": {
+          "en": "December",
+          "uk": "Грудень"
+        }
+      }
+    },
+    "StartDay": {
+      "label": {
+        "en": "Start Day",
+        "uk": "День початку"
+      },
+      "description": {
+        "en": "Day of the month in which the game starts.",
+        "uk": "День місяця, у якому починається гра."
+      }
+    },
+    "StartTime": {
+      "label": {
+        "en": "Start Time",
+        "uk": "Час початку"
+      },
+      "description": {
+        "en": "Hour of the day in which the game starts.",
+        "uk": "Година доби, у якій починається гра."
+      },
+      "options": {
+        "1": {
+          "en": "7 AM",
+          "uk": "7:00"
+        },
+        "2": {
+          "en": "9 AM",
+          "uk": "9:00"
+        },
+        "3": {
+          "en": "12 PM",
+          "uk": "12:00"
+        },
+        "4": {
+          "en": "2 PM",
+          "uk": "14:00"
+        },
+        "5": {
+          "en": "5 PM",
+          "uk": "17:00"
+        },
+        "6": {
+          "en": "9 PM",
+          "uk": "21:00"
+        },
+        "7": {
+          "en": "12 AM",
+          "uk": "0:00"
+        },
+        "8": {
+          "en": "2 AM",
+          "uk": "2:00"
+        },
+        "9": {
+          "en": "5 AM",
+          "uk": "5:00"
+        }
+      }
+    },
+    "DayNightCycle": {
+      "label": {
+        "en": "Day/Night Cycle",
+        "uk": "Цикл дня і ночі"
+      },
+      "description": {
+        "en": "Whether the time of day changes naturally, or it's always day/night.",
+        "uk": "Чи змінюється час доби природно, чи завжди триває день/ніч."
+      },
+      "options": {
+        "1": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "2": {
+          "en": "Endless Day",
+          "uk": "Нескінченний день"
+        },
+        "3": {
+          "en": "Endless Night",
+          "uk": "Нескінченна ніч"
+        }
+      }
+    },
+    "ClimateCycle": {
+      "label": {
+        "en": "Climate Cycle",
+        "uk": "Цикл клімату"
+      },
+      "description": {
+        "en": "Whether weather changes or remains at a single state.",
+        "uk": "Чи змінюється погода, чи залишається незмінною."
+      },
+      "options": {
+        "1": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "2": {
+          "en": "No Weather",
+          "uk": "Без погодних явищ"
+        },
+        "3": {
+          "en": "Endless Rain",
+          "uk": "Нескінченний дощ"
+        },
+        "4": {
+          "en": "Endless Storm",
+          "uk": "Нескінченна буря"
+        },
+        "5": {
+          "en": "Endless Snow",
+          "uk": "Нескінченний сніг"
+        },
+        "6": {
+          "en": "Endless Blizzard",
+          "uk": "Нескінченна заметіль"
+        }
+      }
+    },
+    "FogCycle": {
+      "label": {
+        "en": "Fog Cycle",
+        "uk": "Цикл туману"
+      },
+      "description": {
+        "en": "Whether fog occurs naturally, never occurs, or is always present.",
+        "uk": "Чи виникає туман природно, чи не виникає взагалі, чи присутній завжди."
+      },
+      "options": {
+        "1": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "2": {
+          "en": "No Fog",
+          "uk": "Без туману"
+        },
+        "3": {
+          "en": "Endless Fog",
+          "uk": "Нескінченний туман"
+        }
+      }
+    },
+    "WaterShut": {
+      "label": {
+        "en": "Water Shutoff",
+        "uk": "Відключення води"
+      },
+      "description": {
+        "en": "How long after the default start date (July 9, 1993) that plumbing fixtures (eg. sinks) stop being infinite sources of water.",
+        "uk": "Скільки часу після дати початку за замовчуванням (9 липня 1993 року) знадобиться, щоб сантехніка (наприклад, крани) перестала бути нескінченним джерелом води."
+      },
+      "options": {
+        "1": {
+          "en": "Instant",
+          "uk": "Миттєво"
+        },
+        "2": {
+          "en": "0 - 30 Days",
+          "uk": "0-30 днів"
+        },
+        "3": {
+          "en": "0 - 2 Months",
+          "uk": "0-2 місяці"
+        },
+        "4": {
+          "en": "0 - 6 Months",
+          "uk": "0-6 місяців"
+        },
+        "5": {
+          "en": "0 - 1 Year",
+          "uk": "0-1 рік"
+        },
+        "6": {
+          "en": "0 - 5 Years",
+          "uk": "0-5 років"
+        },
+        "7": {
+          "en": "2 - 6 Months",
+          "uk": "2-6 місяців"
+        },
+        "8": {
+          "en": "6 - 12 Months",
+          "uk": "6-12 місяців"
+        },
+        "9": {
+          "en": "Disabled",
+          "uk": "Вимкнено"
+        }
+      }
+    },
+    "ElecShut": {
+      "label": {
+        "en": "Electricity Shutoff",
+        "uk": "Відключення електрики"
+      },
+      "description": {
+        "en": "How long after the default start date (July 9, 1993) that the world's electricity turns off for good.",
+        "uk": "Скільки часу після дати початку за замовчуванням (9 липня 1993 року) знадобиться, щоб електрика в світі вимкнулася назавжди."
+      },
+      "options": {
+        "1": {
+          "en": "Instant",
+          "uk": "Миттєво"
+        },
+        "2": {
+          "en": "14 - 30 Days",
+          "uk": "14-30 днів"
+        },
+        "3": {
+          "en": "14 Days - 2 Months",
+          "uk": "14 днів - 2 місяці"
+        },
+        "4": {
+          "en": "14 Days - 6 Months",
+          "uk": "14 днів - 6 місяців"
+        },
+        "5": {
+          "en": "14 Days - 1 Year",
+          "uk": "14 днів - 1 рік"
+        },
+        "6": {
+          "en": "14 Days - 5 Years",
+          "uk": "14 днів - 5 років"
+        },
+        "7": {
+          "en": "2 - 6 Months",
+          "uk": "2-6 місяців"
+        },
+        "8": {
+          "en": "6 - 12 Months",
+          "uk": "6-12 місяців"
+        },
+        "9": {
+          "en": "Disabled",
+          "uk": "Вимкнено"
+        }
+      }
+    },
+    "AlarmDecay": {
+      "label": {
+        "en": "Alarm Decay",
+        "uk": "Розрядка сигналізації"
+      },
+      "description": {
+        "en": "How long alarm batteries can last for after the power shuts off.",
+        "uk": "Як довго можуть протриматися батареї сигналізації після відключення електрики."
+      },
+      "options": {
+        "1": {
+          "en": "Instant",
+          "uk": "Миттєво"
+        },
+        "2": {
+          "en": "0 - 30 Days",
+          "uk": "0-30 днів"
+        },
+        "3": {
+          "en": "0 - 2 Months",
+          "uk": "0-2 місяці"
+        },
+        "4": {
+          "en": "0 - 6 Months",
+          "uk": "0-6 місяців"
+        },
+        "5": {
+          "en": "0 - 1 Year",
+          "uk": "0-1 рік"
+        },
+        "6": {
+          "en": "0 - 5 Years",
+          "uk": "0-5 років"
+        }
+      }
+    },
+    "WaterShutModifier": {
+      "label": {
+        "en": "Water Shutoff (Days)",
+        "uk": "Відключення води (днів)"
+      },
+      "description": {
+        "en": "Custom number of days after the default start date (July 9, 1993) that plumbing fixtures stop being infinite sources of water.",
+        "uk": "Власна кількість днів після дати початку за замовчуванням (9 липня 1993), через яку сантехніка перестає бути нескінченним джерелом води."
+      }
+    },
+    "ElecShutModifier": {
+      "label": {
+        "en": "Electricity Shutoff (Days)",
+        "uk": "Відключення електрики (днів)"
+      },
+      "description": {
+        "en": "Custom number of days after the default start date (July 9, 1993) that the world's electricity turns off for good.",
+        "uk": "Власна кількість днів після дати початку за замовчуванням (9 липня 1993), через яку електрика в світі вимикається назавжди."
+      }
+    },
+    "AlarmDecayModifier": {
+      "label": {
+        "en": "Alarm Decay (Days)",
+        "uk": "Розрядка сигналізації (днів)"
+      },
+      "description": {
+        "en": "Custom number of days for how long alarm batteries can last after the power shuts off.",
+        "uk": "Власна кількість днів, протягом яких можуть протриматися батареї сигналізації після відключення електрики."
+      }
+    },
+    "FoodLootNew": {
+      "label": {
+        "en": "Food",
+        "uk": "Їжа"
+      },
+      "description": {
+        "en": "Any food that can rot or spoil.",
+        "uk": "Будь-яка їжа, яка може гнити або псуватися."
+      }
+    },
+    "LiteratureLootNew": {
+      "label": {
+        "en": "Literature",
+        "uk": "Література"
+      },
+      "description": {
+        "en": "All other items that can be read, including books, fliers, and newspapers.",
+        "uk": "Усі інші предмети для читання, включно з книгами, листівками та газетами."
+      }
+    },
+    "SkillBookLoot": {
+      "label": {
+        "en": "Skill Books",
+        "uk": "Книги навичок"
+      },
+      "description": {
+        "en": "Books that provide skill XP multipliers.",
+        "uk": "Книги, що надають множники досвіду навичок."
+      }
+    },
+    "RecipeResourceLoot": {
+      "label": {
+        "en": "Recipe Items",
+        "uk": "Предмети з рецептами"
+      },
+      "description": {
+        "en": "Items that teach recipes.",
+        "uk": "Предмети, що навчають рецептам."
+      }
+    },
+    "MedicalLootNew": {
+      "label": {
+        "en": "Medical",
+        "uk": "Медичні"
+      },
+      "description": {
+        "en": "Medicine, bandages and first aid tools.",
+        "uk": "Ліки, бинти та засоби першої допомоги."
+      }
+    },
+    "SurvivalGearsLootNew": {
+      "label": {
+        "en": "Survival Gear",
+        "uk": "Спорядження для виживання"
+      },
+      "description": {
+        "en": "Fishing rods, tents, camping gear etc.",
+        "uk": "Вудки, намети, туристичне спорядження тощо."
+      }
+    },
+    "CannedFoodLootNew": {
+      "label": {
+        "en": "Canned Food",
+        "uk": "Консерви"
+      },
+      "description": {
+        "en": "Canned and dried food, beverages.",
+        "uk": "Консервована та суха їжа, напої."
+      }
+    },
+    "WeaponLootNew": {
+      "label": {
+        "en": "Weapons",
+        "uk": "Зброя"
+      },
+      "description": {
+        "en": "Weapons that are not tools in other categories.",
+        "uk": "Зброя, яка не є інструментом з інших категорій."
+      }
+    },
+    "RangedWeaponLootNew": {
+      "label": {
+        "en": "Ranged Weapons",
+        "uk": "Дальня зброя"
+      },
+      "description": {
+        "en": "Ranged weapons. Also includes weapon attachments.",
+        "uk": "Дальня зброя. Також включає обвіси для зброї."
+      }
+    },
+    "AmmoLootNew": {
+      "label": {
+        "en": "Ammo",
+        "uk": "Боєприпаси"
+      },
+      "description": {
+        "en": "Loose ammo, boxes and magazines.",
+        "uk": "Розсипні патрони, коробки з патронами та магазини."
+      }
+    },
+    "MechanicsLootNew": {
+      "label": {
+        "en": "Mechanics",
+        "uk": "Механіка"
+      },
+      "description": {
+        "en": "Vehicle parts and the tools needed to install them.",
+        "uk": "Автозапчастини та інструменти, необхідні для їх встановлення."
+      }
+    },
+    "OtherLootNew": {
+      "label": {
+        "en": "Other",
+        "uk": "Інше"
+      },
+      "description": {
+        "en": "Everything else. Also affects foraging for all items in Town/Road zones.",
+        "uk": "Все інше. Також впливає на збиральництво всіх предметів у міських зонах та на дорогах."
+      }
+    },
+    "ClothingLootNew": {
+      "label": {
+        "en": "Clothing",
+        "uk": "Одяг"
+      },
+      "description": {
+        "en": "All wearable items that are not containers.",
+        "uk": "Весь одяг, який не є контейнером."
+      }
+    },
+    "ContainerLootNew": {
+      "label": {
+        "en": "Containers",
+        "uk": "Контейнери"
+      },
+      "description": {
+        "en": "Backpacks and other wearable/equippable containers, eg. cases.",
+        "uk": "Рюкзаки та інші носимі контейнери, наприклад, кейси."
+      }
+    },
+    "KeyLootNew": {
+      "label": {
+        "en": "Keys",
+        "uk": "Ключі"
+      },
+      "description": {
+        "en": "Keys for buildings/cars, key rings, and locks.",
+        "uk": "Ключі від будівель/машин, брелоки та замки."
+      }
+    },
+    "MediaLootNew": {
+      "label": {
+        "en": "Media",
+        "uk": "Медіа"
+      },
+      "description": {
+        "en": "VHS tapes and CDs.",
+        "uk": "Відеокасети та диски."
+      }
+    },
+    "MementoLootNew": {
+      "label": {
+        "en": "Mementos",
+        "uk": "Памʼятні речі"
+      },
+      "description": {
+        "en": "Spiffo items, plushies, and other collectible keepsake items eg. photos.",
+        "uk": "Предмети зі Спіффо, м'які іграшки та інші колекційні предмети на пам'ять, наприклад, фотографії."
+      }
+    },
+    "CookwareLootNew": {
+      "label": {
+        "en": "Cookware",
+        "uk": "Кухонне начиння"
+      },
+      "description": {
+        "en": "Items used in cooking, including those (eg. knives) which can be weapons. Does not include food. Includes both usable and unusable items.",
+        "uk": "Предмети, що використовуються під час готування, включно з тими (наприклад, ножі), які можуть бути зброєю. Не включає їжу. Включає як придатні, так і непридатні до використання предмети."
+      }
+    },
+    "MaterialLootNew": {
+      "label": {
+        "en": "Materials",
+        "uk": "Матеріали"
+      },
+      "description": {
+        "en": "Items and weapons used as ingredients for crafting or building. A general category that does not include items belonging to other categories such as Cookware or Medical. Does not include Tools.",
+        "uk": "Предмети та зброя, що використовуються як інгредієнти для крафту чи будівництва. Загальна категорія, яка не включає предмети з інших категорій, як-от кухонне начиння чи медичні засоби. Не включає інструменти."
+      }
+    },
+    "FarmingLootNew": {
+      "label": {
+        "en": "Farming",
+        "uk": "Фермерство"
+      },
+      "description": {
+        "en": "Items and weapons used in both animal and plant agriculture, such as seeds, trowels, or shovels.",
+        "uk": "Предмети та зброя, що використовуються як у тваринництві, так і в рослинництві, наприклад, насіння, совки чи лопати."
+      }
+    },
+    "ToolLootNew": {
+      "label": {
+        "en": "Tools",
+        "uk": "Інструменти"
+      },
+      "description": {
+        "en": "Items and weapons which are Tools but don't fit in other categories such as Mechanics or Farming.",
+        "uk": "Предмети та зброя, які є інструментами, але не підходять до інших категорій, як-от механіка чи фермерство."
+      }
+    },
+    "RollsMultiplier": {
+      "label": {
+        "en": "Loot Rolls Multiplier",
+        "uk": "Множник спроб появи здобичі"
+      },
+      "description": {
+        "en": "[!] It is recommended that you DO NOT change this. [!] Can be used to adjust the number of rolls made on loot tables when spawning loot. Will not reduce the number of rolls below 1. Can negatively affect performance if set to high values. It is highly recommended that this not be changed.",
+        "uk": "[!] Рекомендується НЕ змінювати це значення. [!] Дозволяє налаштувати кількість спроб визначення здобичі з таблиць лута. Не зменшує кількість спроб нижче 1. Високі значення можуть негативно вплинути на продуктивність. Настійно рекомендується не змінювати це значення."
+      }
+    },
+    "LootItemRemovalList": {
+      "label": {
+        "en": "Loot Item Removal List",
+        "uk": "Список видалення предметів здобичі"
+      },
+      "description": {
+        "en": "A comma-separated list of item types that won't spawn as ordinary loot.",
+        "uk": "Список типів предметів через кому, які не з'являтимуться як звичайна здобич."
+      }
+    },
+    "RemoveStoryLoot": {
+      "label": {
+        "en": "Remove Story Loot",
+        "uk": "Прибрати сюжетну здобич"
+      },
+      "description": {
+        "en": "If enabled, items on the Loot Item Removal List, or that have their rarity set to 'None', will not spawn in randomised world stories.",
+        "uk": "Якщо увімкнено, предмети зі списку видалення здобичі або ті, чия рідкісність встановлена як 'Відсутня', не з'являтимуться у випадкових світових історіях."
+      }
+    },
+    "RemoveZombieLoot": {
+      "label": {
+        "en": "Remove Zombie Loot",
+        "uk": "Прибрати здобич із зомбі"
+      },
+      "description": {
+        "en": "If enabled, items on the Loot Item Removal List, or that have their rarity set to 'None', will not spawn worn by, or attached to, zombies.",
+        "uk": "Якщо увімкнено, предмети зі списку видалення здобичі або ті, чия рідкісність встановлена як 'Відсутня', не з'являтимуться одягненими на зомбі чи прикріпленими до них."
+      }
+    },
+    "ZombiePopLootEffect": {
+      "label": {
+        "en": "Zombie Population Loot Effect",
+        "uk": "Вплив популяції зомбі на здобич"
+      },
+      "description": {
+        "en": "If greater than 0, the spawn of loot is increased relative to the number of nearby zombies, with the effect multiplied by this number.",
+        "uk": "Якщо більше 0, поява здобичі збільшується відносно кількості зомбі поруч, а ефект множиться на це число."
+      }
+    },
+    "InsaneLootFactor": {
+      "label": {
+        "en": "Insane Rarity Factor",
+        "uk": "Коефіцієнт рідкісності «Божевільна»"
+      },
+      "description": {
+        "en": "Multiplier applied to items with 'Insane' rarity when calculating loot spawn chance.",
+        "uk": "Множник, що застосовується до предметів з рідкісністю «Божевільна» під час розрахунку шансу появи здобичі."
+      }
+    },
+    "ExtremeLootFactor": {
+      "label": {
+        "en": "Extreme Rarity Factor",
+        "uk": "Коефіцієнт рідкісності «Екстремальна»"
+      },
+      "description": {
+        "en": "Multiplier applied to items with 'Extreme' rarity when calculating loot spawn chance.",
+        "uk": "Множник, що застосовується до предметів з рідкісністю «Екстремальна» під час розрахунку шансу появи здобичі."
+      }
+    },
+    "RareLootFactor": {
+      "label": {
+        "en": "Rare Rarity Factor",
+        "uk": "Коефіцієнт рідкісності «Рідкісна»"
+      },
+      "description": {
+        "en": "Multiplier applied to items with 'Rare' rarity when calculating loot spawn chance.",
+        "uk": "Множник, що застосовується до предметів з рідкісністю «Рідкісна» під час розрахунку шансу появи здобичі."
+      }
+    },
+    "NormalLootFactor": {
+      "label": {
+        "en": "Normal Rarity Factor",
+        "uk": "Коефіцієнт рідкісності «Звичайна»"
+      },
+      "description": {
+        "en": "Multiplier applied to items with 'Normal' rarity when calculating loot spawn chance.",
+        "uk": "Множник, що застосовується до предметів з рідкісністю «Звичайна» під час розрахунку шансу появи здобичі."
+      }
+    },
+    "CommonLootFactor": {
+      "label": {
+        "en": "Common Rarity Factor",
+        "uk": "Коефіцієнт рідкісності «Поширена»"
+      },
+      "description": {
+        "en": "Multiplier applied to items with 'Common' rarity when calculating loot spawn chance.",
+        "uk": "Множник, що застосовується до предметів з рідкісністю «Поширена» під час розрахунку шансу появи здобичі."
+      }
+    },
+    "AbundantLootFactor": {
+      "label": {
+        "en": "Abundant Rarity Factor",
+        "uk": "Коефіцієнт рідкісності «Рясна»"
+      },
+      "description": {
+        "en": "Multiplier applied to items with 'Abundant' rarity when calculating loot spawn chance.",
+        "uk": "Множник, що застосовується до предметів з рідкісністю «Рясна» під час розрахунку шансу появи здобичі."
+      }
+    },
+    "Temperature": {
+      "label": {
+        "en": "Temperature",
+        "uk": "Температура"
+      },
+      "description": {
+        "en": "The global temperature.",
+        "uk": "Загальна температура у світі."
+      },
+      "options": {
+        "1": {
+          "en": "Very Cold",
+          "uk": "Дуже холодно"
+        },
+        "2": {
+          "en": "Cold",
+          "uk": "Холодно"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "Hot",
+          "uk": "Спекотно"
+        },
+        "5": {
+          "en": "Very Hot",
+          "uk": "Дуже спекотно"
+        }
+      }
+    },
+    "Rain": {
+      "label": {
+        "en": "Rain",
+        "uk": "Дощ"
+      },
+      "description": {
+        "en": "How often it rains.",
+        "uk": "Як часто йде дощ."
+      },
+      "options": {
+        "1": {
+          "en": "Very Dry",
+          "uk": "Дуже сухо"
+        },
+        "2": {
+          "en": "Dry",
+          "uk": "Сухо"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "Rainy",
+          "uk": "Дощово"
+        },
+        "5": {
+          "en": "Very Rainy",
+          "uk": "Дуже дощово"
+        }
+      }
+    },
+    "ErosionSpeed": {
+      "label": {
+        "en": "Erosion Speed",
+        "uk": "Швидкість заростання"
+      },
+      "description": {
+        "en": "Number of days until the erosion system (which adds vines, long grass, new trees etc. to the world) reaches 100% growth.",
+        "uk": "Кількість днів до досягнення 100% заростання системою ерозії (яка додає лози, високу траву, нові дерева тощо у світ)."
+      },
+      "options": {
+        "1": {
+          "en": "Very Fast (20 Days)",
+          "uk": "Дуже швидко (20 днів)"
+        },
+        "2": {
+          "en": "Fast (50 Days)",
+          "uk": "Швидко (50 днів)"
+        },
+        "3": {
+          "en": "Normal (100 Days)",
+          "uk": "Нормально (100 днів)"
+        },
+        "4": {
+          "en": "Slow (200 Days)",
+          "uk": "Повільно (200 днів)"
+        },
+        "5": {
+          "en": "Very Slow (500 Days)",
+          "uk": "Дуже повільно (500 днів)"
+        }
+      }
+    },
+    "ErosionDays": {
+      "label": {
+        "en": "Custom Erosion Days",
+        "uk": "Власна кількість днів заростання"
+      },
+      "description": {
+        "en": "For a custom Erosion Speed. Zero means use the Erosion Speed option. Maximum is 36,500 days (approximately 100 years).",
+        "uk": "Для власної швидкості заростання. Нуль означає використання параметра «Швидкість заростання». Максимум 36500 днів (приблизно 100 років)."
+      }
+    },
+    "Farming": {
+      "label": {
+        "en": "Plant Growth Speed",
+        "uk": "Швидкість росту рослин"
+      },
+      "description": {
+        "en": "The speed of plant growth.",
+        "uk": "Швидкість росту рослин."
+      },
+      "options": {
+        "1": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "5": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "CompostTime": {
+      "label": {
+        "en": "Compost Time",
+        "uk": "Час компостування"
+      },
+      "description": {
+        "en": "How long it takes for food to break down in a composter.",
+        "uk": "Скільки часу потрібно для розкладання їжі в компостері."
+      },
+      "options": {
+        "1": {
+          "en": "1 Week",
+          "uk": "1 тиждень"
+        },
+        "2": {
+          "en": "2 Weeks",
+          "uk": "2 тижні"
+        },
+        "3": {
+          "en": "3 Weeks",
+          "uk": "3 тижні"
+        },
+        "4": {
+          "en": "4 Weeks",
+          "uk": "4 тижні"
+        },
+        "5": {
+          "en": "6 Weeks",
+          "uk": "6 тижнів"
+        },
+        "6": {
+          "en": "8 Weeks",
+          "uk": "8 тижнів"
+        },
+        "7": {
+          "en": "10 Weeks",
+          "uk": "10 тижнів"
+        },
+        "8": {
+          "en": "12 Weeks",
+          "uk": "12 тижнів"
+        }
+      }
+    },
+    "StatsDecrease": {
+      "label": {
+        "en": "Stat Decrease Speed",
+        "uk": "Швидкість зниження показників"
+      },
+      "description": {
+        "en": "How fast the player's hunger, thirst, and fatigue will decrease.",
+        "uk": "Як швидко знижуються показники голоду, спраги та втоми гравця."
+      },
+      "options": {
+        "1": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "5": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "NatureAbundance": {
+      "label": {
+        "en": "Foraging Abundance",
+        "uk": "Рясність збиральництва"
+      },
+      "description": {
+        "en": "The abundance of items found in Foraging mode.",
+        "uk": "Рясність предметів, які можна знайти в режимі збиральництва."
+      },
+      "options": {
+        "1": {
+          "en": "Very Poor",
+          "uk": "Дуже бідно"
+        },
+        "2": {
+          "en": "Poor",
+          "uk": "Бідно"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "Abundant",
+          "uk": "Рясно"
+        },
+        "5": {
+          "en": "Very Abundant",
+          "uk": "Дуже рясно"
+        }
+      }
+    },
+    "Alarm": {
+      "label": {
+        "en": "House Alarm Chance",
+        "uk": "Шанс домашньої сигналізації"
+      },
+      "description": {
+        "en": "How likely the player is to activate a house alarm when breaking into a new house.",
+        "uk": "Наскільки ймовірно гравець активує сигналізацію під час проникнення в новий будинок."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        }
+      }
+    },
+    "LockedHouses": {
+      "label": {
+        "en": "Locked Houses",
+        "uk": "Замкнені будинки"
+      },
+      "description": {
+        "en": "How frequently the doors of homes and buildings will be locked when discovered.",
+        "uk": "Як часто двері будинків і будівель будуть замкнені при виявленні."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        }
+      }
+    },
+    "StarterKit": {
+      "label": {
+        "en": "Starter Kit",
+        "uk": "Стартовий набір"
+      },
+      "description": {
+        "en": "Spawn with chips, a water bottle, a small backpack, a baseball bat, and a hammer.",
+        "uk": "З'явитися з чипсами, пляшкою води, маленьким рюкзаком, бейсбольною битою та молотком."
+      }
+    },
+    "Nutrition": {
+      "label": {
+        "en": "Nutrition",
+        "uk": "Харчування"
+      },
+      "description": {
+        "en": "Nutritional value of food affects the player's condition. Turning this off will stop the player gaining or losing weight.",
+        "uk": "Поживна цінність їжі впливає на стан гравця. Вимкнення цього параметра зупинить набір або втрату ваги гравцем."
+      }
+    },
+    "FoodRotSpeed": {
+      "label": {
+        "en": "Food Rot Speed",
+        "uk": "Швидкість псування їжі"
+      },
+      "description": {
+        "en": "How fast food will spoil, inside or outside of a fridge.",
+        "uk": "Як швидко псується їжа, у холодильнику чи поза ним."
+      },
+      "options": {
+        "1": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "5": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "FridgeFactor": {
+      "label": {
+        "en": "Fridge Factor",
+        "uk": "Ефективність холодильника"
+      },
+      "description": {
+        "en": "How effective a fridge will be at keeping food fresh for longer.",
+        "uk": "Наскільки ефективно холодильник зберігатиме їжу свіжою довше."
+      },
+      "options": {
+        "1": {
+          "en": "Very Low",
+          "uk": "Дуже низька"
+        },
+        "2": {
+          "en": "Low",
+          "uk": "Низька"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "4": {
+          "en": "High",
+          "uk": "Висока"
+        },
+        "5": {
+          "en": "Very High",
+          "uk": "Дуже висока"
+        },
+        "6": {
+          "en": "No decay",
+          "uk": "Без псування"
+        }
+      }
+    },
+    "SeenHoursPreventLootRespawn": {
+      "label": {
+        "en": "Seen Hours Prevent Loot Respawn",
+        "uk": "Години видимості, що блокують відродження здобичі"
+      },
+      "description": {
+        "en": "When greater than 0, loot will not respawn in zones that have been visited within this number of in-game hours.",
+        "uk": "Якщо більше 0, здобич не відроджуватиметься в зонах, які відвідувалися протягом цієї кількості ігрових годин."
+      }
+    },
+    "HoursForLootRespawn": {
+      "label": {
+        "en": "Hours For Loot Respawn",
+        "uk": "Години до відродження здобичі"
+      },
+      "description": {
+        "en": "When greater than 0, after X hours, all containers in towns and trailer parks in the world will respawn loot. To spawn loot a container must have been looted at least once. Loot respawn is not impacted by visibility or subsequent looting.",
+        "uk": "Якщо більше 0, через X годин усі контейнери в містах і трейлерних парках отримають нову здобич. Щоб здобич з'явилася, контейнер мав бути обшуканий хоча б раз. На відродження здобичі не впливає видимість чи подальше обшукування."
+      }
+    },
+    "MaxItemsForLootRespawn": {
+      "label": {
+        "en": "Max Items For Loot Respawn",
+        "uk": "Макс. предметів для відродження здобичі"
+      },
+      "description": {
+        "en": "Containers with a number of items greater than, or equal to, this setting will not respawn loot.",
+        "uk": "Контейнери з кількістю предметів більшою або рівною цьому значенню не отримають нову здобич."
+      }
+    },
+    "ConstructionPreventsLootRespawn": {
+      "label": {
+        "en": "Construction Prevents Loot Respawn",
+        "uk": "Будівництво блокує відродження здобичі"
+      },
+      "description": {
+        "en": "Items will not respawn in buildings that players have barricaded or built in.",
+        "uk": "Предмети не відроджуватимуться в будівлях, які гравці забарикадували або добудували."
+      }
+    },
+    "WorldItemRemovalList": {
+      "label": {
+        "en": "World Item Removal List",
+        "uk": "Список видалення предметів зі світу"
+      },
+      "description": {
+        "en": "A comma-separated list of item types that will be removed after Hours For World Item Removal hours.",
+        "uk": "Список типів предметів через кому, які буде видалено через задану кількість годин (Hours For World Item Removal)."
+      }
+    },
+    "HoursForWorldItemRemoval": {
+      "label": {
+        "en": "Hours For World Item Removal",
+        "uk": "Години до видалення предметів зі світу"
+      },
+      "description": {
+        "en": "Number of hours since an item was dropped on the ground before it is removed. Items are removed the next time that part of the map is loaded. Zero means items are not removed.",
+        "uk": "Кількість годин з моменту, коли предмет впав на землю, до його видалення. Предмети видаляються під час наступного завантаження цієї частини карти. Нуль означає, що предмети не видаляються."
+      }
+    },
+    "ItemRemovalListBlacklistToggle": {
+      "label": {
+        "en": "Invert World Item Removal List",
+        "uk": "Інвертувати список видалення предметів"
+      },
+      "description": {
+        "en": "If true, any items *not* in the World Item Removal List will be removed instead.",
+        "uk": "Якщо увімкнено, видалятимуться всі предмети, яких *немає* у списку видалення предметів зі світу."
+      }
+    },
+    "TimeSinceApo": {
+      "label": {
+        "en": "Time Since Apocalypse",
+        "uk": "Час з початку апокаліпсису"
+      },
+      "description": {
+        "en": "How long after the end of the world to begin. This will affect starting world erosion and food spoilage. Does not affect the starting date.",
+        "uk": "Скільки часу минуло від кінця світу до початку гри. Це впливає на початкове заростання світу та псування їжі. Не впливає на дату початку."
+      },
+      "options": {
+        "1": {
+          "en": "0",
+          "uk": "0"
+        },
+        "2": {
+          "en": "1",
+          "uk": "1"
+        },
+        "3": {
+          "en": "2",
+          "uk": "2"
+        },
+        "4": {
+          "en": "3",
+          "uk": "3"
+        },
+        "5": {
+          "en": "4",
+          "uk": "4"
+        },
+        "6": {
+          "en": "5",
+          "uk": "5"
+        },
+        "7": {
+          "en": "6",
+          "uk": "6"
+        },
+        "8": {
+          "en": "7",
+          "uk": "7"
+        },
+        "9": {
+          "en": "8",
+          "uk": "8"
+        },
+        "10": {
+          "en": "9",
+          "uk": "9"
+        },
+        "11": {
+          "en": "10",
+          "uk": "10"
+        },
+        "12": {
+          "en": "11",
+          "uk": "11"
+        },
+        "13": {
+          "en": "12",
+          "uk": "12"
+        }
+      }
+    },
+    "PlantResilience": {
+      "label": {
+        "en": "Plant Resilience",
+        "uk": "Стійкість рослин"
+      },
+      "description": {
+        "en": "How much water plants will lose per day, and their ability to avoid disease.",
+        "uk": "Скільки води втрачають рослини за день і їхня здатність уникати хвороб."
+      },
+      "options": {
+        "1": {
+          "en": "Very High",
+          "uk": "Дуже висока"
+        },
+        "2": {
+          "en": "High",
+          "uk": "Висока"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "4": {
+          "en": "Low",
+          "uk": "Низька"
+        },
+        "5": {
+          "en": "Very Low",
+          "uk": "Дуже низька"
+        }
+      }
+    },
+    "PlantAbundance": {
+      "label": {
+        "en": "Plant Abundance",
+        "uk": "Врожайність рослин"
+      },
+      "description": {
+        "en": "The yield of plants when harvested.",
+        "uk": "Врожайність рослин під час збору."
+      },
+      "options": {
+        "1": {
+          "en": "Very Poor",
+          "uk": "Дуже бідна"
+        },
+        "2": {
+          "en": "Poor",
+          "uk": "Бідна"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "4": {
+          "en": "Abundant",
+          "uk": "Рясна"
+        },
+        "5": {
+          "en": "Very Abundant",
+          "uk": "Дуже рясна"
+        }
+      }
+    },
+    "EndRegen": {
+      "label": {
+        "en": "Endurance Regen",
+        "uk": "Відновлення витривалості"
+      },
+      "description": {
+        "en": "Recovery from being tired after performing actions.",
+        "uk": "Відновлення після втоми від виконання дій."
+      },
+      "options": {
+        "1": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "5": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "Helicopter": {
+      "label": {
+        "en": "Helicopter Event",
+        "uk": "Подія з гелікоптером"
+      },
+      "description": {
+        "en": "How regularly a helicopter passes over the Event Zone.",
+        "uk": "Як часто гелікоптер пролітає над зоною події."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Once",
+          "uk": "Один раз"
+        },
+        "3": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "4": {
+          "en": "Often",
+          "uk": "Часто"
+        }
+      }
+    },
+    "MetaEvent": {
+      "label": {
+        "en": "Meta Event",
+        "uk": "Мета-подія"
+      },
+      "description": {
+        "en": "How often zombie-attracting metagame events like distant gunshots will occur.",
+        "uk": "Як часто відбуваються мета-події, що приваблюють зомбі, наприклад, далекі постріли."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "3": {
+          "en": "Often",
+          "uk": "Часто"
+        }
+      }
+    },
+    "SleepingEvent": {
+      "label": {
+        "en": "Sleeping Event",
+        "uk": "Подія під час сну"
+      },
+      "description": {
+        "en": "How often events during the player's sleep, like nightmares, occur.",
+        "uk": "Як часто трапляються події під час сну гравця, наприклад, кошмари."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "3": {
+          "en": "Often",
+          "uk": "Часто"
+        }
+      }
+    },
+    "GeneratorFuelConsumption": {
+      "label": {
+        "en": "Generator Fuel Consumption",
+        "uk": "Витрата палива генератором"
+      },
+      "description": {
+        "en": "How much fuel is consumed by generators per in-game hour.",
+        "uk": "Скільки палива споживає генератор за одну ігрову годину."
+      }
+    },
+    "GeneratorSpawning": {
+      "label": {
+        "en": "Generator Spawn Chance",
+        "uk": "Шанс появи генератора"
+      },
+      "description": {
+        "en": "The chance of electrical generators spawning on the map.",
+        "uk": "Шанс появи електрогенераторів на карті."
+      },
+      "options": {
+        "1": {
+          "en": "None (not recommended)",
+          "uk": "Відсутній (не рекомендовано)"
+        },
+        "2": {
+          "en": "Insanely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Extremely Rare",
+          "uk": "Дуже рідко"
+        },
+        "4": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "5": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "6": {
+          "en": "Common",
+          "uk": "Часто"
+        },
+        "7": {
+          "en": "Abundant",
+          "uk": "Рясно"
+        }
+      }
+    },
+    "AnnotatedMapChance": {
+      "label": {
+        "en": "Annotated Map Chance",
+        "uk": "Шанс карти з нотатками"
+      },
+      "description": {
+        "en": "How often a looted map will have notes on it, written by a deceased survivor.",
+        "uk": "Як часто на знайденій карті є нотатки, залишені загиблим виживальцем."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        }
+      }
+    },
+    "CharacterFreePoints": {
+      "label": {
+        "en": "Character Free Points",
+        "uk": "Вільні очки персонажа"
+      },
+      "description": {
+        "en": "Adds free trait points during character creation.",
+        "uk": "Додає вільні очки рис під час створення персонажа."
+      }
+    },
+    "ConstructionBonusPoints": {
+      "label": {
+        "en": "Construction Bonus HP",
+        "uk": "Бонус міцності будівель"
+      },
+      "description": {
+        "en": "Gives player-built constructions extra hit points so they are more resistant to zombie damage.",
+        "uk": "Надає побудованим гравцем спорудам додаткову міцність, щоб вони краще витримували атаки зомбі."
+      },
+      "options": {
+        "1": {
+          "en": "Very Low",
+          "uk": "Дуже низький"
+        },
+        "2": {
+          "en": "Low",
+          "uk": "Низький"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "4": {
+          "en": "High",
+          "uk": "Високий"
+        },
+        "5": {
+          "en": "Very High",
+          "uk": "Дуже високий"
+        }
+      }
+    },
+    "NightDarkness": {
+      "label": {
+        "en": "Night Darkness",
+        "uk": "Темрява вночі"
+      },
+      "description": {
+        "en": "The level of ambient lighting at night.",
+        "uk": "Рівень навколишнього освітлення вночі."
+      },
+      "options": {
+        "1": {
+          "en": "Pitch Black",
+          "uk": "Абсолютна темрява"
+        },
+        "2": {
+          "en": "Dark",
+          "uk": "Темно"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "Bright",
+          "uk": "Світло"
+        }
+      }
+    },
+    "NightLength": {
+      "label": {
+        "en": "Night Length",
+        "uk": "Тривалість ночі"
+      },
+      "description": {
+        "en": "The time from dusk to dawn.",
+        "uk": "Час від сутінків до світанку."
+      },
+      "options": {
+        "1": {
+          "en": "Always Night",
+          "uk": "Завжди ніч"
+        },
+        "2": {
+          "en": "Long",
+          "uk": "Довга"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "4": {
+          "en": "Short",
+          "uk": "Коротка"
+        },
+        "5": {
+          "en": "Always Day",
+          "uk": "Завжди день"
+        }
+      }
+    },
+    "BoneFracture": {
+      "label": {
+        "en": "Bone Fracture",
+        "uk": "Переломи кісток"
+      },
+      "description": {
+        "en": "If survivors can get broken limbs from impacts, zombie damage, falls etc.",
+        "uk": "Чи можуть виживальці отримувати переломи кінцівок від ударів, атак зомбі, падінь тощо."
+      }
+    },
+    "InjurySeverity": {
+      "label": {
+        "en": "Injury Severity",
+        "uk": "Тяжкість травм"
+      },
+      "description": {
+        "en": "The impact that injuries have on your body, and their healing time.",
+        "uk": "Вплив травм на тіло та час їх загоєння."
+      },
+      "options": {
+        "1": {
+          "en": "Low",
+          "uk": "Низька"
+        },
+        "2": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "3": {
+          "en": "High",
+          "uk": "Висока"
+        }
+      }
+    },
+    "HoursForCorpseRemoval": {
+      "label": {
+        "en": "Hours For Corpse Removal",
+        "uk": "Години до видалення трупів"
+      },
+      "description": {
+        "en": "How long, in hours, before dead zombie bodies disappear from the world. If 0, maggots will not spawn on corpses.",
+        "uk": "Скільки годин минає, перш ніж трупи зомбі зникають зі світу. Якщо 0, на трупах не з'являтимуться личинки."
+      }
+    },
+    "DecayingCorpseHealthImpact": {
+      "label": {
+        "en": "Corpse Health Impact",
+        "uk": "Вплив трупів на здоров'я"
+      },
+      "description": {
+        "en": "The impact that nearby decaying bodies has on the player's health and emotions.",
+        "uk": "Вплив трупів, що розкладаються поруч, на здоров'я та емоції гравця."
+      },
+      "options": {
+        "1": {
+          "en": "None",
+          "uk": "Відсутній"
+        },
+        "2": {
+          "en": "Low",
+          "uk": "Низький"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "4": {
+          "en": "High",
+          "uk": "Високий"
+        },
+        "5": {
+          "en": "Insane",
+          "uk": "Надзвичайний"
+        }
+      }
+    },
+    "ZombieHealthImpact": {
+      "label": {
+        "en": "Zombie Health Impact",
+        "uk": "Вплив зомбі на здоров'я"
+      },
+      "description": {
+        "en": "Whether nearby 'living' zombies have the same impact on the player's health and emotions as decaying corpses.",
+        "uk": "Чи мають зомбі поруч ('живі') такий самий вплив на здоров'я та емоції гравця, як і трупи, що розкладаються."
+      }
+    },
+    "BloodLevel": {
+      "label": {
+        "en": "Blood Level",
+        "uk": "Рівень крові"
+      },
+      "description": {
+        "en": "How much blood is sprayed on floors and walls by injuries.",
+        "uk": "Скільки крові розбризкується на підлозі та стінах через травми."
+      },
+      "options": {
+        "1": {
+          "en": "None",
+          "uk": "Відсутній"
+        },
+        "2": {
+          "en": "Low",
+          "uk": "Низький"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "4": {
+          "en": "High",
+          "uk": "Високий"
+        },
+        "5": {
+          "en": "Ultra Gore",
+          "uk": "Ультра криваво"
+        }
+      }
+    },
+    "ClothingDegradation": {
+      "label": {
+        "en": "Clothing Degradation",
+        "uk": "Зношення одягу"
+      },
+      "description": {
+        "en": "How quickly clothing degrades, becomes dirty, and bloodied.",
+        "uk": "Як швидко одяг зношується, забруднюється та вкривається кров'ю."
+      },
+      "options": {
+        "1": {
+          "en": "Disabled",
+          "uk": "Вимкнено"
+        },
+        "2": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "Fast",
+          "uk": "Швидко"
+        }
+      }
+    },
+    "FireSpread": {
+      "label": {
+        "en": "Fire Spread",
+        "uk": "Розповсюдження вогню"
+      },
+      "description": {
+        "en": "If fires spread when started.",
+        "uk": "Чи розповсюджується вогонь після займання."
+      }
+    },
+    "DaysForRottenFoodRemoval": {
+      "label": {
+        "en": "Days For Rotten Food Removal",
+        "uk": "Днів до видалення гнилої їжі"
+      },
+      "description": {
+        "en": "Number of in-game days before rotten food is removed from the map. -1 means rotten food is never removed.",
+        "uk": "Кількість ігрових днів до видалення гнилої їжі з карти. -1 означає, що гнила їжа ніколи не видаляється."
+      }
+    },
+    "AllowExteriorGenerator": {
+      "label": {
+        "en": "Allow Exterior Generator",
+        "uk": "Дозволити генератор ззовні"
+      },
+      "description": {
+        "en": "If enabled, generators will work on exterior tiles. This will allow, for example, the powering of gas pumps.",
+        "uk": "Якщо увімкнено, генератори працюватимуть на зовнішніх тайлах. Це дозволить, наприклад, живити бензоколонки."
+      }
+    },
+    "MaxFogIntensity": {
+      "label": {
+        "en": "Max Fog Intensity",
+        "uk": "Макс. інтенсивність туману"
+      },
+      "description": {
+        "en": "Maximum intensity of fog.",
+        "uk": "Максимальна інтенсивність туману."
+      },
+      "options": {
+        "1": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "2": {
+          "en": "Moderate",
+          "uk": "Помірна"
+        },
+        "3": {
+          "en": "Low",
+          "uk": "Низька"
+        },
+        "4": {
+          "en": "None",
+          "uk": "Відсутня"
+        }
+      }
+    },
+    "MaxRainFxIntensity": {
+      "label": {
+        "en": "Max Rain FX Intensity",
+        "uk": "Макс. інтенсивність ефекту дощу"
+      },
+      "description": {
+        "en": "Maximum intensity of rain visual effects.",
+        "uk": "Максимальна інтенсивність візуальних ефектів дощу."
+      },
+      "options": {
+        "1": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "2": {
+          "en": "Moderate",
+          "uk": "Помірна"
+        },
+        "3": {
+          "en": "Low",
+          "uk": "Низька"
+        }
+      }
+    },
+    "EnableSnowOnGround": {
+      "label": {
+        "en": "Snow Accumulation",
+        "uk": "Накопичення снігу"
+      },
+      "description": {
+        "en": "If snow will accumulate on the ground. If disabled, snow will still show on vegetation and rooftops.",
+        "uk": "Чи накопичується сніг на землі. Якщо вимкнено, сніг усе одно з'являтиметься на рослинності та дахах."
+      }
+    },
+    "AttackBlockMovements": {
+      "label": {
+        "en": "Attack Blocks Movement",
+        "uk": "Атака блокує рух"
+      },
+      "description": {
+        "en": "If melee attacking slows you down.",
+        "uk": "Чи сповільнює вас атака в ближньому бою."
+      }
+    },
+    "SurvivorHouseChance": {
+      "label": {
+        "en": "Survivor House Chance",
+        "uk": "Шанс будинку виживальця"
+      },
+      "description": {
+        "en": "The chance of finding randomized buildings on the map (eg. burnt out houses, ones containing loot stashes or dead bodies).",
+        "uk": "Шанс знайти на карті випадково згенеровані будівлі (наприклад, спалені будинки, будинки зі схованками здобичі чи трупами)."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        },
+        "7": {
+          "en": "Always Tries",
+          "uk": "Завжди намагається"
+        }
+      }
+    },
+    "VehicleStoryChance": {
+      "label": {
+        "en": "Vehicle Story Chance",
+        "uk": "Шанс автомобільної історії"
+      },
+      "description": {
+        "en": "The chance of road stories (eg. police roadblocks) spawning.",
+        "uk": "Шанс появи дорожніх історій (наприклад, поліцейських блокпостів)."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        },
+        "7": {
+          "en": "Always Tries",
+          "uk": "Завжди намагається"
+        }
+      }
+    },
+    "ZoneStoryChance": {
+      "label": {
+        "en": "Zone Story Chance",
+        "uk": "Шанс зональної історії"
+      },
+      "description": {
+        "en": "The chance of stories specific to map zones (eg. a campsite in a forest) spawning.",
+        "uk": "Шанс появи історій, специфічних для зон карти (наприклад, табору в лісі)."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        },
+        "7": {
+          "en": "Always Tries",
+          "uk": "Завжди намагається"
+        }
+      }
+    },
+    "AllClothesUnlocked": {
+      "label": {
+        "en": "All Clothes Unlocked",
+        "uk": "Весь одяг розблоковано"
+      },
+      "description": {
+        "en": "Allows you to select from every piece of clothing in the game when customizing your character.",
+        "uk": "Дозволяє обрати будь-який предмет одягу в грі під час налаштування персонажа."
+      }
+    },
+    "EnableTaintedWaterText": {
+      "label": {
+        "en": "Tainted Water Warning",
+        "uk": "Попередження про заражену воду"
+      },
+      "description": {
+        "en": "If tainted water will show a warning marking it as such.",
+        "uk": "Чи показує заражена вода попередження про це."
+      }
+    },
+    "EnableVehicles": {
+      "label": {
+        "en": "Enable Vehicles",
+        "uk": "Увімкнути транспорт"
+      },
+      "description": {
+        "en": "If vehicles will spawn.",
+        "uk": "Чи з'являється транспорт у грі."
+      }
+    },
+    "CarSpawnRate": {
+      "label": {
+        "en": "Car Spawn Rate",
+        "uk": "Частота появи авто"
+      },
+      "description": {
+        "en": "How frequently vehicles can be discovered on the map.",
+        "uk": "Як часто транспорт можна знайти на карті."
+      },
+      "options": {
+        "1": {
+          "en": "None",
+          "uk": "Відсутня"
+        },
+        "2": {
+          "en": "Very Low",
+          "uk": "Дуже низька"
+        },
+        "3": {
+          "en": "Low",
+          "uk": "Низька"
+        },
+        "4": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "5": {
+          "en": "High",
+          "uk": "Висока"
+        }
+      }
+    },
+    "ZombieAttractionMultiplier": {
+      "label": {
+        "en": "Zombie Attraction Multiplier",
+        "uk": "Множник приваблення зомбі"
+      },
+      "description": {
+        "en": "General engine loudness to zombies.",
+        "uk": "Загальна гучність двигуна для зомбі."
+      }
+    },
+    "VehicleEasyUse": {
+      "label": {
+        "en": "Vehicle Easy Use",
+        "uk": "Легке використання транспорту"
+      },
+      "description": {
+        "en": "Whether found vehicles are locked, need keys to start etc.",
+        "uk": "Чи замкнений знайдений транспорт, чи потрібні ключі для запуску тощо."
+      }
+    },
+    "InitialGas": {
+      "label": {
+        "en": "Initial Gas",
+        "uk": "Початкова кількість пального"
+      },
+      "description": {
+        "en": "How full the gas tank of discovered vehicles will be.",
+        "uk": "Наскільки повний бак пального в знайденого транспорту."
+      },
+      "options": {
+        "1": {
+          "en": "Very Low",
+          "uk": "Дуже мало"
+        },
+        "2": {
+          "en": "Low",
+          "uk": "Мало"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "High",
+          "uk": "Багато"
+        },
+        "5": {
+          "en": "Very High",
+          "uk": "Дуже багато"
+        },
+        "6": {
+          "en": "Full",
+          "uk": "Повний"
+        }
+      }
+    },
+    "FuelStationGasInfinite": {
+      "label": {
+        "en": "Infinite Gas Station Fuel",
+        "uk": "Нескінченне пальне на заправках"
+      },
+      "description": {
+        "en": "If enabled, gas pumps will never run out of fuel.",
+        "uk": "Якщо увімкнено, бензоколонки ніколи не закінчать пальне."
+      }
+    },
+    "FuelStationGasMin": {
+      "label": {
+        "en": "Gas Station Fuel Min",
+        "uk": "Мін. пальне на заправках"
+      },
+      "description": {
+        "en": "The minimum amount of gasoline that can spawn in gas pumps. Check the Advanced box to use a custom amount.",
+        "uk": "Мінімальна кількість пального, яка може з'явитися на бензоколонках. Позначте «Розширені», щоб використати власне значення."
+      }
+    },
+    "FuelStationGasMax": {
+      "label": {
+        "en": "Gas Station Fuel Max",
+        "uk": "Макс. пальне на заправках"
+      },
+      "description": {
+        "en": "The maximum amount of gasoline that can spawn in gas pumps. Check the Advanced box to use a custom amount.",
+        "uk": "Максимальна кількість пального, яка може з'явитися на бензоколонках. Позначте «Розширені», щоб використати власне значення."
+      }
+    },
+    "FuelStationGasEmptyChance": {
+      "label": {
+        "en": "Gas Station Empty Chance",
+        "uk": "Шанс порожньої заправки"
+      },
+      "description": {
+        "en": "The chance, as a percentage, that individual gas pumps will initially have no fuel.",
+        "uk": "Шанс у відсотках, що окрема бензоколонка спочатку буде без пального."
+      }
+    },
+    "LockedCar": {
+      "label": {
+        "en": "Locked Car Chance",
+        "uk": "Шанс замкненого авто"
+      },
+      "description": {
+        "en": "How likely cars will be locked.",
+        "uk": "Наскільки ймовірно, що авто буде замкнене."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        }
+      }
+    },
+    "CarGasConsumption": {
+      "label": {
+        "en": "Car Gas Consumption",
+        "uk": "Витрата пального авто"
+      },
+      "description": {
+        "en": "How gas-hungry vehicles are.",
+        "uk": "Наскільки прожерливий транспорт до пального."
+      }
+    },
+    "CarGeneralCondition": {
+      "label": {
+        "en": "Car General Condition",
+        "uk": "Загальний стан авто"
+      },
+      "description": {
+        "en": "General condition discovered vehicles will be in.",
+        "uk": "Загальний стан, у якому буде знайдений транспорт."
+      },
+      "options": {
+        "1": {
+          "en": "Very Low",
+          "uk": "Дуже поганий"
+        },
+        "2": {
+          "en": "Low",
+          "uk": "Поганий"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "4": {
+          "en": "High",
+          "uk": "Хороший"
+        },
+        "5": {
+          "en": "Very High",
+          "uk": "Дуже хороший"
+        }
+      }
+    },
+    "CarDamageOnImpact": {
+      "label": {
+        "en": "Car Damage On Impact",
+        "uk": "Пошкодження авто при зіткненні"
+      },
+      "description": {
+        "en": "The amount of damage dealt to vehicles that crash.",
+        "uk": "Кількість пошкоджень, що завдаються транспорту при аварії."
+      },
+      "options": {
+        "1": {
+          "en": "Very Low",
+          "uk": "Дуже мало"
+        },
+        "2": {
+          "en": "Low",
+          "uk": "Мало"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "High",
+          "uk": "Багато"
+        },
+        "5": {
+          "en": "Very High",
+          "uk": "Дуже багато"
+        }
+      }
+    },
+    "DamageToPlayerFromHitByACar": {
+      "label": {
+        "en": "Player Damage From Car",
+        "uk": "Шкода гравцю від авто"
+      },
+      "description": {
+        "en": "Damage received by the player from being hit by a car.",
+        "uk": "Шкода, яку отримує гравець, коли його збиває авто."
+      },
+      "options": {
+        "1": {
+          "en": "None",
+          "uk": "Відсутня"
+        },
+        "2": {
+          "en": "Low",
+          "uk": "Мала"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "4": {
+          "en": "High",
+          "uk": "Велика"
+        },
+        "5": {
+          "en": "Very High",
+          "uk": "Дуже велика"
+        }
+      }
+    },
+    "TrafficJam": {
+      "label": {
+        "en": "Traffic Jam",
+        "uk": "Затори з авто"
+      },
+      "description": {
+        "en": "If traffic jams consisting of wrecked cars will appear on main roads.",
+        "uk": "Чи з'являються на головних дорогах затори з розбитих авто."
+      }
+    },
+    "CarAlarm": {
+      "label": {
+        "en": "Car Alarm Chance",
+        "uk": "Шанс автосигналізації"
+      },
+      "description": {
+        "en": "How frequently discovered vehicles have active alarms.",
+        "uk": "Як часто знайдений транспорт має активну сигналізацію."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        }
+      }
+    },
+    "PlayerDamageFromCrash": {
+      "label": {
+        "en": "Player Damage From Crash",
+        "uk": "Шкода гравцю від аварії"
+      },
+      "description": {
+        "en": "If the player can get injured from being in a car accident.",
+        "uk": "Чи може гравець отримати травми, потрапивши в автомобільну аварію."
+      }
+    },
+    "SirenShutoffHours": {
+      "label": {
+        "en": "Siren Shutoff Hours",
+        "uk": "Годин до вимкнення сирени"
+      },
+      "description": {
+        "en": "How many in-game hours before a wailing siren shuts off.",
+        "uk": "Скільки ігрових годин минає до вимкнення сирени, що виє."
+      }
+    },
+    "ChanceHasGas": {
+      "label": {
+        "en": "Chance Has Gas",
+        "uk": "Шанс наявності пального"
+      },
+      "description": {
+        "en": "The chance of finding a vehicle with gas in its tank.",
+        "uk": "Шанс знайти транспорт з пальним у баку."
+      },
+      "options": {
+        "1": {
+          "en": "Low",
+          "uk": "Малий"
+        },
+        "2": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "3": {
+          "en": "High",
+          "uk": "Великий"
+        }
+      }
+    },
+    "RecentlySurvivorVehicles": {
+      "label": {
+        "en": "Recently Survivor Vehicles",
+        "uk": "Недавно доглянутий транспорт"
+      },
+      "description": {
+        "en": "Whether a player can discover a car that has been cared for after the Knox infection struck.",
+        "uk": "Чи може гравець знайти авто, за яким доглядали вже після спалаху інфекції Нокс."
+      },
+      "options": {
+        "1": {
+          "en": "None",
+          "uk": "Відсутньо"
+        },
+        "2": {
+          "en": "Low",
+          "uk": "Мало"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "4": {
+          "en": "High",
+          "uk": "Багато"
+        }
+      }
+    },
+    "MultiHitZombies": {
+      "label": {
+        "en": "Multi-Hit Zombies",
+        "uk": "Багатоцільові удари по зомбі"
+      },
+      "description": {
+        "en": "If certain melee weapons will be able to strike multiple zombies in one hit.",
+        "uk": "Чи можуть певні види зброї ближнього бою вражати кількох зомбі одним ударом."
+      }
+    },
+    "RearVulnerability": {
+      "label": {
+        "en": "Rear Vulnerability",
+        "uk": "Вразливість зі спини"
+      },
+      "description": {
+        "en": "Chance of being bitten when a zombie attacks from behind.",
+        "uk": "Шанс отримати укус, коли зомбі атакує ззаду."
+      },
+      "options": {
+        "1": {
+          "en": "Low",
+          "uk": "Малий"
+        },
+        "2": {
+          "en": "Medium",
+          "uk": "Середній"
+        },
+        "3": {
+          "en": "High",
+          "uk": "Великий"
+        }
+      }
+    },
+    "SirenEffectsZombies": {
+      "label": {
+        "en": "Siren Effects Zombies",
+        "uk": "Сирени приваблюють зомбі"
+      },
+      "description": {
+        "en": "If zombies will head towards the sound of vehicle sirens.",
+        "uk": "Чи прямують зомбі на звук автомобільних сирен."
+      }
+    },
+    "AnimalStatsModifier": {
+      "label": {
+        "en": "Animal Stats Modifier",
+        "uk": "Модифікатор показників тварин"
+      },
+      "description": {
+        "en": "Speed at which animal stats (hunger, thirst etc.) reduce.",
+        "uk": "Швидкість зниження показників тварин (голод, спрага тощо)."
+      },
+      "options": {
+        "1": {
+          "en": "Ultra Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "3": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "4": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "5": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "6": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "AnimalMetaStatsModifier": {
+      "label": {
+        "en": "Animal Meta Stats Modifier",
+        "uk": "Модифікатор показників тварин (мета)"
+      },
+      "description": {
+        "en": "Speed at which animal stats (hunger, thirst etc.) reduce while in meta (not actively simulated).",
+        "uk": "Швидкість зниження показників тварин (голод, спрага тощо), коли вони не симулюються активно (мета-режим)."
+      },
+      "options": {
+        "1": {
+          "en": "Ultra Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "3": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "4": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "5": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "6": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "AnimalPregnancyTime": {
+      "label": {
+        "en": "Animal Pregnancy Time",
+        "uk": "Тривалість вагітності тварин"
+      },
+      "description": {
+        "en": "How long animals will be pregnant for before giving birth.",
+        "uk": "Скільки часу триває вагітність тварин до народження потомства."
+      },
+      "options": {
+        "1": {
+          "en": "Ultra Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "3": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "4": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "5": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "6": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "AnimalAgeModifier": {
+      "label": {
+        "en": "Animal Age Modifier",
+        "uk": "Модифікатор віку тварин"
+      },
+      "description": {
+        "en": "Speed at which animals age.",
+        "uk": "Швидкість старіння тварин."
+      },
+      "options": {
+        "1": {
+          "en": "Ultra Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "3": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "4": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "5": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "6": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "AnimalMilkIncModifier": {
+      "label": {
+        "en": "Animal Milk Increase Modifier",
+        "uk": "Модифікатор надою молока"
+      },
+      "description": {
+        "en": "Speed at which animal milk production increases.",
+        "uk": "Швидкість збільшення надою молока в тварин."
+      },
+      "options": {
+        "1": {
+          "en": "Ultra Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "3": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "4": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "5": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "6": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "AnimalWoolIncModifier": {
+      "label": {
+        "en": "Animal Wool Increase Modifier",
+        "uk": "Модифікатор приросту вовни"
+      },
+      "description": {
+        "en": "Speed at which animal wool growth increases.",
+        "uk": "Швидкість збільшення приросту вовни в тварин."
+      },
+      "options": {
+        "1": {
+          "en": "Ultra Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "3": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "4": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "5": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "6": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "AnimalRanchChance": {
+      "label": {
+        "en": "Animal Ranch Chance",
+        "uk": "Шанс тварин на фермі"
+      },
+      "description": {
+        "en": "The chance of finding animals on a farm.",
+        "uk": "Шанс знайти тварин на фермі."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        },
+        "7": {
+          "en": "Always",
+          "uk": "Завжди"
+        }
+      }
+    },
+    "AnimalGrassRegrowTime": {
+      "label": {
+        "en": "Animal Grass Regrow Time",
+        "uk": "Час відростання трави"
+      },
+      "description": {
+        "en": "The number of hours grass will regrow after being eaten by an animal or cut by the player.",
+        "uk": "Кількість годин, за які трава відростає після того, як її з'їла тварина чи скосив гравець."
+      }
+    },
+    "AnimalMetaPredator": {
+      "label": {
+        "en": "Animal Meta Predator",
+        "uk": "Мета-хижак для тварин"
+      },
+      "description": {
+        "en": "If a meta (ie. not actually visible in-game) fox may attack your chickens if the hutch's door is left open at night.",
+        "uk": "Чи може мета-лисиця (тобто не показана безпосередньо в грі) напасти на курей, якщо дверцята курника залишили відкритими на ніч."
+      }
+    },
+    "AnimalMatingSeason": {
+      "label": {
+        "en": "Animal Mating Season",
+        "uk": "Сезон парування тварин"
+      },
+      "description": {
+        "en": "If on, animals will only mate during their breeding season (if any). Otherwise they can reproduce/lay eggs all year round.",
+        "uk": "Якщо увімкнено, тварини паруватимуться лише в сезон розмноження (якщо він є). Інакше вони можуть розмножуватися/нести яйця цілий рік."
+      }
+    },
+    "AnimalEggHatch": {
+      "label": {
+        "en": "Animal Egg Hatch Time",
+        "uk": "Час виведення з яєць"
+      },
+      "description": {
+        "en": "How long before baby animals will hatch from eggs.",
+        "uk": "Скільки часу минає до вилуплення малят тварин з яєць."
+      },
+      "options": {
+        "1": {
+          "en": "Ultra Fast",
+          "uk": "Дуже швидко"
+        },
+        "2": {
+          "en": "Very Fast",
+          "uk": "Дуже швидко"
+        },
+        "3": {
+          "en": "Fast",
+          "uk": "Швидко"
+        },
+        "4": {
+          "en": "Normal",
+          "uk": "Нормально"
+        },
+        "5": {
+          "en": "Slow",
+          "uk": "Повільно"
+        },
+        "6": {
+          "en": "Very Slow",
+          "uk": "Дуже повільно"
+        }
+      }
+    },
+    "AnimalSoundAttractZombies": {
+      "label": {
+        "en": "Animal Sounds Attract Zombies",
+        "uk": "Звуки тварин приваблюють зомбі"
+      },
+      "description": {
+        "en": "If true, animal calls will attract nearby zombies.",
+        "uk": "Якщо увімкнено, звуки тварин приваблюватимуть зомбі поруч."
+      }
+    },
+    "AnimalTrackChance": {
+      "label": {
+        "en": "Animal Track Chance",
+        "uk": "Шанс слідів тварин"
+      },
+      "description": {
+        "en": "The chance of animals leaving tracks.",
+        "uk": "Шанс, що тварини залишать сліди."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        }
+      }
+    },
+    "AnimalPathChance": {
+      "label": {
+        "en": "Animal Path Chance",
+        "uk": "Шанс стежок тварин"
+      },
+      "description": {
+        "en": "The chance of creating a path for animals to be hunted.",
+        "uk": "Шанс створення стежки для полювання на тварин."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        }
+      }
+    },
+    "MaximumRatIndex": {
+      "label": {
+        "en": "Maximum Vermin Index",
+        "uk": "Максимальний індекс шкідників"
+      },
+      "description": {
+        "en": "The frequency and intensity of eg. rats in infested buildings.",
+        "uk": "Частота та інтенсивність, наприклад, щурів у заражених будівлях."
+      }
+    },
+    "DaysUntilMaximumRatIndex": {
+      "label": {
+        "en": "Days Until Maximum Vermin Index",
+        "uk": "Днів до макс. індексу шкідників"
+      },
+      "description": {
+        "en": "How long it takes for the Maximum Vermin Index to be reached.",
+        "uk": "Скільки часу потрібно для досягнення максимального індексу шкідників."
+      }
+    },
+    "MetaKnowledge": {
+      "label": {
+        "en": "Meta Knowledge",
+        "uk": "Мета-знання"
+      },
+      "description": {
+        "en": "If a piece of media hasn't been fully seen or read, this setting determines whether it's displayed fully, displayed as '???', or hidden completely.",
+        "uk": "Якщо медіа-предмет не був повністю переглянутий чи прочитаний, цей параметр визначає, чи показувати його повністю, як '???' чи приховати повністю."
+      },
+      "options": {
+        "1": {
+          "en": "Fully revealed",
+          "uk": "Повністю відкрито"
+        },
+        "2": {
+          "en": "Shown as ???",
+          "uk": "Показано як ???"
+        },
+        "3": {
+          "en": "Completely hidden",
+          "uk": "Повністю приховано"
+        }
+      }
+    },
+    "SeeNotLearntRecipe": {
+      "label": {
+        "en": "See Not Learnt Recipes",
+        "uk": "Бачити невивчені рецепти"
+      },
+      "description": {
+        "en": "If true, you will be able to see any recipes that can be done with a station, even if you haven't learnt them yet.",
+        "uk": "Якщо увімкнено, ви зможете бачити всі рецепти, доступні на верстаті, навіть якщо ще не вивчили їх."
+      }
+    },
+    "MaximumLootedBuildingRooms": {
+      "label": {
+        "en": "Max Looted Building Rooms",
+        "uk": "Макс. кімнат в обшуканій будівлі"
+      },
+      "description": {
+        "en": "If a building has more than this amount of rooms it will not be looted.",
+        "uk": "Якщо в будівлі більше кімнат, ніж це значення, вона не буде попередньо обшукана."
+      }
+    },
+    "EnablePoisoning": {
+      "label": {
+        "en": "Enable Poisoning",
+        "uk": "Увімкнути отруєння"
+      },
+      "description": {
+        "en": "If poison can be added to food.",
+        "uk": "Чи можна додавати отруту в їжу."
+      },
+      "options": {
+        "1": {
+          "en": "True",
+          "uk": "Так"
+        },
+        "2": {
+          "en": "False",
+          "uk": "Ні"
+        },
+        "3": {
+          "en": "Only bleach poisoning is disabled",
+          "uk": "Вимкнено лише отруєння відбілювачем"
+        }
+      }
+    },
+    "MaggotSpawn": {
+      "label": {
+        "en": "Maggot Spawn",
+        "uk": "Поява личинок"
+      },
+      "description": {
+        "en": "If/when maggots can spawn in corpses.",
+        "uk": "Чи/коли личинки можуть з'являтися в трупах."
+      },
+      "options": {
+        "1": {
+          "en": "In and Around Bodies",
+          "uk": "У тілах і навколо них"
+        },
+        "2": {
+          "en": "In Bodies Only",
+          "uk": "Лише в тілах"
+        },
+        "3": {
+          "en": "Never",
+          "uk": "Ніколи"
+        }
+      }
+    },
+    "LightBulbLifespan": {
+      "label": {
+        "en": "Light Bulb Lifespan",
+        "uk": "Термін служби лампочок"
+      },
+      "description": {
+        "en": "The higher the value, the longer lightbulbs last before breaking. If 0, lightbulbs will never break. Does not affect vehicle headlights.",
+        "uk": "Чим вище значення, тим довше служать лампочки до перегорання. Якщо 0, лампочки ніколи не перегорають. Не впливає на фари авто."
+      }
+    },
+    "FishAbundance": {
+      "label": {
+        "en": "Fish Abundance",
+        "uk": "Рясність риби"
+      },
+      "description": {
+        "en": "The abundance of fish in rivers and lakes.",
+        "uk": "Рясність риби в річках і озерах."
+      },
+      "options": {
+        "1": {
+          "en": "Very Poor",
+          "uk": "Дуже бідна"
+        },
+        "2": {
+          "en": "Poor",
+          "uk": "Бідна"
+        },
+        "3": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "4": {
+          "en": "Abundant",
+          "uk": "Рясна"
+        },
+        "5": {
+          "en": "Very Abundant",
+          "uk": "Дуже рясна"
+        }
+      }
+    },
+    "LevelForMediaXPCutoff": {
+      "label": {
+        "en": "Media XP Cutoff Level",
+        "uk": "Рівень відсічення досвіду від медіа"
+      },
+      "description": {
+        "en": "When a skill is at this level or above, television/VHS/other media will not provide XP for it.",
+        "uk": "Коли навичка досягає цього рівня або вище, телебачення/відео/інші медіа більше не дають досвіду за неї."
+      }
+    },
+    "LevelForDismantleXPCutoff": {
+      "label": {
+        "en": "Dismantle XP Cutoff Level",
+        "uk": "Рівень відсічення досвіду розбирання"
+      },
+      "description": {
+        "en": "When a skill is at this level or above, scrapping furniture does not provide XP for the relevant skill. Does not apply to Electrical.",
+        "uk": "Коли навичка досягає цього рівня або вище, розбирання меблів більше не дає досвіду за відповідну навичку. Не стосується електрики."
+      }
+    },
+    "BloodSplatLifespanDays": {
+      "label": {
+        "en": "Blood Splat Lifespan (Days)",
+        "uk": "Тривалість плям крові (днів)"
+      },
+      "description": {
+        "en": "Number of days before old blood splats are removed. Removal happens when map chunks are loaded. 0 means they will never disappear.",
+        "uk": "Кількість днів до видалення старих плям крові. Видалення відбувається під час завантаження ділянок карти. 0 означає, що вони ніколи не зникнуть."
+      }
+    },
+    "LiteratureCooldown": {
+      "label": {
+        "en": "Literature Cooldown",
+        "uk": "Перечитування літератури"
+      },
+      "description": {
+        "en": "Number of days before one can benefit from reading previously read literature items.",
+        "uk": "Кількість днів до того, як можна знову отримати користь від повторного читання прочитаної літератури."
+      }
+    },
+    "NegativeTraitsPenalty": {
+      "label": {
+        "en": "Negative Traits Penalty",
+        "uk": "Штраф за негативні риси"
+      },
+      "description": {
+        "en": "If there are diminishing returns on bonus trait points provided from selecting multiple negative traits.",
+        "uk": "Чи зменшується віддача бонусних очок рис при виборі кількох негативних рис."
+      },
+      "options": {
+        "1": {
+          "en": "None",
+          "uk": "Відсутній"
+        },
+        "2": {
+          "en": "1 point penalty for every 3 negative traits selected",
+          "uk": "Штраф 1 очко за кожні 3 обрані негативні риси"
+        },
+        "3": {
+          "en": "1 point penalty for every 2 negative traits selected",
+          "uk": "Штраф 1 очко за кожні 2 обрані негативні риси"
+        },
+        "4": {
+          "en": "1 point penalty for every negative trait selected after the first",
+          "uk": "Штраф 1 очко за кожну негативну рису після першої"
+        }
+      }
+    },
+    "MinutesPerPage": {
+      "label": {
+        "en": "Minutes Per Page",
+        "uk": "Хвилин на сторінку"
+      },
+      "description": {
+        "en": "The number of in-game minutes it takes to read one page of a skill book.",
+        "uk": "Кількість ігрових хвилин, потрібних для прочитання однієї сторінки книги навичок."
+      }
+    },
+    "KillInsideCrops": {
+      "label": {
+        "en": "Kill Indoor Crops",
+        "uk": "Знищувати рослини в приміщенні"
+      },
+      "description": {
+        "en": "When enabled, crops and herbs grown inside buildings will die. Does not affect houseplants.",
+        "uk": "Якщо увімкнено, культури та трави, вирощені в приміщеннях, гинуть. Не впливає на кімнатні рослини."
+      }
+    },
+    "PlantGrowingSeasons": {
+      "label": {
+        "en": "Plant Growing Seasons",
+        "uk": "Сезонність росту рослин"
+      },
+      "description": {
+        "en": "When enabled, the growth of plants is affected by seasons.",
+        "uk": "Якщо увімкнено, ріст рослин залежить від пори року."
+      }
+    },
+    "PlaceDirtAboveground": {
+      "label": {
+        "en": "Place Dirt Aboveground",
+        "uk": "Розміщення землі над рівнем землі"
+      },
+      "description": {
+        "en": "[!] It is recommended that you DO NOT change this. Changing this can result in performance issues. [!] When enabled, dirt can be placed, and farming performed, on levels other than the ground level.",
+        "uk": "[!] Рекомендується НЕ змінювати це значення. Зміна може призвести до проблем з продуктивністю. [!] Якщо увімкнено, землю можна розміщувати, а фермерство здійснювати на рівнях, відмінних від рівня землі."
+      }
+    },
+    "FarmingSpeedNew": {
+      "label": {
+        "en": "Farming Speed",
+        "uk": "Швидкість фермерства"
+      },
+      "description": {
+        "en": "The speed of plant growth.",
+        "uk": "Швидкість росту рослин."
+      }
+    },
+    "FarmingAmountNew": {
+      "label": {
+        "en": "Farming Amount",
+        "uk": "Кількість врожаю"
+      },
+      "description": {
+        "en": "The abundance of harvested crops.",
+        "uk": "Рясність зібраного врожаю."
+      }
+    },
+    "MaximumLooted": {
+      "label": {
+        "en": "Maximum Looted Chance",
+        "uk": "Макс. шанс обшуканості"
+      },
+      "description": {
+        "en": "The chance that any building will already be looted when found. Check the Advanced box to use a custom number.",
+        "uk": "Шанс, що будь-яка будівля вже буде обшукана при знаходженні. Позначте «Розширені», щоб використати власне значення."
+      }
+    },
+    "DaysUntilMaximumLooted": {
+      "label": {
+        "en": "Days Until Maximum Looted",
+        "uk": "Днів до макс. шансу обшуканості"
+      },
+      "description": {
+        "en": "How long it takes for Maximum Looted Building Chance to be reached.",
+        "uk": "Скільки часу потрібно для досягнення максимального шансу обшуканості будівлі."
+      }
+    },
+    "RuralLooted": {
+      "label": {
+        "en": "Rural Looted Chance",
+        "uk": "Шанс обшуканості сільських будівель"
+      },
+      "description": {
+        "en": "The chance that any rural building will already be looted when found. Check the Advanced box to use a custom number.",
+        "uk": "Шанс, що будь-яка сільська будівля вже буде обшукана при знаходженні. Позначте «Розширені», щоб використати власне значення."
+      }
+    },
+    "MaximumDiminishedLoot": {
+      "label": {
+        "en": "Maximum Diminished Loot",
+        "uk": "Макс. зменшення здобичі"
+      },
+      "description": {
+        "en": "The maximum loot that won't spawn when Days Until Maximum Diminished Loot is reached. Check the Advanced box to use an exact percentage.",
+        "uk": "Максимальна частка здобичі, яка не з'явиться після досягнення «Днів до максимального зменшення здобичі». Позначте «Розширені», щоб використати точний відсоток."
+      }
+    },
+    "DaysUntilMaximumDiminishedLoot": {
+      "label": {
+        "en": "Days Until Maximum Diminished Loot",
+        "uk": "Днів до макс. зменшення здобичі"
+      },
+      "description": {
+        "en": "How long it takes for Maximum Diminished Loot Percentage to be reached.",
+        "uk": "Скільки часу потрібно для досягнення максимального відсотка зменшення здобичі."
+      }
+    },
+    "MuscleStrainFactor": {
+      "label": {
+        "en": "Muscle Strain Factor",
+        "uk": "Коефіцієнт м'язового навантаження"
+      },
+      "description": {
+        "en": "Functions as a multiplier when applying muscle strain from swinging weapons or carrying heavy loads.",
+        "uk": "Діє як множник при застосуванні м'язового навантаження від розмахування зброєю чи перенесення важких вантажів."
+      }
+    },
+    "DiscomfortFactor": {
+      "label": {
+        "en": "Discomfort Factor",
+        "uk": "Коефіцієнт дискомфорту"
+      },
+      "description": {
+        "en": "Functions as a multiplier when applying discomfort from worn items.",
+        "uk": "Діє як множник при застосуванні дискомфорту від одягнених предметів."
+      }
+    },
+    "WoundInfectionFactor": {
+      "label": {
+        "en": "Wound Infection Factor",
+        "uk": "Коефіцієнт зараження ран"
+      },
+      "description": {
+        "en": "If greater than zero, damage can be taken from serious wound infections.",
+        "uk": "Якщо більше нуля, можна отримувати шкоду від серйозних заражень ран."
+      }
+    },
+    "NoBlackClothes": {
+      "label": {
+        "en": "No Black Clothes",
+        "uk": "Без чорного одягу"
+      },
+      "description": {
+        "en": "If true, clothing with randomized tints will not be so dark as to be virtually black.",
+        "uk": "Якщо увімкнено, одяг з випадковим відтінком не буде настільки темним, щоб виглядати практично чорним."
+      }
+    },
+    "EasyClimbing": {
+      "label": {
+        "en": "Easy Climbing",
+        "uk": "Легке лазіння"
+      },
+      "description": {
+        "en": "Disables the failure chances when climbing sheet ropes or over walls.",
+        "uk": "Вимикає шанс невдачі при лазінні по мотузках зі простирадл чи через стіни."
+      }
+    },
+    "MaximumFireFuelHours": {
+      "label": {
+        "en": "Maximum Fire Fuel Hours",
+        "uk": "Макс. годин палива для вогню"
+      },
+      "description": {
+        "en": "The maximum hours of fuel that can be placed in a campfire, wood stove etc.",
+        "uk": "Максимальна кількість годин палива, яку можна закласти у вогнище, дров'яну пічку тощо."
+      }
+    },
+    "FirearmUseDamageChance": {
+      "label": {
+        "en": "Firearm Chance-To-Damage Mode",
+        "uk": "Режим шансу пошкодження зброї"
+      },
+      "description": {
+        "en": "Replaces Chance-To-Hit mechanics with Chance-To-Damage calculations. This mode prioritizes player aiming.",
+        "uk": "Замінює механіку «шанс влучання» на розрахунки «шанс пошкодження». Цей режим надає пріоритет прицілюванню гравця."
+      },
+      "options": {
+        "1": {
+          "en": "Disabled",
+          "uk": "Вимкнено"
+        },
+        "2": {
+          "en": "Zombies only",
+          "uk": "Лише зомбі"
+        },
+        "3": {
+          "en": "All types of target",
+          "uk": "Усі типи цілей"
+        }
+      }
+    },
+    "FirearmNoiseMultiplier": {
+      "label": {
+        "en": "Firearm Noise Multiplier",
+        "uk": "Множник шуму зброї"
+      },
+      "description": {
+        "en": "A multiplier for the distance at which zombies can hear gunshots.",
+        "uk": "Множник відстані, на якій зомбі чують постріли."
+      }
+    },
+    "FirearmJamMultiplier": {
+      "label": {
+        "en": "Firearm Jam Multiplier",
+        "uk": "Множник заклинювання зброї"
+      },
+      "description": {
+        "en": "Multiplier for firearm jamming chance. 0 disables jamming.",
+        "uk": "Множник шансу заклинювання вогнепальної зброї. 0 вимикає заклинювання."
+      }
+    },
+    "FirearmMoodleMultiplier": {
+      "label": {
+        "en": "Firearm Moodle Multiplier",
+        "uk": "Множник впливу муддлів на зброю"
+      },
+      "description": {
+        "en": "Multiplier for Moodle effects on hit chance. 0 disables the Moodle penalty.",
+        "uk": "Множник впливу муддлів на шанс влучання. 0 вимикає штраф від муддлів."
+      }
+    },
+    "FirearmWeatherMultiplier": {
+      "label": {
+        "en": "Firearm Weather Multiplier",
+        "uk": "Множник впливу погоди на зброю"
+      },
+      "description": {
+        "en": "Multiplier for the effects of weather (wind, rain and fog) on hit chance. 0 disables the weather effect.",
+        "uk": "Множник впливу погоди (вітер, дощ і туман) на шанс влучання. 0 вимикає вплив погоди."
+      }
+    },
+    "FirearmHeadGearEffect": {
+      "label": {
+        "en": "Firearm Headgear Effect",
+        "uk": "Вплив головних уборів на зброю"
+      },
+      "description": {
+        "en": "Enable to have headgear like welding masks affect hit chance.",
+        "uk": "Увімкніть, щоб головні убори, як-от зварювальні маски, впливали на шанс влучання."
+      }
+    },
+    "ClayLakeChance": {
+      "label": {
+        "en": "Clay Lake Chance",
+        "uk": "Шанс глини в озерах"
+      },
+      "description": {
+        "en": "Chance to turn a dirt floor into a clay floor. Applies to lakes.",
+        "uk": "Шанс перетворення земляної підлоги на глиняну. Стосується озер."
+      }
+    },
+    "ClayRiverChance": {
+      "label": {
+        "en": "Clay River Chance",
+        "uk": "Шанс глини в річках"
+      },
+      "description": {
+        "en": "Chance to turn a dirt floor into a clay floor. Applies to rivers.",
+        "uk": "Шанс перетворення земляної підлоги на глиняну. Стосується річок."
+      }
+    },
+    "GeneratorTileRange": {
+      "label": {
+        "en": "Generator Tile Range",
+        "uk": "Радіус дії генератора (тайли)"
+      },
+      "description": {
+        "en": "The radius, in tiles, that a generator can provide electricity to.",
+        "uk": "Радіус у тайлах, на який генератор може подавати електрику."
+      }
+    },
+    "GeneratorVerticalPowerRange": {
+      "label": {
+        "en": "Generator Vertical Power Range",
+        "uk": "Вертикальний радіус дії генератора"
+      },
+      "description": {
+        "en": "How many levels both above and below a generator it can provide electricity to.",
+        "uk": "На скільки поверхів вище та нижче генератор може подавати електрику."
+      }
+    },
+    "Basement.SpawnFrequency": {
+      "label": {
+        "en": "Basement Spawn Frequency",
+        "uk": "Частота появи підвалів"
+      },
+      "description": {
+        "en": "How frequently basements spawn at random locations.",
+        "uk": "Як часто підвали з'являються у випадкових місцях."
+      },
+      "options": {
+        "1": {
+          "en": "Never",
+          "uk": "Ніколи"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        },
+        "7": {
+          "en": "Always",
+          "uk": "Завжди"
+        }
+      }
+    },
+    "Map.AllowMiniMap": {
+      "label": {
+        "en": "Allow Mini-Map",
+        "uk": "Дозволити міні-карту"
+      },
+      "description": {
+        "en": "If enabled, a mini-map window will be available.",
+        "uk": "Якщо увімкнено, буде доступне вікно міні-карти."
+      }
+    },
+    "Map.AllowWorldMap": {
+      "label": {
+        "en": "Allow World Map",
+        "uk": "Дозволити карту світу"
+      },
+      "description": {
+        "en": "If enabled, the world map can be accessed.",
+        "uk": "Якщо увімкнено, можна відкрити карту світу."
+      }
+    },
+    "Map.MapAllKnown": {
+      "label": {
+        "en": "Map Fully Revealed",
+        "uk": "Карта повністю відкрита"
+      },
+      "description": {
+        "en": "If enabled, the world map will be completely filled in on starting the game.",
+        "uk": "Якщо увімкнено, карта світу буде повністю заповнена на початку гри."
+      }
+    },
+    "Map.MapNeedsLight": {
+      "label": {
+        "en": "Map Needs Light",
+        "uk": "Карті потрібне світло"
+      },
+      "description": {
+        "en": "If enabled, maps can't be read unless there's a source of light available.",
+        "uk": "Якщо увімкнено, карту не можна читати без джерела світла."
+      }
+    },
+    "ZombieLore.Speed": {
+      "label": {
+        "en": "Zombie Speed",
+        "uk": "Швидкість зомбі"
+      },
+      "description": {
+        "en": "How fast zombies move.",
+        "uk": "Як швидко рухаються зомбі."
+      },
+      "options": {
+        "1": {
+          "en": "Sprinters",
+          "uk": "Спринтери"
+        },
+        "2": {
+          "en": "Fast Shamblers",
+          "uk": "Швидкі шаркуни"
+        },
+        "3": {
+          "en": "Shamblers",
+          "uk": "Шаркуни"
+        },
+        "4": {
+          "en": "Random",
+          "uk": "Випадково"
+        }
+      }
+    },
+    "ZombieLore.SprinterPercentage": {
+      "label": {
+        "en": "Sprinter Percentage",
+        "uk": "Відсоток спринтерів"
+      },
+      "description": {
+        "en": "If Random Speed is enabled, this controls what percentage of zombies are Sprinters. Check the Advanced box to use a custom percentage.",
+        "uk": "Якщо ввімкнено випадкову швидкість, цей параметр визначає, який відсоток зомбі є спринтерами. Позначте «Розширені», щоб використати власний відсоток."
+      }
+    },
+    "ZombieLore.Strength": {
+      "label": {
+        "en": "Zombie Strength",
+        "uk": "Сила зомбі"
+      },
+      "description": {
+        "en": "The damage zombies inflict per attack.",
+        "uk": "Шкода, яку завдають зомбі за одну атаку."
+      },
+      "options": {
+        "1": {
+          "en": "Superhuman",
+          "uk": "Надлюдська"
+        },
+        "2": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "3": {
+          "en": "Weak",
+          "uk": "Слабка"
+        },
+        "4": {
+          "en": "Random",
+          "uk": "Випадково"
+        }
+      }
+    },
+    "ZombieLore.Toughness": {
+      "label": {
+        "en": "Zombie Toughness",
+        "uk": "Живучість зомбі"
+      },
+      "description": {
+        "en": "The difficulty of killing a zombie.",
+        "uk": "Складність знищення зомбі."
+      },
+      "options": {
+        "1": {
+          "en": "Tough",
+          "uk": "Живучі"
+        },
+        "2": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "3": {
+          "en": "Fragile",
+          "uk": "Тендітні"
+        },
+        "4": {
+          "en": "Random",
+          "uk": "Випадково"
+        }
+      }
+    },
+    "ZombieLore.Transmission": {
+      "label": {
+        "en": "Infection Transmission",
+        "uk": "Передача інфекції"
+      },
+      "description": {
+        "en": "How the Knox Virus spreads.",
+        "uk": "Як розповсюджується вірус Нокс."
+      },
+      "options": {
+        "1": {
+          "en": "Blood and Saliva",
+          "uk": "Кров і слина"
+        },
+        "2": {
+          "en": "Saliva Only",
+          "uk": "Лише слина"
+        },
+        "3": {
+          "en": "Everyone's Infected",
+          "uk": "Усі вже інфіковані"
+        },
+        "4": {
+          "en": "None",
+          "uk": "Не передається"
+        }
+      }
+    },
+    "ZombieLore.Mortality": {
+      "label": {
+        "en": "Infection Mortality",
+        "uk": "Швидкість дії інфекції"
+      },
+      "description": {
+        "en": "How quickly the infection takes effect.",
+        "uk": "Як швидко інфекція починає діяти."
+      },
+      "options": {
+        "1": {
+          "en": "Instant",
+          "uk": "Миттєво"
+        },
+        "2": {
+          "en": "0-30 Seconds",
+          "uk": "0-30 секунд"
+        },
+        "3": {
+          "en": "0-1 Minutes",
+          "uk": "0-1 хвилина"
+        },
+        "4": {
+          "en": "0-12 Hours",
+          "uk": "0-12 годин"
+        },
+        "5": {
+          "en": "2-3 Days",
+          "uk": "2-3 дні"
+        },
+        "6": {
+          "en": "1-2 Weeks",
+          "uk": "1-2 тижні"
+        },
+        "7": {
+          "en": "Never",
+          "uk": "Ніколи"
+        }
+      }
+    },
+    "ZombieLore.Reanimate": {
+      "label": {
+        "en": "Reanimate Time",
+        "uk": "Час воскресіння"
+      },
+      "description": {
+        "en": "How quickly infected corpses rise as zombies.",
+        "uk": "Як швидко заражені трупи повстають зомбі."
+      },
+      "options": {
+        "1": {
+          "en": "Instant",
+          "uk": "Миттєво"
+        },
+        "2": {
+          "en": "0-30 Seconds",
+          "uk": "0-30 секунд"
+        },
+        "3": {
+          "en": "0-1 Minutes",
+          "uk": "0-1 хвилина"
+        },
+        "4": {
+          "en": "0-12 Hours",
+          "uk": "0-12 годин"
+        },
+        "5": {
+          "en": "2-3 Days",
+          "uk": "2-3 дні"
+        },
+        "6": {
+          "en": "1-2 Weeks",
+          "uk": "1-2 тижні"
+        }
+      }
+    },
+    "ZombieLore.Cognition": {
+      "label": {
+        "en": "Zombie Cognition",
+        "uk": "Інтелект зомбі"
+      },
+      "description": {
+        "en": "Zombie intelligence.",
+        "uk": "Інтелект зомбі."
+      },
+      "options": {
+        "1": {
+          "en": "Navigate and Use Doors",
+          "uk": "Орієнтуються і відчиняють двері"
+        },
+        "2": {
+          "en": "Navigate",
+          "uk": "Орієнтуються"
+        },
+        "3": {
+          "en": "Basic Navigation",
+          "uk": "Базове орієнтування"
+        },
+        "4": {
+          "en": "Random",
+          "uk": "Випадково"
+        }
+      }
+    },
+    "ZombieLore.DoorOpeningPercentage": {
+      "label": {
+        "en": "Door Opening Percentage",
+        "uk": "Відсоток відчинення дверей"
+      },
+      "description": {
+        "en": "The percentage chance that a zombie capable of opening doors will succeed.",
+        "uk": "Відсотковий шанс, що зомбі, здатний відчиняти двері, зробить це успішно."
+      }
+    },
+    "ZombieLore.CrawlUnderVehicle": {
+      "label": {
+        "en": "Crawl Under Vehicle",
+        "uk": "Повзання під транспортом"
+      },
+      "description": {
+        "en": "How often zombies can crawl under parked vehicles.",
+        "uk": "Як часто зомбі можуть повзати під припаркованим транспортом."
+      },
+      "options": {
+        "1": {
+          "en": "Crawlers Only",
+          "uk": "Лише повзаючі"
+        },
+        "2": {
+          "en": "Extremely Rare",
+          "uk": "Надзвичайно рідко"
+        },
+        "3": {
+          "en": "Rare",
+          "uk": "Рідко"
+        },
+        "4": {
+          "en": "Sometimes",
+          "uk": "Іноді"
+        },
+        "5": {
+          "en": "Often",
+          "uk": "Часто"
+        },
+        "6": {
+          "en": "Very Often",
+          "uk": "Дуже часто"
+        },
+        "7": {
+          "en": "Always",
+          "uk": "Завжди"
+        }
+      }
+    },
+    "ZombieLore.Memory": {
+      "label": {
+        "en": "Zombie Memory",
+        "uk": "Пам'ять зомбі"
+      },
+      "description": {
+        "en": "How long zombies remember a player after seeing or hearing them.",
+        "uk": "Як довго зомбі пам'ятають гравця після того, як побачили чи почули його."
+      },
+      "options": {
+        "1": {
+          "en": "Long",
+          "uk": "Довга"
+        },
+        "2": {
+          "en": "Normal",
+          "uk": "Нормальна"
+        },
+        "3": {
+          "en": "Short",
+          "uk": "Коротка"
+        },
+        "4": {
+          "en": "None",
+          "uk": "Відсутня"
+        },
+        "5": {
+          "en": "Random",
+          "uk": "Випадково"
+        },
+        "6": {
+          "en": "Random between Normal and None",
+          "uk": "Випадково між нормальною та відсутньою"
+        }
+      }
+    },
+    "ZombieLore.Sight": {
+      "label": {
+        "en": "Zombie Sight",
+        "uk": "Зір зомбі"
+      },
+      "description": {
+        "en": "Zombie vision radius.",
+        "uk": "Радіус зору зомбі."
+      },
+      "options": {
+        "1": {
+          "en": "Eagle",
+          "uk": "Орлиний"
+        },
+        "2": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "3": {
+          "en": "Poor",
+          "uk": "Слабкий"
+        },
+        "4": {
+          "en": "Random",
+          "uk": "Випадково"
+        },
+        "5": {
+          "en": "Random between Normal and Poor",
+          "uk": "Випадково між нормальним і слабким"
+        }
+      }
+    },
+    "ZombieLore.Hearing": {
+      "label": {
+        "en": "Zombie Hearing",
+        "uk": "Слух зомбі"
+      },
+      "description": {
+        "en": "Zombie hearing radius.",
+        "uk": "Радіус слуху зомбі."
+      },
+      "options": {
+        "1": {
+          "en": "Pinpoint",
+          "uk": "Точний"
+        },
+        "2": {
+          "en": "Normal",
+          "uk": "Нормальний"
+        },
+        "3": {
+          "en": "Poor",
+          "uk": "Слабкий"
+        },
+        "4": {
+          "en": "Random",
+          "uk": "Випадково"
+        },
+        "5": {
+          "en": "Random between Normal and Poor",
+          "uk": "Випадково між нормальним і слабким"
+        }
+      }
+    },
+    "ZombieLore.SpottedLogic": {
+      "label": {
+        "en": "Advanced Stealth (Spotted Logic)",
+        "uk": "Розширена скритність (логіка помічання)"
+      },
+      "description": {
+        "en": "Activates the new advanced stealth mechanics, which allows you to hide from zombies behind cars, takes traits and weather into account, and much more.",
+        "uk": "Активує нову розширену механіку скритності, яка дозволяє ховатися від зомбі за машинами, враховує риси персонажа й погоду та багато іншого."
+      }
+    },
+    "ZombieLore.ThumpNoChasing": {
+      "label": {
+        "en": "Thump Without Chasing",
+        "uk": "Стукіт без переслідування"
+      },
+      "description": {
+        "en": "If zombies that have not seen/heard the player can attack doors and constructions while roaming.",
+        "uk": "Чи можуть зомбі, які не бачили/не чули гравця, атакувати двері та споруди під час блукання."
+      }
+    },
+    "ZombieLore.ThumpOnConstruction": {
+      "label": {
+        "en": "Thump On Construction",
+        "uk": "Атака на споруди"
+      },
+      "description": {
+        "en": "If zombies can destroy player constructions and defenses.",
+        "uk": "Чи можуть зомбі руйнувати споруди й захисні конструкції гравця."
+      }
+    },
+    "ZombieLore.ActiveOnly": {
+      "label": {
+        "en": "Zombies Active During",
+        "uk": "Активність зомбі"
+      },
+      "description": {
+        "en": "Whether zombies are more 'active' during the day or night. 'Active' zombies use the speed set in the Speed setting. 'Inactive' zombies are slower, and tend not to give chase.",
+        "uk": "Чи є зомбі більш «активними» вдень чи вночі. «Активні» зомбі використовують швидкість зі значення параметра «Швидкість». «Неактивні» зомбі повільніші й зазвичай не переслідують."
+      },
+      "options": {
+        "1": {
+          "en": "Both",
+          "uk": "Завжди"
+        },
+        "2": {
+          "en": "Night",
+          "uk": "Вночі"
+        },
+        "3": {
+          "en": "Day",
+          "uk": "Вдень"
+        }
+      }
+    },
+    "ZombieLore.TriggerHouseAlarm": {
+      "label": {
+        "en": "Trigger House Alarm",
+        "uk": "Активація сигналізації"
+      },
+      "description": {
+        "en": "If zombies trigger house alarms when breaking through windows or doors.",
+        "uk": "Чи активують зомбі сигналізацію будинку, проламуючись через вікна чи двері."
+      }
+    },
+    "ZombieLore.ZombiesDragDown": {
+      "label": {
+        "en": "Zombies Drag Down",
+        "uk": "Зомбі валять з ніг"
+      },
+      "description": {
+        "en": "If multiple attacking zombies can drag you down and kill you. Dependent on zombie strength.",
+        "uk": "Чи можуть кілька зомбі, що атакують одночасно, звалити вас з ніг і вбити. Залежить від сили зомбі."
+      }
+    },
+    "ZombieLore.ZombiesCrawlersDragDown": {
+      "label": {
+        "en": "Crawlers Contribute To Drag Down",
+        "uk": "Повзаючі теж валять з ніг"
+      },
+      "description": {
+        "en": "If crawler zombies beside a player contribute to the chance of being dragged down and killed by a group of zombies.",
+        "uk": "Чи впливають повзаючі зомбі поруч з гравцем на шанс бути звaленим з ніг і вбитим групою зомбі."
+      }
+    },
+    "ZombieLore.ZombiesFenceLunge": {
+      "label": {
+        "en": "Zombies Fence Lunge",
+        "uk": "Випад через паркан"
+      },
+      "description": {
+        "en": "If zombies have a chance to lunge at you after climbing over a fence or through a window if you're too close.",
+        "uk": "Чи мають зомбі шанс кинутися на вас після перелізання через паркан чи вікно, якщо ви стоїте занадто близько."
+      }
+    },
+    "ZombieLore.ZombiesArmorFactor": {
+      "label": {
+        "en": "Zombie Armor Factor",
+        "uk": "Коефіцієнт броні зомбі"
+      },
+      "description": {
+        "en": "Serves as a multiplier when determining the effectiveness of armor worn by zombies.",
+        "uk": "Слугує множником при визначенні ефективності броні, одягненої на зомбі."
+      }
+    },
+    "ZombieLore.ZombiesMaxDefense": {
+      "label": {
+        "en": "Zombie Max Defense",
+        "uk": "Макс. захист зомбі"
+      },
+      "description": {
+        "en": "The maximum defense percentage that any worn protective garments can provide to a zombie.",
+        "uk": "Максимальний відсоток захисту, який одягнений захисний одяг може надати зомбі."
+      }
+    },
+    "ZombieLore.ChanceOfAttachedWeapon": {
+      "label": {
+        "en": "Chance Of Attached Weapon",
+        "uk": "Шанс прикріпленої зброї"
+      },
+      "description": {
+        "en": "Percentage chance of a zombie having a random attached weapon.",
+        "uk": "Відсотковий шанс, що зомбі матиме випадково прикріплену зброю."
+      }
+    },
+    "ZombieLore.ZombiesFallDamage": {
+      "label": {
+        "en": "Zombie Fall Damage",
+        "uk": "Шкода зомбі від падіння"
+      },
+      "description": {
+        "en": "How much damage zombies take when falling from height.",
+        "uk": "Скільки шкоди отримують зомбі при падінні з висоти."
+      }
+    },
+    "ZombieLore.DisableFakeDead": {
+      "label": {
+        "en": "Disable Fake Dead",
+        "uk": "Вимкнути «фальшиву смерть»"
+      },
+      "description": {
+        "en": "Whether some dead-looking zombies will reanimate and attack the player.",
+        "uk": "Чи можуть деякі зомбі, що виглядають мертвими, ожити й атакувати гравця."
+      },
+      "options": {
+        "1": {
+          "en": "World Zombies",
+          "uk": "Зомбі у світі"
+        },
+        "2": {
+          "en": "World and Combat Zombies",
+          "uk": "Зомбі у світі та в бою"
+        },
+        "3": {
+          "en": "Never",
+          "uk": "Ніколи"
+        }
+      }
+    },
+    "ZombieLore.PlayerSpawnZombieRemoval": {
+      "label": {
+        "en": "Player Spawn Zombie Removal",
+        "uk": "Видалення зомбі біля спавну гравця"
+      },
+      "description": {
+        "en": "Zombies will not spawn where players spawn.",
+        "uk": "Зомбі не з'являтимуться там, де з'являється гравець."
+      },
+      "options": {
+        "1": {
+          "en": "Inside the building and around it",
+          "uk": "Усередині будівлі та навколо неї"
+        },
+        "2": {
+          "en": "Inside the building",
+          "uk": "Усередині будівлі"
+        },
+        "3": {
+          "en": "Inside the room",
+          "uk": "Усередині кімнати"
+        },
+        "4": {
+          "en": "Zombies can spawn anywhere",
+          "uk": "Зомбі можуть з'являтися будь-де"
+        }
+      }
+    },
+    "ZombieLore.FenceThumpersRequired": {
+      "label": {
+        "en": "Fence Thumpers Required",
+        "uk": "Потрібно зомбі для паркану"
+      },
+      "description": {
+        "en": "How many zombies it takes to damage a tall fence.",
+        "uk": "Скільки зомбі потрібно, щоб пошкодити високий паркан."
+      }
+    },
+    "ZombieLore.FenceDamageMultiplier": {
+      "label": {
+        "en": "Fence Damage Multiplier",
+        "uk": "Множник шкоди паркану"
+      },
+      "description": {
+        "en": "How quickly zombies damage tall fences.",
+        "uk": "Як швидко зомбі пошкоджують високі паркани."
+      }
+    },
+    "ZombieConfig.PopulationMultiplier": {
+      "label": {
+        "en": "Population Multiplier",
+        "uk": "Множник популяції"
+      },
+      "description": {
+        "en": "Set by the Zombie Count population option, or by a custom number here. Insane = 2.5, Very High = 1.6, High = 1.2, Normal = 0.65, Low = 0.15, None = 0.0.",
+        "uk": "Встановлюється параметром «Кількість зомбі», або власним числом тут. Божевільна = 2.5, Дуже висока = 1.6, Висока = 1.2, Нормальна = 0.65, Низька = 0.15, Відсутня = 0.0."
+      }
+    },
+    "ZombieConfig.PopulationStartMultiplier": {
+      "label": {
+        "en": "Population Start Multiplier",
+        "uk": "Початковий множник популяції"
+      },
+      "description": {
+        "en": "A multiplier for the desired zombie population at the start of the game. Insane = 3.0, Very High = 2.0, High = 1.5, Normal = 1.0, Low = 0.5, None = 0.0.",
+        "uk": "Множник бажаної популяції зомбі на початку гри. Божевільна = 3.0, Дуже висока = 2.0, Висока = 1.5, Нормальна = 1.0, Низька = 0.5, Відсутня = 0.0."
+      }
+    },
+    "ZombieConfig.PopulationPeakMultiplier": {
+      "label": {
+        "en": "Population Peak Multiplier",
+        "uk": "Піковий множник популяції"
+      },
+      "description": {
+        "en": "A multiplier for the desired zombie population on the peak day. Insane = 3.0, Very High = 2.0, High = 1.5, Normal = 1.0, Low = 0.5, None = 0.0.",
+        "uk": "Множник бажаної популяції зомбі в піковий день. Божевільна = 3.0, Дуже висока = 2.0, Висока = 1.5, Нормальна = 1.0, Низька = 0.5, Відсутня = 0.0."
+      }
+    },
+    "ZombieConfig.PopulationPeakDay": {
+      "label": {
+        "en": "Population Peak Day",
+        "uk": "День піку популяції"
+      },
+      "description": {
+        "en": "The day when the population reaches its peak.",
+        "uk": "День, коли популяція досягає піку."
+      }
+    },
+    "ZombieConfig.RespawnHours": {
+      "label": {
+        "en": "Respawn Hours",
+        "uk": "Годин до відродження"
+      },
+      "description": {
+        "en": "The number of hours that must pass before zombies may respawn in a cell. If 0, spawning is disabled.",
+        "uk": "Кількість годин, яка має минути, перш ніж зомбі можуть відродитися в осередку. Якщо 0, відродження вимкнено."
+      }
+    },
+    "ZombieConfig.RespawnUnseenHours": {
+      "label": {
+        "en": "Respawn Unseen Hours",
+        "uk": "Годин непомітності до відродження"
+      },
+      "description": {
+        "en": "The number of hours that a chunk must be unseen before zombies may respawn in it.",
+        "uk": "Кількість годин, протягом яких ділянка карти має бути непоміченою, перш ніж у ній можуть відродитися зомбі."
+      }
+    },
+    "ZombieConfig.RespawnMultiplier": {
+      "label": {
+        "en": "Respawn Multiplier",
+        "uk": "Множник відродження"
+      },
+      "description": {
+        "en": "The fraction of a cell's desired population that may respawn every Respawn Hours.",
+        "uk": "Частка бажаної популяції осередку, яка може відродитися кожні «Години до відродження»."
+      }
+    },
+    "ZombieConfig.RedistributeHours": {
+      "label": {
+        "en": "Redistribute Hours",
+        "uk": "Годин до перерозподілу"
+      },
+      "description": {
+        "en": "The number of hours that must pass before zombies migrate to empty parts of the same cell. If 0, migration is disabled.",
+        "uk": "Кількість годин, яка має минути, перш ніж зомбі мігрують до порожніх частин того самого осередку. Якщо 0, міграцію вимкнено."
+      }
+    },
+    "ZombieConfig.FollowSoundDistance": {
+      "label": {
+        "en": "Follow Sound Distance",
+        "uk": "Відстань переслідування звуку"
+      },
+      "description": {
+        "en": "The distance a zombie will try to walk towards the last sound it heard.",
+        "uk": "Відстань, на яку зомбі намагатиметься пройти до останнього почутого звуку."
+      }
+    },
+    "ZombieConfig.RallyGroupSize": {
+      "label": {
+        "en": "Rally Group Size",
+        "uk": "Розмір групи зомбі"
+      },
+      "description": {
+        "en": "The size of groups real zombies form when idle. 0 means zombies don't form groups. Groups don't form inside buildings or forest zones.",
+        "uk": "Розмір груп, які формують справжні зомбі в стані спокою. 0 означає, що зомбі не формують групи. Групи не формуються всередині будівель чи в лісових зонах."
+      }
+    },
+    "ZombieConfig.RallyGroupSizeVariance": {
+      "label": {
+        "en": "Rally Group Size Variance",
+        "uk": "Розкид розміру групи"
+      },
+      "description": {
+        "en": "The amount, as a percentage, that zombie groups can vary in size from the default (both larger and smaller). For example, at 50% variance with a default group size of 20, groups will vary in size from 10-30.",
+        "uk": "Відсоток, на який розмір груп зомбі може відхилятися від типового (як більше, так і менше). Наприклад, при розкиді 50% і типовому розмірі групи 20, групи будуть від 10 до 30."
+      }
+    },
+    "ZombieConfig.RallyTravelDistance": {
+      "label": {
+        "en": "Rally Travel Distance",
+        "uk": "Дистанція збору групи"
+      },
+      "description": {
+        "en": "The distance real zombies travel to form groups when idle.",
+        "uk": "Відстань, яку проходять справжні зомбі, щоб сформувати групи в стані спокою."
+      }
+    },
+    "ZombieConfig.RallyGroupSeparation": {
+      "label": {
+        "en": "Rally Group Separation",
+        "uk": "Відстань між групами"
+      },
+      "description": {
+        "en": "The distance between zombie groups.",
+        "uk": "Відстань між групами зомбі."
+      }
+    },
+    "ZombieConfig.RallyGroupRadius": {
+      "label": {
+        "en": "Rally Group Radius",
+        "uk": "Радіус групи"
+      },
+      "description": {
+        "en": "How close members of a zombie group stay to the group's 'leader'.",
+        "uk": "Наскільки близько члени групи зомбі тримаються біля «лідера» групи."
+      }
+    },
+    "ZombieConfig.ZombiesCountBeforeDelete": {
+      "label": {
+        "en": "Zombies Count Before Delete",
+        "uk": "Кількість зомбі до видалення"
+      },
+      "description": {
+        "en": "The maximum number of zombie corpses kept in memory before old ones are deleted.",
+        "uk": "Максимальна кількість трупів зомбі, що зберігаються в пам'яті, перш ніж старі почнуть видалятися."
+      }
+    },
+    "MultiplierConfig.Global": {
+      "label": {
+        "en": "Global Multiplier",
+        "uk": "Загальний множник"
+      },
+      "description": {
+        "en": "The rate at which all skills level up.",
+        "uk": "Швидкість, з якою підвищуються всі навички."
+      }
+    },
+    "MultiplierConfig.GlobalToggle": {
+      "label": {
+        "en": "Use Global Multiplier",
+        "uk": "Використовувати загальний множник"
+      },
+      "description": {
+        "en": "When enabled, all skills will use the Global Multiplier.",
+        "uk": "Якщо увімкнено, всі навички використовуватимуть загальний множник."
+      }
+    },
+    "MultiplierConfig.Fitness": {
+      "label": {
+        "en": "Fitness Multiplier",
+        "uk": "Множник фізпідготовки"
+      },
+      "description": {
+        "en": "Rate at which the Fitness skill levels up.",
+        "uk": "Швидкість підвищення навички «Фізпідготовка»."
+      }
+    },
+    "MultiplierConfig.Strength": {
+      "label": {
+        "en": "Strength Multiplier",
+        "uk": "Множник сили"
+      },
+      "description": {
+        "en": "Rate at which the Strength skill levels up.",
+        "uk": "Швидкість підвищення навички «Сила»."
+      }
+    },
+    "MultiplierConfig.Sprinting": {
+      "label": {
+        "en": "Sprinting Multiplier",
+        "uk": "Множник спринту"
+      },
+      "description": {
+        "en": "Rate at which the Sprinting skill levels up.",
+        "uk": "Швидкість підвищення навички «Спринт»."
+      }
+    },
+    "MultiplierConfig.Lightfoot": {
+      "label": {
+        "en": "Lightfooted Multiplier",
+        "uk": "Множник легкоходу"
+      },
+      "description": {
+        "en": "Rate at which the Lightfooted skill levels up.",
+        "uk": "Швидкість підвищення навички «Легкохід»."
+      }
+    },
+    "MultiplierConfig.Nimble": {
+      "label": {
+        "en": "Nimble Multiplier",
+        "uk": "Множник спритності"
+      },
+      "description": {
+        "en": "Rate at which the Nimble skill levels up.",
+        "uk": "Швидкість підвищення навички «Спритність»."
+      }
+    },
+    "MultiplierConfig.Sneak": {
+      "label": {
+        "en": "Sneaking Multiplier",
+        "uk": "Множник скритності"
+      },
+      "description": {
+        "en": "Rate at which the Sneaking skill levels up.",
+        "uk": "Швидкість підвищення навички «Скритність»."
+      }
+    },
+    "MultiplierConfig.Axe": {
+      "label": {
+        "en": "Axe Multiplier",
+        "uk": "Множник сокир"
+      },
+      "description": {
+        "en": "Rate at which the Axe skill levels up.",
+        "uk": "Швидкість підвищення навички «Сокира»."
+      }
+    },
+    "MultiplierConfig.Blunt": {
+      "label": {
+        "en": "Long Blunt Multiplier",
+        "uk": "Множник довгої тупої зброї"
+      },
+      "description": {
+        "en": "Rate at which the Long Blunt skill levels up.",
+        "uk": "Швидкість підвищення навички «Довга тупа зброя»."
+      }
+    },
+    "MultiplierConfig.SmallBlunt": {
+      "label": {
+        "en": "Short Blunt Multiplier",
+        "uk": "Множник короткої тупої зброї"
+      },
+      "description": {
+        "en": "Rate at which the Short Blunt skill levels up.",
+        "uk": "Швидкість підвищення навички «Коротка тупа зброя»."
+      }
+    },
+    "MultiplierConfig.LongBlade": {
+      "label": {
+        "en": "Long Blade Multiplier",
+        "uk": "Множник довгих клинків"
+      },
+      "description": {
+        "en": "Rate at which the Long Blade skill levels up.",
+        "uk": "Швидкість підвищення навички «Довгий клинок»."
+      }
+    },
+    "MultiplierConfig.SmallBlade": {
+      "label": {
+        "en": "Short Blade Multiplier",
+        "uk": "Множник коротких клинків"
+      },
+      "description": {
+        "en": "Rate at which the Short Blade skill levels up.",
+        "uk": "Швидкість підвищення навички «Короткий клинок»."
+      }
+    },
+    "MultiplierConfig.Spear": {
+      "label": {
+        "en": "Spear Multiplier",
+        "uk": "Множник списів"
+      },
+      "description": {
+        "en": "Rate at which the Spear skill levels up.",
+        "uk": "Швидкість підвищення навички «Спис»."
+      }
+    },
+    "MultiplierConfig.Maintenance": {
+      "label": {
+        "en": "Maintenance Multiplier",
+        "uk": "Множник обслуговування зброї"
+      },
+      "description": {
+        "en": "Rate at which the Maintenance skill levels up.",
+        "uk": "Швидкість підвищення навички «Обслуговування зброї»."
+      }
+    },
+    "MultiplierConfig.Woodwork": {
+      "label": {
+        "en": "Carpentry Multiplier",
+        "uk": "Множник теслярства"
+      },
+      "description": {
+        "en": "Rate at which the Carpentry skill levels up.",
+        "uk": "Швидкість підвищення навички «Теслярство»."
+      }
+    },
+    "MultiplierConfig.Cooking": {
+      "label": {
+        "en": "Cooking Multiplier",
+        "uk": "Множник кулінарії"
+      },
+      "description": {
+        "en": "Rate at which the Cooking skill levels up.",
+        "uk": "Швидкість підвищення навички «Кулінарія»."
+      }
+    },
+    "MultiplierConfig.Farming": {
+      "label": {
+        "en": "Agriculture Multiplier",
+        "uk": "Множник агрономії"
+      },
+      "description": {
+        "en": "Rate at which the Agriculture skill levels up.",
+        "uk": "Швидкість підвищення навички «Агрономія»."
+      }
+    },
+    "MultiplierConfig.Doctor": {
+      "label": {
+        "en": "First Aid Multiplier",
+        "uk": "Множник першої допомоги"
+      },
+      "description": {
+        "en": "Rate at which the First Aid skill levels up.",
+        "uk": "Швидкість підвищення навички «Перша допомога»."
+      }
+    },
+    "MultiplierConfig.Electricity": {
+      "label": {
+        "en": "Electrical Multiplier",
+        "uk": "Множник електрики"
+      },
+      "description": {
+        "en": "Rate at which the Electrical skill levels up.",
+        "uk": "Швидкість підвищення навички «Електрика»."
+      }
+    },
+    "MultiplierConfig.MetalWelding": {
+      "label": {
+        "en": "Welding Multiplier",
+        "uk": "Множник зварювання"
+      },
+      "description": {
+        "en": "Rate at which the Welding skill levels up.",
+        "uk": "Швидкість підвищення навички «Зварювання»."
+      }
+    },
+    "MultiplierConfig.Mechanics": {
+      "label": {
+        "en": "Mechanics Multiplier",
+        "uk": "Множник механіки"
+      },
+      "description": {
+        "en": "Rate at which the Mechanics skill levels up.",
+        "uk": "Швидкість підвищення навички «Механіка»."
+      }
+    },
+    "MultiplierConfig.Tailoring": {
+      "label": {
+        "en": "Tailoring Multiplier",
+        "uk": "Множник кравецтва"
+      },
+      "description": {
+        "en": "Rate at which the Tailoring skill levels up.",
+        "uk": "Швидкість підвищення навички «Кравецтво»."
+      }
+    },
+    "MultiplierConfig.Aiming": {
+      "label": {
+        "en": "Aiming Multiplier",
+        "uk": "Множник прицілювання"
+      },
+      "description": {
+        "en": "Rate at which the Aiming skill levels up.",
+        "uk": "Швидкість підвищення навички «Прицілювання»."
+      }
+    },
+    "MultiplierConfig.Reloading": {
+      "label": {
+        "en": "Reloading Multiplier",
+        "uk": "Множник перезарядки"
+      },
+      "description": {
+        "en": "Rate at which the Reloading skill levels up.",
+        "uk": "Швидкість підвищення навички «Перезарядка»."
+      }
+    },
+    "MultiplierConfig.Fishing": {
+      "label": {
+        "en": "Fishing Multiplier",
+        "uk": "Множник рибальства"
+      },
+      "description": {
+        "en": "Rate at which the Fishing skill levels up.",
+        "uk": "Швидкість підвищення навички «Рибальство»."
+      }
+    },
+    "MultiplierConfig.Trapping": {
+      "label": {
+        "en": "Trapping Multiplier",
+        "uk": "Множник встановлення пасток"
+      },
+      "description": {
+        "en": "Rate at which the Trapping skill levels up.",
+        "uk": "Швидкість підвищення навички «Встановлення пасток»."
+      }
+    },
+    "MultiplierConfig.PlantScavenging": {
+      "label": {
+        "en": "Foraging Multiplier",
+        "uk": "Множник збиральництва"
+      },
+      "description": {
+        "en": "Rate at which the Foraging skill levels up.",
+        "uk": "Швидкість підвищення навички «Збиральництво»."
+      }
+    },
+    "MultiplierConfig.FlintKnapping": {
+      "label": {
+        "en": "Knapping Multiplier",
+        "uk": "Множник оброблення каменю"
+      },
+      "description": {
+        "en": "Rate at which the Knapping skill levels up.",
+        "uk": "Швидкість підвищення навички «Оброблення каменю»."
+      }
+    },
+    "MultiplierConfig.Masonry": {
+      "label": {
+        "en": "Masonry Multiplier",
+        "uk": "Множник муляра"
+      },
+      "description": {
+        "en": "Rate at which the Masonry skill levels up.",
+        "uk": "Швидкість підвищення навички «Муляр»."
+      }
+    },
+    "MultiplierConfig.Pottery": {
+      "label": {
+        "en": "Pottery Multiplier",
+        "uk": "Множник гончарства"
+      },
+      "description": {
+        "en": "Rate at which the Pottery skill levels up.",
+        "uk": "Швидкість підвищення навички «Гончарство»."
+      }
+    },
+    "MultiplierConfig.Carving": {
+      "label": {
+        "en": "Carving Multiplier",
+        "uk": "Множник різьблення"
+      },
+      "description": {
+        "en": "Rate at which the Carving skill levels up.",
+        "uk": "Швидкість підвищення навички «Різьблення»."
+      }
+    },
+    "MultiplierConfig.Husbandry": {
+      "label": {
+        "en": "Animal Care Multiplier",
+        "uk": "Множник догляду за тваринами"
+      },
+      "description": {
+        "en": "Rate at which the Animal Care skill levels up.",
+        "uk": "Швидкість підвищення навички «Догляд за тваринами»."
+      }
+    },
+    "MultiplierConfig.Tracking": {
+      "label": {
+        "en": "Tracking Multiplier",
+        "uk": "Множник вистежування"
+      },
+      "description": {
+        "en": "Rate at which the Tracking skill levels up.",
+        "uk": "Швидкість підвищення навички «Вистежування»."
+      }
+    },
+    "MultiplierConfig.Blacksmith": {
+      "label": {
+        "en": "Blacksmithing Multiplier",
+        "uk": "Множник ковальства"
+      },
+      "description": {
+        "en": "Rate at which the Blacksmithing skill levels up.",
+        "uk": "Швидкість підвищення навички «Ковальство»."
+      }
+    },
+    "MultiplierConfig.Butchering": {
+      "label": {
+        "en": "Butchering Multiplier",
+        "uk": "Множник обробки туш"
+      },
+      "description": {
+        "en": "Rate at which the Butchering skill levels up.",
+        "uk": "Швидкість підвищення навички «Обробка туш»."
+      }
+    },
+    "MultiplierConfig.Glassmaking": {
+      "label": {
+        "en": "Glassmaking Multiplier",
+        "uk": "Множник склодувства"
+      },
+      "description": {
+        "en": "Rate at which the Glassmaking skill levels up.",
+        "uk": "Швидкість підвищення навички «Склодувство»."
+      }
+    }
+  }
+}

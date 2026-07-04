@@ -1,0 +1,5234 @@
+{
+  "version": 6,
+  "sections": [
+    {
+      "name": "General",
+      "paramCount": 183,
+      "params": [
+        {
+          "key": "Zombies",
+          "path": "Zombies",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "Changing this also sets the \"Population Multiplier\" in Advanced Zombie Options. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Insane"
+            },
+            {
+              "value": 2,
+              "label": "Very High"
+            },
+            {
+              "value": 3,
+              "label": "High"
+            },
+            {
+              "value": 4,
+              "label": "Normal"
+            },
+            {
+              "value": 5,
+              "label": "Low"
+            },
+            {
+              "value": 6,
+              "label": "None"
+            }
+          ]
+        },
+        {
+          "key": "Distribution",
+          "path": "Distribution",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "How zombies are distributed across the map. Default = Urban Focused",
+          "min": null,
+          "max": null,
+          "default": "Urban Focused",
+          "options": [
+            {
+              "value": 1,
+              "label": "Urban Focused"
+            },
+            {
+              "value": 2,
+              "label": "Uniform"
+            }
+          ]
+        },
+        {
+          "key": "ZombieVoronoiNoise",
+          "path": "ZombieVoronoiNoise",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "Controls whether some randomization is applied to zombie distribution.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ZombieRespawn",
+          "path": "ZombieRespawn",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "How frequently new zombies are added to the world. Default = None",
+          "min": null,
+          "max": null,
+          "default": "None",
+          "options": [
+            {
+              "value": 1,
+              "label": "High"
+            },
+            {
+              "value": 2,
+              "label": "Normal"
+            },
+            {
+              "value": 3,
+              "label": "Low"
+            },
+            {
+              "value": 4,
+              "label": "None"
+            }
+          ]
+        },
+        {
+          "key": "ZombieMigrate",
+          "path": "ZombieMigrate",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "Zombie allowed to migrate to empty cells.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "DayLength",
+          "path": "DayLength",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "Default = 1 Hour, 30 Minutes",
+          "min": null,
+          "max": null,
+          "default": "1 Hour, 30 Minutes",
+          "options": [
+            {
+              "value": 1,
+              "label": "15 Minutes"
+            },
+            {
+              "value": 2,
+              "label": "30 Minutes"
+            },
+            {
+              "value": 3,
+              "label": "1 Hour"
+            },
+            {
+              "value": 4,
+              "label": "1 Hour, 30 Minutes"
+            },
+            {
+              "value": 5,
+              "label": "2 Hours"
+            },
+            {
+              "value": 6,
+              "label": "3 Hours"
+            },
+            {
+              "value": 7,
+              "label": "4 Hours"
+            },
+            {
+              "value": 8,
+              "label": "5 Hours"
+            },
+            {
+              "value": 9,
+              "label": "6 Hours"
+            },
+            {
+              "value": 10,
+              "label": "7 Hours"
+            },
+            {
+              "value": 11,
+              "label": "8 Hours"
+            },
+            {
+              "value": 12,
+              "label": "9 Hours"
+            },
+            {
+              "value": 13,
+              "label": "10 Hours"
+            },
+            {
+              "value": 14,
+              "label": "11 Hours"
+            },
+            {
+              "value": 15,
+              "label": "12 Hours"
+            },
+            {
+              "value": 16,
+              "label": "13 Hours"
+            },
+            {
+              "value": 17,
+              "label": "14 Hours"
+            },
+            {
+              "value": 18,
+              "label": "15 Hours"
+            },
+            {
+              "value": 19,
+              "label": "16 Hours"
+            },
+            {
+              "value": 20,
+              "label": "17 Hours"
+            },
+            {
+              "value": 21,
+              "label": "18 Hours"
+            },
+            {
+              "value": 22,
+              "label": "19 Hours"
+            },
+            {
+              "value": 23,
+              "label": "20 Hours"
+            },
+            {
+              "value": 24,
+              "label": "21 Hours"
+            },
+            {
+              "value": 25,
+              "label": "22 Hours"
+            },
+            {
+              "value": 26,
+              "label": "23 Hours"
+            },
+            {
+              "value": 27,
+              "label": "Real-time"
+            }
+          ]
+        },
+        {
+          "key": "StartYear",
+          "path": "StartYear",
+          "section": "General",
+          "value": 1,
+          "type": "integer",
+          "description": "",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "StartMonth",
+          "path": "StartMonth",
+          "section": "General",
+          "value": 7,
+          "type": "enum",
+          "description": "Month in which the game starts. Default = July",
+          "min": null,
+          "max": null,
+          "default": "July",
+          "options": [
+            {
+              "value": 1,
+              "label": "January"
+            },
+            {
+              "value": 2,
+              "label": "February"
+            },
+            {
+              "value": 3,
+              "label": "March"
+            },
+            {
+              "value": 4,
+              "label": "April"
+            },
+            {
+              "value": 5,
+              "label": "May"
+            },
+            {
+              "value": 6,
+              "label": "June"
+            },
+            {
+              "value": 7,
+              "label": "July"
+            },
+            {
+              "value": 8,
+              "label": "August"
+            },
+            {
+              "value": 9,
+              "label": "September"
+            },
+            {
+              "value": 10,
+              "label": "October"
+            },
+            {
+              "value": 11,
+              "label": "November"
+            },
+            {
+              "value": 12,
+              "label": "December"
+            }
+          ]
+        },
+        {
+          "key": "StartDay",
+          "path": "StartDay",
+          "section": "General",
+          "value": 9,
+          "type": "integer",
+          "description": "Day of the month in which the games starts.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "StartTime",
+          "path": "StartTime",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "Hour of the day in which the game starts. Default = 9 AM",
+          "min": null,
+          "max": null,
+          "default": "9 AM",
+          "options": [
+            {
+              "value": 1,
+              "label": "7 AM"
+            },
+            {
+              "value": 2,
+              "label": "9 AM"
+            },
+            {
+              "value": 3,
+              "label": "12 PM"
+            },
+            {
+              "value": 4,
+              "label": "2 PM"
+            },
+            {
+              "value": 5,
+              "label": "5 PM"
+            },
+            {
+              "value": 6,
+              "label": "9 PM"
+            },
+            {
+              "value": 7,
+              "label": "12 AM"
+            },
+            {
+              "value": 8,
+              "label": "2 AM"
+            },
+            {
+              "value": 9,
+              "label": "5 AM"
+            }
+          ]
+        },
+        {
+          "key": "DayNightCycle",
+          "path": "DayNightCycle",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "Whether the time of day changes naturally, or it's always day/night. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Normal"
+            },
+            {
+              "value": 2,
+              "label": "Endless Day"
+            },
+            {
+              "value": 3,
+              "label": "Endless Night"
+            }
+          ]
+        },
+        {
+          "key": "ClimateCycle",
+          "path": "ClimateCycle",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "Whether weather changes or remains at a single state. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Normal"
+            },
+            {
+              "value": 2,
+              "label": "No Weather"
+            },
+            {
+              "value": 3,
+              "label": "Endless Rain"
+            },
+            {
+              "value": 4,
+              "label": "Endless Storm"
+            },
+            {
+              "value": 5,
+              "label": "Endless Snow"
+            },
+            {
+              "value": 6,
+              "label": "Endless Blizzard"
+            }
+          ]
+        },
+        {
+          "key": "FogCycle",
+          "path": "FogCycle",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "Whether fog occurs naturally, never occurs, or is always present. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Normal"
+            },
+            {
+              "value": 2,
+              "label": "No Fog"
+            },
+            {
+              "value": 3,
+              "label": "Endless Fog"
+            }
+          ]
+        },
+        {
+          "key": "WaterShut",
+          "path": "WaterShut",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "How long after the default start date (July 9, 1993) that plumbing fixtures (eg. sinks) stop being infinite sources of water. Default = 0 - 30 Days",
+          "min": null,
+          "max": null,
+          "default": "0 - 30 Days",
+          "options": [
+            {
+              "value": 1,
+              "label": "Instant"
+            },
+            {
+              "value": 2,
+              "label": "0 - 30 Days"
+            },
+            {
+              "value": 3,
+              "label": "0 - 2 Months"
+            },
+            {
+              "value": 4,
+              "label": "0 - 6 Months"
+            },
+            {
+              "value": 5,
+              "label": "0 - 1 Year"
+            },
+            {
+              "value": 6,
+              "label": "0 - 5 Years"
+            },
+            {
+              "value": 7,
+              "label": "2 - 6 Months"
+            },
+            {
+              "value": 8,
+              "label": "6 - 12 Months"
+            },
+            {
+              "value": 9,
+              "label": "Disabled"
+            }
+          ]
+        },
+        {
+          "key": "ElecShut",
+          "path": "ElecShut",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "How long after the default start date (July 9, 1993) that the world's electricity turns off for good. Default = 14 - 30 Days",
+          "min": null,
+          "max": null,
+          "default": "14 - 30 Days",
+          "options": [
+            {
+              "value": 1,
+              "label": "Instant"
+            },
+            {
+              "value": 2,
+              "label": "14 - 30 Days"
+            },
+            {
+              "value": 3,
+              "label": "14 Days - 2 Months"
+            },
+            {
+              "value": 4,
+              "label": "14 Days - 6 Months"
+            },
+            {
+              "value": 5,
+              "label": "14 Days - 1 Year"
+            },
+            {
+              "value": 6,
+              "label": "14 Days - 5 Years"
+            },
+            {
+              "value": 7,
+              "label": "2 - 6 Months"
+            },
+            {
+              "value": 8,
+              "label": "6 - 12 Months"
+            },
+            {
+              "value": 9,
+              "label": "Disabled"
+            }
+          ]
+        },
+        {
+          "key": "AlarmDecay",
+          "path": "AlarmDecay",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "How long alarm batteries can last for after the power shuts off. Default = 0 - 30 Days",
+          "min": null,
+          "max": null,
+          "default": "0 - 30 Days",
+          "options": [
+            {
+              "value": 1,
+              "label": "Instant"
+            },
+            {
+              "value": 2,
+              "label": "0 - 30 Days"
+            },
+            {
+              "value": 3,
+              "label": "0 - 2 Months"
+            },
+            {
+              "value": 4,
+              "label": "0 - 6 Months"
+            },
+            {
+              "value": 5,
+              "label": "0 - 1 Year"
+            },
+            {
+              "value": 6,
+              "label": "0 - 5 Years"
+            }
+          ]
+        },
+        {
+          "key": "WaterShutModifier",
+          "path": "WaterShutModifier",
+          "section": "General",
+          "value": 14,
+          "type": "integer",
+          "description": "How long after the default start date (July 9, 1993) that plumbing fixtures (eg. sinks) stop being infinite sources of water.",
+          "min": -1,
+          "max": 2147483647,
+          "default": 14,
+          "options": null
+        },
+        {
+          "key": "ElecShutModifier",
+          "path": "ElecShutModifier",
+          "section": "General",
+          "value": 14,
+          "type": "integer",
+          "description": "How long after the default start date (July 9, 1993) that the world's electricity turns off for good.",
+          "min": -1,
+          "max": 2147483647,
+          "default": 14,
+          "options": null
+        },
+        {
+          "key": "AlarmDecayModifier",
+          "path": "AlarmDecayModifier",
+          "section": "General",
+          "value": 14,
+          "type": "integer",
+          "description": "How long alarm batteries can last for after the power shuts off.",
+          "min": -1,
+          "max": 2147483647,
+          "default": 14,
+          "options": null
+        },
+        {
+          "key": "FoodLootNew",
+          "path": "FoodLootNew",
+          "section": "General",
+          "value": 0.8,
+          "type": "float",
+          "description": "Any food that can rot or spoil.",
+          "min": 0,
+          "max": 4,
+          "default": 0.8,
+          "options": null
+        },
+        {
+          "key": "LiteratureLootNew",
+          "path": "LiteratureLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "All other items that can be read, including books, fliers, and newspapers.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "SkillBookLoot",
+          "path": "SkillBookLoot",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Books that provide skill XP multipliers.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "RecipeResourceLoot",
+          "path": "RecipeResourceLoot",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Items that teach recipes.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "MedicalLootNew",
+          "path": "MedicalLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Medicine, bandages and first aid tools.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "SurvivalGearsLootNew",
+          "path": "SurvivalGearsLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Fishing Rods, Tents, camping gear etc.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "CannedFoodLootNew",
+          "path": "CannedFoodLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Canned and dried food, beverages.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "WeaponLootNew",
+          "path": "WeaponLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Weapons that are not tools in other categories.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "RangedWeaponLootNew",
+          "path": "RangedWeaponLootNew",
+          "section": "General",
+          "value": 1.2,
+          "type": "float",
+          "description": "Also includes weapon attachments.",
+          "min": 0,
+          "max": 4,
+          "default": 1.2,
+          "options": null
+        },
+        {
+          "key": "AmmoLootNew",
+          "path": "AmmoLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Loose ammo, boxes and magazines.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "MechanicsLootNew",
+          "path": "MechanicsLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Vehicle parts and the tools needed to install them.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "OtherLootNew",
+          "path": "OtherLootNew",
+          "section": "General",
+          "value": 0.8,
+          "type": "float",
+          "description": "Everything else. Also affects foraging for all items in Town/Road zones.",
+          "min": 0,
+          "max": 4,
+          "default": 0.8,
+          "options": null
+        },
+        {
+          "key": "ClothingLootNew",
+          "path": "ClothingLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "All wearable items that are not containers.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "ContainerLootNew",
+          "path": "ContainerLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Backpacks and other wearable/equippable containers, eg. cases.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "KeyLootNew",
+          "path": "KeyLootNew",
+          "section": "General",
+          "value": 0.4,
+          "type": "float",
+          "description": "Keys for buildings/cars, key rings, and locks.",
+          "min": 0,
+          "max": 4,
+          "default": 0.4,
+          "options": null
+        },
+        {
+          "key": "MediaLootNew",
+          "path": "MediaLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "VHS tapes and CDs.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "MementoLootNew",
+          "path": "MementoLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Spiffo items, plushies, and other collectible keepsake items eg. Photos.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "CookwareLootNew",
+          "path": "CookwareLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Items that are used in cooking, including those (eg. knives) which can be weapons. Does not include food. Includes both usable and unusable items.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "MaterialLootNew",
+          "path": "MaterialLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Items and weapons that are used as ingredients for crafting or building. This is a general category that does not include items belonging to other categories such as Cookware or Medical. Does not include Tools.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "FarmingLootNew",
+          "path": "FarmingLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Items and weapons which are used in both animal and plant agriculture, such as Seeds, Trowels, or Shovels.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "ToolLootNew",
+          "path": "ToolLootNew",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "Items and weapons which are Tools but don't fit in other categories such as Mechanics or Farming.",
+          "min": 0,
+          "max": 4,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "RollsMultiplier",
+          "path": "RollsMultiplier",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "[!] It is recommended that you DO NOT change this. [!] Can be used to adjust the number of rolls made on loot tables when spawning loot. Will not reduce the number of rolls below 1. Can negatively affect performance if set to high values. It is highly recommended that this not be changed.",
+          "min": 0.1,
+          "max": 100,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "LootItemRemovalList",
+          "path": "LootItemRemovalList",
+          "section": "General",
+          "value": "",
+          "type": "string",
+          "description": "A comma-separated list of item types that won't spawn as ordinary loot.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "RemoveStoryLoot",
+          "path": "RemoveStoryLoot",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "If enabled, items on the Loot Item Removal List, or that have their rarity set to 'None', will not spawn in randomised world stories.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "RemoveZombieLoot",
+          "path": "RemoveZombieLoot",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "If enabled, items on the Loot Item Removal List, or that have their rarity set to 'None', will not spawn worn by, or attached to, zombies.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ZombiePopLootEffect",
+          "path": "ZombiePopLootEffect",
+          "section": "General",
+          "value": 0,
+          "type": "integer",
+          "description": "If greater than 0, the spawn of loot is increased relative to the number of nearby zombies, with the effect multiplied by this number.",
+          "min": 0,
+          "max": 20,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "InsaneLootFactor",
+          "path": "InsaneLootFactor",
+          "section": "General",
+          "value": 0.05,
+          "type": "float",
+          "description": "",
+          "min": 0,
+          "max": 0.2,
+          "default": 0.05,
+          "options": null
+        },
+        {
+          "key": "ExtremeLootFactor",
+          "path": "ExtremeLootFactor",
+          "section": "General",
+          "value": 0.2,
+          "type": "float",
+          "description": "",
+          "min": 0.05,
+          "max": 0.6,
+          "default": 0.2,
+          "options": null
+        },
+        {
+          "key": "RareLootFactor",
+          "path": "RareLootFactor",
+          "section": "General",
+          "value": 0.6,
+          "type": "float",
+          "description": "",
+          "min": 0.2,
+          "max": 1,
+          "default": 0.6,
+          "options": null
+        },
+        {
+          "key": "NormalLootFactor",
+          "path": "NormalLootFactor",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "",
+          "min": 0.6,
+          "max": 2,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "CommonLootFactor",
+          "path": "CommonLootFactor",
+          "section": "General",
+          "value": 2,
+          "type": "float",
+          "description": "",
+          "min": 1,
+          "max": 3,
+          "default": 2,
+          "options": null
+        },
+        {
+          "key": "AbundantLootFactor",
+          "path": "AbundantLootFactor",
+          "section": "General",
+          "value": 3,
+          "type": "float",
+          "description": "",
+          "min": 2,
+          "max": 4,
+          "default": 3,
+          "options": null
+        },
+        {
+          "key": "Temperature",
+          "path": "Temperature",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The global temperature. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Cold"
+            },
+            {
+              "value": 2,
+              "label": "Cold"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Hot"
+            },
+            {
+              "value": 5,
+              "label": "Very Hot"
+            }
+          ]
+        },
+        {
+          "key": "Rain",
+          "path": "Rain",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "How often it rains. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Dry"
+            },
+            {
+              "value": 2,
+              "label": "Dry"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Rainy"
+            },
+            {
+              "value": 5,
+              "label": "Very Rainy"
+            }
+          ]
+        },
+        {
+          "key": "ErosionSpeed",
+          "path": "ErosionSpeed",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "Number of days until the erosion system (which adds vines, long grass, new trees etc. to the world) will reach 100% growth. Default = Slow (200 Days)",
+          "min": null,
+          "max": null,
+          "default": "Slow (200 Days)",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Fast (20 Days)"
+            },
+            {
+              "value": 2,
+              "label": "Fast (50 Days)"
+            },
+            {
+              "value": 3,
+              "label": "Normal (100 Days)"
+            },
+            {
+              "value": 4,
+              "label": "Slow (200 Days)"
+            },
+            {
+              "value": 5,
+              "label": "Very Slow (500 Days)"
+            }
+          ]
+        },
+        {
+          "key": "ErosionDays",
+          "path": "ErosionDays",
+          "section": "General",
+          "value": 0,
+          "type": "integer",
+          "description": "For a custom Erosion Speed. Zero means use the Erosion Speed option. Maximum is 36,500 days (approximately 100 years).",
+          "min": -1,
+          "max": 36500,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "Farming",
+          "path": "Farming",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The speed of plant growth. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Fast"
+            },
+            {
+              "value": 2,
+              "label": "Fast"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Slow"
+            },
+            {
+              "value": 5,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "CompostTime",
+          "path": "CompostTime",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "How long it takes for food to break down in a composter. Default = 2 Weeks",
+          "min": null,
+          "max": null,
+          "default": "2 Weeks",
+          "options": [
+            {
+              "value": 1,
+              "label": "1 Week"
+            },
+            {
+              "value": 2,
+              "label": "2 Weeks"
+            },
+            {
+              "value": 3,
+              "label": "3 Weeks"
+            },
+            {
+              "value": 4,
+              "label": "4 Weeks"
+            },
+            {
+              "value": 5,
+              "label": "6 Weeks"
+            },
+            {
+              "value": 6,
+              "label": "8 Weeks"
+            },
+            {
+              "value": 7,
+              "label": "10 Weeks"
+            },
+            {
+              "value": 8,
+              "label": "12 Weeks"
+            }
+          ]
+        },
+        {
+          "key": "StatsDecrease",
+          "path": "StatsDecrease",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "How fast the player's hunger, thirst, and fatigue will decrease. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Fast"
+            },
+            {
+              "value": 2,
+              "label": "Fast"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Slow"
+            },
+            {
+              "value": 5,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "NatureAbundance",
+          "path": "NatureAbundance",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The abundance of items found in Foraging mode. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Poor"
+            },
+            {
+              "value": 2,
+              "label": "Poor"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Abundant"
+            },
+            {
+              "value": 5,
+              "label": "Very Abundant"
+            }
+          ]
+        },
+        {
+          "key": "Alarm",
+          "path": "Alarm",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "How likely the player is to activate a house alarm when breaking into a new house. Default = Sometimes",
+          "min": null,
+          "max": null,
+          "default": "Sometimes",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            }
+          ]
+        },
+        {
+          "key": "LockedHouses",
+          "path": "LockedHouses",
+          "section": "General",
+          "value": 6,
+          "type": "enum",
+          "description": "How frequently the doors of homes and buildings will be locked when discovered. Default = Very Often",
+          "min": null,
+          "max": null,
+          "default": "Very Often",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            }
+          ]
+        },
+        {
+          "key": "StarterKit",
+          "path": "StarterKit",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "Spawn with Chips, a Water Bottle, a Small Backpack, a Baseball Bat, and a Hammer.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "Nutrition",
+          "path": "Nutrition",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "Nutritional value of food affects the player's condition. Turning this off will stop the player gaining or losing weight.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "FoodRotSpeed",
+          "path": "FoodRotSpeed",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "How fast that food will spoil, inside or outside of a fridge. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Fast"
+            },
+            {
+              "value": 2,
+              "label": "Fast"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Slow"
+            },
+            {
+              "value": 5,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "FridgeFactor",
+          "path": "FridgeFactor",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "How effective a fridge will be at keeping food fresh for longer. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Low"
+            },
+            {
+              "value": 2,
+              "label": "Low"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "High"
+            },
+            {
+              "value": 5,
+              "label": "Very High"
+            },
+            {
+              "value": 6,
+              "label": "No decay"
+            }
+          ]
+        },
+        {
+          "key": "SeenHoursPreventLootRespawn",
+          "path": "SeenHoursPreventLootRespawn",
+          "section": "General",
+          "value": 0,
+          "type": "integer",
+          "description": "When greater than 0, loot will not respawn in zones that have been visited within this number of in-game hours.",
+          "min": 0,
+          "max": 2147483647,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "HoursForLootRespawn",
+          "path": "HoursForLootRespawn",
+          "section": "General",
+          "value": 0,
+          "type": "integer",
+          "description": "When greater than 0, after X hours, all containers in towns and trailer parks in the world will respawn loot. To spawn loot a container must have been looted at least once. Loot respawn is not impacted by visibility or subsequent looting.",
+          "min": 0,
+          "max": 2147483647,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "MaxItemsForLootRespawn",
+          "path": "MaxItemsForLootRespawn",
+          "section": "General",
+          "value": 5,
+          "type": "integer",
+          "description": "Containers with a number of items greater, or equal to, this setting will not respawn.",
+          "min": 0,
+          "max": 2147483647,
+          "default": 5,
+          "options": null
+        },
+        {
+          "key": "ConstructionPreventsLootRespawn",
+          "path": "ConstructionPreventsLootRespawn",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "Items will not respawn in buildings that players have barricaded or built in.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "WorldItemRemovalList",
+          "path": "WorldItemRemovalList",
+          "section": "General",
+          "value": "Base.Hat, Base.Glasses, Base.Maggots, Base.Slug, Base.Slug2, Base.Snail, Base.Worm, Base.Dung_Mouse, Base.Dung_Rat",
+          "type": "string",
+          "description": "A comma-separated list of item types that will be removed after HoursForWorldItemRemoval hours.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "HoursForWorldItemRemoval",
+          "path": "HoursForWorldItemRemoval",
+          "section": "General",
+          "value": 24,
+          "type": "float",
+          "description": "Number of hours since an item was dropped on the ground before it is removed. Items are removed the next time that part of the map is loaded. Zero means items are not removed.",
+          "min": 0,
+          "max": 2147483647,
+          "default": 24,
+          "options": null
+        },
+        {
+          "key": "ItemRemovalListBlacklistToggle",
+          "path": "ItemRemovalListBlacklistToggle",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "If true, any items *not* in WorldItemRemovalList will be removed.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "TimeSinceApo",
+          "path": "TimeSinceApo",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "How long after the end of the world to begin. This will affect starting world erosion and food spoilage. Does not affect the starting date. Default = 0",
+          "min": null,
+          "max": null,
+          "default": "0",
+          "options": [
+            {
+              "value": 1,
+              "label": "0"
+            },
+            {
+              "value": 2,
+              "label": "1"
+            },
+            {
+              "value": 3,
+              "label": "2"
+            },
+            {
+              "value": 4,
+              "label": "3"
+            },
+            {
+              "value": 5,
+              "label": "4"
+            },
+            {
+              "value": 6,
+              "label": "5"
+            },
+            {
+              "value": 7,
+              "label": "6"
+            },
+            {
+              "value": 8,
+              "label": "7"
+            },
+            {
+              "value": 9,
+              "label": "8"
+            },
+            {
+              "value": 10,
+              "label": "9"
+            },
+            {
+              "value": 11,
+              "label": "10"
+            },
+            {
+              "value": 12,
+              "label": "11"
+            },
+            {
+              "value": 13,
+              "label": "12"
+            }
+          ]
+        },
+        {
+          "key": "PlantResilience",
+          "path": "PlantResilience",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "How much water plants will lose per day, and their ability to avoid disease. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very High"
+            },
+            {
+              "value": 2,
+              "label": "High"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Low"
+            },
+            {
+              "value": 5,
+              "label": "Very Low"
+            }
+          ]
+        },
+        {
+          "key": "PlantAbundance",
+          "path": "PlantAbundance",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The yield of plants when harvested. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Poor"
+            },
+            {
+              "value": 2,
+              "label": "Poor"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Abundant"
+            },
+            {
+              "value": 5,
+              "label": "Very Abundant"
+            }
+          ]
+        },
+        {
+          "key": "EndRegen",
+          "path": "EndRegen",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "Recovery from being tired after performing actions. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Fast"
+            },
+            {
+              "value": 2,
+              "label": "Fast"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Slow"
+            },
+            {
+              "value": 5,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "Helicopter",
+          "path": "Helicopter",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "How regularly a helicopter passes over the Event Zone. Default = Once",
+          "min": null,
+          "max": null,
+          "default": "Once",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Once"
+            },
+            {
+              "value": 3,
+              "label": "Sometimes"
+            },
+            {
+              "value": 4,
+              "label": "Often"
+            }
+          ]
+        },
+        {
+          "key": "MetaEvent",
+          "path": "MetaEvent",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "How often zombie-attracting metagame events like distant gunshots will occur. Default = Sometimes",
+          "min": null,
+          "max": null,
+          "default": "Sometimes",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Sometimes"
+            },
+            {
+              "value": 3,
+              "label": "Often"
+            }
+          ]
+        },
+        {
+          "key": "SleepingEvent",
+          "path": "SleepingEvent",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "How often events during the player's sleep, like nightmares, occur. Default = Never",
+          "min": null,
+          "max": null,
+          "default": "Never",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Sometimes"
+            },
+            {
+              "value": 3,
+              "label": "Often"
+            }
+          ]
+        },
+        {
+          "key": "GeneratorFuelConsumption",
+          "path": "GeneratorFuelConsumption",
+          "section": "General",
+          "value": 0.1,
+          "type": "float",
+          "description": "How much fuel is consumed by generators per in-game hour.",
+          "min": 0,
+          "max": 100,
+          "default": 0.1,
+          "options": null
+        },
+        {
+          "key": "GeneratorSpawning",
+          "path": "GeneratorSpawning",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "The chance of electrical generators spawning on the map. Default = Rare",
+          "min": null,
+          "max": null,
+          "default": "Rare",
+          "options": [
+            {
+              "value": 1,
+              "label": "None (not recommended)"
+            },
+            {
+              "value": 2,
+              "label": "Insanely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 4,
+              "label": "Rare"
+            },
+            {
+              "value": 5,
+              "label": "Normal"
+            },
+            {
+              "value": 6,
+              "label": "Common"
+            },
+            {
+              "value": 7,
+              "label": "Abundant"
+            }
+          ]
+        },
+        {
+          "key": "AnnotatedMapChance",
+          "path": "AnnotatedMapChance",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "How often a looted map will have notes on it, written by a deceased survivor. Default = Sometimes",
+          "min": null,
+          "max": null,
+          "default": "Sometimes",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            }
+          ]
+        },
+        {
+          "key": "CharacterFreePoints",
+          "path": "CharacterFreePoints",
+          "section": "General",
+          "value": 2,
+          "type": "integer",
+          "description": "Adds free points during character creation.",
+          "min": -100,
+          "max": 100,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "ConstructionBonusPoints",
+          "path": "ConstructionBonusPoints",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "Gives player-built constructions extra hit points so they are more resistant to zombie damage. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Low"
+            },
+            {
+              "value": 2,
+              "label": "Low"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "High"
+            },
+            {
+              "value": 5,
+              "label": "Very High"
+            }
+          ]
+        },
+        {
+          "key": "NightDarkness",
+          "path": "NightDarkness",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The level of ambient lighting at night. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Pitch Black"
+            },
+            {
+              "value": 2,
+              "label": "Dark"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Bright"
+            }
+          ]
+        },
+        {
+          "key": "NightLength",
+          "path": "NightLength",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The time from dusk to dawn. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Always Night"
+            },
+            {
+              "value": 2,
+              "label": "Long"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Short"
+            },
+            {
+              "value": 5,
+              "label": "Always Day"
+            }
+          ]
+        },
+        {
+          "key": "BoneFracture",
+          "path": "BoneFracture",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If survivors can get broken limbs from impacts, zombie damage, falls etc.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "InjurySeverity",
+          "path": "InjurySeverity",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "The impact that injuries have on your body, and their healing time. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Low"
+            },
+            {
+              "value": 2,
+              "label": "Normal"
+            },
+            {
+              "value": 3,
+              "label": "High"
+            }
+          ]
+        },
+        {
+          "key": "HoursForCorpseRemoval",
+          "path": "HoursForCorpseRemoval",
+          "section": "General",
+          "value": 216,
+          "type": "float",
+          "description": "How long, in hours, before dead zombie bodies disappear from the world. If 0, maggots will not spawn on corpses.",
+          "min": -1,
+          "max": 2147483647,
+          "default": 216,
+          "options": null
+        },
+        {
+          "key": "DecayingCorpseHealthImpact",
+          "path": "DecayingCorpseHealthImpact",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The impact that nearby decaying bodies has on the player's health and emotions. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "None"
+            },
+            {
+              "value": 2,
+              "label": "Low"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "High"
+            },
+            {
+              "value": 5,
+              "label": "Insane"
+            }
+          ]
+        },
+        {
+          "key": "ZombieHealthImpact",
+          "path": "ZombieHealthImpact",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "Whether nearby \"living\" zombies have the same impact on the player's health and emotions.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "BloodLevel",
+          "path": "BloodLevel",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "How much blood is sprayed on floors and walls by injuries. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "None"
+            },
+            {
+              "value": 2,
+              "label": "Low"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "High"
+            },
+            {
+              "value": 5,
+              "label": "Ultra Gore"
+            }
+          ]
+        },
+        {
+          "key": "ClothingDegradation",
+          "path": "ClothingDegradation",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "How quickly clothing degrades, becomes dirty, and bloodied. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Disabled"
+            },
+            {
+              "value": 2,
+              "label": "Slow"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Fast"
+            }
+          ]
+        },
+        {
+          "key": "FireSpread",
+          "path": "FireSpread",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If fires spread when started.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "DaysForRottenFoodRemoval",
+          "path": "DaysForRottenFoodRemoval",
+          "section": "General",
+          "value": -1,
+          "type": "integer",
+          "description": "Number of in-game days before rotten food is removed from the map. -1 means rotten food is never removed.",
+          "min": -1,
+          "max": 2147483647,
+          "default": -1,
+          "options": null
+        },
+        {
+          "key": "AllowExteriorGenerator",
+          "path": "AllowExteriorGenerator",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If enabled, generators will work on exterior tiles. This will allow, for example, the powering of gas pumps.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "MaxFogIntensity",
+          "path": "MaxFogIntensity",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "Maximum intensity of fog. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Normal"
+            },
+            {
+              "value": 2,
+              "label": "Moderate"
+            },
+            {
+              "value": 3,
+              "label": "Low"
+            },
+            {
+              "value": 4,
+              "label": "None"
+            }
+          ]
+        },
+        {
+          "key": "MaxRainFxIntensity",
+          "path": "MaxRainFxIntensity",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "Maximum intensity of rain. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Normal"
+            },
+            {
+              "value": 2,
+              "label": "Moderate"
+            },
+            {
+              "value": 3,
+              "label": "Low"
+            }
+          ]
+        },
+        {
+          "key": "EnableSnowOnGround",
+          "path": "EnableSnowOnGround",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If snow will accumulate on the ground. If disabled, snow will still show on vegetation and rooftops.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AttackBlockMovements",
+          "path": "AttackBlockMovements",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If melee attacking slows you down.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "SurvivorHouseChance",
+          "path": "SurvivorHouseChance",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The chance of finding randomized buildings on the map (eg. burnt out houses, ones containing loot stashes or dead bodies). Default = Rare",
+          "min": null,
+          "max": null,
+          "default": "Rare",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            },
+            {
+              "value": 7,
+              "label": "Always Tries"
+            }
+          ]
+        },
+        {
+          "key": "VehicleStoryChance",
+          "path": "VehicleStoryChance",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The chance of road stories (eg. police roadblocks) spawning. Default = Rare",
+          "min": null,
+          "max": null,
+          "default": "Rare",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            },
+            {
+              "value": 7,
+              "label": "Always Tries"
+            }
+          ]
+        },
+        {
+          "key": "ZoneStoryChance",
+          "path": "ZoneStoryChance",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The chance of stories specific to map zones (eg. a campsite in a forest) spawning. Default = Rare",
+          "min": null,
+          "max": null,
+          "default": "Rare",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            },
+            {
+              "value": 7,
+              "label": "Always Tries"
+            }
+          ]
+        },
+        {
+          "key": "AllClothesUnlocked",
+          "path": "AllClothesUnlocked",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "Allows you to select from every piece of clothing in the game when customizing your character",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "EnableTaintedWaterText",
+          "path": "EnableTaintedWaterText",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If tainted water will show a warning marking it as such.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "EnableVehicles",
+          "path": "EnableVehicles",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If vehicles will spawn.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "CarSpawnRate",
+          "path": "CarSpawnRate",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "How frequently vehicles can be discovered on the map. Default = Low",
+          "min": null,
+          "max": null,
+          "default": "Low",
+          "options": [
+            {
+              "value": 1,
+              "label": "None"
+            },
+            {
+              "value": 2,
+              "label": "Very Low"
+            },
+            {
+              "value": 3,
+              "label": "Low"
+            },
+            {
+              "value": 4,
+              "label": "Normal"
+            },
+            {
+              "value": 5,
+              "label": "High"
+            }
+          ]
+        },
+        {
+          "key": "ZombieAttractionMultiplier",
+          "path": "ZombieAttractionMultiplier",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "General engine loudness to zombies.",
+          "min": 0,
+          "max": 100,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "VehicleEasyUse",
+          "path": "VehicleEasyUse",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "Whether found vehicles are locked, need keys to start etc.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "InitialGas",
+          "path": "InitialGas",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "How full the gas tank of discovered vehicles will be. Default = Low",
+          "min": null,
+          "max": null,
+          "default": "Low",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Low"
+            },
+            {
+              "value": 2,
+              "label": "Low"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "High"
+            },
+            {
+              "value": 5,
+              "label": "Very High"
+            },
+            {
+              "value": 6,
+              "label": "Full"
+            }
+          ]
+        },
+        {
+          "key": "FuelStationGasInfinite",
+          "path": "FuelStationGasInfinite",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "If enabled, gas pumps will never run out of fuel",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "FuelStationGasMin",
+          "path": "FuelStationGasMin",
+          "section": "General",
+          "value": 0,
+          "type": "float",
+          "description": "The minimum amount of gasoline that can spawn in gas pumps. Check the \"Advanced\" box below to use a custom amount.",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "FuelStationGasMax",
+          "path": "FuelStationGasMax",
+          "section": "General",
+          "value": 0.8,
+          "type": "float",
+          "description": "The maximum amount of gasoline that can spawn in gas pumps. Check the \"Advanced\" box below to use a custom amount.",
+          "min": 0,
+          "max": 1,
+          "default": 0.8,
+          "options": null
+        },
+        {
+          "key": "FuelStationGasEmptyChance",
+          "path": "FuelStationGasEmptyChance",
+          "section": "General",
+          "value": 20,
+          "type": "integer",
+          "description": "The chance, as a percentage, that individual gas pumps will initially have no fuel.",
+          "min": 0,
+          "max": 100,
+          "default": 20,
+          "options": null
+        },
+        {
+          "key": "LockedCar",
+          "path": "LockedCar",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "How likely cars will be locked Default = Sometimes",
+          "min": null,
+          "max": null,
+          "default": "Sometimes",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            }
+          ]
+        },
+        {
+          "key": "CarGasConsumption",
+          "path": "CarGasConsumption",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "How gas-hungry vehicles are.",
+          "min": 0,
+          "max": 100,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "CarGeneralCondition",
+          "path": "CarGeneralCondition",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "General condition discovered vehicles will be in. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Low"
+            },
+            {
+              "value": 2,
+              "label": "Low"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "High"
+            },
+            {
+              "value": 5,
+              "label": "Very High"
+            }
+          ]
+        },
+        {
+          "key": "CarDamageOnImpact",
+          "path": "CarDamageOnImpact",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "The amount of damage dealt to vehicles that crash. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Low"
+            },
+            {
+              "value": 2,
+              "label": "Low"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "High"
+            },
+            {
+              "value": 5,
+              "label": "Very High"
+            }
+          ]
+        },
+        {
+          "key": "DamageToPlayerFromHitByACar",
+          "path": "DamageToPlayerFromHitByACar",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "Damage received by the player from being crashed into. Default = None",
+          "min": null,
+          "max": null,
+          "default": "None",
+          "options": [
+            {
+              "value": 1,
+              "label": "None"
+            },
+            {
+              "value": 2,
+              "label": "Low"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "High"
+            },
+            {
+              "value": 5,
+              "label": "Very High"
+            }
+          ]
+        },
+        {
+          "key": "TrafficJam",
+          "path": "TrafficJam",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If traffic jams consisting of wrecked cars will appear on main roads.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "CarAlarm",
+          "path": "CarAlarm",
+          "section": "General",
+          "value": 3,
+          "type": "enum",
+          "description": "How frequently discovered vehicles have active alarms. Default = Rare",
+          "min": null,
+          "max": null,
+          "default": "Rare",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            }
+          ]
+        },
+        {
+          "key": "PlayerDamageFromCrash",
+          "path": "PlayerDamageFromCrash",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If the player can get injured from being in a car accident.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "SirenShutoffHours",
+          "path": "SirenShutoffHours",
+          "section": "General",
+          "value": 0,
+          "type": "float",
+          "description": "How many in-game hours before a wailing siren shuts off.",
+          "min": 0,
+          "max": 168,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "ChanceHasGas",
+          "path": "ChanceHasGas",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "The chance of finding a vehicle with gas in its tank. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Low"
+            },
+            {
+              "value": 2,
+              "label": "Normal"
+            },
+            {
+              "value": 3,
+              "label": "High"
+            }
+          ]
+        },
+        {
+          "key": "RecentlySurvivorVehicles",
+          "path": "RecentlySurvivorVehicles",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "Whether a player can discover a car that has been cared for after the Knox infection struck. Default = Low",
+          "min": null,
+          "max": null,
+          "default": "Low",
+          "options": [
+            {
+              "value": 1,
+              "label": "None"
+            },
+            {
+              "value": 2,
+              "label": "Low"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "High"
+            }
+          ]
+        },
+        {
+          "key": "MultiHitZombies",
+          "path": "MultiHitZombies",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If certain melee weapons will be able to strike multiple zombies in one hit.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "RearVulnerability",
+          "path": "RearVulnerability",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "Chance of being bitten when a zombie attacks from behind. Default = High",
+          "min": null,
+          "max": null,
+          "default": "High",
+          "options": [
+            {
+              "value": 1,
+              "label": "Low"
+            },
+            {
+              "value": 2,
+              "label": "Medium"
+            },
+            {
+              "value": 3,
+              "label": "High"
+            }
+          ]
+        },
+        {
+          "key": "SirenEffectsZombies",
+          "path": "SirenEffectsZombies",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If zombies will head towards the sound of vehicle sirens.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AnimalStatsModifier",
+          "path": "AnimalStatsModifier",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "Speed at which animals stats (hunger, thirst etc.) reduce. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Ultra Fast"
+            },
+            {
+              "value": 2,
+              "label": "Very Fast"
+            },
+            {
+              "value": 3,
+              "label": "Fast"
+            },
+            {
+              "value": 4,
+              "label": "Normal"
+            },
+            {
+              "value": 5,
+              "label": "Slow"
+            },
+            {
+              "value": 6,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "AnimalMetaStatsModifier",
+          "path": "AnimalMetaStatsModifier",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "Speed at which animals stats (hunger, thirst etc.) reduce while in meta. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Ultra Fast"
+            },
+            {
+              "value": 2,
+              "label": "Very Fast"
+            },
+            {
+              "value": 3,
+              "label": "Fast"
+            },
+            {
+              "value": 4,
+              "label": "Normal"
+            },
+            {
+              "value": 5,
+              "label": "Slow"
+            },
+            {
+              "value": 6,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "AnimalPregnancyTime",
+          "path": "AnimalPregnancyTime",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "How long animals will be pregnant for before giving birth. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Ultra Fast"
+            },
+            {
+              "value": 2,
+              "label": "Very Fast"
+            },
+            {
+              "value": 3,
+              "label": "Fast"
+            },
+            {
+              "value": 4,
+              "label": "Normal"
+            },
+            {
+              "value": 5,
+              "label": "Slow"
+            },
+            {
+              "value": 6,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "AnimalAgeModifier",
+          "path": "AnimalAgeModifier",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "Speed at which animals age. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Ultra Fast"
+            },
+            {
+              "value": 2,
+              "label": "Very Fast"
+            },
+            {
+              "value": 3,
+              "label": "Fast"
+            },
+            {
+              "value": 4,
+              "label": "Normal"
+            },
+            {
+              "value": 5,
+              "label": "Slow"
+            },
+            {
+              "value": 6,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "AnimalMilkIncModifier",
+          "path": "AnimalMilkIncModifier",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Ultra Fast"
+            },
+            {
+              "value": 2,
+              "label": "Very Fast"
+            },
+            {
+              "value": 3,
+              "label": "Fast"
+            },
+            {
+              "value": 4,
+              "label": "Normal"
+            },
+            {
+              "value": 5,
+              "label": "Slow"
+            },
+            {
+              "value": 6,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "AnimalWoolIncModifier",
+          "path": "AnimalWoolIncModifier",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Ultra Fast"
+            },
+            {
+              "value": 2,
+              "label": "Very Fast"
+            },
+            {
+              "value": 3,
+              "label": "Fast"
+            },
+            {
+              "value": 4,
+              "label": "Normal"
+            },
+            {
+              "value": 5,
+              "label": "Slow"
+            },
+            {
+              "value": 6,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "AnimalRanchChance",
+          "path": "AnimalRanchChance",
+          "section": "General",
+          "value": 5,
+          "type": "enum",
+          "description": "The chance of finding animals in farm. Default = Often",
+          "min": null,
+          "max": null,
+          "default": "Often",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            },
+            {
+              "value": 7,
+              "label": "Always"
+            }
+          ]
+        },
+        {
+          "key": "AnimalGrassRegrowTime",
+          "path": "AnimalGrassRegrowTime",
+          "section": "General",
+          "value": 240,
+          "type": "integer",
+          "description": "The number of hours grass will regrow after being eaten by an animal or cut by the player.",
+          "min": 1,
+          "max": 9999,
+          "default": 240,
+          "options": null
+        },
+        {
+          "key": "AnimalMetaPredator",
+          "path": "AnimalMetaPredator",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "If a meta (ie. not actually visible in-game) fox may attack your chickens if the hutch's door is left open at night.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AnimalMatingSeason",
+          "path": "AnimalMatingSeason",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If on, animals will only mate during their breeding season (if any). Otherwise they can reproduce/lay eggs all year round.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AnimalEggHatch",
+          "path": "AnimalEggHatch",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "How long before baby animals will hatch from eggs. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Ultra Fast"
+            },
+            {
+              "value": 2,
+              "label": "Very Fast"
+            },
+            {
+              "value": 3,
+              "label": "Fast"
+            },
+            {
+              "value": 4,
+              "label": "Normal"
+            },
+            {
+              "value": 5,
+              "label": "Slow"
+            },
+            {
+              "value": 6,
+              "label": "Very Slow"
+            }
+          ]
+        },
+        {
+          "key": "AnimalSoundAttractZombies",
+          "path": "AnimalSoundAttractZombies",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If true, animal calls will attract nearby zombies.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AnimalTrackChance",
+          "path": "AnimalTrackChance",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "The chance of animals leaving tracks. Default = Sometimes",
+          "min": null,
+          "max": null,
+          "default": "Sometimes",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            }
+          ]
+        },
+        {
+          "key": "AnimalPathChance",
+          "path": "AnimalPathChance",
+          "section": "General",
+          "value": 4,
+          "type": "enum",
+          "description": "The chance of creating a path for animals to be hunted. Default = Sometimes",
+          "min": null,
+          "max": null,
+          "default": "Sometimes",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            }
+          ]
+        },
+        {
+          "key": "MaximumRatIndex",
+          "path": "MaximumRatIndex",
+          "section": "General",
+          "value": 25,
+          "type": "integer",
+          "description": "The frequency and intensity of eg. rats in infested buildings.",
+          "min": 0,
+          "max": 50,
+          "default": 25,
+          "options": null
+        },
+        {
+          "key": "DaysUntilMaximumRatIndex",
+          "path": "DaysUntilMaximumRatIndex",
+          "section": "General",
+          "value": 90,
+          "type": "integer",
+          "description": "How long it takes for the Maximum Vermin Index to be reached.",
+          "min": 0,
+          "max": 365,
+          "default": 90,
+          "options": null
+        },
+        {
+          "key": "MetaKnowledge",
+          "path": "MetaKnowledge",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "If a piece of media hasn't been fully seen or read, this setting determines whether it's displayed fully, displayed as \"???\", or hidden completely. Default = Completely hidden",
+          "min": null,
+          "max": null,
+          "default": "Completely hidden",
+          "options": [
+            {
+              "value": 1,
+              "label": "Fully revealed"
+            },
+            {
+              "value": 2,
+              "label": "Shown as ???"
+            },
+            {
+              "value": 3,
+              "label": "Completely hidden"
+            }
+          ]
+        },
+        {
+          "key": "SeeNotLearntRecipe",
+          "path": "SeeNotLearntRecipe",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If true, you will be able to see any recipes that can be done with a station, even if you haven't learnt them yet.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "MaximumLootedBuildingRooms",
+          "path": "MaximumLootedBuildingRooms",
+          "section": "General",
+          "value": 50,
+          "type": "integer",
+          "description": "If a building has more than this amount of rooms it will not be looted.",
+          "min": 0,
+          "max": 200,
+          "default": 50,
+          "options": null
+        },
+        {
+          "key": "EnablePoisoning",
+          "path": "EnablePoisoning",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "If poison can be added to food. Default = True",
+          "min": null,
+          "max": null,
+          "default": "True",
+          "options": [
+            {
+              "value": 1,
+              "label": "True"
+            },
+            {
+              "value": 2,
+              "label": "False"
+            },
+            {
+              "value": 3,
+              "label": "Only bleach poisoning is disabled"
+            }
+          ]
+        },
+        {
+          "key": "MaggotSpawn",
+          "path": "MaggotSpawn",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "If/when maggots can spawn in corpses. Default = In and Around Bodies",
+          "min": null,
+          "max": null,
+          "default": "In and Around Bodies",
+          "options": [
+            {
+              "value": 1,
+              "label": "In and Around Bodies"
+            },
+            {
+              "value": 2,
+              "label": "In Bodies Only"
+            },
+            {
+              "value": 3,
+              "label": "Never"
+            }
+          ]
+        },
+        {
+          "key": "LightBulbLifespan",
+          "path": "LightBulbLifespan",
+          "section": "General",
+          "value": 2,
+          "type": "float",
+          "description": "The higher the value, the longer lightbulbs last before breaking. If 0, lightbulbs will never break. Does not affect vehicle headlights.",
+          "min": 0,
+          "max": 1000,
+          "default": 2,
+          "options": null
+        },
+        {
+          "key": "FishAbundance",
+          "path": "FishAbundance",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "The abundance of fish in rivers and lakes. Default = Poor",
+          "min": null,
+          "max": null,
+          "default": "Poor",
+          "options": [
+            {
+              "value": 1,
+              "label": "Very Poor"
+            },
+            {
+              "value": 2,
+              "label": "Poor"
+            },
+            {
+              "value": 3,
+              "label": "Normal"
+            },
+            {
+              "value": 4,
+              "label": "Abundant"
+            },
+            {
+              "value": 5,
+              "label": "Very Abundant"
+            }
+          ]
+        },
+        {
+          "key": "LevelForMediaXPCutoff",
+          "path": "LevelForMediaXPCutoff",
+          "section": "General",
+          "value": 10,
+          "type": "integer",
+          "description": "When a skill is at this level or above, television/VHS/other media will not provide XP for it.",
+          "min": 0,
+          "max": 10,
+          "default": 3,
+          "options": null
+        },
+        {
+          "key": "LevelForDismantleXPCutoff",
+          "path": "LevelForDismantleXPCutoff",
+          "section": "General",
+          "value": 10,
+          "type": "integer",
+          "description": "When a skill is at this level or above, scrapping furniture does not provide XP for the relevant skill. Does not apply to Electrical.",
+          "min": 0,
+          "max": 10,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "BloodSplatLifespanDays",
+          "path": "BloodSplatLifespanDays",
+          "section": "General",
+          "value": 0,
+          "type": "integer",
+          "description": "Number of days before old blood splats are removed. Removal happens when map chunks are loaded. 0 means they will never disappear.",
+          "min": 0,
+          "max": 365,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "LiteratureCooldown",
+          "path": "LiteratureCooldown",
+          "section": "General",
+          "value": 45,
+          "type": "integer",
+          "description": "Number of days before one can benefit from reading previously read literature items.",
+          "min": 1,
+          "max": 365,
+          "default": 45,
+          "options": null
+        },
+        {
+          "key": "NegativeTraitsPenalty",
+          "path": "NegativeTraitsPenalty",
+          "section": "General",
+          "value": 1,
+          "type": "enum",
+          "description": "If there are diminishing returns on bonus trait points provided from selecting multiple negative traits. Default = None",
+          "min": null,
+          "max": null,
+          "default": "None",
+          "options": [
+            {
+              "value": 1,
+              "label": "None"
+            },
+            {
+              "value": 2,
+              "label": "1 point penalty for every 3 negative traits selected"
+            },
+            {
+              "value": 3,
+              "label": "1 point penalty for every 2 negative traits selected"
+            },
+            {
+              "value": 4,
+              "label": "1 point penalty for every negative trait selected after the first"
+            }
+          ]
+        },
+        {
+          "key": "MinutesPerPage",
+          "path": "MinutesPerPage",
+          "section": "General",
+          "value": 0.5,
+          "type": "float",
+          "description": "The number of in-game minutes it takes to read one page of a skill book.",
+          "min": 0,
+          "max": 60,
+          "default": 2,
+          "options": null
+        },
+        {
+          "key": "KillInsideCrops",
+          "path": "KillInsideCrops",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "When enabled, crops and herbs grown inside buildings will die. Does not affect houseplants.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "PlantGrowingSeasons",
+          "path": "PlantGrowingSeasons",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "When enabled, the growth of plants is affected by seasons.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "PlaceDirtAboveground",
+          "path": "PlaceDirtAboveground",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "[!] It is recommended that you DO NOT change this. Changing this can result in performance issues. [!] When enabled, dirt can be placed, and farming performed on other than the ground level.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "FarmingSpeedNew",
+          "path": "FarmingSpeedNew",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "The speed of plant growth.",
+          "min": 0.1,
+          "max": 100,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "FarmingAmountNew",
+          "path": "FarmingAmountNew",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "The abundance of harvested crops.",
+          "min": 0.1,
+          "max": 10,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "MaximumLooted",
+          "path": "MaximumLooted",
+          "section": "General",
+          "value": 25,
+          "type": "integer",
+          "description": "The chance that any building will already be looted when found. Check the \"Advanced\" box below to use a custom number.",
+          "min": 0,
+          "max": 200,
+          "default": 25,
+          "options": null
+        },
+        {
+          "key": "DaysUntilMaximumLooted",
+          "path": "DaysUntilMaximumLooted",
+          "section": "General",
+          "value": 90,
+          "type": "integer",
+          "description": "How long it takes for Maximum Looted Building Chance to be reached.",
+          "min": 0,
+          "max": 3650,
+          "default": 90,
+          "options": null
+        },
+        {
+          "key": "RuralLooted",
+          "path": "RuralLooted",
+          "section": "General",
+          "value": 0.5,
+          "type": "float",
+          "description": "The chance that any rural building will already be looted when found. Check the \"Advanced\" box below to use a custom number.",
+          "min": 0,
+          "max": 2,
+          "default": 0.5,
+          "options": null
+        },
+        {
+          "key": "MaximumDiminishedLoot",
+          "path": "MaximumDiminishedLoot",
+          "section": "General",
+          "value": 20,
+          "type": "integer",
+          "description": "The maximum loot that won't spawn when Days Until Maximum Diminished Loot is reached. Check the \"Advanced\" box below to use an exact percentage.",
+          "min": 0,
+          "max": 100,
+          "default": 20,
+          "options": null
+        },
+        {
+          "key": "DaysUntilMaximumDiminishedLoot",
+          "path": "DaysUntilMaximumDiminishedLoot",
+          "section": "General",
+          "value": 3650,
+          "type": "integer",
+          "description": "How long it takes for Maximum Diminished Loot Percentage to be reached.",
+          "min": 0,
+          "max": 3650,
+          "default": 3650,
+          "options": null
+        },
+        {
+          "key": "MuscleStrainFactor",
+          "path": "MuscleStrainFactor",
+          "section": "General",
+          "value": 0.7,
+          "type": "float",
+          "description": "Functions as a multiplier when applying muscle strain from swinging weapons or carrying heavy loads.",
+          "min": 0,
+          "max": 10,
+          "default": 0.7,
+          "options": null
+        },
+        {
+          "key": "DiscomfortFactor",
+          "path": "DiscomfortFactor",
+          "section": "General",
+          "value": 0.8,
+          "type": "float",
+          "description": "Functions as a multiplier when applying discomfort from worn items.",
+          "min": 0,
+          "max": 10,
+          "default": 0.8,
+          "options": null
+        },
+        {
+          "key": "WoundInfectionFactor",
+          "path": "WoundInfectionFactor",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "If greater than zero damage can be taken from serious wound infections.",
+          "min": 0,
+          "max": 10,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "NoBlackClothes",
+          "path": "NoBlackClothes",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "If true clothing with randomized tints will not be so dark to be virtually black.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "EasyClimbing",
+          "path": "EasyClimbing",
+          "section": "General",
+          "value": false,
+          "type": "boolean",
+          "description": "Disables the failure chances when climbing sheet ropes or over walls.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "MaximumFireFuelHours",
+          "path": "MaximumFireFuelHours",
+          "section": "General",
+          "value": 8,
+          "type": "integer",
+          "description": "The maximum hours of fuel that can be placed in a campfire, wood stove etc.",
+          "min": 1,
+          "max": 168,
+          "default": 8,
+          "options": null
+        },
+        {
+          "key": "FirearmUseDamageChance",
+          "path": "FirearmUseDamageChance",
+          "section": "General",
+          "value": 2,
+          "type": "enum",
+          "description": "Replaces Chance-To-Hit mechanics with Chance-To-Damage calculations. This mode prioritizes player aiming. Default = Zombies only",
+          "min": null,
+          "max": null,
+          "default": "Zombies only",
+          "options": [
+            {
+              "value": 1,
+              "label": "Disabled"
+            },
+            {
+              "value": 2,
+              "label": "Zombies only"
+            },
+            {
+              "value": 3,
+              "label": "All types of target"
+            }
+          ]
+        },
+        {
+          "key": "FirearmNoiseMultiplier",
+          "path": "FirearmNoiseMultiplier",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "A multiplier for the distance at which zombies can hear gunshots.",
+          "min": 0.2,
+          "max": 2,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "FirearmJamMultiplier",
+          "path": "FirearmJamMultiplier",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "Multiplier for firearm jamming chance. 0 disables jamming.",
+          "min": 0,
+          "max": 10,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "FirearmMoodleMultiplier",
+          "path": "FirearmMoodleMultiplier",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "Multiplier for Moodle effects on hit chance. 0 disables Moodle penalty.",
+          "min": 0,
+          "max": 10,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "FirearmWeatherMultiplier",
+          "path": "FirearmWeatherMultiplier",
+          "section": "General",
+          "value": 1,
+          "type": "float",
+          "description": "Multiplier for the effects of weather (wind, rain and fog) on hit chance. 0 disables weather effect.",
+          "min": 0,
+          "max": 10,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "FirearmHeadGearEffect",
+          "path": "FirearmHeadGearEffect",
+          "section": "General",
+          "value": true,
+          "type": "boolean",
+          "description": "Enable to have headgear like welding masks affect hit chance",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ClayLakeChance",
+          "path": "ClayLakeChance",
+          "section": "General",
+          "value": 0.05,
+          "type": "float",
+          "description": "Chance to turn a dirt floor into a clay floor. Applies to lakes.",
+          "min": 0,
+          "max": 1,
+          "default": 0.05,
+          "options": null
+        },
+        {
+          "key": "ClayRiverChance",
+          "path": "ClayRiverChance",
+          "section": "General",
+          "value": 0.05,
+          "type": "float",
+          "description": "Chance to turn a dirt floor into a clay floor. Applies to rivers.",
+          "min": 0,
+          "max": 1,
+          "default": 0.05,
+          "options": null
+        },
+        {
+          "key": "GeneratorTileRange",
+          "path": "GeneratorTileRange",
+          "section": "General",
+          "value": 20,
+          "type": "integer",
+          "description": "",
+          "min": 1,
+          "max": 100,
+          "default": 20,
+          "options": null
+        },
+        {
+          "key": "GeneratorVerticalPowerRange",
+          "path": "GeneratorVerticalPowerRange",
+          "section": "General",
+          "value": 3,
+          "type": "integer",
+          "description": "How many levels both above and below a generator it can provide with electricity.",
+          "min": 1,
+          "max": 15,
+          "default": 3,
+          "options": null
+        }
+      ]
+    },
+    {
+      "name": "Basement",
+      "paramCount": 1,
+      "params": [
+        {
+          "key": "SpawnFrequency",
+          "path": "Basement.SpawnFrequency",
+          "section": "Basement",
+          "value": 4,
+          "type": "enum",
+          "description": "How frequently basements spawn at random locations. Default = Sometimes",
+          "min": null,
+          "max": null,
+          "default": "Sometimes",
+          "options": [
+            {
+              "value": 1,
+              "label": "Never"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            },
+            {
+              "value": 7,
+              "label": "Always"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Map",
+      "paramCount": 4,
+      "params": [
+        {
+          "key": "AllowMiniMap",
+          "path": "Map.AllowMiniMap",
+          "section": "Map",
+          "value": true,
+          "type": "boolean",
+          "description": "If enabled, a mini-map window will be available.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowWorldMap",
+          "path": "Map.AllowWorldMap",
+          "section": "Map",
+          "value": true,
+          "type": "boolean",
+          "description": "If enabled, the world map can be accessed.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "MapAllKnown",
+          "path": "Map.MapAllKnown",
+          "section": "Map",
+          "value": false,
+          "type": "boolean",
+          "description": "If enabled, the world map will be completely filled in on starting the game.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "MapNeedsLight",
+          "path": "Map.MapNeedsLight",
+          "section": "Map",
+          "value": true,
+          "type": "boolean",
+          "description": "If enabled, maps can't be read unless there's a source of light available.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        }
+      ]
+    },
+    {
+      "name": "ZombieLore",
+      "paramCount": 29,
+      "params": [
+        {
+          "key": "Speed",
+          "path": "ZombieLore.Speed",
+          "section": "ZombieLore",
+          "value": 4,
+          "type": "enum",
+          "description": "How fast zombies move. Default = Random",
+          "min": null,
+          "max": null,
+          "default": "Random",
+          "options": [
+            {
+              "value": 1,
+              "label": "Sprinters"
+            },
+            {
+              "value": 2,
+              "label": "Fast Shamblers"
+            },
+            {
+              "value": 3,
+              "label": "Shamblers"
+            },
+            {
+              "value": 4,
+              "label": "Random"
+            }
+          ]
+        },
+        {
+          "key": "SprinterPercentage",
+          "path": "ZombieLore.SprinterPercentage",
+          "section": "ZombieLore",
+          "value": 0,
+          "type": "integer",
+          "description": "If Random Speed is enabled, this controls what percentage of zombies are Sprinters. Check the \"Advanced\" box below to use a custom percentage.",
+          "min": 0,
+          "max": 100,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "Strength",
+          "path": "ZombieLore.Strength",
+          "section": "ZombieLore",
+          "value": 2,
+          "type": "enum",
+          "description": "The damage zombies inflict per attack. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Superhuman"
+            },
+            {
+              "value": 2,
+              "label": "Normal"
+            },
+            {
+              "value": 3,
+              "label": "Weak"
+            },
+            {
+              "value": 4,
+              "label": "Random"
+            }
+          ]
+        },
+        {
+          "key": "Toughness",
+          "path": "ZombieLore.Toughness",
+          "section": "ZombieLore",
+          "value": 4,
+          "type": "enum",
+          "description": "The difficulty of killing a zombie. Default = Random",
+          "min": null,
+          "max": null,
+          "default": "Random",
+          "options": [
+            {
+              "value": 1,
+              "label": "Tough"
+            },
+            {
+              "value": 2,
+              "label": "Normal"
+            },
+            {
+              "value": 3,
+              "label": "Fragile"
+            },
+            {
+              "value": 4,
+              "label": "Random"
+            }
+          ]
+        },
+        {
+          "key": "Transmission",
+          "path": "ZombieLore.Transmission",
+          "section": "ZombieLore",
+          "value": 1,
+          "type": "enum",
+          "description": "How the Knox Virus spreads. Default = Blood and Saliva",
+          "min": null,
+          "max": null,
+          "default": "Blood and Saliva",
+          "options": [
+            {
+              "value": 1,
+              "label": "Blood and Saliva"
+            },
+            {
+              "value": 2,
+              "label": "Saliva Only"
+            },
+            {
+              "value": 3,
+              "label": "Everyone's Infected"
+            },
+            {
+              "value": 4,
+              "label": "None"
+            }
+          ]
+        },
+        {
+          "key": "Mortality",
+          "path": "ZombieLore.Mortality",
+          "section": "ZombieLore",
+          "value": 5,
+          "type": "enum",
+          "description": "How quickly the infection takes effect. Default = 2-3 Days",
+          "min": null,
+          "max": null,
+          "default": "2-3 Days",
+          "options": [
+            {
+              "value": 1,
+              "label": "Instant"
+            },
+            {
+              "value": 2,
+              "label": "0-30 Seconds"
+            },
+            {
+              "value": 3,
+              "label": "0-1 Minutes"
+            },
+            {
+              "value": 4,
+              "label": "0-12 Hours"
+            },
+            {
+              "value": 5,
+              "label": "2-3 Days"
+            },
+            {
+              "value": 6,
+              "label": "1-2 Weeks"
+            },
+            {
+              "value": 7,
+              "label": "Never"
+            }
+          ]
+        },
+        {
+          "key": "Reanimate",
+          "path": "ZombieLore.Reanimate",
+          "section": "ZombieLore",
+          "value": 3,
+          "type": "enum",
+          "description": "How quickly infected corpses rise as zombies. Default = 0-1 Minutes",
+          "min": null,
+          "max": null,
+          "default": "0-1 Minutes",
+          "options": [
+            {
+              "value": 1,
+              "label": "Instant"
+            },
+            {
+              "value": 2,
+              "label": "0-30 Seconds"
+            },
+            {
+              "value": 3,
+              "label": "0-1 Minutes"
+            },
+            {
+              "value": 4,
+              "label": "0-12 Hours"
+            },
+            {
+              "value": 5,
+              "label": "2-3 Days"
+            },
+            {
+              "value": 6,
+              "label": "1-2 Weeks"
+            }
+          ]
+        },
+        {
+          "key": "Cognition",
+          "path": "ZombieLore.Cognition",
+          "section": "ZombieLore",
+          "value": 3,
+          "type": "enum",
+          "description": "Zombie intelligence. Default = Basic Navigation",
+          "min": null,
+          "max": null,
+          "default": "Basic Navigation",
+          "options": [
+            {
+              "value": 1,
+              "label": "Navigate and Use Doors"
+            },
+            {
+              "value": 2,
+              "label": "Navigate"
+            },
+            {
+              "value": 3,
+              "label": "Basic Navigation"
+            },
+            {
+              "value": 4,
+              "label": "Random"
+            }
+          ]
+        },
+        {
+          "key": "DoorOpeningPercentage",
+          "path": "ZombieLore.DoorOpeningPercentage",
+          "section": "ZombieLore",
+          "value": 0,
+          "type": "integer",
+          "description": "",
+          "min": 0,
+          "max": 100,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "CrawlUnderVehicle",
+          "path": "ZombieLore.CrawlUnderVehicle",
+          "section": "ZombieLore",
+          "value": 5,
+          "type": "enum",
+          "description": "How often zombies can crawl under parked vehicles. Default = Often",
+          "min": null,
+          "max": null,
+          "default": "Often",
+          "options": [
+            {
+              "value": 1,
+              "label": "Crawlers Only"
+            },
+            {
+              "value": 2,
+              "label": "Extremely Rare"
+            },
+            {
+              "value": 3,
+              "label": "Rare"
+            },
+            {
+              "value": 4,
+              "label": "Sometimes"
+            },
+            {
+              "value": 5,
+              "label": "Often"
+            },
+            {
+              "value": 6,
+              "label": "Very Often"
+            },
+            {
+              "value": 7,
+              "label": "Always"
+            }
+          ]
+        },
+        {
+          "key": "Memory",
+          "path": "ZombieLore.Memory",
+          "section": "ZombieLore",
+          "value": 6,
+          "type": "enum",
+          "description": "How long zombies remember a player after seeing or hearing them. Default = Normal",
+          "min": null,
+          "max": null,
+          "default": "Normal",
+          "options": [
+            {
+              "value": 1,
+              "label": "Long"
+            },
+            {
+              "value": 2,
+              "label": "Normal"
+            },
+            {
+              "value": 3,
+              "label": "Short"
+            },
+            {
+              "value": 4,
+              "label": "None"
+            },
+            {
+              "value": 5,
+              "label": "Random"
+            },
+            {
+              "value": 6,
+              "label": "Random between Normal and None"
+            }
+          ]
+        },
+        {
+          "key": "Sight",
+          "path": "ZombieLore.Sight",
+          "section": "ZombieLore",
+          "value": 5,
+          "type": "enum",
+          "description": "Zombie vision radius. Default = Random between Normal and Poor",
+          "min": null,
+          "max": null,
+          "default": "Random between Normal and Poor",
+          "options": [
+            {
+              "value": 1,
+              "label": "Eagle"
+            },
+            {
+              "value": 2,
+              "label": "Normal"
+            },
+            {
+              "value": 3,
+              "label": "Poor"
+            },
+            {
+              "value": 4,
+              "label": "Random"
+            },
+            {
+              "value": 5,
+              "label": "Random between Normal and Poor"
+            }
+          ]
+        },
+        {
+          "key": "Hearing",
+          "path": "ZombieLore.Hearing",
+          "section": "ZombieLore",
+          "value": 5,
+          "type": "enum",
+          "description": "Zombie hearing radius. Default = Random between Normal and Poor",
+          "min": null,
+          "max": null,
+          "default": "Random between Normal and Poor",
+          "options": [
+            {
+              "value": 1,
+              "label": "Pinpoint"
+            },
+            {
+              "value": 2,
+              "label": "Normal"
+            },
+            {
+              "value": 3,
+              "label": "Poor"
+            },
+            {
+              "value": 4,
+              "label": "Random"
+            },
+            {
+              "value": 5,
+              "label": "Random between Normal and Poor"
+            }
+          ]
+        },
+        {
+          "key": "SpottedLogic",
+          "path": "ZombieLore.SpottedLogic",
+          "section": "ZombieLore",
+          "value": true,
+          "type": "boolean",
+          "description": "Activates the new advanced stealth mechanics, which allows you to hide from zombies behind cars, takes traits and weather into account, and much more.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ThumpNoChasing",
+          "path": "ZombieLore.ThumpNoChasing",
+          "section": "ZombieLore",
+          "value": false,
+          "type": "boolean",
+          "description": "If zombies that have not seen/heard player can attack doors and constructions while roaming.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ThumpOnConstruction",
+          "path": "ZombieLore.ThumpOnConstruction",
+          "section": "ZombieLore",
+          "value": true,
+          "type": "boolean",
+          "description": "If zombies can destroy player constructions and defenses.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ActiveOnly",
+          "path": "ZombieLore.ActiveOnly",
+          "section": "ZombieLore",
+          "value": 2,
+          "type": "enum",
+          "description": "Whether zombies are more \"active\" during the day or night. \"Active\" zombies will use the speed set in the \"Speed\" setting. \"Inactive\" zombies will be slower, and tend not to give chase. Default = Both",
+          "min": null,
+          "max": null,
+          "default": "Both",
+          "options": [
+            {
+              "value": 1,
+              "label": "Both"
+            },
+            {
+              "value": 2,
+              "label": "Night"
+            },
+            {
+              "value": 3,
+              "label": "Day"
+            }
+          ]
+        },
+        {
+          "key": "TriggerHouseAlarm",
+          "path": "ZombieLore.TriggerHouseAlarm",
+          "section": "ZombieLore",
+          "value": true,
+          "type": "boolean",
+          "description": "If zombies trigger house alarms when breaking through windows or doors.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ZombiesDragDown",
+          "path": "ZombieLore.ZombiesDragDown",
+          "section": "ZombieLore",
+          "value": true,
+          "type": "boolean",
+          "description": "If multiple attacking zombies can drag you down and kill you. Dependent on zombie strength.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ZombiesCrawlersDragDown",
+          "path": "ZombieLore.ZombiesCrawlersDragDown",
+          "section": "ZombieLore",
+          "value": false,
+          "type": "boolean",
+          "description": "If crawler zombies beside a player contribute to the chance of being dragged down and killed by a group of zombies.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ZombiesFenceLunge",
+          "path": "ZombieLore.ZombiesFenceLunge",
+          "section": "ZombieLore",
+          "value": true,
+          "type": "boolean",
+          "description": "If zombies have a chance to lunge at you after climbing over a fence or through a window if you're too close.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ZombiesArmorFactor",
+          "path": "ZombieLore.ZombiesArmorFactor",
+          "section": "ZombieLore",
+          "value": 2,
+          "type": "float",
+          "description": "Serves as a multiplier when determining the effectiveness of armor worn by zombies.",
+          "min": 0,
+          "max": 100,
+          "default": 2,
+          "options": null
+        },
+        {
+          "key": "ZombiesMaxDefense",
+          "path": "ZombieLore.ZombiesMaxDefense",
+          "section": "ZombieLore",
+          "value": 85,
+          "type": "integer",
+          "description": "The maximum defense percentage that any worn protective garments can provide to a zombie.",
+          "min": 0,
+          "max": 100,
+          "default": 85,
+          "options": null
+        },
+        {
+          "key": "ChanceOfAttachedWeapon",
+          "path": "ZombieLore.ChanceOfAttachedWeapon",
+          "section": "ZombieLore",
+          "value": 6,
+          "type": "integer",
+          "description": "Percentage chance of having a random attached weapon.",
+          "min": 0,
+          "max": 100,
+          "default": 6,
+          "options": null
+        },
+        {
+          "key": "ZombiesFallDamage",
+          "path": "ZombieLore.ZombiesFallDamage",
+          "section": "ZombieLore",
+          "value": 1,
+          "type": "float",
+          "description": "How much damage zombies take when falling from height.",
+          "min": 0,
+          "max": 100,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "DisableFakeDead",
+          "path": "ZombieLore.DisableFakeDead",
+          "section": "ZombieLore",
+          "value": 1,
+          "type": "enum",
+          "description": "Whether some dead-looking zombies will reanimate and attack the player. Default = World Zombies",
+          "min": null,
+          "max": null,
+          "default": "World Zombies",
+          "options": [
+            {
+              "value": 1,
+              "label": "World Zombies"
+            },
+            {
+              "value": 2,
+              "label": "World and Combat Zombies"
+            },
+            {
+              "value": 3,
+              "label": "Never"
+            }
+          ]
+        },
+        {
+          "key": "PlayerSpawnZombieRemoval",
+          "path": "ZombieLore.PlayerSpawnZombieRemoval",
+          "section": "ZombieLore",
+          "value": 1,
+          "type": "enum",
+          "description": "Zombies will not spawn where players spawn. Default = Inside the building and around it",
+          "min": null,
+          "max": null,
+          "default": "Inside the building and around it",
+          "options": [
+            {
+              "value": 1,
+              "label": "Inside the building and around it"
+            },
+            {
+              "value": 2,
+              "label": "Inside the building"
+            },
+            {
+              "value": 3,
+              "label": "Inside the room"
+            },
+            {
+              "value": 4,
+              "label": "Zombies can spawn anywhere"
+            }
+          ]
+        },
+        {
+          "key": "FenceThumpersRequired",
+          "path": "ZombieLore.FenceThumpersRequired",
+          "section": "ZombieLore",
+          "value": 25,
+          "type": "integer",
+          "description": "How many zombies it takes to damage a tall fence.",
+          "min": -1,
+          "max": 100,
+          "default": 25,
+          "options": null
+        },
+        {
+          "key": "FenceDamageMultiplier",
+          "path": "ZombieLore.FenceDamageMultiplier",
+          "section": "ZombieLore",
+          "value": 1,
+          "type": "float",
+          "description": "How quickly zombies damage tall fences.",
+          "min": 0.01,
+          "max": 100,
+          "default": 1,
+          "options": null
+        }
+      ]
+    },
+    {
+      "name": "ZombieConfig",
+      "paramCount": 15,
+      "params": [
+        {
+          "key": "PopulationMultiplier",
+          "path": "ZombieConfig.PopulationMultiplier",
+          "section": "ZombieConfig",
+          "value": 0.65,
+          "type": "float",
+          "description": "Set by the \"Zombie Count\" population option, or by a custom number here. Insane = 2.5, Very High = 1.6, High = 1.2, Normal = 0.65, Low = 0.15, None = 0.0.",
+          "min": 0,
+          "max": 4,
+          "default": 0.65,
+          "options": null
+        },
+        {
+          "key": "PopulationStartMultiplier",
+          "path": "ZombieConfig.PopulationStartMultiplier",
+          "section": "ZombieConfig",
+          "value": 1,
+          "type": "float",
+          "description": "A multiplier for the desired zombie population at the start of the game. Insane = 3.0, Very High = 2.0, High = 1.5, Normal = 1.0, Low = 0.5, None = 0.0.",
+          "min": 0,
+          "max": 4,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "PopulationPeakMultiplier",
+          "path": "ZombieConfig.PopulationPeakMultiplier",
+          "section": "ZombieConfig",
+          "value": 1.5,
+          "type": "float",
+          "description": "A multiplier for the desired zombie population on the peak day. Insane = 3.0, Very High = 2.0, High = 1.5, Normal = 1.0, Low = 0.5, None = 0.0.",
+          "min": 0,
+          "max": 4,
+          "default": 1.5,
+          "options": null
+        },
+        {
+          "key": "PopulationPeakDay",
+          "path": "ZombieConfig.PopulationPeakDay",
+          "section": "ZombieConfig",
+          "value": 28,
+          "type": "integer",
+          "description": "The day when the population reaches its peak.",
+          "min": 1,
+          "max": 365,
+          "default": 28,
+          "options": null
+        },
+        {
+          "key": "RespawnHours",
+          "path": "ZombieConfig.RespawnHours",
+          "section": "ZombieConfig",
+          "value": 0,
+          "type": "float",
+          "description": "The number of hours that must pass before zombies may respawn in a cell. If 0, spawning is disabled.",
+          "min": 0,
+          "max": 8760,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "RespawnUnseenHours",
+          "path": "ZombieConfig.RespawnUnseenHours",
+          "section": "ZombieConfig",
+          "value": 0,
+          "type": "float",
+          "description": "The number of hours that a chunk must be unseen before zombies may respawn in it.",
+          "min": 0,
+          "max": 8760,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "RespawnMultiplier",
+          "path": "ZombieConfig.RespawnMultiplier",
+          "section": "ZombieConfig",
+          "value": 0,
+          "type": "float",
+          "description": "The fraction of a cell's desired population that may respawn every RespawnHours.",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "RedistributeHours",
+          "path": "ZombieConfig.RedistributeHours",
+          "section": "ZombieConfig",
+          "value": 12,
+          "type": "float",
+          "description": "The number of hours that must pass before zombies migrate to empty parts of the same cell. If 0, migration is disabled.",
+          "min": 0,
+          "max": 8760,
+          "default": 12,
+          "options": null
+        },
+        {
+          "key": "FollowSoundDistance",
+          "path": "ZombieConfig.FollowSoundDistance",
+          "section": "ZombieConfig",
+          "value": 100,
+          "type": "integer",
+          "description": "The distance a zombie will try to walk towards the last sound it heard.",
+          "min": 10,
+          "max": 1000,
+          "default": 100,
+          "options": null
+        },
+        {
+          "key": "RallyGroupSize",
+          "path": "ZombieConfig.RallyGroupSize",
+          "section": "ZombieConfig",
+          "value": 20,
+          "type": "integer",
+          "description": "The size of groups real zombies form when idle. 0 means zombies don't form groups. Groups don't form inside buildings or forest zones.",
+          "min": 0,
+          "max": 1000,
+          "default": 20,
+          "options": null
+        },
+        {
+          "key": "RallyGroupSizeVariance",
+          "path": "ZombieConfig.RallyGroupSizeVariance",
+          "section": "ZombieConfig",
+          "value": 50,
+          "type": "integer",
+          "description": "The amount, as a percentage, that zombie groups can vary in size from the default (both larger and smaller). For example, at 50% variance with a default group size of 20, groups will vary in size from 10-30.",
+          "min": 0,
+          "max": 100,
+          "default": 50,
+          "options": null
+        },
+        {
+          "key": "RallyTravelDistance",
+          "path": "ZombieConfig.RallyTravelDistance",
+          "section": "ZombieConfig",
+          "value": 20,
+          "type": "integer",
+          "description": "The distance real zombies travel to form groups when idle.",
+          "min": 5,
+          "max": 50,
+          "default": 20,
+          "options": null
+        },
+        {
+          "key": "RallyGroupSeparation",
+          "path": "ZombieConfig.RallyGroupSeparation",
+          "section": "ZombieConfig",
+          "value": 15,
+          "type": "integer",
+          "description": "The distance between zombie groups.",
+          "min": 5,
+          "max": 25,
+          "default": 15,
+          "options": null
+        },
+        {
+          "key": "RallyGroupRadius",
+          "path": "ZombieConfig.RallyGroupRadius",
+          "section": "ZombieConfig",
+          "value": 3,
+          "type": "integer",
+          "description": "How close members of a zombie group stay to the group's \"leader\".",
+          "min": 1,
+          "max": 10,
+          "default": 3,
+          "options": null
+        },
+        {
+          "key": "ZombiesCountBeforeDelete",
+          "path": "ZombieConfig.ZombiesCountBeforeDelete",
+          "section": "ZombieConfig",
+          "value": 300,
+          "type": "integer",
+          "description": "",
+          "min": 10,
+          "max": 500,
+          "default": 300,
+          "options": null
+        }
+      ]
+    },
+    {
+      "name": "MultiplierConfig",
+      "paramCount": 37,
+      "params": [
+        {
+          "key": "Global",
+          "path": "MultiplierConfig.Global",
+          "section": "MultiplierConfig",
+          "value": 2,
+          "type": "float",
+          "description": "The rate at which all skills level up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "GlobalToggle",
+          "path": "MultiplierConfig.GlobalToggle",
+          "section": "MultiplierConfig",
+          "value": true,
+          "type": "boolean",
+          "description": "When enabled, all skills will use the Global Multiplier.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "Fitness",
+          "path": "MultiplierConfig.Fitness",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Fitness skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Strength",
+          "path": "MultiplierConfig.Strength",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Strength skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Sprinting",
+          "path": "MultiplierConfig.Sprinting",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Sprinting skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Lightfoot",
+          "path": "MultiplierConfig.Lightfoot",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Lightfooted skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Nimble",
+          "path": "MultiplierConfig.Nimble",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Nimble skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Sneak",
+          "path": "MultiplierConfig.Sneak",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Sneaking skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Axe",
+          "path": "MultiplierConfig.Axe",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Axe skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Blunt",
+          "path": "MultiplierConfig.Blunt",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Long Blunt skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "SmallBlunt",
+          "path": "MultiplierConfig.SmallBlunt",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Short Blunt skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "LongBlade",
+          "path": "MultiplierConfig.LongBlade",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Long Blade skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "SmallBlade",
+          "path": "MultiplierConfig.SmallBlade",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Short Blade skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Spear",
+          "path": "MultiplierConfig.Spear",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Spear skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Maintenance",
+          "path": "MultiplierConfig.Maintenance",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Maintenance skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Woodwork",
+          "path": "MultiplierConfig.Woodwork",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Carpentry skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Cooking",
+          "path": "MultiplierConfig.Cooking",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Cooking skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Farming",
+          "path": "MultiplierConfig.Farming",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Agriculture skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Doctor",
+          "path": "MultiplierConfig.Doctor",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which First Aid skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Electricity",
+          "path": "MultiplierConfig.Electricity",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Electrical skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "MetalWelding",
+          "path": "MultiplierConfig.MetalWelding",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Welding skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Mechanics",
+          "path": "MultiplierConfig.Mechanics",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Mechanics skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Tailoring",
+          "path": "MultiplierConfig.Tailoring",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Tailoring skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Aiming",
+          "path": "MultiplierConfig.Aiming",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Aiming skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Reloading",
+          "path": "MultiplierConfig.Reloading",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Reloading skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Fishing",
+          "path": "MultiplierConfig.Fishing",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Fishing skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Trapping",
+          "path": "MultiplierConfig.Trapping",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Trapping skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "PlantScavenging",
+          "path": "MultiplierConfig.PlantScavenging",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Foraging skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "FlintKnapping",
+          "path": "MultiplierConfig.FlintKnapping",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Knapping skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Masonry",
+          "path": "MultiplierConfig.Masonry",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Masonry skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Pottery",
+          "path": "MultiplierConfig.Pottery",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Pottery skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Carving",
+          "path": "MultiplierConfig.Carving",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Carving skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Husbandry",
+          "path": "MultiplierConfig.Husbandry",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Animal Care skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Tracking",
+          "path": "MultiplierConfig.Tracking",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Tracking skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Blacksmith",
+          "path": "MultiplierConfig.Blacksmith",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Blacksmithing skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Butchering",
+          "path": "MultiplierConfig.Butchering",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Butchering skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "Glassmaking",
+          "path": "MultiplierConfig.Glassmaking",
+          "section": "MultiplierConfig",
+          "value": 1,
+          "type": "float",
+          "description": "Rate at which Glassmaking skill levels up.",
+          "min": 0,
+          "max": 1000,
+          "default": 1,
+          "options": null
+        }
+      ]
+    }
+  ]
+}
