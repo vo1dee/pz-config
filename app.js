@@ -8,15 +8,30 @@
         exportNoticeSeen: 'pzConfigEditor.exportNoticeSeen',
     };
 
+    // Sync backend lives at the same origin under /api (see server/), gated by
+    // Cloudflare Access, and always targets the one server configured in its
+    // .env. /api/whoami tells us whether this browser is logged in; if it
+    // isn't (no backend, or Access denies), sync stays hidden.
+    const API_BASE = '';
+
     const state = {
         schema: null,          // { version, sections: [...] }
         translations: null,    // { ui, sections, params }
         values: {},             // path -> current value
         lang: 'en',
         search: '',
+        authEmail: null,        // email from /api/whoami, or null if logged out
+        server: null,           // /api/status result, or null if not fetched yet
     };
 
     const els = {};
+
+    // Mirrors the server's step sequence in server/index.js, used only to
+    // size the progress bar — order must match what /api/sync/push emits.
+    const SYNC_STEP_ORDER = ['validate', 'backup', 'countdown', 'save', 'stop', 'write', 'start', 'done'];
+    let syncInFlight = false;      // a push request is currently streaming
+    let syncCancellable = true;    // mirrors the latest event's `cancellable` flag
+    let syncAbortController = null;
 
     function qs(id) { return document.getElementById(id); }
 
@@ -27,6 +42,19 @@
         els.langToggle = qs('lang-toggle');
         els.loadFileBtn = qs('load-file-btn');
         els.fileInput = qs('file-input');
+        els.authStatus = qs('auth-status');
+        els.loginLink = qs('login-link');
+        els.syncPullBtn = qs('sync-pull-btn');
+        els.syncPushBtn = qs('sync-push-btn');
+        els.serverBtn = qs('server-btn');
+        els.serverModal = qs('server-modal');
+        els.serverModalTitle = qs('server-modal-title');
+        els.serverStatusDot = qs('server-status-dot');
+        els.serverStatusText = qs('server-status-text');
+        els.serverPlayers = qs('server-players');
+        els.announceInput = qs('announce-input');
+        els.announceSendBtn = qs('announce-send-btn');
+        els.serverCloseBtn = qs('server-close-btn');
         els.exportBtn = qs('export-btn');
         els.appTitle = qs('app-title');
         els.versionBadge = qs('version-badge');
@@ -35,6 +63,16 @@
         els.exportModalBody = qs('export-modal-body');
         els.exportConfirmBtn = qs('export-confirm-btn');
         els.exportCancelBtn = qs('export-cancel-btn');
+        els.syncModal = qs('sync-modal');
+        els.syncModalBody = qs('sync-modal-body');
+        els.syncProgress = qs('sync-progress');
+        els.syncProgressBar = qs('sync-progress-bar');
+        els.syncLog = qs('sync-log');
+        els.syncConfirmBtn = qs('sync-confirm-btn');
+        els.syncCancelBtn = qs('sync-cancel-btn');
+        els.syncBgBtn = qs('sync-bg-btn');
+        els.syncBgIndicator = qs('sync-bg-indicator');
+        els.syncBgText = qs('sync-bg-text');
         els.toast = qs('toast');
         els.layout = qs('layout');
         els.onboardingScreen = qs('onboarding-screen');
@@ -114,6 +152,23 @@
         return state.values[param.path] !== undefined ? state.values[param.path] : param.value;
     }
 
+    function findParamByPath(path) {
+        for (const section of state.schema.sections) {
+            const found = section.params.find((p) => p.path === path);
+            if (found) return found;
+        }
+        return undefined;
+    }
+
+    // The per-skill multipliers are irrelevant once GlobalToggle is on — the
+    // Global multiplier applies to every skill instead.
+    function isGlobalMultiplierLocked(param) {
+        if (param.section !== 'MultiplierConfig') return false;
+        if (param.key === 'Global' || param.key === 'GlobalToggle') return false;
+        const toggle = findParamByPath('MultiplierConfig.GlobalToggle');
+        return toggle ? !!currentValue(toggle) : false;
+    }
+
     function isModified(param) {
         const def = getDefaultValue(param);
         if (def === undefined) return false;
@@ -160,6 +215,9 @@
         document.title = t('app_title');
         els.searchInput.placeholder = t('search_placeholder');
         els.loadFileBtn.textContent = t('load_file');
+        els.syncPullBtn.textContent = t('sync_from_server');
+        els.syncPushBtn.textContent = t('sync_to_server');
+        els.syncBgBtn.textContent = t('sync_background_btn');
         els.exportBtn.textContent = t('export_lua');
         els.langToggle.setAttribute('aria-pressed', state.lang === 'uk' ? 'true' : 'false');
         els.versionBadge.textContent = `${t('version_label')}: ${state.schema.version != null ? state.schema.version : '?'}`;
@@ -167,6 +225,21 @@
         els.onboardingBody.textContent = t('onboarding_body');
         els.onboardingScratchBtn.textContent = t('onboarding_scratch');
         els.onboardingImportBtn.textContent = t('onboarding_import');
+        els.loginLink.textContent = t('login_to_sync');
+        els.serverBtn.textContent = t('server_btn');
+        els.serverModalTitle.textContent = t('server_status_title');
+        els.announceInput.placeholder = t('announce_placeholder');
+        els.announceSendBtn.textContent = t('announce_send');
+        els.serverCloseBtn.textContent = t('close');
+        renderAuthStatus();
+    }
+
+    // "Signed in as {email}" needs the live email, so it's re-applied on every
+    // render (not just once in checkAuth) — otherwise it'd stay in whichever
+    // language was active at login and never update on a language toggle.
+    function renderAuthStatus() {
+        if (!state.authEmail) return;
+        els.authStatus.textContent = t('signed_in_as').replace('{email}', state.authEmail);
     }
 
     function showOnboarding() {
@@ -175,6 +248,7 @@
         els.searchInput.disabled = true;
         els.exportBtn.disabled = true;
         els.loadFileBtn.disabled = true;
+        els.syncPushBtn.disabled = true;
     }
 
     function hideOnboarding() {
@@ -183,6 +257,7 @@
         els.searchInput.disabled = false;
         els.exportBtn.disabled = false;
         els.loadFileBtn.disabled = false;
+        els.syncPushBtn.disabled = false;
     }
 
     function startFromScratch() {
@@ -293,6 +368,7 @@
         const card = document.createElement('div');
         card.className = 'param-card';
         if (isModified(param)) card.classList.add('is-modified');
+        if (isGlobalMultiplierLocked(param)) card.classList.add('is-locked');
 
         const header = document.createElement('div');
         header.className = 'param-header';
@@ -350,7 +426,8 @@
     }
 
     function buildControl(param) {
-        const value = currentValue(param);
+        const locked = isGlobalMultiplierLocked(param);
+        const value = locked ? currentValue(findParamByPath('MultiplierConfig.Global')) : currentValue(param);
 
         if (param.type === 'boolean') {
             const wrap = document.createElement('label');
@@ -408,6 +485,7 @@
             if (param.max !== null && param.max !== undefined) input.max = String(param.max);
             input.step = param.type === 'integer' ? '1' : 'any';
             input.value = String(value);
+            input.disabled = locked;
             input.addEventListener('change', () => {
                 let v = param.type === 'integer' ? parseInt(input.value, 10) : parseFloat(input.value);
                 if (Number.isNaN(v)) v = value;
@@ -453,6 +531,13 @@
 
     // Re-render just one card in place (keeps scroll position / focus stable enough for this app's scale)
     function renderParamCardInPlace(param) {
+        // Toggling GlobalToggle (or changing Global itself) changes how every
+        // other multiplier card in the section renders (locked + displayed value),
+        // so refresh the whole section instead of just this one card.
+        if (param.section === 'MultiplierConfig' && (param.key === 'GlobalToggle' || param.key === 'Global')) {
+            renderSectionInPlace(param.section);
+            return;
+        }
         const grid = document.getElementById(`section-${param.section}`);
         if (!grid) { renderMain(); return; }
         renderSidebarCounts();
@@ -465,6 +550,19 @@
                 return;
             }
         }
+    }
+
+    function renderSectionInPlace(sectionName) {
+        const block = document.getElementById(`section-${sectionName}`);
+        const section = state.schema.sections.find((s) => s.name === sectionName);
+        if (!block || !section) { renderMain(); return; }
+        const grid = block.querySelector('.param-grid');
+        if (!grid) { renderMain(); return; }
+        grid.innerHTML = '';
+        for (const param of section.params.filter(matchesSearch)) {
+            grid.appendChild(renderParamCard(param));
+        }
+        renderSidebarCounts();
     }
 
     function renderSidebarCounts() {
@@ -595,6 +693,43 @@
             if (e.target === els.exportModal) els.exportModal.hidden = true;
         });
 
+        els.syncPullBtn.addEventListener('click', onSyncPullClick);
+        els.syncPushBtn.addEventListener('click', onSyncPushClick);
+        els.syncConfirmBtn.addEventListener('click', doSyncPush);
+        els.syncCancelBtn.addEventListener('click', () => {
+            if (syncInFlight) {
+                if (syncCancellable && syncAbortController) syncAbortController.abort();
+                return;
+            }
+            closeSyncModal();
+        });
+        els.syncBgBtn.addEventListener('click', sendSyncToBackground);
+        els.syncBgIndicator.addEventListener('click', () => {
+            els.syncBgIndicator.hidden = true;
+            els.syncModal.hidden = false;
+        });
+        els.syncBgIndicator.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                els.syncBgIndicator.click();
+            }
+        });
+        els.syncModal.addEventListener('click', (e) => {
+            if (e.target !== els.syncModal) return;
+            if (syncInFlight) sendSyncToBackground();
+            else closeSyncModal();
+        });
+
+        els.serverBtn.addEventListener('click', openServerPanel);
+        els.serverCloseBtn.addEventListener('click', closeServerPanel);
+        els.serverModal.addEventListener('click', (e) => {
+            if (e.target === els.serverModal) closeServerPanel();
+        });
+        els.announceSendBtn.addEventListener('click', onAnnounceSend);
+        els.announceInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') onAnnounceSend();
+        });
+
         bindDragAndDrop();
     }
 
@@ -694,6 +829,317 @@
         showToast._t = setTimeout(() => { els.toast.hidden = true; }, 2600);
     }
 
+    // ---------- server sync ----------
+
+    // Check login status once at startup (and after returning from an Access
+    // login). If logged in, reveal the sync buttons and show who's logged in;
+    // otherwise show a "log in" link and keep sync hidden. With no backend at
+    // all (static-only deployment), this just fails quietly.
+    async function checkAuth() {
+        try {
+            const resp = await fetch(`${API_BASE}/api/whoami`, { cache: 'no-store' });
+            if (!resp.ok) throw new Error('not authenticated');
+            const data = await resp.json();
+            if (!data.email) throw new Error('not authenticated');
+            state.authEmail = data.email;
+            els.authStatus.hidden = false;
+            renderAuthStatus();
+            els.loginLink.hidden = true;
+            els.syncPullBtn.hidden = false;
+            els.syncPushBtn.hidden = false;
+            els.serverBtn.hidden = false;
+            checkServerStatus();
+        } catch (e) {
+            state.authEmail = null;
+            els.authStatus.hidden = true;
+            els.syncPullBtn.hidden = true;
+            els.syncPushBtn.hidden = true;
+            els.serverBtn.hidden = true;
+            closeServerPanel();
+            // Just link straight at the protected endpoint. Cloudflare Access
+            // transparently intercepts any request to a path it protects and
+            // shows its login challenge before the request ever reaches this
+            // app — no need for the special /cdn-cgi/access/login/<domain>
+            // redirect endpoint, which doesn't reliably resolve applications
+            // scoped to a sub-path (only /api* here, not the whole domain).
+            // Once authenticated, our own /api/whoami?return=<here> handling
+            // bounces the browser straight back to this page (see index.js).
+            const here = location.pathname + location.search;
+            els.loginLink.href = `/api/whoami?return=${encodeURIComponent(here)}`;
+            els.loginLink.hidden = false;
+        }
+    }
+
+    // Fetch the server's countdown/dry-run config once logged in, so the push
+    // confirm dialog can show the real countdown instead of a guess.
+    async function checkServerStatus() {
+        try {
+            const resp = await fetch(`${API_BASE}/api/status`, { cache: 'no-store' });
+            if (!resp.ok) return;
+            state.server = await resp.json();
+        } catch (e) { /* leave state.server null, dialog falls back to defaults */ }
+    }
+
+    // ---------- server status panel (uptime, players, announce) ----------
+
+    let serverPanelPollTimer = null;
+
+    function formatUptime(seconds) {
+        if (seconds == null || !Number.isFinite(seconds) || seconds < 0) return null;
+        const d = Math.floor(seconds / 86400);
+        const h = Math.floor((seconds % 86400) / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const parts = [];
+        if (d) parts.push(`${d}d`);
+        if (d || h) parts.push(`${h}h`);
+        parts.push(`${m}m`);
+        return parts.join(' ');
+    }
+
+    async function refreshServerInfo() {
+        try {
+            const resp = await fetch(`${API_BASE}/api/server/info`, { cache: 'no-store' });
+            if (!resp.ok) throw new Error('unreachable');
+            const data = await resp.json();
+            els.serverStatusDot.classList.toggle('is-up', Boolean(data.up));
+            els.serverStatusDot.classList.toggle('is-down', !data.up);
+            const uptime = formatUptime(data.uptimeSeconds);
+            const statusWord = data.up ? t('online') : t('offline');
+            els.serverStatusText.textContent = uptime ? `${statusWord} · ${t('uptime')}: ${uptime}` : statusWord;
+            const names = (data.players && data.players.names) || [];
+            els.serverPlayers.textContent = names.length
+                ? `${t('players')} (${names.length}): ${names.join(', ')}`
+                : t('no_players_online');
+        } catch (e) {
+            els.serverStatusDot.classList.remove('is-up', 'is-down');
+            els.serverStatusText.textContent = t('server_unreachable');
+            els.serverPlayers.textContent = '';
+        }
+    }
+
+    function openServerPanel() {
+        els.serverModal.hidden = false;
+        refreshServerInfo();
+        clearInterval(serverPanelPollTimer);
+        serverPanelPollTimer = setInterval(refreshServerInfo, 20000);
+    }
+
+    function closeServerPanel() {
+        els.serverModal.hidden = true;
+        clearInterval(serverPanelPollTimer);
+        serverPanelPollTimer = null;
+    }
+
+    async function onAnnounceSend() {
+        const message = els.announceInput.value.trim();
+        if (!message) return;
+        els.announceSendBtn.disabled = true;
+        try {
+            const resp = await fetch(`${API_BASE}/api/server/announce`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message }),
+            });
+            const data = await resp.json();
+            if (!resp.ok) throw new Error(data.error || 'Announce failed');
+            els.announceInput.value = '';
+            showToast(t('announce_sent'));
+        } catch (err) {
+            alert(t('announce_failed') + ': ' + err.message);
+        } finally {
+            els.announceSendBtn.disabled = false;
+        }
+    }
+
+    async function onSyncPullClick() {
+        els.syncPullBtn.disabled = true;
+        try {
+            const resp = await fetch(`${API_BASE}/api/sync/pull`, { cache: 'no-store' });
+            const data = await resp.json();
+            if (!resp.ok) throw new Error(data.error || 'Pull failed');
+            const result = LuaParser.parseSandboxVars(data.lua);
+            if (result.totalParams === 0) throw new Error('No parameters found');
+            state.schema = { version: result.version, sections: result.sections };
+            state.values = {};
+            persistCustomSchema();
+            persist();
+            hideOnboarding();
+            render();
+            showToast(state.lang === 'uk'
+                ? `Завантажено з сервера: ${result.totalParams} параметрів.`
+                : `Loaded ${result.totalParams} parameters from server.`);
+        } catch (err) {
+            alert((state.lang === 'uk' ? 'Помилка синхронізації: ' : 'Sync error: ') + err.message);
+            console.error(err);
+        } finally {
+            els.syncPullBtn.disabled = false;
+        }
+    }
+
+    function onSyncPushClick() {
+        if (syncInFlight) {
+            // Already streaming (possibly backgrounded) — bring it back to the
+            // foreground instead of resetting the confirm screen.
+            els.syncBgIndicator.hidden = true;
+            els.syncModal.hidden = false;
+            return;
+        }
+        qs('sync-modal-title').textContent = t('sync_to_server');
+        const countdown = (state.server && state.server.countdown != null) ? state.server.countdown : 60;
+        let body = t('sync_confirm_body').replace('{seconds}', countdown);
+        if (state.server && state.server.dryRun) body += ' ' + t('sync_dryrun_note');
+        els.syncModalBody.textContent = body;
+        els.syncConfirmBtn.hidden = false;
+        els.syncConfirmBtn.textContent = t('sync_confirm_btn');
+        els.syncConfirmBtn.disabled = false;
+        els.syncBgBtn.hidden = true;
+        els.syncCancelBtn.textContent = t('cancel');
+        els.syncCancelBtn.disabled = false;
+        els.syncProgress.hidden = true;
+        els.syncProgressBar.style.width = '0%';
+        els.syncProgressBar.className = 'sync-progress-bar';
+        els.syncLog.hidden = true;
+        els.syncLog.innerHTML = '';
+        els.syncModal.hidden = false;
+    }
+
+    // Hides the modal without touching the in-flight request (if any).
+    function closeSyncModal() {
+        els.syncModal.hidden = true;
+        els.syncBgIndicator.hidden = true;
+    }
+
+    // Hides the modal but keeps the push streaming; a floating indicator
+    // stays up so the user can reopen it later.
+    function sendSyncToBackground() {
+        els.syncModal.hidden = true;
+        els.syncBgIndicator.hidden = false;
+        els.syncBgIndicator.title = t('sync_bg_reopen_hint');
+    }
+
+    function updateBgIndicator(text, statusClass) {
+        els.syncBgText.textContent = text;
+        els.syncBgIndicator.classList.remove('is-done', 'is-error');
+        if (statusClass) els.syncBgIndicator.classList.add(statusClass);
+    }
+
+    // Cancel is only meaningful (and only enabled) while the server says the
+    // step is still `cancellable` — see the comment in server/index.js on the
+    // "point of no return" once the stop command has actually been issued.
+    function updateCancelButtonState() {
+        if (!syncInFlight) return;
+        els.syncCancelBtn.disabled = !syncCancellable;
+        els.syncCancelBtn.textContent = t(syncCancellable ? 'sync_cancel_running_btn' : 'sync_cancel_locked_btn');
+    }
+
+    function setSyncProgress(step, status) {
+        const idx = SYNC_STEP_ORDER.indexOf(step);
+        if (idx !== -1) {
+            els.syncProgressBar.style.width = Math.round(((idx + 1) / SYNC_STEP_ORDER.length) * 100) + '%';
+        }
+        els.syncProgressBar.classList.remove('is-error', 'is-done', 'is-cancelled');
+        if (status === 'error') els.syncProgressBar.classList.add('is-error');
+        else if (step === 'done') els.syncProgressBar.classList.add('is-done');
+        else if (step === 'cancelled') els.syncProgressBar.classList.add('is-cancelled');
+    }
+
+    function appendSyncLog(status, message) {
+        const line = document.createElement('div');
+        line.className = 'sync-log-line ' + (status || '');
+        line.textContent = message;
+        els.syncLog.appendChild(line);
+        els.syncLog.scrollTop = els.syncLog.scrollHeight;
+    }
+
+    // Stream the push and render the NDJSON step log live.
+    async function doSyncPush() {
+        syncInFlight = true;
+        syncCancellable = true;
+        els.syncConfirmBtn.hidden = true;
+        els.syncBgBtn.hidden = false;
+        els.syncBgBtn.disabled = false;
+        updateCancelButtonState();
+        els.syncProgress.hidden = false;
+        els.syncProgressBar.style.width = '0%';
+        els.syncProgressBar.className = 'sync-progress-bar';
+        els.syncLog.hidden = false;
+        els.syncLog.innerHTML = '';
+        appendSyncLog('running', t('sync_starting'));
+        updateBgIndicator(t('sync_bg_running'));
+
+        const lua = LuaParser.generateLua(state.schema.sections, state.values, state.schema.version);
+        let ok = true;
+        let cancelled = false;
+        const controller = new AbortController();
+        syncAbortController = controller;
+        try {
+            const resp = await fetch(`${API_BASE}/api/sync/push`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ lua }),
+                signal: controller.signal,
+            });
+            if (!resp.ok) {
+                const data = await resp.json().catch(() => ({}));
+                throw new Error(data.error || `Server returned ${resp.status}`);
+            }
+            els.syncLog.innerHTML = '';
+            const reader = resp.body.getReader();
+            const decoder = new TextDecoder();
+            let buf = '';
+            for (;;) {
+                const { value, done } = await reader.read();
+                if (done) break;
+                buf += decoder.decode(value, { stream: true });
+                let nl;
+                while ((nl = buf.indexOf('\n')) >= 0) {
+                    const line = buf.slice(0, nl).trim();
+                    buf = buf.slice(nl + 1);
+                    if (!line) continue;
+                    try {
+                        const evt = JSON.parse(line);
+                        if (evt.status === 'error') ok = false;
+                        appendSyncLog(evt.status, evt.message);
+                        setSyncProgress(evt.step, evt.status);
+                        syncCancellable = evt.cancellable !== false;
+                        updateCancelButtonState();
+                        updateBgIndicator(evt.message);
+                    } catch (e) { /* ignore malformed line */ }
+                }
+            }
+        } catch (err) {
+            if (err.name === 'AbortError') {
+                cancelled = true;
+                ok = false;
+                appendSyncLog('warn', t('sync_cancelled_log'));
+                setSyncProgress('cancelled', 'warn');
+            } else {
+                ok = false;
+                appendSyncLog('error', err.message);
+                setSyncProgress('error', 'error');
+            }
+        } finally {
+            syncInFlight = false;
+            syncAbortController = null;
+            els.syncConfirmBtn.hidden = false;
+            els.syncConfirmBtn.disabled = false;
+            els.syncBgBtn.hidden = true;
+            els.syncCancelBtn.disabled = false;
+            els.syncCancelBtn.textContent = t('close');
+            if (els.syncModal.hidden) {
+                // Still backgrounded — leave the indicator up showing the final
+                // state; the user reopens it (or dismisses it) on their own time.
+                updateBgIndicator(
+                    cancelled ? t('sync_cancelled_toast') : (ok ? t('sync_done') : t('sync_failed')),
+                    cancelled ? null : (ok ? 'is-done' : 'is-error')
+                );
+            } else {
+                els.syncBgIndicator.hidden = true;
+            }
+        }
+        showToast(cancelled ? t('sync_cancelled_toast') : (ok ? t('sync_done') : t('sync_failed')));
+    }
+
     // ---------- init ----------
 
     async function init() {
@@ -719,6 +1165,7 @@
         bindEvents();
         render();
         if (needsOnboarding) showOnboarding();
+        checkAuth();
     }
 
     init();
