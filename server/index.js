@@ -51,6 +51,34 @@ app.get('/api/status', async (req, res) => {
   res.json({ configured, rconUp, dryRun: cfg.dryRun, countdown: cfg.countdown });
 });
 
+// Live server info for the status panel: uptime + online players. Polled
+// periodically by the UI while the panel is open.
+app.get('/api/server/info', async (req, res) => {
+  const [players, uptimeSeconds] = await Promise.all([
+    pz.rconPlayers(),
+    pz.serverUptime(),
+  ]);
+  res.json({ up: players.up, uptimeSeconds, players: { count: players.count, names: players.names } });
+});
+
+// Broadcast a one-off message to in-game chat (no restart involved).
+app.post('/api/server/announce', async (req, res) => {
+  const message = req.body && req.body.message;
+  if (typeof message !== 'string' || !message.trim()) {
+    return res.status(400).json({ error: 'Missing "message" body.' });
+  }
+  const cfg = pz.config();
+  try {
+    if (cfg.dryRun) {
+      return res.json({ ok: true, dryRun: true, message: `[dry-run] would announce: ${message.trim().slice(0, 200)}` });
+    }
+    const sent = await pz.sendAnnounce(message);
+    res.json({ ok: true, message: sent });
+  } catch (err) {
+    res.status(502).json({ error: `Announce failed: ${err.message}` });
+  }
+});
+
 // Pull the remote SandboxVars file so the editor can load it.
 app.get('/api/sync/pull', async (req, res) => {
   try {

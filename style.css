@@ -427,6 +427,34 @@ button {
     white-space: nowrap;
 }
 
+.server-status-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+.server-status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--text-faint);
+    flex: none;
+}
+.server-status-dot.is-up { background: #46b06a; }
+.server-status-dot.is-down { background: #e5675f; }
+.server-players {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+.server-announce-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+.server-announce-row .search-input { flex: 1; }
+
 .sync-progress {
     height: 6px;
     background: var(--bg);

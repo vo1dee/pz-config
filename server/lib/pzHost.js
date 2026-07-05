@@ -22,6 +22,7 @@ function config() {
     sandboxVarsPath: process.env.PZ_SANDBOXVARS_PATH,
     stopCmd: (process.env.PZ_STOP_CMD || '').trim(),
     startCmd: (process.env.PZ_START_CMD || '').trim(),
+    uptimeCmd: (process.env.PZ_UPTIME_CMD || '').trim(),
     rcon: {
       host: process.env.RCON_HOST,
       port: parseInt(process.env.RCON_PORT || '27015', 10),
@@ -196,6 +197,58 @@ async function waitForRcon(up, timeoutMs) {
   return false;
 }
 
+// Parse RCON `players` output, e.g.:
+//   Players connected (2):
+//   -Alice
+//   -Bob
+// into { up, count, names }. `up: false` means RCON itself was unreachable
+// (server down or misconfigured), not "0 players".
+async function rconPlayers() {
+  let raw;
+  try {
+    raw = await rconExec('players');
+  } catch (e) {
+    return { up: false, count: 0, names: [] };
+  }
+  const lines = String(raw || '').split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+  const names = lines.filter((l) => l.startsWith('-')).map((l) => l.slice(1));
+  const header = lines.find((l) => /\(\d+\)/.test(l));
+  const count = header ? parseInt(header.match(/\((\d+)\)/)[1], 10) : names.length;
+  return { up: true, count, names };
+}
+
+// Live uptime (seconds) of the PZ server process, queried fresh over SSH each
+// call rather than derived from any "last restart we triggered" bookkeeping —
+// that would be wrong after a crash-restart or a manual restart done outside
+// this app. Uses PZ_UPTIME_CMD if configured (should print elapsed seconds to
+// stdout); otherwise falls back to `ps -o etimes=` on the first process whose
+// command line looks like the PZ server. Returns null if it can't be determined.
+async function serverUptime() {
+  const cfg = config();
+  const cmd = cfg.uptimeCmd
+    || `ps -o etimes= -p "$(pgrep -f 'ProjectZomboid|start-server|zomboid' | head -n1)"`;
+  try {
+    const out = await withSSH((conn) => exec(conn, cmd));
+    const n = parseInt(String(out).trim(), 10);
+    return Number.isFinite(n) ? n : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Broadcast a message to in-game chat via RCON `servermsg`. Strips characters
+// that would break out of the command's quoting and caps length so one bad
+// input can't wedge the RCON connection.
+async function sendAnnounce(text) {
+  const safe = String(text || '')
+    .replace(/[\r\n"]/g, '')
+    .trim()
+    .slice(0, 200);
+  if (!safe) throw new Error('Message is empty.');
+  await rconExec(`servermsg "${safe}"`);
+  return safe;
+}
+
 module.exports = {
   config,
   sleep,
@@ -207,4 +260,7 @@ module.exports = {
   rconExec,
   rconIsUp,
   waitForRcon,
+  rconPlayers,
+  serverUptime,
+  sendAnnounce,
 };

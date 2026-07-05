@@ -46,6 +46,15 @@
         els.loginLink = qs('login-link');
         els.syncPullBtn = qs('sync-pull-btn');
         els.syncPushBtn = qs('sync-push-btn');
+        els.serverBtn = qs('server-btn');
+        els.serverModal = qs('server-modal');
+        els.serverModalTitle = qs('server-modal-title');
+        els.serverStatusDot = qs('server-status-dot');
+        els.serverStatusText = qs('server-status-text');
+        els.serverPlayers = qs('server-players');
+        els.announceInput = qs('announce-input');
+        els.announceSendBtn = qs('announce-send-btn');
+        els.serverCloseBtn = qs('server-close-btn');
         els.exportBtn = qs('export-btn');
         els.appTitle = qs('app-title');
         els.versionBadge = qs('version-badge');
@@ -217,6 +226,11 @@
         els.onboardingScratchBtn.textContent = t('onboarding_scratch');
         els.onboardingImportBtn.textContent = t('onboarding_import');
         els.loginLink.textContent = t('login_to_sync');
+        els.serverBtn.textContent = t('server_btn');
+        els.serverModalTitle.textContent = t('server_status_title');
+        els.announceInput.placeholder = t('announce_placeholder');
+        els.announceSendBtn.textContent = t('announce_send');
+        els.serverCloseBtn.textContent = t('close');
         renderAuthStatus();
     }
 
@@ -706,6 +720,16 @@
             else closeSyncModal();
         });
 
+        els.serverBtn.addEventListener('click', openServerPanel);
+        els.serverCloseBtn.addEventListener('click', closeServerPanel);
+        els.serverModal.addEventListener('click', (e) => {
+            if (e.target === els.serverModal) closeServerPanel();
+        });
+        els.announceSendBtn.addEventListener('click', onAnnounceSend);
+        els.announceInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') onAnnounceSend();
+        });
+
         bindDragAndDrop();
     }
 
@@ -823,12 +847,15 @@
             els.loginLink.hidden = true;
             els.syncPullBtn.hidden = false;
             els.syncPushBtn.hidden = false;
+            els.serverBtn.hidden = false;
             checkServerStatus();
         } catch (e) {
             state.authEmail = null;
             els.authStatus.hidden = true;
             els.syncPullBtn.hidden = true;
             els.syncPushBtn.hidden = true;
+            els.serverBtn.hidden = true;
+            closeServerPanel();
             // Just link straight at the protected endpoint. Cloudflare Access
             // transparently intercepts any request to a path it protects and
             // shows its login challenge before the request ever reaches this
@@ -851,6 +878,77 @@
             if (!resp.ok) return;
             state.server = await resp.json();
         } catch (e) { /* leave state.server null, dialog falls back to defaults */ }
+    }
+
+    // ---------- server status panel (uptime, players, announce) ----------
+
+    let serverPanelPollTimer = null;
+
+    function formatUptime(seconds) {
+        if (seconds == null || !Number.isFinite(seconds) || seconds < 0) return null;
+        const d = Math.floor(seconds / 86400);
+        const h = Math.floor((seconds % 86400) / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const parts = [];
+        if (d) parts.push(`${d}d`);
+        if (d || h) parts.push(`${h}h`);
+        parts.push(`${m}m`);
+        return parts.join(' ');
+    }
+
+    async function refreshServerInfo() {
+        try {
+            const resp = await fetch(`${API_BASE}/api/server/info`, { cache: 'no-store' });
+            if (!resp.ok) throw new Error('unreachable');
+            const data = await resp.json();
+            els.serverStatusDot.classList.toggle('is-up', Boolean(data.up));
+            els.serverStatusDot.classList.toggle('is-down', !data.up);
+            const uptime = formatUptime(data.uptimeSeconds);
+            const statusWord = data.up ? t('online') : t('offline');
+            els.serverStatusText.textContent = uptime ? `${statusWord} · ${t('uptime')}: ${uptime}` : statusWord;
+            const names = (data.players && data.players.names) || [];
+            els.serverPlayers.textContent = names.length
+                ? `${t('players')} (${names.length}): ${names.join(', ')}`
+                : t('no_players_online');
+        } catch (e) {
+            els.serverStatusDot.classList.remove('is-up', 'is-down');
+            els.serverStatusText.textContent = t('server_unreachable');
+            els.serverPlayers.textContent = '';
+        }
+    }
+
+    function openServerPanel() {
+        els.serverModal.hidden = false;
+        refreshServerInfo();
+        clearInterval(serverPanelPollTimer);
+        serverPanelPollTimer = setInterval(refreshServerInfo, 20000);
+    }
+
+    function closeServerPanel() {
+        els.serverModal.hidden = true;
+        clearInterval(serverPanelPollTimer);
+        serverPanelPollTimer = null;
+    }
+
+    async function onAnnounceSend() {
+        const message = els.announceInput.value.trim();
+        if (!message) return;
+        els.announceSendBtn.disabled = true;
+        try {
+            const resp = await fetch(`${API_BASE}/api/server/announce`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message }),
+            });
+            const data = await resp.json();
+            if (!resp.ok) throw new Error(data.error || 'Announce failed');
+            els.announceInput.value = '';
+            showToast(t('announce_sent'));
+        } catch (err) {
+            alert(t('announce_failed') + ': ' + err.message);
+        } finally {
+            els.announceSendBtn.disabled = false;
+        }
     }
 
     async function onSyncPullClick() {

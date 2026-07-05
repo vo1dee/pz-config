@@ -207,6 +207,54 @@
     "signed_in_as": {
       "en": "Signed in as {email}",
       "uk": "Увійшли як {email}"
+    },
+    "server_btn": {
+      "en": "Server",
+      "uk": "Сервер"
+    },
+    "server_status_title": {
+      "en": "Server status",
+      "uk": "Стан сервера"
+    },
+    "online": {
+      "en": "Online",
+      "uk": "Онлайн"
+    },
+    "offline": {
+      "en": "Offline",
+      "uk": "Офлайн"
+    },
+    "uptime": {
+      "en": "uptime",
+      "uk": "час роботи"
+    },
+    "players": {
+      "en": "Players",
+      "uk": "Гравці"
+    },
+    "no_players_online": {
+      "en": "No players online.",
+      "uk": "Немає гравців онлайн."
+    },
+    "server_unreachable": {
+      "en": "Server unreachable.",
+      "uk": "Сервер недоступний."
+    },
+    "announce_placeholder": {
+      "en": "Message to broadcast in-game…",
+      "uk": "Повідомлення для трансляції у грі…"
+    },
+    "announce_send": {
+      "en": "Send",
+      "uk": "Надіслати"
+    },
+    "announce_sent": {
+      "en": "Announcement sent.",
+      "uk": "Оголошення надіслано."
+    },
+    "announce_failed": {
+      "en": "Announce failed",
+      "uk": "Не вдалося надіслати"
     }
   },
   "sections": {

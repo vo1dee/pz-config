@@ -24,6 +24,7 @@
         <a id="login-link" class="btn" href="#" hidden>Log in to sync</a>
         <button id="sync-pull-btn" class="btn" type="button" hidden>Sync from server</button>
         <button id="sync-push-btn" class="btn" type="button" hidden>Sync to server</button>
+        <button id="server-btn" class="btn" type="button" hidden>Server</button>
         <button id="export-btn" class="btn btn-primary" type="button">Export .lua</button>
     </div>
 </header>
@@ -77,6 +78,24 @@
 <div id="sync-bg-indicator" class="sync-bg-indicator" hidden role="button" tabindex="0">
     <span class="sync-bg-spinner"></span>
     <span id="sync-bg-text"></span>
+</div>
+
+<div id="server-modal" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="server-modal-title">
+        <h2 id="server-modal-title">Server status</h2>
+        <div class="server-status-line">
+            <span id="server-status-dot" class="server-status-dot"></span>
+            <span id="server-status-text"></span>
+        </div>
+        <div id="server-players" class="server-players"></div>
+        <div class="server-announce-row">
+            <input id="announce-input" class="search-input" type="text" maxlength="200" placeholder="Message to broadcast in-game…">
+            <button id="announce-send-btn" class="btn btn-primary" type="button">Send</button>
+        </div>
+        <div class="modal-actions">
+            <button id="server-close-btn" class="btn" type="button">Close</button>
+        </div>
+    </div>
 </div>
 
 <div id="toast" class="toast" hidden></div>
