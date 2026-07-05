@@ -172,6 +172,34 @@
       "en": "Sync failed — see the log.",
       "uk": "Помилка синхронізації — див. журнал."
     },
+    "sync_cancelled_toast": {
+      "en": "Sync cancelled.",
+      "uk": "Синхронізацію скасовано."
+    },
+    "sync_cancelled_log": {
+      "en": "Cancelled by user.",
+      "uk": "Скасовано користувачем."
+    },
+    "sync_background_btn": {
+      "en": "Run in background",
+      "uk": "Згорнути у фон"
+    },
+    "sync_cancel_running_btn": {
+      "en": "Cancel sync",
+      "uk": "Скасувати синхр."
+    },
+    "sync_cancel_locked_btn": {
+      "en": "Can't cancel now",
+      "uk": "Скасування недоступне"
+    },
+    "sync_bg_running": {
+      "en": "Syncing to server…",
+      "uk": "Синхронізація з сервером…"
+    },
+    "sync_bg_reopen_hint": {
+      "en": "Click to view",
+      "uk": "Натисніть, щоб переглянути"
+    },
     "login_to_sync": {
       "en": "Log in to sync",
       "uk": "Увійти для синхр."

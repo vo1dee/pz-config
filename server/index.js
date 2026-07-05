@@ -88,13 +88,30 @@ app.post('/api/sync/push', async (req, res) => {
   const cfg = pz.config();
   res.set('Content-Type', 'application/x-ndjson');
   res.set('Cache-Control', 'no-cache');
-  const send = (step, status, message) => {
-    res.write(JSON.stringify({ step, status, message, ts: Date.now() }) + '\n');
+
+  // The client can abort the request (its "Cancel sync" button) any time up
+  // until we actually issue the stop command — after that the server is
+  // committed to finishing (leaving it stopped with no restart queued would
+  // be worse than a config it didn't ask for). `aborted` is checked at each
+  // checkpoint before that point of no return; `cancellable: false` on events
+  // from 'stop' onward tells the UI to stop offering to cancel.
+  // Note: this must be res (not req) — req's 'close' fires as soon as the
+  // request body is fully read (i.e. right away, since Express already
+  // parsed it), long before the client actually disconnects. res only closes
+  // when the underlying connection actually goes away or we call res.end().
+  let aborted = false;
+  res.on('close', () => { if (!res.writableEnded) aborted = true; });
+
+  const send = (step, status, message, cancellable = true) => {
+    try {
+      res.write(JSON.stringify({ step, status, message, cancellable, ts: Date.now() }) + '\n');
+    } catch (e) { /* client already gone */ }
   };
   const tag = cfg.dryRun ? '[dry-run] ' : '';
 
   try {
     send('validate', 'ok', `${parsed.totalParams} parameters validated.`);
+    if (aborted) return;
 
     // Backup the current remote file.
     if (cfg.dryRun) {
@@ -103,66 +120,74 @@ app.post('/api/sync/push', async (req, res) => {
       const dest = await pz.backupRemote();
       send('backup', 'ok', `Backed up current config to ${dest}`);
     }
+    if (aborted) return;
 
     // Warn players with an in-game countdown, then save.
-    await runCountdown(cfg, send);
+    await runCountdown(cfg, send, () => aborted);
+    if (aborted) return;
     if (cfg.dryRun) {
       send('save', 'ok', `${tag}would RCON save.`);
     } else {
       await pz.rconExec('save');
       send('save', 'ok', 'World saved.');
     }
+    if (aborted) return;
 
-    // Stop the server so we write the file while it is down.
+    // Stop the server so we write the file while it is down. Past this
+    // point the sync can no longer be cancelled.
     if (cfg.dryRun) {
-      send('stop', 'ok', `${tag}would stop the server.`);
+      send('stop', 'ok', `${tag}would stop the server.`, false);
     } else {
       await pz.runStop();
-      send('stop', 'running', 'Stop issued, waiting for server to go down…');
+      send('stop', 'running', 'Stop issued, waiting for server to go down…', false);
       const down = await pz.waitForRcon(false, 120000);
-      send('stop', down ? 'ok' : 'warn', down ? 'Server is down.' : 'Timed out waiting for shutdown; continuing.');
+      send('stop', down ? 'ok' : 'warn', down ? 'Server is down.' : 'Timed out waiting for shutdown; continuing.', false);
     }
 
     // Write the new SandboxVars.
     if (cfg.dryRun) {
-      send('write', 'ok', `${tag}would write ${lua.length} bytes of SandboxVars.`);
+      send('write', 'ok', `${tag}would write ${lua.length} bytes of SandboxVars.`, false);
     } else {
       await pz.writeSandboxVars(lua);
-      send('write', 'ok', 'New SandboxVars written.');
+      send('write', 'ok', 'New SandboxVars written.', false);
     }
 
     // Start the server back up.
     if (cfg.dryRun) {
-      send('start', 'ok', `${tag}would start the server.`);
+      send('start', 'ok', `${tag}would start the server.`, false);
     } else {
       await pz.runStart();
-      send('start', 'running', 'Start issued, waiting for server to come back…');
+      send('start', 'running', 'Start issued, waiting for server to come back…', false);
       const up = await pz.waitForRcon(true, 180000);
-      send('start', up ? 'ok' : 'warn', up ? 'Server is back online.' : 'Not responding yet; check the server console.');
+      send('start', up ? 'ok' : 'warn', up ? 'Server is back online.' : 'Not responding yet; check the server console.', false);
     }
 
-    send('done', 'ok', cfg.dryRun ? 'Dry run complete — no changes made.' : 'Sync complete.');
+    send('done', 'ok', cfg.dryRun ? 'Dry run complete — no changes made.' : 'Sync complete.', false);
   } catch (err) {
-    send('error', 'error', err.message);
+    send('error', 'error', err.message, false);
   } finally {
     res.end();
   }
 });
 
-async function runCountdown(cfg, send) {
+async function runCountdown(cfg, send, isAborted) {
   const total = Math.max(0, cfg.countdown);
   if (total === 0) return;
   const marks = [...new Set([total, 60, 30, 10, 5].filter((m) => m > 0 && m <= total))].sort((a, b) => b - a);
   send('countdown', 'running', `Warning players — restart in ${total}s.`);
   let prev = total;
   for (const m of marks) {
+    if (isAborted()) return;
     if (prev > m) await pz.sleep((prev - m) * 1000);
+    if (isAborted()) return;
     if (!cfg.dryRun) {
       await pz.rconExec(`servermsg "Server restarting in ${m} second${m === 1 ? '' : 's'} to apply config changes."`).catch(() => {});
     }
     prev = m;
   }
+  if (isAborted()) return;
   if (prev > 0) await pz.sleep(prev * 1000);
+  if (isAborted()) return;
   send('countdown', 'ok', 'Countdown finished.');
 }
 

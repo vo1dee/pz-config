@@ -62,12 +62,21 @@
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sync-modal-title">
         <h2 id="sync-modal-title">Sync to server</h2>
         <p id="sync-modal-body"></p>
+        <div id="sync-progress" class="sync-progress" hidden>
+            <div id="sync-progress-bar" class="sync-progress-bar"></div>
+        </div>
         <div id="sync-log" class="sync-log" hidden></div>
         <div class="modal-actions">
             <button id="sync-cancel-btn" class="btn" type="button">Cancel</button>
+            <button id="sync-bg-btn" class="btn" type="button" hidden>Run in background</button>
             <button id="sync-confirm-btn" class="btn btn-primary" type="button">Sync &amp; restart</button>
         </div>
     </div>
+</div>
+
+<div id="sync-bg-indicator" class="sync-bg-indicator" hidden role="button" tabindex="0">
+    <span class="sync-bg-spinner"></span>
+    <span id="sync-bg-text"></span>
 </div>
 
 <div id="toast" class="toast" hidden></div>

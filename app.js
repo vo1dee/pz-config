@@ -26,6 +26,13 @@
 
     const els = {};
 
+    // Mirrors the server's step sequence in server/index.js, used only to
+    // size the progress bar — order must match what /api/sync/push emits.
+    const SYNC_STEP_ORDER = ['validate', 'backup', 'countdown', 'save', 'stop', 'write', 'start', 'done'];
+    let syncInFlight = false;      // a push request is currently streaming
+    let syncCancellable = true;    // mirrors the latest event's `cancellable` flag
+    let syncAbortController = null;
+
     function qs(id) { return document.getElementById(id); }
 
     function cacheEls() {
@@ -49,9 +56,14 @@
         els.exportCancelBtn = qs('export-cancel-btn');
         els.syncModal = qs('sync-modal');
         els.syncModalBody = qs('sync-modal-body');
+        els.syncProgress = qs('sync-progress');
+        els.syncProgressBar = qs('sync-progress-bar');
         els.syncLog = qs('sync-log');
         els.syncConfirmBtn = qs('sync-confirm-btn');
         els.syncCancelBtn = qs('sync-cancel-btn');
+        els.syncBgBtn = qs('sync-bg-btn');
+        els.syncBgIndicator = qs('sync-bg-indicator');
+        els.syncBgText = qs('sync-bg-text');
         els.toast = qs('toast');
         els.layout = qs('layout');
         els.onboardingScreen = qs('onboarding-screen');
@@ -196,6 +208,7 @@
         els.loadFileBtn.textContent = t('load_file');
         els.syncPullBtn.textContent = t('sync_from_server');
         els.syncPushBtn.textContent = t('sync_to_server');
+        els.syncBgBtn.textContent = t('sync_background_btn');
         els.exportBtn.textContent = t('export_lua');
         els.langToggle.setAttribute('aria-pressed', state.lang === 'uk' ? 'true' : 'false');
         els.versionBadge.textContent = `${t('version_label')}: ${state.schema.version != null ? state.schema.version : '?'}`;
@@ -669,9 +682,28 @@
         els.syncPullBtn.addEventListener('click', onSyncPullClick);
         els.syncPushBtn.addEventListener('click', onSyncPushClick);
         els.syncConfirmBtn.addEventListener('click', doSyncPush);
-        els.syncCancelBtn.addEventListener('click', closeSyncModal);
+        els.syncCancelBtn.addEventListener('click', () => {
+            if (syncInFlight) {
+                if (syncCancellable && syncAbortController) syncAbortController.abort();
+                return;
+            }
+            closeSyncModal();
+        });
+        els.syncBgBtn.addEventListener('click', sendSyncToBackground);
+        els.syncBgIndicator.addEventListener('click', () => {
+            els.syncBgIndicator.hidden = true;
+            els.syncModal.hidden = false;
+        });
+        els.syncBgIndicator.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                els.syncBgIndicator.click();
+            }
+        });
         els.syncModal.addEventListener('click', (e) => {
-            if (e.target === els.syncModal && !els.syncConfirmBtn.disabled) closeSyncModal();
+            if (e.target !== els.syncModal) return;
+            if (syncInFlight) sendSyncToBackground();
+            else closeSyncModal();
         });
 
         bindDragAndDrop();
@@ -847,23 +879,70 @@
     }
 
     function onSyncPushClick() {
+        if (syncInFlight) {
+            // Already streaming (possibly backgrounded) — bring it back to the
+            // foreground instead of resetting the confirm screen.
+            els.syncBgIndicator.hidden = true;
+            els.syncModal.hidden = false;
+            return;
+        }
         qs('sync-modal-title').textContent = t('sync_to_server');
         const countdown = (state.server && state.server.countdown != null) ? state.server.countdown : 60;
         let body = t('sync_confirm_body').replace('{seconds}', countdown);
         if (state.server && state.server.dryRun) body += ' ' + t('sync_dryrun_note');
         els.syncModalBody.textContent = body;
+        els.syncConfirmBtn.hidden = false;
         els.syncConfirmBtn.textContent = t('sync_confirm_btn');
-        els.syncCancelBtn.textContent = t('cancel');
         els.syncConfirmBtn.disabled = false;
+        els.syncBgBtn.hidden = true;
+        els.syncCancelBtn.textContent = t('cancel');
         els.syncCancelBtn.disabled = false;
+        els.syncProgress.hidden = true;
+        els.syncProgressBar.style.width = '0%';
+        els.syncProgressBar.className = 'sync-progress-bar';
         els.syncLog.hidden = true;
         els.syncLog.innerHTML = '';
         els.syncModal.hidden = false;
     }
 
+    // Hides the modal without touching the in-flight request (if any).
     function closeSyncModal() {
-        if (els.syncConfirmBtn.disabled) return; // a push is in flight
         els.syncModal.hidden = true;
+        els.syncBgIndicator.hidden = true;
+    }
+
+    // Hides the modal but keeps the push streaming; a floating indicator
+    // stays up so the user can reopen it later.
+    function sendSyncToBackground() {
+        els.syncModal.hidden = true;
+        els.syncBgIndicator.hidden = false;
+        els.syncBgIndicator.title = t('sync_bg_reopen_hint');
+    }
+
+    function updateBgIndicator(text, statusClass) {
+        els.syncBgText.textContent = text;
+        els.syncBgIndicator.classList.remove('is-done', 'is-error');
+        if (statusClass) els.syncBgIndicator.classList.add(statusClass);
+    }
+
+    // Cancel is only meaningful (and only enabled) while the server says the
+    // step is still `cancellable` — see the comment in server/index.js on the
+    // "point of no return" once the stop command has actually been issued.
+    function updateCancelButtonState() {
+        if (!syncInFlight) return;
+        els.syncCancelBtn.disabled = !syncCancellable;
+        els.syncCancelBtn.textContent = t(syncCancellable ? 'sync_cancel_running_btn' : 'sync_cancel_locked_btn');
+    }
+
+    function setSyncProgress(step, status) {
+        const idx = SYNC_STEP_ORDER.indexOf(step);
+        if (idx !== -1) {
+            els.syncProgressBar.style.width = Math.round(((idx + 1) / SYNC_STEP_ORDER.length) * 100) + '%';
+        }
+        els.syncProgressBar.classList.remove('is-error', 'is-done', 'is-cancelled');
+        if (status === 'error') els.syncProgressBar.classList.add('is-error');
+        else if (step === 'done') els.syncProgressBar.classList.add('is-done');
+        else if (step === 'cancelled') els.syncProgressBar.classList.add('is-cancelled');
     }
 
     function appendSyncLog(status, message) {
@@ -876,19 +955,31 @@
 
     // Stream the push and render the NDJSON step log live.
     async function doSyncPush() {
-        els.syncConfirmBtn.disabled = true;
-        els.syncCancelBtn.disabled = true;
+        syncInFlight = true;
+        syncCancellable = true;
+        els.syncConfirmBtn.hidden = true;
+        els.syncBgBtn.hidden = false;
+        els.syncBgBtn.disabled = false;
+        updateCancelButtonState();
+        els.syncProgress.hidden = false;
+        els.syncProgressBar.style.width = '0%';
+        els.syncProgressBar.className = 'sync-progress-bar';
         els.syncLog.hidden = false;
         els.syncLog.innerHTML = '';
         appendSyncLog('running', t('sync_starting'));
+        updateBgIndicator(t('sync_bg_running'));
 
         const lua = LuaParser.generateLua(state.schema.sections, state.values, state.schema.version);
         let ok = true;
+        let cancelled = false;
+        const controller = new AbortController();
+        syncAbortController = controller;
         try {
             const resp = await fetch(`${API_BASE}/api/sync/push`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ lua }),
+                signal: controller.signal,
             });
             if (!resp.ok) {
                 const data = await resp.json().catch(() => ({}));
@@ -911,18 +1002,44 @@
                         const evt = JSON.parse(line);
                         if (evt.status === 'error') ok = false;
                         appendSyncLog(evt.status, evt.message);
+                        setSyncProgress(evt.step, evt.status);
+                        syncCancellable = evt.cancellable !== false;
+                        updateCancelButtonState();
+                        updateBgIndicator(evt.message);
                     } catch (e) { /* ignore malformed line */ }
                 }
             }
         } catch (err) {
-            ok = false;
-            appendSyncLog('error', err.message);
+            if (err.name === 'AbortError') {
+                cancelled = true;
+                ok = false;
+                appendSyncLog('warn', t('sync_cancelled_log'));
+                setSyncProgress('cancelled', 'warn');
+            } else {
+                ok = false;
+                appendSyncLog('error', err.message);
+                setSyncProgress('error', 'error');
+            }
         } finally {
+            syncInFlight = false;
+            syncAbortController = null;
+            els.syncConfirmBtn.hidden = false;
             els.syncConfirmBtn.disabled = false;
+            els.syncBgBtn.hidden = true;
             els.syncCancelBtn.disabled = false;
             els.syncCancelBtn.textContent = t('close');
+            if (els.syncModal.hidden) {
+                // Still backgrounded — leave the indicator up showing the final
+                // state; the user reopens it (or dismisses it) on their own time.
+                updateBgIndicator(
+                    cancelled ? t('sync_cancelled_toast') : (ok ? t('sync_done') : t('sync_failed')),
+                    cancelled ? null : (ok ? 'is-done' : 'is-error')
+                );
+            } else {
+                els.syncBgIndicator.hidden = true;
+            }
         }
-        showToast(ok ? t('sync_done') : t('sync_failed'));
+        showToast(cancelled ? t('sync_cancelled_toast') : (ok ? t('sync_done') : t('sync_failed')));
     }
 
     // ---------- init ----------
