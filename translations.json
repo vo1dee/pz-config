@@ -255,6 +255,247 @@
     "announce_failed": {
       "en": "Announce failed",
       "uk": "Не вдалося надіслати"
+    },
+    "server_panel_title": {
+      "en": "Server",
+      "uk": "Сервер"
+    },
+    "confirm_btn": {
+      "en": "Confirm",
+      "uk": "Підтвердити"
+    },
+    "loading": {
+      "en": "Loading…",
+      "uk": "Завантаження…"
+    },
+    "server_tab_status": {
+      "en": "Status",
+      "uk": "Стан"
+    },
+    "server_tab_players": {
+      "en": "Players",
+      "uk": "Гравці"
+    },
+    "server_tab_options": {
+      "en": "Options",
+      "uk": "Опції"
+    },
+    "server_tab_world": {
+      "en": "World",
+      "uk": "Світ"
+    },
+    "server_tab_logs": {
+      "en": "Logs",
+      "uk": "Журнал"
+    },
+
+    "player_action_modal_title": {
+      "en": "Confirm",
+      "uk": "Підтвердження"
+    },
+    "player_kick": {
+      "en": "Kick",
+      "uk": "Кікнути"
+    },
+    "player_kick_confirm": {
+      "en": "Kick {name} from the server?",
+      "uk": "Кікнути {name} із сервера?"
+    },
+    "player_ban": {
+      "en": "Ban",
+      "uk": "Забанити"
+    },
+    "player_ban_confirm": {
+      "en": "Ban {name}? This can be undone with Unban.",
+      "uk": "Забанити {name}? Це можна скасувати кнопкою \"Розбанити\"."
+    },
+    "player_unban": {
+      "en": "Unban",
+      "uk": "Розбанити"
+    },
+    "player_whitelist_add": {
+      "en": "Whitelist +",
+      "uk": "У вайтліст +"
+    },
+    "player_whitelist_remove": {
+      "en": "Whitelist −",
+      "uk": "З вайтліста −"
+    },
+    "player_set_access_level": {
+      "en": "Set access level…",
+      "uk": "Рівень доступу…"
+    },
+    "player_access_confirm": {
+      "en": "Set {name}'s access level to {level}?",
+      "uk": "Встановити рівень доступу {name} на {level}?"
+    },
+    "player_action_done": {
+      "en": "Done.",
+      "uk": "Готово."
+    },
+    "player_action_failed": {
+      "en": "Action failed",
+      "uk": "Дія не вдалася"
+    },
+    "access_level_none": {
+      "en": "None",
+      "uk": "Немає"
+    },
+    "access_level_observer": {
+      "en": "Observer",
+      "uk": "Спостерігач"
+    },
+    "access_level_gm": {
+      "en": "GM",
+      "uk": "GM"
+    },
+    "access_level_overseer": {
+      "en": "Overseer",
+      "uk": "Наглядач"
+    },
+    "access_level_moderator": {
+      "en": "Moderator",
+      "uk": "Модератор"
+    },
+    "access_level_admin": {
+      "en": "Admin",
+      "uk": "Адмін"
+    },
+
+    "grant_item": {
+      "en": "Give item",
+      "uk": "Видати предмет"
+    },
+    "grant_xp": {
+      "en": "Add XP",
+      "uk": "Додати досвід"
+    },
+    "grant_teleport": {
+      "en": "Teleport to",
+      "uk": "Телепортувати до"
+    },
+    "grant_godmodeOn": {
+      "en": "Godmode on",
+      "uk": "Режим бога: увімк."
+    },
+    "grant_godmodeOff": {
+      "en": "Godmode off",
+      "uk": "Режим бога: вимк."
+    },
+    "grant_item_placeholder": {
+      "en": "item id",
+      "uk": "id предмета"
+    },
+    "grant_count_placeholder": {
+      "en": "count",
+      "uk": "к-сть"
+    },
+    "grant_perk_placeholder": {
+      "en": "perk name",
+      "uk": "назва навички"
+    },
+    "grant_amount_placeholder": {
+      "en": "xp amount",
+      "uk": "к-сть xp"
+    },
+    "grant_go": {
+      "en": "Go",
+      "uk": "Виконати"
+    },
+    "grant_done": {
+      "en": "Done.",
+      "uk": "Готово."
+    },
+    "grant_failed": {
+      "en": "Grant failed",
+      "uk": "Не вдалося виконати"
+    },
+
+    "server_options_empty": {
+      "en": "No options found.",
+      "uk": "Опцій не знайдено."
+    },
+    "server_options_failed": {
+      "en": "Failed to load options",
+      "uk": "Не вдалося завантажити опції"
+    },
+    "server_option_saved": {
+      "en": "Option applied.",
+      "uk": "Опцію застосовано."
+    },
+    "server_option_failed": {
+      "en": "Failed to set option",
+      "uk": "Не вдалося встановити опцію"
+    },
+
+    "world_chopper": {
+      "en": "Helicopter event",
+      "uk": "Подія вертольота"
+    },
+    "world_gunshot": {
+      "en": "Gunshot sound",
+      "uk": "Звук пострілу"
+    },
+    "world_startrain": {
+      "en": "Start rain",
+      "uk": "Почати дощ"
+    },
+    "world_stoprain": {
+      "en": "Stop rain",
+      "uk": "Зупинити дощ"
+    },
+    "world_startstorm": {
+      "en": "Start storm",
+      "uk": "Почати шторм"
+    },
+    "world_stopweather": {
+      "en": "Stop weather",
+      "uk": "Зупинити погоду"
+    },
+    "world_alarm": {
+      "en": "Building alarm",
+      "uk": "Сигналізація будівлі"
+    },
+    "world_thunder": {
+      "en": "Thunder near player",
+      "uk": "Грім біля гравця"
+    },
+    "world_lightning": {
+      "en": "Lightning near player",
+      "uk": "Блискавка біля гравця"
+    },
+    "world_createhorde": {
+      "en": "Spawn horde",
+      "uk": "Створити орду"
+    },
+    "world_no_target": {
+      "en": "(no target)",
+      "uk": "(без цілі)"
+    },
+    "world_run": {
+      "en": "Run",
+      "uk": "Виконати"
+    },
+    "world_target_required": {
+      "en": "This action needs a target player.",
+      "uk": "Ця дія потребує обрання гравця."
+    },
+    "world_action_done": {
+      "en": "Done.",
+      "uk": "Готово."
+    },
+    "world_action_failed": {
+      "en": "World action failed",
+      "uk": "Дія над світом не вдалася"
+    },
+
+    "logs_stream_error": {
+      "en": "log stream error",
+      "uk": "помилка потоку журналу"
+    },
+    "logs_no_files": {
+      "en": "no log files found",
+      "uk": "файли журналу не знайдено"
     }
   },
   "sections": {
@@ -5627,6 +5868,276 @@
         "en": "Reload action refills every empty magazine in your inventory at once instead of one at a time.",
         "uk": "Перезарядка одразу поповнює всі порожні магазини в інвентарі, а не по одному."
       }
+    }
+  },
+  "serverOptions": {
+    "PublicName": {
+      "label": { "en": "Public Name", "uk": "Публічна назва" },
+      "description": { "en": "The server name shown in the in-game server browser.", "uk": "Назва сервера, що показується у списку серверів у грі." }
+    },
+    "PublicDescription": {
+      "label": { "en": "Public Description", "uk": "Публічний опис" },
+      "description": { "en": "The description text shown in the in-game server browser.", "uk": "Текст опису, що показується у списку серверів у грі." }
+    },
+    "Public": {
+      "label": { "en": "Public", "uk": "Публічний" },
+      "description": { "en": "List this server in the public server browser.", "uk": "Показувати цей сервер у публічному списку серверів." }
+    },
+    "Open": {
+      "label": { "en": "Open", "uk": "Відкритий" },
+      "description": { "en": "Allow anyone to join, rather than whitelist-only.", "uk": "Дозволяє приєднуватися будь-кому, а не лише за вайтлістом." }
+    },
+    "ServerWelcomeMessage": {
+      "label": { "en": "Welcome Message", "uk": "Вітальне повідомлення" },
+      "description": { "en": "Message shown to players when they connect.", "uk": "Повідомлення, яке бачать гравці під час підключення." }
+    },
+    "MaxPlayers": {
+      "label": { "en": "Max Players", "uk": "Макс. гравців" },
+      "description": { "en": "Maximum number of players who can be connected at once.", "uk": "Максимальна кількість гравців, підключених одночасно." }
+    },
+    "PingLimit": {
+      "label": { "en": "Ping Limit", "uk": "Ліміт пінгу" },
+      "description": { "en": "Players with ping above this limit (ms) are disconnected.", "uk": "Гравців із пінгом вище цього значення (мс) буде відключено." }
+    },
+    "Password": {
+      "label": { "en": "Password", "uk": "Пароль" },
+      "description": { "en": "Password required to join the server. Leave empty for no password.", "uk": "Пароль для приєднання до сервера. Залиште порожнім, щоб не вимагати пароль." }
+    },
+    "LoginQueueEnabled": {
+      "label": { "en": "Login Queue", "uk": "Черга входу" },
+      "description": { "en": "Queue connecting players instead of rejecting them outright when the server is full.", "uk": "Ставити гравців у чергу замість відмови у підключенні, коли сервер заповнений." }
+    },
+    "LoginQueueConnectTimeout": {
+      "label": { "en": "Login Queue Timeout", "uk": "Тайм-аут черги входу" },
+      "description": { "en": "Seconds a queued player has to connect once a slot opens up.", "uk": "Скільки секунд гравець у черзі має на підключення, коли звільняється місце." }
+    },
+    "MaxAccountsPerUser": {
+      "label": { "en": "Max Accounts Per User", "uk": "Макс. акаунтів на користувача" },
+      "description": { "en": "Maximum number of in-game accounts one Steam/user account can register.", "uk": "Максимальна кількість ігрових акаунтів на один Steam/обліковий запис." }
+    },
+    "DenyLoginOnOverloadedServer": {
+      "label": { "en": "Deny Login When Overloaded", "uk": "Відмова при перевантаженні" },
+      "description": { "en": "Reject new logins if the server is under heavy load.", "uk": "Відхиляти нові підключення, якщо сервер сильно навантажений." }
+    },
+    "PVP": {
+      "label": { "en": "PVP", "uk": "PVP" },
+      "description": { "en": "Allow players to damage each other.", "uk": "Дозволяє гравцям завдавати шкоди одне одному." }
+    },
+    "PVPMeleeDamageModifier": {
+      "label": { "en": "PVP Melee Damage Modifier", "uk": "Модифікатор ближнього PVP-урону" },
+      "description": { "en": "Multiplier applied to melee damage dealt to other players.", "uk": "Множник шкоди в ближньому бою по інших гравцях." }
+    },
+    "PVPFirearmDamageModifier": {
+      "label": { "en": "PVP Firearm Damage Modifier", "uk": "Модифікатор вогнепального PVP-урону" },
+      "description": { "en": "Multiplier applied to firearm damage dealt to other players.", "uk": "Множник вогнепальної шкоди по інших гравцях." }
+    },
+    "SafetySystem": {
+      "label": { "en": "Safety System", "uk": "Система безпеки" },
+      "description": { "en": "Enable the PVP safety toggle that briefly prevents damage to other players.", "uk": "Вмикає перемикач безпеки PVP, що тимчасово блокує шкоду іншим гравцям." }
+    },
+    "ShowSafety": {
+      "label": { "en": "Show Safety Icon", "uk": "Показувати іконку безпеки" },
+      "description": { "en": "Show the PVP safety status icon on-screen.", "uk": "Показує на екрані іконку статусу безпеки PVP." }
+    },
+    "SafetyToggleTimer": {
+      "label": { "en": "Safety Toggle Timer", "uk": "Час перемикання безпеки" },
+      "description": { "en": "Seconds it takes to toggle the PVP safety state.", "uk": "Скільки секунд триває перемикання стану безпеки PVP." }
+    },
+    "SafetyCooldownTimer": {
+      "label": { "en": "Safety Cooldown Timer", "uk": "Час відновлення безпеки" },
+      "description": { "en": "Cooldown in seconds before the safety toggle can be used again.", "uk": "Час очікування в секундах перед повторним використанням перемикача безпеки." }
+    },
+    "PlayerSafehouse": {
+      "label": { "en": "Player Safehouses", "uk": "Безпечні будинки гравців" },
+      "description": { "en": "Allow players to claim safehouses.", "uk": "Дозволяє гравцям заявляти права на безпечні будинки." }
+    },
+    "AdminSafehouse": {
+      "label": { "en": "Admin-Only Safehouses", "uk": "Безпечні будинки лише для адмінів" },
+      "description": { "en": "Restrict safehouse claiming to admins.", "uk": "Дозволяє заявляти права на безпечні будинки лише адмінам." }
+    },
+    "SafehouseAllowTrepass": {
+      "label": { "en": "Allow Safehouse Trespassing", "uk": "Дозволити вторгнення в безпечний будинок" },
+      "description": { "en": "Allow non-members to enter a claimed safehouse.", "uk": "Дозволяє стороннім заходити до заявленого безпечного будинку." }
+    },
+    "SafehouseAllowFire": {
+      "label": { "en": "Allow Fire in Safehouse", "uk": "Дозволити вогонь у безпечному будинку" },
+      "description": { "en": "Allow players to shoot inside their own safehouse.", "uk": "Дозволяє гравцям стріляти у своєму безпечному будинку." }
+    },
+    "SafehouseAllowLoot": {
+      "label": { "en": "Allow Looting Safehouse", "uk": "Дозволити грабіж безпечного будинку" },
+      "description": { "en": "Allow non-members to loot containers inside a claimed safehouse.", "uk": "Дозволяє стороннім грабувати контейнери в заявленому безпечному будинку." }
+    },
+    "SafehouseAllowRespawn": {
+      "label": { "en": "Allow Safehouse Respawn", "uk": "Дозволити відродження в безпечному будинку" },
+      "description": { "en": "Allow players to respawn at their claimed safehouse after death.", "uk": "Дозволяє гравцям відроджуватися у своєму безпечному будинку після смерті." }
+    },
+    "SafehouseDaySurvivedToClaim": {
+      "label": { "en": "Days Survived to Claim Safehouse", "uk": "Днів виживання для заявки на будинок" },
+      "description": { "en": "Number of days a player must survive before they can claim a safehouse.", "uk": "Скільки днів гравець має вижити перед тим, як заявити права на безпечний будинок." }
+    },
+    "SafeHouseRemovalTime": {
+      "label": { "en": "Safehouse Removal Time", "uk": "Час видалення безпечного будинку" },
+      "description": { "en": "Hours of player inactivity before a claimed safehouse is released.", "uk": "Скільки годин неактивності гравця до звільнення заявленого безпечного будинку." }
+    },
+    "SafehouseAllowNonResidential": {
+      "label": { "en": "Allow Non-Residential Safehouses", "uk": "Дозволити нежитлові безпечні будинки" },
+      "description": { "en": "Allow claiming non-residential buildings (shops, warehouses, etc.) as safehouses.", "uk": "Дозволяє заявляти нежитлові будівлі (магазини, склади тощо) як безпечні будинки." }
+    },
+    "DisableSafehouseWhenPlayerConnected": {
+      "label": { "en": "Disable Safehouse While Owner Online", "uk": "Вимкнути безпеку, коли власник онлайн" },
+      "description": { "en": "Only apply safehouse protection while the owner is offline.", "uk": "Захист безпечного будинку діє лише поки власник офлайн." }
+    },
+    "Faction": {
+      "label": { "en": "Factions", "uk": "Фракції" },
+      "description": { "en": "Enable the faction system.", "uk": "Вмикає систему фракцій." }
+    },
+    "FactionDaySurvivedToCreate": {
+      "label": { "en": "Days Survived to Create Faction", "uk": "Днів виживання для створення фракції" },
+      "description": { "en": "Number of days a player must survive before they can create a faction.", "uk": "Скільки днів гравець має вижити перед створенням фракції." }
+    },
+    "FactionPlayersRequiredForTag": {
+      "label": { "en": "Players Required for Faction Tag", "uk": "Гравців потрібно для тегу фракції" },
+      "description": { "en": "Minimum members a faction needs before its tag shows over members' heads.", "uk": "Мінімальна кількість учасників фракції для показу тегу над головами." }
+    },
+    "PauseEmpty": {
+      "label": { "en": "Pause When Empty", "uk": "Пауза, коли порожньо" },
+      "description": { "en": "Pause the server simulation when no players are connected.", "uk": "Ставить симуляцію сервера на паузу, коли немає підключених гравців." }
+    },
+    "SpeedLimit": {
+      "label": { "en": "Speed Limit", "uk": "Обмеження швидкості" },
+      "description": { "en": "Vehicle speed limit used for anti-cheat/desync checks.", "uk": "Обмеження швидкості транспорту для перевірок анти-чіту/десинхронізації." }
+    },
+    "PlayerRespawnWithSelf": {
+      "label": { "en": "Respawn With Own Items", "uk": "Відродження з власними речами" },
+      "description": { "en": "New character keeps the previous character's inventory on respawn.", "uk": "Новий персонаж зберігає інвентар попереднього при відродженні." }
+    },
+    "PlayerRespawnWithOther": {
+      "label": { "en": "Respawn With Others' Items", "uk": "Відродження з чужими речами" },
+      "description": { "en": "New character can receive items dropped by other dead players.", "uk": "Новий персонаж може отримати речі, залишені іншими загиблими гравцями." }
+    },
+    "FastForwardMultiplier": {
+      "label": { "en": "Fast Forward Multiplier", "uk": "Множник прискорення" },
+      "description": { "en": "How much faster time passes while no players are online.", "uk": "Наскільки швидше минає час, поки немає гравців онлайн." }
+    },
+    "DisableRadioStaff": {
+      "label": { "en": "Disable Radio for Staff", "uk": "Вимкнути радіо для персоналу" },
+      "description": { "en": "Prevent staff-tagged players from using in-game radio/chat channels.", "uk": "Забороняє гравцям із тегом персоналу використовувати радіо/чат у грі." }
+    },
+    "DisableRadioAdmin": {
+      "label": { "en": "Disable Radio for Admin", "uk": "Вимкнути радіо для адмінів" },
+      "description": { "en": "Prevent admin-tagged players from using in-game radio/chat channels.", "uk": "Забороняє гравцям із тегом адміна використовувати радіо/чат у грі." }
+    },
+    "DisableRadioGM": {
+      "label": { "en": "Disable Radio for GM", "uk": "Вимкнути радіо для GM" },
+      "description": { "en": "Prevent GM-tagged players from using in-game radio/chat channels.", "uk": "Забороняє гравцям із тегом GM використовувати радіо/чат у грі." }
+    },
+    "DisableRadioInvisible": {
+      "label": { "en": "Disable Radio While Invisible", "uk": "Вимкнути радіо в невидимості" },
+      "description": { "en": "Prevent invisible (observer mode) players from using in-game radio/chat.", "uk": "Забороняє невидимим гравцям (режим спостерігача) використовувати радіо/чат." }
+    },
+    "ItemNumbersLimitPerContainer": {
+      "label": { "en": "Item Limit Per Container", "uk": "Ліміт предметів у контейнері" },
+      "description": { "en": "Maximum number of items allowed in a single container.", "uk": "Максимальна кількість предметів в одному контейнері." }
+    },
+    "AllowNonAsciiUsername": {
+      "label": { "en": "Allow Non-ASCII Usernames", "uk": "Дозволити не-ASCII імена" },
+      "description": { "en": "Allow usernames containing non-ASCII characters.", "uk": "Дозволяє імена користувачів із не-ASCII символами." }
+    },
+    "Mods": {
+      "label": { "en": "Mods", "uk": "Моди" },
+      "description": { "en": "Semicolon-separated list of enabled mod IDs.", "uk": "Список ID увімкнених модів через крапку з комою." }
+    },
+    "Map": {
+      "label": { "en": "Map", "uk": "Карта" },
+      "description": { "en": "Semicolon-separated list of map folders to load, in priority order.", "uk": "Список папок карт для завантаження через крапку з комою, у порядку пріоритету." }
+    },
+    "WorkshopItems": {
+      "label": { "en": "Workshop Items", "uk": "Предмети майстерні" },
+      "description": { "en": "Semicolon-separated list of Steam Workshop item IDs to load.", "uk": "Список ID предметів Steam Workshop через крапку з комою для завантаження." }
+    },
+    "BackupsCount": {
+      "label": { "en": "Backups Count", "uk": "Кількість резервних копій" },
+      "description": { "en": "Number of automatic save backups to keep.", "uk": "Кількість автоматичних резервних копій збереження, що зберігаються." }
+    },
+    "BackupsOnStart": {
+      "label": { "en": "Backup on Start", "uk": "Резервна копія при запуску" },
+      "description": { "en": "Make a backup of the save when the server starts.", "uk": "Створювати резервну копію збереження при запуску сервера." }
+    },
+    "BackupsOnVersionChange": {
+      "label": { "en": "Backup on Version Change", "uk": "Резервна копія при зміні версії" },
+      "description": { "en": "Make a backup of the save when the game version changes.", "uk": "Створювати резервну копію збереження при зміні версії гри." }
+    },
+    "BackupsPeriod": {
+      "label": { "en": "Backup Period", "uk": "Період резервного копіювання" },
+      "description": { "en": "Minutes between automatic save backups.", "uk": "Кількість хвилин між автоматичними резервними копіями." }
+    },
+    "SaveWorldEveryMinutes": {
+      "label": { "en": "Save World Every (Minutes)", "uk": "Зберігати світ кожні (хв)" },
+      "description": { "en": "How often, in minutes, the world is auto-saved.", "uk": "Як часто (в хвилинах) світ зберігається автоматично." }
+    },
+    "GlobalChat": {
+      "label": { "en": "Global Chat", "uk": "Загальний чат" },
+      "description": { "en": "Enable the server-wide global chat channel.", "uk": "Вмикає загальний чат на весь сервер." }
+    },
+    "ChatStreams": {
+      "label": { "en": "Chat Streams", "uk": "Канали чату" },
+      "description": { "en": "Comma-separated list of enabled chat channels (e.g. s,r,a,w,y,sh,f,all).", "uk": "Список увімкнених каналів чату через кому (напр. s,r,a,w,y,sh,f,all)." }
+    },
+    "DisplayUserName": {
+      "label": { "en": "Display Username", "uk": "Показувати ім'я користувача" },
+      "description": { "en": "Show players' usernames above their heads.", "uk": "Показує імена користувачів над головами гравців." }
+    },
+    "HidePlayersBehindYou": {
+      "label": { "en": "Hide Players Behind You", "uk": "Приховувати гравців позаду" },
+      "description": { "en": "Hide the on-screen indicator for players standing behind you.", "uk": "Приховує індикатор гравців, що стоять позаду вас." }
+    },
+    "SneakModeHideFromOtherPlayers": {
+      "label": { "en": "Sneak Hides From Players", "uk": "Скрадання приховує від гравців" },
+      "description": { "en": "Sneak mode also hides you from the player list/map, not just zombies.", "uk": "Режим скрадання приховує вас також від інших гравців, а не лише від зомбі." }
+    },
+    "SpawnPoint": {
+      "label": { "en": "Spawn Point", "uk": "Точка відродження" },
+      "description": { "en": "Fixed spawn coordinates (x,y,z), or 0,0,0 for the default random spawn.", "uk": "Фіксовані координати відродження (x,y,z), або 0,0,0 для випадкового відродження за замовчуванням." }
+    },
+    "SpawnItems": {
+      "label": { "en": "Spawn Items", "uk": "Стартові предмети" },
+      "description": { "en": "Comma-separated list of items every new character spawns with.", "uk": "Список предметів через кому, з якими з'являється кожен новий персонаж." }
+    },
+    "NoFire": {
+      "label": { "en": "Disable Fire Spread", "uk": "Вимкнути поширення вогню" },
+      "description": { "en": "Disable fire spread (e.g. from campfires) across the map.", "uk": "Вимикає поширення вогню (напр. від багать) по карті." }
+    },
+    "AnnounceDeath": {
+      "label": { "en": "Announce Death", "uk": "Оголошувати смерть" },
+      "description": { "en": "Broadcast a message to all players when someone dies.", "uk": "Транслює повідомлення всім гравцям, коли хтось помирає." }
+    },
+    "DropOffWhiteListAfterDeath": {
+      "label": { "en": "Drop Whitelist After Death", "uk": "Видаляти з вайтліста після смерті" },
+      "description": { "en": "Remove a player from the whitelist automatically after they die.", "uk": "Автоматично видаляє гравця з вайтліста після смерті." }
+    },
+    "SleepAllowed": {
+      "label": { "en": "Sleep Allowed", "uk": "Дозволити сон" },
+      "description": { "en": "Allow players to sleep in beds.", "uk": "Дозволяє гравцям спати в ліжках." }
+    },
+    "SleepNeeded": {
+      "label": { "en": "Sleep Needed", "uk": "Потрібен сон" },
+      "description": { "en": "Players suffer negative effects if they don't sleep.", "uk": "Гравці отримують негативні ефекти, якщо не сплять." }
+    },
+    "KnockedDownAllowed": {
+      "label": { "en": "Knocked Down Allowed", "uk": "Дозволити падіння" },
+      "description": { "en": "Allow players to be knocked down.", "uk": "Дозволяє збивати гравців з ніг." }
+    },
+    "SoftResetTimeout": {
+      "label": { "en": "Soft Reset Timeout", "uk": "Тайм-аут м'якого перезапуску" },
+      "description": { "en": "Minutes of inactivity before the server performs a soft reset.", "uk": "Кількість хвилин бездіяльності перед м'яким перезапуском сервера." }
+    },
+    "SteamScoreboard": {
+      "label": { "en": "Steam Scoreboard", "uk": "Таблиця результатів Steam" },
+      "description": { "en": "Show the Steam overlay scoreboard.", "uk": "Показує таблицю результатів у оверлеї Steam." }
+    },
+    "DoLuaChecksum": {
+      "label": { "en": "Lua Checksum Check", "uk": "Перевірка контрольної суми Lua" },
+      "description": { "en": "Verify client Lua files match the server's, to catch tampering.", "uk": "Перевіряє відповідність клієнтських Lua-файлів серверним, щоб виявити модифікації." }
     }
   }
 }

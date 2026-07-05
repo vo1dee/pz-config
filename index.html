@@ -81,19 +81,62 @@
 </div>
 
 <div id="server-modal" class="modal-overlay" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="server-modal-title">
-        <h2 id="server-modal-title">Server status</h2>
-        <div class="server-status-line">
-            <span id="server-status-dot" class="server-status-dot"></span>
-            <span id="server-status-text"></span>
+    <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="server-modal-title">
+        <h2 id="server-modal-title">Server</h2>
+
+        <div class="server-tabs" role="tablist">
+            <button class="server-tab-btn" type="button" role="tab" data-tab="status">Status</button>
+            <button class="server-tab-btn" type="button" role="tab" data-tab="players">Players</button>
+            <button class="server-tab-btn" type="button" role="tab" data-tab="options">Options</button>
+            <button class="server-tab-btn" type="button" role="tab" data-tab="world">World</button>
+            <button class="server-tab-btn" type="button" role="tab" data-tab="logs">Logs</button>
         </div>
-        <div id="server-players" class="server-players"></div>
-        <div class="server-announce-row">
-            <input id="announce-input" class="search-input" type="text" maxlength="200" placeholder="Message to broadcast in-game…">
-            <button id="announce-send-btn" class="btn btn-primary" type="button">Send</button>
+
+        <div id="server-tab-status" class="server-tab-panel" data-tab-panel="status">
+            <div class="server-status-line">
+                <span id="server-status-dot" class="server-status-dot"></span>
+                <span id="server-status-text"></span>
+            </div>
+            <div id="server-players" class="server-players"></div>
+            <div class="server-announce-row">
+                <input id="announce-input" class="search-input" type="text" maxlength="200" placeholder="Message to broadcast in-game…">
+                <button id="announce-send-btn" class="btn btn-primary" type="button">Send</button>
+            </div>
         </div>
+
+        <div id="server-tab-players" class="server-tab-panel" data-tab-panel="players" hidden>
+            <div id="server-players-list" class="server-players-list"></div>
+        </div>
+
+        <div id="server-tab-options" class="server-tab-panel" data-tab-panel="options" hidden>
+            <p class="server-tab-note">These apply live — no restart needed.</p>
+            <div id="server-options-list" class="param-grid server-options-grid"></div>
+        </div>
+
+        <div id="server-tab-world" class="server-tab-panel" data-tab-panel="world" hidden>
+            <div id="server-world-list" class="server-world-list"></div>
+        </div>
+
+        <div id="server-tab-logs" class="server-tab-panel" data-tab-panel="logs" hidden>
+            <div class="server-log-file-row">
+                <select id="server-log-file-select" class="server-log-file-select"></select>
+            </div>
+            <pre id="server-log-view" class="server-log-view"></pre>
+        </div>
+
         <div class="modal-actions">
             <button id="server-close-btn" class="btn" type="button">Close</button>
+        </div>
+    </div>
+</div>
+
+<div id="player-action-modal" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="player-action-modal-title">
+        <h2 id="player-action-modal-title">Confirm</h2>
+        <p id="player-action-modal-body"></p>
+        <div class="modal-actions">
+            <button id="player-action-cancel-btn" class="btn" type="button">Cancel</button>
+            <button id="player-action-confirm-btn" class="btn btn-primary" type="button">Confirm</button>
         </div>
     </div>
 </div>

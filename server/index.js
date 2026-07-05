@@ -79,6 +79,184 @@ app.post('/api/server/announce', async (req, res) => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// Player admin actions (kick/ban/unban/access level/whitelist)
+// ---------------------------------------------------------------------------
+
+const PLAYER_ACTIONS = {
+  kick: (name, opts) => pz.kickPlayer(name, opts.reason),
+  ban: (name, opts) => pz.banPlayer(name, { ip: opts.ip, reason: opts.reason }),
+  unban: (name) => pz.unbanPlayer(name),
+  setAccessLevel: (name, opts) => pz.setAccessLevel(name, opts.level),
+  whitelistAdd: (name) => pz.whitelistAdd(name),
+  whitelistRemove: (name) => pz.whitelistRemove(name),
+};
+
+app.post('/api/server/player/action', async (req, res) => {
+  const body = req.body || {};
+  const { name, action } = body;
+  if (typeof name !== 'string' || !name.trim()) {
+    return res.status(400).json({ error: 'Missing "name" body.' });
+  }
+  const handler = PLAYER_ACTIONS[action];
+  if (!handler) {
+    return res.status(400).json({ error: `Unknown action "${action}".` });
+  }
+  const cfg = pz.config();
+  try {
+    if (cfg.dryRun) {
+      return res.json({ ok: true, dryRun: true, message: `[dry-run] would ${action} "${name}".` });
+    }
+    await handler(name, body);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(502).json({ error: `Action failed: ${err.message}` });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// ServerOptions — applies live via RCON, unlike SandboxVars (no restart).
+// ---------------------------------------------------------------------------
+
+app.get('/api/server/options', async (req, res) => {
+  try {
+    const options = await pz.getServerOptions();
+    res.json({ options });
+  } catch (err) {
+    res.status(502).json({ error: `Failed to read options: ${err.message}` });
+  }
+});
+
+app.post('/api/server/options', async (req, res) => {
+  const { key, value } = req.body || {};
+  if (typeof key !== 'string' || !key.trim()) {
+    return res.status(400).json({ error: 'Missing "key" body.' });
+  }
+  const cfg = pz.config();
+  try {
+    if (cfg.dryRun) {
+      return res.json({ ok: true, dryRun: true, message: `[dry-run] would set ${key} = ${value}` });
+    }
+    await pz.setServerOption(key, value);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(502).json({ error: `Failed to set option: ${err.message}` });
+  }
+});
+
+app.post('/api/server/options/reload', async (req, res) => {
+  const cfg = pz.config();
+  try {
+    if (cfg.dryRun) {
+      return res.json({ ok: true, dryRun: true, message: '[dry-run] would reload options from disk.' });
+    }
+    await pz.reloadOptions();
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(502).json({ error: `Reload failed: ${err.message}` });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// World/event "toys" — dispatched through pz.WORLD_EVENTS, a fixed allow-map;
+// the client can only ever name one of those actions, never a raw command.
+// ---------------------------------------------------------------------------
+
+app.post('/api/server/world', async (req, res) => {
+  const { action, target, count } = req.body || {};
+  if (typeof action !== 'string' || !pz.WORLD_EVENTS[action]) {
+    return res.status(400).json({ error: `Unknown world action "${action}".` });
+  }
+  const cfg = pz.config();
+  try {
+    if (cfg.dryRun) {
+      const suffix = (target ? ` on ${target}` : '') + (count ? ` x${count}` : '');
+      return res.json({ ok: true, dryRun: true, message: `[dry-run] would run world action "${action}"${suffix}.` });
+    }
+    await pz.worldEvent(action, target, count);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(502).json({ error: `World action failed: ${err.message}` });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Per-player grants (item/xp/teleport/godmode)
+// ---------------------------------------------------------------------------
+
+const GRANT_KINDS = {
+  item: (name, opts) => pz.giveItem(name, opts.item, opts.count),
+  xp: (name, opts) => pz.addXp(name, opts.perk, opts.amount),
+  teleport: (name, opts) => pz.teleport(name, opts.toName),
+  godmode: (name, opts) => pz.setGodmode(name, Boolean(opts.on)),
+};
+
+app.post('/api/server/player/grant', async (req, res) => {
+  const body = req.body || {};
+  const { name, kind } = body;
+  if (typeof name !== 'string' || !name.trim()) {
+    return res.status(400).json({ error: 'Missing "name" body.' });
+  }
+  const handler = GRANT_KINDS[kind];
+  if (!handler) {
+    return res.status(400).json({ error: `Unknown grant kind "${kind}".` });
+  }
+  const cfg = pz.config();
+  try {
+    if (cfg.dryRun) {
+      return res.json({ ok: true, dryRun: true, message: `[dry-run] would grant "${kind}" to "${name}".` });
+    }
+    await handler(name, body);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(502).json({ error: `Grant failed: ${err.message}` });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Live log stream — NDJSON, one record per chunk read off `tail -F` over SSH.
+// Torn down (killing the remote tail + SSH connection) as soon as the client
+// disconnects, same res.on('close') pattern as /api/sync/push.
+// ---------------------------------------------------------------------------
+
+// List the individual log files in PZ_LOGS_DIR (no subfolders) so the UI can
+// offer them as tabs/a dropdown.
+app.get('/api/server/logs/files', async (req, res) => {
+  try {
+    const files = await pz.listLogFiles();
+    res.json({ files });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+app.get('/api/server/logs/stream', (req, res) => {
+  res.set('Content-Type', 'application/x-ndjson');
+  res.set('Cache-Control', 'no-cache');
+  let handle;
+  try {
+    handle = pz.streamLogFile(
+      req.query.file,
+      (chunk) => {
+        try {
+          res.write(JSON.stringify({ line: chunk, ts: Date.now() }) + '\n');
+        } catch (e) { /* client already gone */ }
+      },
+      (err) => {
+        // SSH connection/exec failure — surface it and end the response
+        // instead of leaving the client's fetch hanging with no data.
+        try {
+          res.write(JSON.stringify({ error: `Log stream failed: ${err.message}`, ts: Date.now() }) + '\n');
+        } catch (e) { /* client already gone */ }
+        res.end();
+      }
+    );
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+  res.on('close', () => handle.close());
+});
+
 // Pull the remote SandboxVars file so the editor can load it.
 app.get('/api/sync/pull', async (req, res) => {
   try {
