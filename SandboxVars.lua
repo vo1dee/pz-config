@@ -1017,4 +1017,132 @@ SandboxVars = {
         -- Rate at which Glassmaking skill levels up. Min: 0.00 Max: 1000.00 Default: 1.00
         Glassmaking = 1.0,
     },
+    DAMN = {
+        -- Allows the unique "Power Chad" vehicle from this mod's vehicle library to spawn in the world.
+        AllowPowerChadSpawns = true,
+        -- Allows the unique "Pro 440" vehicle to spawn in the world.
+        AllowPro440Spawns = true,
+        -- Allows the unique "Demon Child" vehicle to spawn in the world.
+        AllowDemonChildSpawns = false,
+        -- Allows the unique "Wrecky McChevy" wrecked car to spawn in the world.
+        AllowWreckyMcChevySpawns = true,
+        -- Allows the unique "Sucky McSuckface" vehicle to spawn in the world.
+        AllowSuckyMcSuckfaceSpawns = true,
+        -- Allows the rare '97 ADI Bushmaster armored vehicle to spawn at a handful of secret/military locations.
+        AllowBushmasterSpawns = true,
+        -- Allows the unique "Great Scott" vehicle to spawn in the world.
+        AllowGreatScottSpawns = false,
+        -- Allows the unique "Mr. Bus" vehicle to spawn in the world.
+        AllowMrBusSpawns = true,
+        -- Allows the unique oversized "Chonker" vehicle to spawn in the world.
+        AllowChonkerSpawns = true,
+        -- Allows the unique "Cash Cow" vehicle to spawn in the world.
+        AllowCashcowSpawns = true,
+        -- Allows the unique boxy "McBoxy" vehicle to spawn in the world.
+        AllowMcBoxySpawns = true,
+        -- Allows the unique beat-up "Shitbox" junker vehicle to spawn in the world.
+        AllowShitSpawns = true,
+        -- Allows the unique pig-themed "Oinker" vehicle to spawn in the world.
+        AllowOinkerSpawns = true,
+    },
+    CF8KSweeper = {
+        -- Lets the CF8000 street sweeper vacuum up matching decorative floor-tile debris listed in the sprite whitelist.
+        AllowTiles = true,
+        -- Semicolon-separated list of tile sprite name prefixes (broken glass, trash, road debris, etc.) the street sweeper is allowed to remove.
+        SpriteWhitelist = "brokenglass_1_;trash_01_;d_trash_;street_decoration_01_26;street_decoration_01_27;damaged_objects_01_26;damaged_objects_01_27;damaged_objects_01_18;damaged_objects_01_19;damaged_objects_01_20;damaged_objects_01_21",
+        -- Lets the street sweeper clean blood decals off the ground.
+        AllowBlood = true,
+        -- Lets the street sweeper clean grime and dirt decals off the ground.
+        AllowGrime = true,
+        -- Lets the street sweeper clean ash decals (from burnt corpses or fires) off the ground.
+        AllowAshes = true,
+        -- Lets the street sweeper vacuum up loose items lying on the ground.
+        AllowItems = true,
+        -- Lets the street sweeper pick up dead bodies.
+        AllowCorpses = true,
+        -- Lets players (not just admins) auto-delete debris collected in the sweeper's tank instead of emptying it by hand.
+        AllowUserAutoDelete = false,
+    },
+    Plumbing = {
+        -- How much of a pump's charcoal filter, used to purify tainted water, is consumed each time it's used. Min: 0.00 Max: 0.10 Default: 0.01
+        PumpFilterUsage = 0.007,
+        -- How quickly a pump's efficiency degrades over time from wear; low-efficiency pumps risk emergency stops or catching fire. Min: 0.00 Max: 0.01 Default: 0.00
+        PumpEfficiencyLoss = 0.0012,
+        -- Maximum liters of water a pump can output per cycle at 100% efficiency. Min: 6 Max: 96 Default: 12
+        PumpMaxWater = 12,
+    },
+    RVAddon = {
+        -- Comma-separated list of additional vehicle script names slotted into the RV interior add-on's "normal car" category.
+        CustomNormalVehicles = "",
+        -- Comma-separated list of additional vehicle script names slotted into the "bus" interior category.
+        CustomBusVehicles = "",
+        -- Comma-separated list of additional vehicle script names slotted into the "small vehicle" interior category.
+        CustomSmallVehicles = "",
+        -- Comma-separated list of additional vehicle script names assigned the 3x2-tile caravan interior.
+        Custom3x2Caravan = "",
+        -- Comma-separated list of additional vehicle script names assigned the 3x6-tile caravan interior.
+        Custom3x6Caravan = "",
+        -- Comma-separated list of additional vehicle script names assigned the empty 3x7-tile interior.
+        Custom3x7Empty = "",
+        -- Comma-separated list of additional vehicle script names assigned the 4x12-tile "colossal" interior.
+        Custom4x12colossal = "",
+    },
+    RainCleansBlood = {
+        -- Maximum number of nearby blood/gore tiles cleaned per in-game minute while it's raining. Min: 1 Max: 60 Default: 10
+        TilesPerMinute = 10,
+        -- Minimum rain/snow intensity (0-1) required before rain starts cleaning blood. Min: 0.05 Max: 0.95 Default: 0.25
+        WeatherThreshold = 0.25,
+        -- Also clean ash decals from burnt corpses, not just blood.
+        AlsoCleanAsh = true,
+        -- Allow rain to clean blood on indoor tiles too, not just ones exposed outdoors.
+        AlsoCleanInside = false,
+        -- Also gradually clean blood and dirt off vehicle exteriors.
+        AlsoCleanVehicles = true,
+        -- Speed multiplier for how fast vehicles get cleaned by rain. Min: 0.10 Max: 1.00 Default: 0.10
+        VehicleCleanSpeed = 0.1,
+        -- Also clean blood off the clothes worn or carried by characters.
+        AlsoCleanClothes = true,
+        -- Speed multiplier for how fast worn clothing gets cleaned by rain. Min: 1.00 Max: 10.00 Default: 1.00
+        ClothesCleanSpeed = 1.0,
+        -- Clean blood regardless of weather, ignoring the rain intensity threshold entirely.
+        AlwaysClean = false,
+    },
+    CommonSense = {
+        -- Shows a visible pickup animation/highlight when auto-collecting items off the ground.
+        ObviousCollecting = true,
+        -- Disables this mod's own loot additions/changes entirely.
+        DisableLoot = false,
+        -- Multiplier applied to the amount of loot added by this mod. Min: 0.00 Max: 100.00 Default: 1.00
+        LootMultiplier = 1.0,
+        -- Master switch for the crowbar-prying system added by this mod.
+        PryingMechanic = true,
+        -- Multiplier applied to the base success chance of a crowbar-prying attempt. Min: 0.00 Max: 5.00 Default: 1.00
+        PryingChanceMultiplier = 1.0,
+        -- Allow prying open regular (non-reinforced) building doors with a crowbar.
+        PryBuildingDoors = true,
+        -- Allow prying open windows with a crowbar.
+        PryWindows = true,
+        -- Chance (%) that a failed window-pry attempt shatters the glass. Min: 0 Max: 100 Default: 20
+        WindowShatterChance = 20,
+        -- Allow prying open garage doors with a crowbar.
+        PryGarageDoors = true,
+        -- Allow prying open locked vehicle doors with a crowbar.
+        PryVehicleDoors = true,
+        -- Allow a failed vehicle-door pry attempt to shatter the vehicle's windows.
+        ShatterVehicleWindows = true,
+        -- Allow prying open safes with a crowbar.
+        PrySafeDoors = false,
+        -- Minimum level in the relevant skill required to pry open reinforced or barricaded doors. Min: 0 Max: 10 Default: 8
+        ReinforcedDoorLevel = 8,
+        -- Enables this mod's gun stat tweaks, including an on-screen remaining-ammo counter.
+        GunStats = true,
+        -- Chance (%) that a failed action, such as breaking glass, wounds the player. Min: 0 Max: 100 Default: 33
+        CanWoundChance = 33,
+        -- Allow removing a dirty bandage and replacing it with a fresh one, instead of only adding new bandages on top.
+        ReplaceBandage = true,
+        -- Restrict dirty-bandage handling to washing and reusing them, rather than replacing them outright.
+        WashOnly = true,
+        -- Reload action refills every empty magazine in your inventory at once instead of one at a time.
+        ReloadAllMags = true,
+    },
 }

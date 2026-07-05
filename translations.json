@@ -233,6 +233,30 @@
     "MultiplierConfig": {
       "en": "Skill XP Multipliers",
       "uk": "Множники досвіду навичок"
+    },
+    "DAMN": {
+      "en": "DAMN Vehicle Spawns",
+      "uk": "DAMN — поява транспорту"
+    },
+    "CF8KSweeper": {
+      "en": "CF8K Street Sweeper",
+      "uk": "Прибиральна машина CF8K"
+    },
+    "Plumbing": {
+      "en": "Plumbing",
+      "uk": "Водопровід"
+    },
+    "RVAddon": {
+      "en": "RV Interior Add-on",
+      "uk": "Доповнення інтер'єрів RV"
+    },
+    "RainCleansBlood": {
+      "en": "Rain Cleans Blood",
+      "uk": "Дощ змиває кров"
+    },
+    "CommonSense": {
+      "en": "Common Sense",
+      "uk": "Common Sense"
     }
   },
   "params": {
@@ -4974,6 +4998,586 @@
       "description": {
         "en": "Rate at which the Glassmaking skill levels up.",
         "uk": "Швидкість підвищення навички «Склодувство»."
+      }
+    },
+    "DAMN.AllowPowerChadSpawns": {
+      "label": {
+        "en": "Power Chad Spawns",
+        "uk": "Поява «Power Chad»"
+      },
+      "description": {
+        "en": "Allows the unique \"Power Chad\" vehicle from this mod's vehicle library to spawn in the world.",
+        "uk": "Дозволяє появу унікального транспортного засобу «Power Chad» з бібліотеки транспорту цього мода."
+      }
+    },
+    "DAMN.AllowPro440Spawns": {
+      "label": {
+        "en": "Pro 440 Spawns",
+        "uk": "Поява «Pro 440»"
+      },
+      "description": {
+        "en": "Allows the unique \"Pro 440\" vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального транспортного засобу «Pro 440»."
+      }
+    },
+    "DAMN.AllowDemonChildSpawns": {
+      "label": {
+        "en": "Demon Child Spawns",
+        "uk": "Поява «Demon Child»"
+      },
+      "description": {
+        "en": "Allows the unique \"Demon Child\" vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального транспортного засобу «Demon Child»."
+      }
+    },
+    "DAMN.AllowWreckyMcChevySpawns": {
+      "label": {
+        "en": "Wrecky McChevy Spawns",
+        "uk": "Поява «Wrecky McChevy»"
+      },
+      "description": {
+        "en": "Allows the unique \"Wrecky McChevy\" wrecked car to spawn in the world.",
+        "uk": "Дозволяє появу унікального розбитого автомобіля «Wrecky McChevy»."
+      }
+    },
+    "DAMN.AllowSuckyMcSuckfaceSpawns": {
+      "label": {
+        "en": "Sucky McSuckface Spawns",
+        "uk": "Поява «Sucky McSuckface»"
+      },
+      "description": {
+        "en": "Allows the unique \"Sucky McSuckface\" vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального транспортного засобу «Sucky McSuckface»."
+      }
+    },
+    "DAMN.AllowBushmasterSpawns": {
+      "label": {
+        "en": "Bushmaster Spawns",
+        "uk": "Поява Bushmaster"
+      },
+      "description": {
+        "en": "Allows the rare '97 ADI Bushmaster armored vehicle to spawn at a handful of secret/military locations.",
+        "uk": "Дозволяє появу рідкісного броньованого автомобіля '97 ADI Bushmaster у кількох секретних/військових локаціях."
+      }
+    },
+    "DAMN.AllowGreatScottSpawns": {
+      "label": {
+        "en": "Great Scott Spawns",
+        "uk": "Поява «Great Scott»"
+      },
+      "description": {
+        "en": "Allows the unique \"Great Scott\" vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального транспортного засобу «Great Scott»."
+      }
+    },
+    "DAMN.AllowMrBusSpawns": {
+      "label": {
+        "en": "Mr. Bus Spawns",
+        "uk": "Поява «Mr. Bus»"
+      },
+      "description": {
+        "en": "Allows the unique \"Mr. Bus\" vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального транспортного засобу «Mr. Bus»."
+      }
+    },
+    "DAMN.AllowChonkerSpawns": {
+      "label": {
+        "en": "Chonker Spawns",
+        "uk": "Поява «Chonker»"
+      },
+      "description": {
+        "en": "Allows the unique oversized \"Chonker\" vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального велетенського транспортного засобу «Chonker»."
+      }
+    },
+    "DAMN.AllowCashcowSpawns": {
+      "label": {
+        "en": "Cash Cow Spawns",
+        "uk": "Поява «Cash Cow»"
+      },
+      "description": {
+        "en": "Allows the unique \"Cash Cow\" vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального транспортного засобу «Cash Cow»."
+      }
+    },
+    "DAMN.AllowMcBoxySpawns": {
+      "label": {
+        "en": "McBoxy Spawns",
+        "uk": "Поява «McBoxy»"
+      },
+      "description": {
+        "en": "Allows the unique boxy \"McBoxy\" vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального квадратного транспортного засобу «McBoxy»."
+      }
+    },
+    "DAMN.AllowShitSpawns": {
+      "label": {
+        "en": "Shitbox Spawns",
+        "uk": "Поява «Shitbox»"
+      },
+      "description": {
+        "en": "Allows the unique beat-up \"Shitbox\" junker vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального пошарпаного «драндулета» («Shitbox»)."
+      }
+    },
+    "DAMN.AllowOinkerSpawns": {
+      "label": {
+        "en": "Oinker Spawns",
+        "uk": "Поява «Oinker»"
+      },
+      "description": {
+        "en": "Allows the unique pig-themed \"Oinker\" vehicle to spawn in the world.",
+        "uk": "Дозволяє появу унікального транспортного засобу «Oinker» у стилі свині."
+      }
+    },
+    "CF8KSweeper.AllowTiles": {
+      "label": {
+        "en": "Sweep Floor Tiles",
+        "uk": "Прибирання плиток підлоги"
+      },
+      "description": {
+        "en": "Lets the CF8000 street sweeper vacuum up matching decorative floor-tile debris listed in the sprite whitelist.",
+        "uk": "Дозволяє прибиральній машині CF8000 всмоктувати декоративне сміття з плиток підлоги зі списку дозволених спрайтів."
+      }
+    },
+    "CF8KSweeper.SpriteWhitelist": {
+      "label": {
+        "en": "Tile Sprite Whitelist",
+        "uk": "Білий список спрайтів плиток"
+      },
+      "description": {
+        "en": "Semicolon-separated list of tile sprite name prefixes (broken glass, trash, road debris, etc.) the street sweeper is allowed to remove.",
+        "uk": "Список префіксів спрайтів плиток (розбите скло, сміття тощо), розділених крапкою з комою, які прибиральна машина може прибирати."
+      }
+    },
+    "CF8KSweeper.AllowBlood": {
+      "label": {
+        "en": "Sweep Blood",
+        "uk": "Прибирання крові"
+      },
+      "description": {
+        "en": "Lets the street sweeper clean blood decals off the ground.",
+        "uk": "Дозволяє прибиральній машині змивати плями крові з землі."
+      }
+    },
+    "CF8KSweeper.AllowGrime": {
+      "label": {
+        "en": "Sweep Grime",
+        "uk": "Прибирання бруду"
+      },
+      "description": {
+        "en": "Lets the street sweeper clean grime and dirt decals off the ground.",
+        "uk": "Дозволяє прибиральній машині прибирати бруд і грязюку з землі."
+      }
+    },
+    "CF8KSweeper.AllowAshes": {
+      "label": {
+        "en": "Sweep Ashes",
+        "uk": "Прибирання попелу"
+      },
+      "description": {
+        "en": "Lets the street sweeper clean ash decals (from burnt corpses or fires) off the ground.",
+        "uk": "Дозволяє прибиральній машині прибирати попіл (від спалених тіл чи вогню) з землі."
+      }
+    },
+    "CF8KSweeper.AllowItems": {
+      "label": {
+        "en": "Sweep Items",
+        "uk": "Прибирання предметів"
+      },
+      "description": {
+        "en": "Lets the street sweeper vacuum up loose items lying on the ground.",
+        "uk": "Дозволяє прибиральній машині всмоктувати предмети, що лежать на землі."
+      }
+    },
+    "CF8KSweeper.AllowCorpses": {
+      "label": {
+        "en": "Sweep Corpses",
+        "uk": "Прибирання трупів"
+      },
+      "description": {
+        "en": "Lets the street sweeper pick up dead bodies.",
+        "uk": "Дозволяє прибиральній машині підбирати трупи."
+      }
+    },
+    "CF8KSweeper.AllowUserAutoDelete": {
+      "label": {
+        "en": "Player Auto-Delete",
+        "uk": "Автовидалення гравцями"
+      },
+      "description": {
+        "en": "Lets players (not just admins) auto-delete debris collected in the sweeper's tank instead of emptying it by hand.",
+        "uk": "Дозволяє звичайним гравцям (а не лише адмінам) автоматично видаляти сміття, зібране в баку прибиральної машини, замість ручного спорожнення."
+      }
+    },
+    "Plumbing.PumpFilterUsage": {
+      "label": {
+        "en": "Pump Filter Usage",
+        "uk": "Витрата фільтра помпи"
+      },
+      "description": {
+        "en": "How much of a pump's charcoal filter, used to purify tainted water, is consumed each time it's used.",
+        "uk": "Наскільки швидко витрачається вугільний фільтр помпи (використовується для очищення забрудненої води) під час кожного використання."
+      }
+    },
+    "Plumbing.PumpEfficiencyLoss": {
+      "label": {
+        "en": "Pump Efficiency Loss",
+        "uk": "Втрата ефективності помпи"
+      },
+      "description": {
+        "en": "How quickly a pump's efficiency degrades over time from wear; low-efficiency pumps risk emergency stops or catching fire.",
+        "uk": "Наскільки швидко ефективність помпи знижується з часом через знос; помпи з низькою ефективністю ризикують аварійно зупинитися або спалахнути."
+      }
+    },
+    "Plumbing.PumpMaxWater": {
+      "label": {
+        "en": "Pump Max Water",
+        "uk": "Макс. вода з помпи"
+      },
+      "description": {
+        "en": "Maximum liters of water a pump can output per cycle at 100% efficiency.",
+        "uk": "Максимальна кількість літрів води, яку помпа може видати за цикл при 100% ефективності."
+      }
+    },
+    "RVAddon.CustomNormalVehicles": {
+      "label": {
+        "en": "Custom Normal Vehicles",
+        "uk": "Додаткові звичайні транспортні засоби"
+      },
+      "description": {
+        "en": "Comma-separated list of additional vehicle script names slotted into the RV interior add-on's \"normal car\" category.",
+        "uk": "Список імен скриптів додаткових транспортних засобів (через кому), доданих до категорії «звичайний автомобіль» цього доповнення інтер'єрів."
+      }
+    },
+    "RVAddon.CustomBusVehicles": {
+      "label": {
+        "en": "Custom Bus Vehicles",
+        "uk": "Додаткові автобуси"
+      },
+      "description": {
+        "en": "Comma-separated list of additional vehicle script names slotted into the \"bus\" interior category.",
+        "uk": "Список імен скриптів додаткових транспортних засобів, доданих до категорії «автобус»."
+      }
+    },
+    "RVAddon.CustomSmallVehicles": {
+      "label": {
+        "en": "Custom Small Vehicles",
+        "uk": "Додаткові малі транспортні засоби"
+      },
+      "description": {
+        "en": "Comma-separated list of additional vehicle script names slotted into the \"small vehicle\" interior category.",
+        "uk": "Список імен скриптів додаткових транспортних засобів, доданих до категорії «малий транспорт»."
+      }
+    },
+    "RVAddon.Custom3x2Caravan": {
+      "label": {
+        "en": "Custom 3x2 Caravan Vehicles",
+        "uk": "Додаткові фургони 3x2"
+      },
+      "description": {
+        "en": "Comma-separated list of additional vehicle script names assigned the 3x2-tile caravan interior.",
+        "uk": "Список імен скриптів додаткових транспортних засобів, яким призначається інтер'єр фургона розміром 3x2 плитки."
+      }
+    },
+    "RVAddon.Custom3x6Caravan": {
+      "label": {
+        "en": "Custom 3x6 Caravan Vehicles",
+        "uk": "Додаткові фургони 3x6"
+      },
+      "description": {
+        "en": "Comma-separated list of additional vehicle script names assigned the 3x6-tile caravan interior.",
+        "uk": "Список імен скриптів додаткових транспортних засобів, яким призначається інтер'єр фургона розміром 3x6 плиток."
+      }
+    },
+    "RVAddon.Custom3x7Empty": {
+      "label": {
+        "en": "Custom 3x7 Empty Interior Vehicles",
+        "uk": "Додаткові порожні інтер'єри 3x7"
+      },
+      "description": {
+        "en": "Comma-separated list of additional vehicle script names assigned the empty 3x7-tile interior.",
+        "uk": "Список імен скриптів додаткових транспортних засобів, яким призначається порожній інтер'єр розміром 3x7 плиток."
+      }
+    },
+    "RVAddon.Custom4x12colossal": {
+      "label": {
+        "en": "Custom 4x12 Colossal Vehicles",
+        "uk": "Додаткові «колосальні» транспортні засоби 4x12"
+      },
+      "description": {
+        "en": "Comma-separated list of additional vehicle script names assigned the 4x12-tile \"colossal\" interior.",
+        "uk": "Список імен скриптів додаткових транспортних засобів, яким призначається «колосальний» інтер'єр розміром 4x12 плиток."
+      }
+    },
+    "RainCleansBlood.TilesPerMinute": {
+      "label": {
+        "en": "Tiles Cleaned Per Minute",
+        "uk": "Плиток очищено за хвилину"
+      },
+      "description": {
+        "en": "Maximum number of nearby blood/gore tiles cleaned per in-game minute while it's raining.",
+        "uk": "Максимальна кількість сусідніх плиток з кров'ю/рештками, які очищуються за одну ігрову хвилину під час дощу."
+      }
+    },
+    "RainCleansBlood.WeatherThreshold": {
+      "label": {
+        "en": "Weather Threshold",
+        "uk": "Поріг інтенсивності опадів"
+      },
+      "description": {
+        "en": "Minimum rain/snow intensity (0-1) required before rain starts cleaning blood.",
+        "uk": "Мінімальна інтенсивність опадів (від 0 до 1), необхідна для того, щоб дощ почав змивати кров."
+      }
+    },
+    "RainCleansBlood.AlsoCleanAsh": {
+      "label": {
+        "en": "Also Clean Ash",
+        "uk": "Також очищати попіл"
+      },
+      "description": {
+        "en": "Also clean ash decals from burnt corpses, not just blood.",
+        "uk": "Також очищати плями попелу від спалених тіл, а не лише кров."
+      }
+    },
+    "RainCleansBlood.AlsoCleanInside": {
+      "label": {
+        "en": "Also Clean Indoors",
+        "uk": "Також очищати в приміщенні"
+      },
+      "description": {
+        "en": "Allow rain to clean blood on indoor tiles too, not just ones exposed outdoors.",
+        "uk": "Дозволити дощу очищати кров і в приміщеннях, а не лише на відкритих ділянках."
+      }
+    },
+    "RainCleansBlood.AlsoCleanVehicles": {
+      "label": {
+        "en": "Also Clean Vehicles",
+        "uk": "Також очищати транспорт"
+      },
+      "description": {
+        "en": "Also gradually clean blood and dirt off vehicle exteriors.",
+        "uk": "Також поступово очищати кров і бруд із зовнішньої поверхні транспортних засобів."
+      }
+    },
+    "RainCleansBlood.VehicleCleanSpeed": {
+      "label": {
+        "en": "Vehicle Clean Speed",
+        "uk": "Швидкість очищення транспорту"
+      },
+      "description": {
+        "en": "Speed multiplier for how fast vehicles get cleaned by rain.",
+        "uk": "Множник швидкості очищення транспортних засобів дощем."
+      }
+    },
+    "RainCleansBlood.AlsoCleanClothes": {
+      "label": {
+        "en": "Also Clean Clothes",
+        "uk": "Також очищати одяг"
+      },
+      "description": {
+        "en": "Also clean blood off the clothes worn or carried by characters.",
+        "uk": "Також очищати кров з одягу, який носять або несуть персонажі."
+      }
+    },
+    "RainCleansBlood.ClothesCleanSpeed": {
+      "label": {
+        "en": "Clothes Clean Speed",
+        "uk": "Швидкість очищення одягу"
+      },
+      "description": {
+        "en": "Speed multiplier for how fast worn clothing gets cleaned by rain.",
+        "uk": "Множник швидкості очищення одягу дощем."
+      }
+    },
+    "RainCleansBlood.AlwaysClean": {
+      "label": {
+        "en": "Always Clean",
+        "uk": "Завжди очищати"
+      },
+      "description": {
+        "en": "Clean blood regardless of weather, ignoring the rain intensity threshold entirely.",
+        "uk": "Очищати кров незалежно від погоди, повністю ігноруючи поріг інтенсивності опадів."
+      }
+    },
+    "CommonSense.ObviousCollecting": {
+      "label": {
+        "en": "Obvious Collecting",
+        "uk": "Помітне підбирання"
+      },
+      "description": {
+        "en": "Shows a visible pickup animation/highlight when auto-collecting items off the ground.",
+        "uk": "Показує помітну анімацію/підсвічування під час автоматичного підбирання предметів із землі."
+      }
+    },
+    "CommonSense.DisableLoot": {
+      "label": {
+        "en": "Disable Mod Loot",
+        "uk": "Вимкнути лут мода"
+      },
+      "description": {
+        "en": "Disables this mod's own loot additions/changes entirely.",
+        "uk": "Повністю вимикає власні зміни луту цього мода."
+      }
+    },
+    "CommonSense.LootMultiplier": {
+      "label": {
+        "en": "Loot Multiplier",
+        "uk": "Множник луту"
+      },
+      "description": {
+        "en": "Multiplier applied to the amount of loot added by this mod.",
+        "uk": "Множник, що застосовується до кількості луту, доданого цим модом."
+      }
+    },
+    "CommonSense.PryingMechanic": {
+      "label": {
+        "en": "Prying Mechanic",
+        "uk": "Механіка зламу ломом"
+      },
+      "description": {
+        "en": "Master switch for the crowbar-prying system added by this mod.",
+        "uk": "Головний перемикач механіки зламу дверей/вікон ломом, доданої цим модом."
+      }
+    },
+    "CommonSense.PryingChanceMultiplier": {
+      "label": {
+        "en": "Prying Chance Multiplier",
+        "uk": "Множник шансу зламу"
+      },
+      "description": {
+        "en": "Multiplier applied to the base success chance of a crowbar-prying attempt.",
+        "uk": "Множник, що застосовується до базового шансу успіху спроби зламу ломом."
+      }
+    },
+    "CommonSense.PryBuildingDoors": {
+      "label": {
+        "en": "Pry Building Doors",
+        "uk": "Зламувати двері будівель"
+      },
+      "description": {
+        "en": "Allow prying open regular (non-reinforced) building doors with a crowbar.",
+        "uk": "Дозволяє зламувати ломом звичайні (непосилені) двері будівель."
+      }
+    },
+    "CommonSense.PryWindows": {
+      "label": {
+        "en": "Pry Windows",
+        "uk": "Зламувати вікна"
+      },
+      "description": {
+        "en": "Allow prying open windows with a crowbar.",
+        "uk": "Дозволяє зламувати ломом вікна."
+      }
+    },
+    "CommonSense.WindowShatterChance": {
+      "label": {
+        "en": "Window Shatter Chance",
+        "uk": "Шанс розбити вікно"
+      },
+      "description": {
+        "en": "Chance (%) that a failed window-pry attempt shatters the glass.",
+        "uk": "Шанс (%) того, що невдала спроба зламу вікна розіб'є скло."
+      }
+    },
+    "CommonSense.PryGarageDoors": {
+      "label": {
+        "en": "Pry Garage Doors",
+        "uk": "Зламувати гаражні ворота"
+      },
+      "description": {
+        "en": "Allow prying open garage doors with a crowbar.",
+        "uk": "Дозволяє зламувати ломом гаражні ворота."
+      }
+    },
+    "CommonSense.PryVehicleDoors": {
+      "label": {
+        "en": "Pry Vehicle Doors",
+        "uk": "Зламувати двері транспорту"
+      },
+      "description": {
+        "en": "Allow prying open locked vehicle doors with a crowbar.",
+        "uk": "Дозволяє зламувати ломом заблоковані двері транспортних засобів."
+      }
+    },
+    "CommonSense.ShatterVehicleWindows": {
+      "label": {
+        "en": "Shatter Vehicle Windows",
+        "uk": "Розбивати вікна транспорту"
+      },
+      "description": {
+        "en": "Allow a failed vehicle-door pry attempt to shatter the vehicle's windows.",
+        "uk": "Дозволяє невдалій спробі зламу дверей транспорту розбити його вікна."
+      }
+    },
+    "CommonSense.PrySafeDoors": {
+      "label": {
+        "en": "Pry Safe Doors",
+        "uk": "Зламувати сейфи"
+      },
+      "description": {
+        "en": "Allow prying open safes with a crowbar.",
+        "uk": "Дозволяє зламувати ломом сейфи."
+      }
+    },
+    "CommonSense.ReinforcedDoorLevel": {
+      "label": {
+        "en": "Reinforced Door Level",
+        "uk": "Рівень для посилених дверей"
+      },
+      "description": {
+        "en": "Minimum level in the relevant skill required to pry open reinforced or barricaded doors.",
+        "uk": "Мінімальний рівень відповідної навички, необхідний для зламу посилених або забарикадованих дверей."
+      }
+    },
+    "CommonSense.GunStats": {
+      "label": {
+        "en": "Gun Stats",
+        "uk": "Статистика зброї"
+      },
+      "description": {
+        "en": "Enables this mod's gun stat tweaks, including an on-screen remaining-ammo counter.",
+        "uk": "Вмикає зміни статистики зброї цього мода, зокрема лічильник набоїв, що залишилися, на екрані."
+      }
+    },
+    "CommonSense.CanWoundChance": {
+      "label": {
+        "en": "Wound Chance",
+        "uk": "Шанс поранення"
+      },
+      "description": {
+        "en": "Chance (%) that a failed action, such as breaking glass, wounds the player.",
+        "uk": "Шанс (%) того, що невдала дія (наприклад, розбиття скла) поранить гравця."
+      }
+    },
+    "CommonSense.ReplaceBandage": {
+      "label": {
+        "en": "Replace Bandage",
+        "uk": "Заміна бинта"
+      },
+      "description": {
+        "en": "Allow removing a dirty bandage and replacing it with a fresh one, instead of only adding new bandages on top.",
+        "uk": "Дозволяє знімати брудний бинт і замінювати його новим, а не лише накладати нові бинти поверх."
+      }
+    },
+    "CommonSense.WashOnly": {
+      "label": {
+        "en": "Wash Only",
+        "uk": "Лише прання"
+      },
+      "description": {
+        "en": "Restrict dirty-bandage handling to washing and reusing them, rather than replacing them outright.",
+        "uk": "Обмежує поводження з брудними бинтами лише пранням і повторним використанням, без повної заміни."
+      }
+    },
+    "CommonSense.ReloadAllMags": {
+      "label": {
+        "en": "Reload All Magazines",
+        "uk": "Перезарядка всіх магазинів"
+      },
+      "description": {
+        "en": "Reload action refills every empty magazine in your inventory at once instead of one at a time.",
+        "uk": "Перезарядка одразу поповнює всі порожні магазини в інвентарі, а не по одному."
       }
     }
   }

@@ -5229,6 +5229,738 @@
           "options": null
         }
       ]
+    },
+    {
+      "name": "DAMN",
+      "paramCount": 13,
+      "params": [
+        {
+          "key": "AllowPowerChadSpawns",
+          "path": "DAMN.AllowPowerChadSpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique \"Power Chad\" vehicle from this mod's vehicle library to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowPro440Spawns",
+          "path": "DAMN.AllowPro440Spawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique \"Pro 440\" vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowDemonChildSpawns",
+          "path": "DAMN.AllowDemonChildSpawns",
+          "section": "DAMN",
+          "value": false,
+          "type": "boolean",
+          "description": "Allows the unique \"Demon Child\" vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowWreckyMcChevySpawns",
+          "path": "DAMN.AllowWreckyMcChevySpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique \"Wrecky McChevy\" wrecked car to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowSuckyMcSuckfaceSpawns",
+          "path": "DAMN.AllowSuckyMcSuckfaceSpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique \"Sucky McSuckface\" vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowBushmasterSpawns",
+          "path": "DAMN.AllowBushmasterSpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the rare '97 ADI Bushmaster armored vehicle to spawn at a handful of secret/military locations.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowGreatScottSpawns",
+          "path": "DAMN.AllowGreatScottSpawns",
+          "section": "DAMN",
+          "value": false,
+          "type": "boolean",
+          "description": "Allows the unique \"Great Scott\" vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowMrBusSpawns",
+          "path": "DAMN.AllowMrBusSpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique \"Mr. Bus\" vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowChonkerSpawns",
+          "path": "DAMN.AllowChonkerSpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique oversized \"Chonker\" vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowCashcowSpawns",
+          "path": "DAMN.AllowCashcowSpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique \"Cash Cow\" vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowMcBoxySpawns",
+          "path": "DAMN.AllowMcBoxySpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique boxy \"McBoxy\" vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowShitSpawns",
+          "path": "DAMN.AllowShitSpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique beat-up \"Shitbox\" junker vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowOinkerSpawns",
+          "path": "DAMN.AllowOinkerSpawns",
+          "section": "DAMN",
+          "value": true,
+          "type": "boolean",
+          "description": "Allows the unique pig-themed \"Oinker\" vehicle to spawn in the world.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        }
+      ]
+    },
+    {
+      "name": "CF8KSweeper",
+      "paramCount": 8,
+      "params": [
+        {
+          "key": "AllowTiles",
+          "path": "CF8KSweeper.AllowTiles",
+          "section": "CF8KSweeper",
+          "value": true,
+          "type": "boolean",
+          "description": "Lets the CF8000 street sweeper vacuum up matching decorative floor-tile debris listed in the sprite whitelist.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "SpriteWhitelist",
+          "path": "CF8KSweeper.SpriteWhitelist",
+          "section": "CF8KSweeper",
+          "value": "brokenglass_1_;trash_01_;d_trash_;street_decoration_01_26;street_decoration_01_27;damaged_objects_01_26;damaged_objects_01_27;damaged_objects_01_18;damaged_objects_01_19;damaged_objects_01_20;damaged_objects_01_21",
+          "type": "string",
+          "description": "Semicolon-separated list of tile sprite name prefixes (broken glass, trash, road debris, etc.) the street sweeper is allowed to remove.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowBlood",
+          "path": "CF8KSweeper.AllowBlood",
+          "section": "CF8KSweeper",
+          "value": true,
+          "type": "boolean",
+          "description": "Lets the street sweeper clean blood decals off the ground.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowGrime",
+          "path": "CF8KSweeper.AllowGrime",
+          "section": "CF8KSweeper",
+          "value": true,
+          "type": "boolean",
+          "description": "Lets the street sweeper clean grime and dirt decals off the ground.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowAshes",
+          "path": "CF8KSweeper.AllowAshes",
+          "section": "CF8KSweeper",
+          "value": true,
+          "type": "boolean",
+          "description": "Lets the street sweeper clean ash decals (from burnt corpses or fires) off the ground.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowItems",
+          "path": "CF8KSweeper.AllowItems",
+          "section": "CF8KSweeper",
+          "value": true,
+          "type": "boolean",
+          "description": "Lets the street sweeper vacuum up loose items lying on the ground.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowCorpses",
+          "path": "CF8KSweeper.AllowCorpses",
+          "section": "CF8KSweeper",
+          "value": true,
+          "type": "boolean",
+          "description": "Lets the street sweeper pick up dead bodies.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AllowUserAutoDelete",
+          "path": "CF8KSweeper.AllowUserAutoDelete",
+          "section": "CF8KSweeper",
+          "value": false,
+          "type": "boolean",
+          "description": "Lets players (not just admins) auto-delete debris collected in the sweeper's tank instead of emptying it by hand.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        }
+      ]
+    },
+    {
+      "name": "Plumbing",
+      "paramCount": 3,
+      "params": [
+        {
+          "key": "PumpFilterUsage",
+          "path": "Plumbing.PumpFilterUsage",
+          "section": "Plumbing",
+          "value": 0.007,
+          "type": "float",
+          "description": "How much of a pump's charcoal filter, used to purify tainted water, is consumed each time it's used.",
+          "min": 0,
+          "max": 0.1,
+          "default": 0.01,
+          "options": null
+        },
+        {
+          "key": "PumpEfficiencyLoss",
+          "path": "Plumbing.PumpEfficiencyLoss",
+          "section": "Plumbing",
+          "value": 0.0012,
+          "type": "float",
+          "description": "How quickly a pump's efficiency degrades over time from wear; low-efficiency pumps risk emergency stops or catching fire.",
+          "min": 0,
+          "max": 0.01,
+          "default": 0,
+          "options": null
+        },
+        {
+          "key": "PumpMaxWater",
+          "path": "Plumbing.PumpMaxWater",
+          "section": "Plumbing",
+          "value": 12,
+          "type": "integer",
+          "description": "Maximum liters of water a pump can output per cycle at 100% efficiency.",
+          "min": 6,
+          "max": 96,
+          "default": 12,
+          "options": null
+        }
+      ]
+    },
+    {
+      "name": "RVAddon",
+      "paramCount": 7,
+      "params": [
+        {
+          "key": "CustomNormalVehicles",
+          "path": "RVAddon.CustomNormalVehicles",
+          "section": "RVAddon",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of additional vehicle script names slotted into the RV interior add-on's \"normal car\" category.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "CustomBusVehicles",
+          "path": "RVAddon.CustomBusVehicles",
+          "section": "RVAddon",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of additional vehicle script names slotted into the \"bus\" interior category.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "CustomSmallVehicles",
+          "path": "RVAddon.CustomSmallVehicles",
+          "section": "RVAddon",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of additional vehicle script names slotted into the \"small vehicle\" interior category.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "Custom3x2Caravan",
+          "path": "RVAddon.Custom3x2Caravan",
+          "section": "RVAddon",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of additional vehicle script names assigned the 3x2-tile caravan interior.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "Custom3x6Caravan",
+          "path": "RVAddon.Custom3x6Caravan",
+          "section": "RVAddon",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of additional vehicle script names assigned the 3x6-tile caravan interior.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "Custom3x7Empty",
+          "path": "RVAddon.Custom3x7Empty",
+          "section": "RVAddon",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of additional vehicle script names assigned the empty 3x7-tile interior.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "Custom4x12colossal",
+          "path": "RVAddon.Custom4x12colossal",
+          "section": "RVAddon",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of additional vehicle script names assigned the 4x12-tile \"colossal\" interior.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        }
+      ]
+    },
+    {
+      "name": "RainCleansBlood",
+      "paramCount": 9,
+      "params": [
+        {
+          "key": "TilesPerMinute",
+          "path": "RainCleansBlood.TilesPerMinute",
+          "section": "RainCleansBlood",
+          "value": 10,
+          "type": "integer",
+          "description": "Maximum number of nearby blood/gore tiles cleaned per in-game minute while it's raining.",
+          "min": 1,
+          "max": 60,
+          "default": 10,
+          "options": null
+        },
+        {
+          "key": "WeatherThreshold",
+          "path": "RainCleansBlood.WeatherThreshold",
+          "section": "RainCleansBlood",
+          "value": 0.25,
+          "type": "float",
+          "description": "Minimum rain/snow intensity (0-1) required before rain starts cleaning blood.",
+          "min": 0.05,
+          "max": 0.95,
+          "default": 0.25,
+          "options": null
+        },
+        {
+          "key": "AlsoCleanAsh",
+          "path": "RainCleansBlood.AlsoCleanAsh",
+          "section": "RainCleansBlood",
+          "value": true,
+          "type": "boolean",
+          "description": "Also clean ash decals from burnt corpses, not just blood.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AlsoCleanInside",
+          "path": "RainCleansBlood.AlsoCleanInside",
+          "section": "RainCleansBlood",
+          "value": false,
+          "type": "boolean",
+          "description": "Allow rain to clean blood on indoor tiles too, not just ones exposed outdoors.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "AlsoCleanVehicles",
+          "path": "RainCleansBlood.AlsoCleanVehicles",
+          "section": "RainCleansBlood",
+          "value": true,
+          "type": "boolean",
+          "description": "Also gradually clean blood and dirt off vehicle exteriors.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "VehicleCleanSpeed",
+          "path": "RainCleansBlood.VehicleCleanSpeed",
+          "section": "RainCleansBlood",
+          "value": 0.1,
+          "type": "float",
+          "description": "Speed multiplier for how fast vehicles get cleaned by rain.",
+          "min": 0.1,
+          "max": 1,
+          "default": 0.1,
+          "options": null
+        },
+        {
+          "key": "AlsoCleanClothes",
+          "path": "RainCleansBlood.AlsoCleanClothes",
+          "section": "RainCleansBlood",
+          "value": true,
+          "type": "boolean",
+          "description": "Also clean blood off the clothes worn or carried by characters.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ClothesCleanSpeed",
+          "path": "RainCleansBlood.ClothesCleanSpeed",
+          "section": "RainCleansBlood",
+          "value": 1,
+          "type": "float",
+          "description": "Speed multiplier for how fast worn clothing gets cleaned by rain.",
+          "min": 1,
+          "max": 10,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "AlwaysClean",
+          "path": "RainCleansBlood.AlwaysClean",
+          "section": "RainCleansBlood",
+          "value": false,
+          "type": "boolean",
+          "description": "Clean blood regardless of weather, ignoring the rain intensity threshold entirely.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        }
+      ]
+    },
+    {
+      "name": "CommonSense",
+      "paramCount": 18,
+      "params": [
+        {
+          "key": "ObviousCollecting",
+          "path": "CommonSense.ObviousCollecting",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Shows a visible pickup animation/highlight when auto-collecting items off the ground.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "DisableLoot",
+          "path": "CommonSense.DisableLoot",
+          "section": "CommonSense",
+          "value": false,
+          "type": "boolean",
+          "description": "Disables this mod's own loot additions/changes entirely.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "LootMultiplier",
+          "path": "CommonSense.LootMultiplier",
+          "section": "CommonSense",
+          "value": 1,
+          "type": "float",
+          "description": "Multiplier applied to the amount of loot added by this mod.",
+          "min": 0,
+          "max": 100,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "PryingMechanic",
+          "path": "CommonSense.PryingMechanic",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Master switch for the crowbar-prying system added by this mod.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "PryingChanceMultiplier",
+          "path": "CommonSense.PryingChanceMultiplier",
+          "section": "CommonSense",
+          "value": 1,
+          "type": "float",
+          "description": "Multiplier applied to the base success chance of a crowbar-prying attempt.",
+          "min": 0,
+          "max": 5,
+          "default": 1,
+          "options": null
+        },
+        {
+          "key": "PryBuildingDoors",
+          "path": "CommonSense.PryBuildingDoors",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Allow prying open regular (non-reinforced) building doors with a crowbar.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "PryWindows",
+          "path": "CommonSense.PryWindows",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Allow prying open windows with a crowbar.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "WindowShatterChance",
+          "path": "CommonSense.WindowShatterChance",
+          "section": "CommonSense",
+          "value": 20,
+          "type": "integer",
+          "description": "Chance (%) that a failed window-pry attempt shatters the glass.",
+          "min": 0,
+          "max": 100,
+          "default": 20,
+          "options": null
+        },
+        {
+          "key": "PryGarageDoors",
+          "path": "CommonSense.PryGarageDoors",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Allow prying open garage doors with a crowbar.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "PryVehicleDoors",
+          "path": "CommonSense.PryVehicleDoors",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Allow prying open locked vehicle doors with a crowbar.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ShatterVehicleWindows",
+          "path": "CommonSense.ShatterVehicleWindows",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Allow a failed vehicle-door pry attempt to shatter the vehicle's windows.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "PrySafeDoors",
+          "path": "CommonSense.PrySafeDoors",
+          "section": "CommonSense",
+          "value": false,
+          "type": "boolean",
+          "description": "Allow prying open safes with a crowbar.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ReinforcedDoorLevel",
+          "path": "CommonSense.ReinforcedDoorLevel",
+          "section": "CommonSense",
+          "value": 8,
+          "type": "integer",
+          "description": "Minimum level in the relevant skill required to pry open reinforced or barricaded doors.",
+          "min": 0,
+          "max": 10,
+          "default": 8,
+          "options": null
+        },
+        {
+          "key": "GunStats",
+          "path": "CommonSense.GunStats",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Enables this mod's gun stat tweaks, including an on-screen remaining-ammo counter.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "CanWoundChance",
+          "path": "CommonSense.CanWoundChance",
+          "section": "CommonSense",
+          "value": 33,
+          "type": "integer",
+          "description": "Chance (%) that a failed action, such as breaking glass, wounds the player.",
+          "min": 0,
+          "max": 100,
+          "default": 33,
+          "options": null
+        },
+        {
+          "key": "ReplaceBandage",
+          "path": "CommonSense.ReplaceBandage",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Allow removing a dirty bandage and replacing it with a fresh one, instead of only adding new bandages on top.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "WashOnly",
+          "path": "CommonSense.WashOnly",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Restrict dirty-bandage handling to washing and reusing them, rather than replacing them outright.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        },
+        {
+          "key": "ReloadAllMags",
+          "path": "CommonSense.ReloadAllMags",
+          "section": "CommonSense",
+          "value": true,
+          "type": "boolean",
+          "description": "Reload action refills every empty magazine in your inventory at once instead of one at a time.",
+          "min": null,
+          "max": null,
+          "default": null,
+          "options": null
+        }
+      ]
     }
   ]
 }
