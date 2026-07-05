@@ -131,6 +131,23 @@
         return state.values[param.path] !== undefined ? state.values[param.path] : param.value;
     }
 
+    function findParamByPath(path) {
+        for (const section of state.schema.sections) {
+            const found = section.params.find((p) => p.path === path);
+            if (found) return found;
+        }
+        return undefined;
+    }
+
+    // The per-skill multipliers are irrelevant once GlobalToggle is on — the
+    // Global multiplier applies to every skill instead.
+    function isGlobalMultiplierLocked(param) {
+        if (param.section !== 'MultiplierConfig') return false;
+        if (param.key === 'Global' || param.key === 'GlobalToggle') return false;
+        const toggle = findParamByPath('MultiplierConfig.GlobalToggle');
+        return toggle ? !!currentValue(toggle) : false;
+    }
+
     function isModified(param) {
         const def = getDefaultValue(param);
         if (def === undefined) return false;
@@ -324,6 +341,7 @@
         const card = document.createElement('div');
         card.className = 'param-card';
         if (isModified(param)) card.classList.add('is-modified');
+        if (isGlobalMultiplierLocked(param)) card.classList.add('is-locked');
 
         const header = document.createElement('div');
         header.className = 'param-header';
@@ -381,7 +399,8 @@
     }
 
     function buildControl(param) {
-        const value = currentValue(param);
+        const locked = isGlobalMultiplierLocked(param);
+        const value = locked ? currentValue(findParamByPath('MultiplierConfig.Global')) : currentValue(param);
 
         if (param.type === 'boolean') {
             const wrap = document.createElement('label');
@@ -439,6 +458,7 @@
             if (param.max !== null && param.max !== undefined) input.max = String(param.max);
             input.step = param.type === 'integer' ? '1' : 'any';
             input.value = String(value);
+            input.disabled = locked;
             input.addEventListener('change', () => {
                 let v = param.type === 'integer' ? parseInt(input.value, 10) : parseFloat(input.value);
                 if (Number.isNaN(v)) v = value;
@@ -484,6 +504,13 @@
 
     // Re-render just one card in place (keeps scroll position / focus stable enough for this app's scale)
     function renderParamCardInPlace(param) {
+        // Toggling GlobalToggle (or changing Global itself) changes how every
+        // other multiplier card in the section renders (locked + displayed value),
+        // so refresh the whole section instead of just this one card.
+        if (param.section === 'MultiplierConfig' && (param.key === 'GlobalToggle' || param.key === 'Global')) {
+            renderSectionInPlace(param.section);
+            return;
+        }
         const grid = document.getElementById(`section-${param.section}`);
         if (!grid) { renderMain(); return; }
         renderSidebarCounts();
@@ -496,6 +523,19 @@
                 return;
             }
         }
+    }
+
+    function renderSectionInPlace(sectionName) {
+        const block = document.getElementById(`section-${sectionName}`);
+        const section = state.schema.sections.find((s) => s.name === sectionName);
+        if (!block || !section) { renderMain(); return; }
+        const grid = block.querySelector('.param-grid');
+        if (!grid) { renderMain(); return; }
+        grid.innerHTML = '';
+        for (const param of section.params.filter(matchesSearch)) {
+            grid.appendChild(renderParamCard(param));
+        }
+        renderSidebarCounts();
     }
 
     function renderSidebarCounts() {
@@ -878,6 +918,7 @@
             ok = false;
             appendSyncLog('error', err.message);
         } finally {
+            els.syncConfirmBtn.disabled = false;
             els.syncCancelBtn.disabled = false;
             els.syncCancelBtn.textContent = t('close');
         }

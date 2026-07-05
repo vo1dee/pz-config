@@ -237,6 +237,12 @@ button {
 .param-card.is-modified {
     border-color: var(--modified);
 }
+.param-card.is-locked {
+    opacity: 0.55;
+}
+.param-card.is-locked .param-control-row input {
+    cursor: not-allowed;
+}
 
 .param-header {
     display: flex;
